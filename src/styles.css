@@ -271,4 +271,19 @@
       transform: translateY(0);
     }
   }
+
+  .animate-pulse-cta {
+    animation: pulseCta 1.8s ease-in-out infinite;
+  }
+
+  @keyframes pulseCta {
+    0%, 100% {
+      transform: scale(1);
+      box-shadow: 0 10px 25px -5px rgba(67, 160, 71, 0.45);
+    }
+    50% {
+      transform: scale(1.03);
+      box-shadow: 0 14px 35px -5px rgba(67, 160, 71, 0.65);
+    }
+  }
 }
