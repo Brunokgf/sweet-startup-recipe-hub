@@ -1,570 +1,420 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import {
-  ChefHat,
-  DollarSign,
-  Clock,
-  Star,
-  CheckCircle2,
-  Package,
-  BookOpen,
-  ArrowRight,
-  ShieldCheck,
-  Users,
-  TrendingUp,
-  Gift,
-  Sparkles,
-  Heart,
-  Menu,
-  X,
-} from "lucide-react";
-import heroImg from "../assets/brigadeiro-hero.jpg";
-import makingImg from "../assets/brigadeiro-making.jpg";
-import packagingImg from "../assets/brigadeiro-packaging.jpg";
+import { Check, Star, ChevronDown } from "lucide-react";
+
+import heroBg from "@/assets/geladinho-hero.jpg";
+import logo from "@/assets/logo-geladinho.png";
+import sabores from "@/assets/sabores-geladinho.jpg";
+import garantia from "@/assets/garantia-7dias.png";
 
 export const Route = createFileRoute("/")({
+  component: LandingPage,
   head: () => ({
     meta: [
-      { title: "Brigadeiro Gourmet — Receitas para Renda Extra" },
-      { name: "description", content: "Aprenda a fazer brigadeiros gourmet irresistíveis e lucre de R$2.000 a R$5.000 por mês trabalhando em casa. E-book completo com mais de 50 receitas, dicas de embalagem e estratégias de venda." },
-      { property: "og:title", content: "Brigadeiro Gourmet — Receitas para Renda Extra" },
-      { property: "og:description", content: "Aprenda a fazer brigadeiros gourmet e lucre de R$2.000 a R$5.000 por mês. Mais de 50 receitas, dicas de venda e embalagem." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
+      { title: "Geladinho Gourmet — Receitas para Renda Extra" },
+      {
+        name: "description",
+        content:
+          "Aprenda a produzir Geladinhos Gourmet e crie uma renda extra — mesmo começando do zero. +6.000 alunas já transformaram suas vidas.",
+      },
     ],
   }),
-  component: Index,
 });
 
-function Index() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+const CHECKOUT_URL = "#"; // troque pelo link do Kiwify/Hotmart
 
-  const scrollToSection = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-      setMobileMenuOpen(false);
-    }
-  };
+const SABORES = [
+  { nome: "KIWI", cor: "from-lime-400 to-green-500" },
+  { nome: "KITKAT", cor: "from-amber-700 to-amber-900" },
+  { nome: "DOCE DE LEITE", cor: "from-amber-300 to-orange-500" },
+  { nome: "NINHO + MORANGO", cor: "from-pink-300 to-rose-500" },
+  { nome: "GALAK", cor: "from-amber-50 to-amber-200" },
+  { nome: "OREO", cor: "from-zinc-700 to-zinc-900" },
+];
 
-  const navLinks = [
-    { label: "O que é", id: "oque" },
-    { label: "Conteúdo", id: "conteudo" },
-    { label: "Depoimentos", id: "depoimentos" },
-    { label: "Oferta", id: "oferta" },
-  ];
+const FAQS = [
+  {
+    q: "Meus dados estão protegidos nesse site?",
+    a: "Sim, o site que gerencia nossos pagamentos é um dos maiores sites de cursos digitais do Brasil.",
+  },
+  { q: "Quais as formas de Pagamento?", a: "Cartão de Crédito e PIX." },
+  {
+    q: "Como vou acessar o curso?",
+    a: "O acesso ao conteúdo será em uma área de alunas, com login e senha exclusivos enviados em seu e-mail. Você poderá acessar pelo celular, computador, notebook, tablet ou qualquer aparelho com acesso à internet.",
+  },
+  {
+    q: "Como são as aulas?",
+    a: "São videoaulas com o passo a passo de cada receita e o modo de preparo na prática. Você também recebe a Apostila de Apoio.",
+  },
+  {
+    q: "Por quanto tempo posso acessar o curso?",
+    a: "Seu acesso ao Material Exclusivo é vitalício, a partir da data de sua compra.",
+  },
+  {
+    q: "Qual garantia eu tenho?",
+    a: "Ao confirmar sua compra, você tem uma garantia incondicional de 7 dias.",
+  },
+  {
+    q: "Quando vou receber o acesso ao curso?",
+    a: "Após a confirmação do pagamento o curso é liberado imediatamente — os dados de acesso são enviados ao seu e-mail.",
+  },
+  {
+    q: "Como faço para receber o certificado?",
+    a: "Após finalizar as videoaulas, marque todas as caixinhas do conteúdo para atingir 100% de finalização. Seu certificado aparecerá para Download.",
+  },
+];
 
+function LandingPage() {
   return (
-    <div className="min-h-screen bg-background">
-      {/* Navbar */}
-      <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-          <button
-            onClick={() => scrollToSection("hero")}
-            className="flex items-center gap-2 font-bold text-xl text-foreground hover:opacity-80 transition-opacity"
-          >
-            <ChefHat className="w-7 h-7 text-chocolate" />
-            <span className="hidden sm:inline">Brigadeiro Gourmet</span>
-          </button>
+    <main className="min-h-screen bg-[#fde7ee] text-zinc-900">
+      {/* HERO */}
+      <section
+        className="relative bg-cover bg-center"
+        style={{ backgroundImage: `url(${heroBg})` }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-[#fde7ee]/85 via-[#fde7ee]/70 to-[#fde7ee]" />
+        <div className="relative mx-auto max-w-3xl px-4 py-10 text-center">
+          <img
+            src={logo}
+            alt="Receitas Criativas"
+            width={160}
+            height={160}
+            className="mx-auto h-32 w-32 sm:h-40 sm:w-40 drop-shadow-lg"
+          />
+          <p className="mt-6 text-xl sm:text-2xl font-extrabold tracking-wide text-zinc-900">
+            APRENDA A PRODUZIR
+          </p>
+          <h1 className="mt-2 text-4xl sm:text-6xl font-black uppercase tracking-tight text-[#e91e63] drop-shadow-sm">
+            Geladinhos Gourmet
+          </h1>
+          <div className="mt-4 inline-block w-full max-w-xl rounded-md bg-[#ec407a] px-4 py-3 text-xl sm:text-2xl font-extrabold uppercase text-white shadow">
+            E crie uma renda extra
+          </div>
+          <p className="mt-4 text-lg sm:text-xl font-semibold text-[#f06292]">
+            Mesmo começando do zero!
+          </p>
+          <p className="mt-6 text-3xl font-black text-zinc-900">+6.000 Alunas</p>
+          <p className="text-sm font-medium text-zinc-700">
+            Já transformaram sua vida com nossas receitas
+          </p>
+          <div className="mt-3 flex justify-center gap-1 text-amber-400">
+            {[0, 1, 2, 3, 4].map((i) => (
+              <Star key={i} className="h-6 w-6 fill-amber-400" />
+            ))}
+          </div>
 
-          <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <button
-                key={link.id}
-                onClick={() => scrollToSection(link.id)}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+          {/* VSL PLACEHOLDER */}
+          <div className="mx-auto mt-8 w-full max-w-2xl overflow-hidden rounded-xl border-4 border-white bg-zinc-900 shadow-2xl">
+            <div className="relative aspect-video">
+              {/* Substitua este bloco pelo embed do seu VSL */}
+              <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-zinc-800 to-zinc-950 text-white">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#e91e63] shadow-lg">
+                  <svg viewBox="0 0 24 24" className="ml-1 h-8 w-8 fill-white">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </div>
+                <p className="mt-4 text-sm font-semibold opacity-80">
+                  Seu VSL será exibido aqui
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-8">
+            <CTA>QUERO COMEÇAR AGORA</CTA>
+          </div>
+          <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-zinc-600">
+            Pagamento 100% seguro • Cartão e PIX
+          </p>
+        </div>
+      </section>
+
+      {/* PARA QUEM É */}
+      <section className="bg-white py-16">
+        <div className="mx-auto max-w-4xl px-4">
+          <h2 className="text-center text-3xl sm:text-4xl font-black text-[#e91e63]">
+            Pra quem é esse treinamento?
+          </h2>
+          <ul className="mt-10 grid gap-4 sm:grid-cols-2">
+            {[
+              "Quem deseja uma renda extra",
+              "Pessoas desempregadas que querem começar a vender",
+              "Quem busca trabalhar em casa",
+              "Mulheres que desejam independência financeira",
+              "Quem procura uma atividade com baixo investimento",
+              "Pessoas sem experiência",
+            ].map((t) => (
+              <li
+                key={t}
+                className="flex items-start gap-3 rounded-xl bg-[#fde7ee] px-5 py-4 font-semibold text-zinc-800"
               >
-                {link.label}
-              </button>
+                <Check className="mt-0.5 h-5 w-5 flex-none text-[#e91e63]" />
+                <span>{t}</span>
+              </li>
             ))}
-            <button
-              onClick={() => scrollToSection("oferta")}
-              className="btn-cta text-sm py-2.5 px-5"
-            >
-              Quero Começar
-            </button>
-          </div>
-
-          <button
-            className="md:hidden p-2 text-foreground"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          </ul>
+          <p className="mt-8 rounded-xl border-2 border-dashed border-[#f48fb1] p-5 text-center font-medium text-zinc-700">
+            Mesmo que você nunca tenha produzido um geladinho gourmet, as aulas
+            mostram o <strong>passo a passo completo em videoaulas</strong>.
+          </p>
         </div>
+      </section>
 
-        {mobileMenuOpen && (
-          <div className="md:hidden bg-background border-t border-border px-4 py-4 space-y-3">
-            {navLinks.map((link) => (
-              <button
-                key={link.id}
-                onClick={() => scrollToSection(link.id)}
-                className="block w-full text-left text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2"
+      {/* VOCÊ VAI ENCONTRAR */}
+      <section className="bg-[#fde7ee] py-16">
+        <div className="mx-auto max-w-5xl px-4">
+          <h2 className="text-center text-3xl sm:text-4xl font-black text-[#e91e63]">
+            VOCÊ VAI ENCONTRAR!
+          </h2>
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {[
+              {
+                t: "RECEITAS GOURMET",
+                d: "Mais de 50 receitas para todos os gostos, do tradicional ao avançado.",
+              },
+              {
+                t: "CÁLCULO DE LUCRO",
+                d: "Saiba exatamente quanto gastar e quanto ganhar em cada sabor.",
+              },
+              {
+                t: "PREÇO DE VENDA",
+                d: "Descubra quanto cobrar e aumente seus lucros com estratégias simples.",
+              },
+            ].map((c) => (
+              <div
+                key={c.t}
+                className="rounded-2xl bg-white p-6 text-center shadow-md ring-1 ring-pink-100"
               >
-                {link.label}
-              </button>
-            ))}
-            <button
-              onClick={() => scrollToSection("oferta")}
-              className="btn-cta w-full text-sm py-3"
-            >
-              Quero Começar
-            </button>
-          </div>
-        )}
-      </nav>
-
-      {/* Hero */}
-      <section id="hero" className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-cream/50 to-background opacity-50" />
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24 relative">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="order-2 lg:order-1 space-y-6 animate-fade-in-up">
-              <div className="inline-flex items-center gap-2 bg-sale/10 text-sale px-4 py-2 rounded-full text-sm font-semibold">
-                <Sparkles className="w-4 h-4" />
-                Mais de 3.500 alunos já começaram
-              </div>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight text-foreground">
-                Brigadeiro Gourmet: a receita para uma{" "}
-                <span className="text-gradient-gold">renda extra</span>{" "}
-                de verdade
-              </h1>
-              <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-xl">
-                Aprenda a fazer brigadeiros irresistíveis que vendem por si só.
-                De R$<strong>2.000</strong> a R$<strong>5.000</strong> por mês
-                trabalhando da sua cozinha, nos seus horários.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 pt-2">
-                <button
-                  onClick={() => scrollToSection("oferta")}
-                  className="btn-cta"
-                >
-                  Quero Começar Agora
-                  <ArrowRight className="w-5 h-5" />
-                </button>
-                <button
-                  onClick={() => scrollToSection("oque")}
-                  className="inline-flex items-center justify-center gap-2 px-6 py-4 text-base font-semibold rounded-xl border-2 border-border hover:bg-muted transition-colors"
-                >
-                  Ver o que está incluso
-                </button>
-              </div>
-              <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                <div className="flex -space-x-2">
-                  {[1,2,3,4].map((i) => (
-                    <div
-                      key={i}
-                      className="w-8 h-8 rounded-full bg-gradient-to-br from-gold to-chocolate border-2 border-background flex items-center justify-center text-xs text-white font-bold"
-                    >
-                      {String.fromCharCode(64 + i)}
-                    </div>
-                  ))}
+                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#e91e63] text-2xl font-black text-white">
+                  ★
                 </div>
-                <span>
-                  <strong className="text-foreground">4.9/5</strong> avaliação média
-                </span>
-              </div>
-            </div>
-            <div className="order-1 lg:order-2 flex justify-center">
-              <div className="relative">
-                <div className="absolute -inset-4 bg-gradient-to-tr from-gold/20 to-sale/10 rounded-3xl blur-2xl" />
-                <img
-                  src={heroImg}
-                  alt="Brigadeiros gourmet em várias sabores e decorações"
-                  width={512}
-                  height={512}
-                  className="relative rounded-3xl shadow-2xl animate-float object-cover"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats */}
-      <section className="py-12 bg-chocolate text-chocolate-foreground">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {[
-              { icon: Users, value: "3.500+", label: "Alunos" },
-              { icon: DollarSign, value: "R$5K", label: "Máximo/mês" },
-              { icon: Star, value: "4.9/5", label: "Avaliação" },
-              { icon: Clock, value: "48h", label: "Prazo de garantia" },
-            ].map((stat) => (
-              <div key={stat.label} className="space-y-2">
-                <stat.icon className="w-8 h-8 mx-auto text-gold" />
-                <div className="text-3xl font-extrabold">{stat.value}</div>
-                <div className="text-sm opacity-80">{stat.label}</div>
+                <h3 className="text-lg font-extrabold text-[#e91e63]">{c.t}</h3>
+                <p className="mt-2 text-sm text-zinc-700">{c.d}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* O que é / Problema */}
-      <section id="oque" className="py-20">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <img
-                src={makingImg}
-                alt="Preparo de brigadeiro gourmet em casa"
-                width={600}
-                height={450}
-                loading="lazy"
-                className="rounded-2xl shadow-xl object-cover w-full"
-              />
-            </div>
-            <div className="space-y-6">
-              <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
-                Você sabia que dá para faturar de <span className="text-sale font-extrabold">R$2.000 a R$5.000</span>{" "}
-                por mês fazendo brigadeiro em casa?
-              </h2>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                A demanda por doces gourmet nunca foi tão alta. Festas, casamentos,
-                aniversários, corporativos — todo mundo quer algo delicioso e
-                bonito. E o brigadeiro é o queridinho dos brasileiros.
-              </p>
-              <ul className="space-y-4">
-                {[
-                  "Não precisa de equipamentos caros",
-                  "Ingredientes fáceis de encontrar",
-                  "Pode começar com menos de R$100",
-                  "Venda pelo WhatsApp, Instagram ou delivery",
-                  "Trabalhe nos seus horários, sem patrão",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-6 h-6 text-sale flex-shrink-0 mt-0.5" />
-                    <span className="text-foreground">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+      {/* SABORES */}
+      <section className="bg-white py-16">
+        <div className="mx-auto max-w-5xl px-4">
+          <h2 className="text-center text-2xl sm:text-3xl font-black text-zinc-900">
+            VEJA ALGUNS SABORES QUE VOCÊ VAI APRENDER A FAZER
+          </h2>
+          <img
+            src={sabores}
+            alt="Sabores de geladinho gourmet"
+            loading="lazy"
+            width={1600}
+            height={800}
+            className="mx-auto mt-8 w-full max-w-3xl rounded-2xl shadow-lg"
+          />
+          <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-6">
+            {SABORES.map((s) => (
+              <div
+                key={s.nome}
+                className={`rounded-xl bg-gradient-to-br ${s.cor} p-4 text-center text-xs font-extrabold uppercase text-white shadow-md`}
+              >
+                {s.nome}
+              </div>
+            ))}
+          </div>
+          <div className="mt-10 text-center">
+            <CTA>QUERO COMEÇAR AGORA</CTA>
           </div>
         </div>
       </section>
 
-      {/* O que está incluso */}
-      <section id="conteudo" className="py-20 bg-muted/30">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="inline-flex items-center gap-2 text-sm font-semibold text-sale uppercase tracking-wider">
-              <BookOpen className="w-4 h-4" />
-              O que você vai receber
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mt-4">
-              Tudo que você precisa para começar a vender
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
+      {/* BENEFÍCIOS */}
+      <section className="bg-[#fde7ee] py-16">
+        <div className="mx-auto max-w-5xl px-4">
+          <h2 className="text-center text-3xl sm:text-4xl font-black text-[#e91e63]">
+            O curso ideal para você que busca:
+          </h2>
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
             {[
               {
-                icon: BookOpen,
-                title: "50+ Receitas Testadas",
-                desc: "Receitas clássicas e inovadoras: tradicional, gourmet, com recheios, coberturas especiais e versões diet.",
+                t: "Método de sucesso e comprovado",
+                d: "Domine um método totalmente comprovado para produzir os melhores Geladinhos Gourmet da sua região.",
               },
               {
-                icon: Package,
-                title: "Guia de Embalagem",
-                desc: "Como embalar para vender, quais materiais usar, custos e fornecedores confiáveis para lucrar mais.",
+                t: "Conteúdo 100% em vídeo com aulas didáticas",
+                d: "Aulas didáticas e de fácil entendimento — qualquer pessoa consegue aprender e colocar em prática.",
               },
               {
-                icon: DollarSign,
-                title: "Planilha de Custos",
-                desc: "Calcule exatamente quanto custa cada brigadeiro e defina o preço ideal para maximizar seu lucro.",
+                t: "Domine uma nova profissão em um mercado em alta",
+                d: "Esteja pronta para atuar no mercado que mais cresce e se destacar como uma profissional de sucesso.",
               },
               {
-                icon: TrendingUp,
-                title: "Estratégias de Venda",
-                desc: "Como vender pelo WhatsApp, Instagram, iFood e para eventos. Passo a passo de como captar clientes.",
+                t: "Mais de 6 mil alunas",
+                d: "Milhares de pessoas já utilizam nossas receitas para gerar renda extra todos os meses.",
               },
-              {
-                icon: Gift,
-                title: "Bônus: Marketing Digital",
-                desc: "Templates de stories, legendas prontas e dicas de fotografia para vender mais nas redes sociais.",
-              },
-              {
-                icon: Heart,
-                title: "Comunidade de Alunos",
-                desc: "Acesso ao grupo exclusivo para tirar dúvidas, trocar experiências e se inspirar com outros confeiteiros.",
-              },
-            ].map((card) => (
-              <div key={card.title} className="card-gourmet space-y-4">
-                <div className="w-12 h-12 rounded-xl bg-sale/10 flex items-center justify-center">
-                  <card.icon className="w-6 h-6 text-sale" />
-                </div>
-                <h3 className="text-xl font-bold text-foreground">{card.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{card.desc}</p>
+            ].map((c) => (
+              <div key={c.t} className="rounded-2xl bg-white p-6 shadow-md">
+                <h3 className="text-lg font-extrabold text-[#e91e63]">{c.t}</h3>
+                <p className="mt-2 text-sm text-zinc-700">{c.d}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Galeria / Visual */}
-      <section className="py-20">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
-                Brigadeiros que vendem por si só
-              </h2>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                Nossas receitas foram testadas e aprovadas por mais de 3.500 pessoas.
-                O resultado? Brigadeiros com aparência profissional e sabor
-                inesquecível — o tipo que o cliente compra, prova e já quer pedir
-                de novo.
-              </p>
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  { value: "50+", label: "Sabores" },
-                  { value: "15", label: "Técnicas" },
-                  { value: "R$0,50", label: "Custo médio" },
-                  { value: "R$3,00", label: "Preço médio de venda" },
-                ].map((item) => (
-                  <div key={item.label} className="bg-card border border-border rounded-xl p-4 text-center">
-                    <div className="text-2xl font-extrabold text-sale">{item.value}</div>
-                    <div className="text-sm text-muted-foreground">{item.label}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div>
-              <img
-                src={packagingImg}
-                alt="Brigadeiros embalados para venda em caixas elegantes"
-                width={600}
-                height={450}
-                loading="lazy"
-                className="rounded-2xl shadow-xl object-cover w-full"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Depoimentos */}
-      <section id="depoimentos" className="py-20 bg-chocolate text-chocolate-foreground">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="inline-flex items-center gap-2 text-sm font-semibold text-gold uppercase tracking-wider">
-              <Star className="w-4 h-4" />
-              Depoimentos de alunos
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-bold mt-4">
-              Quem já comprou, está faturando
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
+      {/* BÔNUS */}
+      <section className="bg-gradient-to-b from-[#e91e63] to-[#ad1457] py-16 text-white">
+        <div className="mx-auto max-w-3xl px-4 text-center">
+          <p className="text-7xl font-black leading-none">4</p>
+          <p className="text-3xl font-extrabold">Super Bônus Exclusivos!</p>
+          <p className="mt-4 text-base opacity-90">
+            Fazendo sua inscrição <strong>HOJE</strong>, você ganha{" "}
+            <strong>4 BÔNUS EXCLUSIVOS + CERTIFICADO</strong>.
+          </p>
+          <ul className="mx-auto mt-8 grid max-w-xl gap-3 text-left">
             {[
-              {
-                name: "Camila R.",
-                role: "Mãe e confeiteira",
-                text: "Comecei fazendo para a escola da minha filha. Hoje vendo para 3 buffets e já paguei minhas contas só com brigadeiro. O passo a passo é muito claro!",
-                rating: 5,
-              },
-              {
-                name: "Pedro S.",
-                role: "Ex-entregador de app",
-                text: "Perdi meu emprego e resolvi tentar. Em 2 meses já estava faturando R$2.300. O melhor é que trabalho quando quero e não dependo de ninguém.",
-                rating: 5,
-              },
-              {
-                name: "Fernanda M.",
-                role: "Dona de casa",
-                text: "Sempre amei fazer doces mas não sabia vender. As dicas de preço e marketing mudaram tudo. Hoje tenho uma renda fixa de R$1.800/mês.",
-                rating: 5,
-              },
-            ].map((depo) => (
-              <div key={depo.name} className="bg-foreground/5 backdrop-blur-sm border border-foreground/10 rounded-2xl p-6 space-y-4">
-                <div className="flex gap-1">
-                  {Array.from({ length: depo.rating }).map((_, i) => (
-                    <Star key={i} className="w-4 h-4 text-gold fill-gold" />
-                  ))}
-                </div>
-                <p className="text-sm leading-relaxed opacity-90">"{depo.text}"</p>
-                <div className="flex items-center gap-3 pt-2">
-                  <div className="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center text-gold font-bold text-sm">
-                    {depo.name.charAt(0)}
-                  </div>
-                  <div>
-                    <div className="font-semibold text-sm">{depo.name}</div>
-                    <div className="text-xs opacity-60">{depo.role}</div>
-                  </div>
-                </div>
-              </div>
+              "Bônus 1 — Apostila de embalagens lucrativas",
+              "Bônus 2 — Guia de divulgação no WhatsApp e Instagram",
+              "Bônus 3 — Planilha de precificação automática",
+              "Bônus 4 — Receitas extras de sucesso",
+            ].map((b) => (
+              <li
+                key={b}
+                className="flex items-start gap-3 rounded-lg bg-white/10 px-4 py-3 backdrop-blur"
+              >
+                <Check className="mt-0.5 h-5 w-5 flex-none text-amber-300" />
+                <span className="font-medium">{b}</span>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 
-      {/* Oferta */}
-      <section id="oferta" className="py-20">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-12">
-            <span className="inline-flex items-center gap-2 text-sm font-semibold text-sale uppercase tracking-wider">
-              <Gift className="w-4 h-4" />
-              Oferta por tempo limitado
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mt-4">
-              Tudo isso por menos que o custo de uma caixa de brigadeiros
-            </h2>
-          </div>
-
-          <div className="bg-card border-2 border-sale/30 rounded-3xl p-8 sm:p-10 space-y-8 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-sale/5 rounded-full -translate-y-1/2 translate-x-1/2" />
-
-            <div className="text-center space-y-3">
-              <div className="inline-flex items-center gap-2 bg-sale/10 text-sale px-3 py-1 rounded-full text-sm font-bold">
-                70% OFF — Últimas vagas
-              </div>
-              <div className="flex items-center justify-center gap-3">
-                <span className="text-2xl text-muted-foreground line-through decoration-sale/60">
-                  De R$97,00
-                </span>
-              </div>
-              <div className="text-6xl sm:text-7xl font-extrabold text-sale">
-                R$29,90
-              </div>
-              <p className="text-muted-foreground">Pagamento único — acesso vitalício</p>
-            </div>
-
-            <div className="space-y-3">
+      {/* OFERTA */}
+      <section className="bg-white py-16">
+        <div className="mx-auto max-w-xl px-4">
+          <div className="rounded-3xl border-4 border-[#e91e63] bg-white p-8 text-center shadow-xl">
+            <p className="inline-block rounded-full bg-[#e91e63] px-4 py-1 text-xs font-black uppercase tracking-wider text-white">
+              Oferta Especial
+            </p>
+            <p className="mt-4 text-lg font-bold text-zinc-700">
+              PROMOÇÃO DE LANÇAMENTO!
+            </p>
+            <p className="mt-4 text-lg text-zinc-500">
+              DE: <span className="line-through">R$ 97,00</span> POR APENAS
+            </p>
+            <p className="text-6xl font-black text-[#e91e63]">R$ 37,00</p>
+            <p className="text-sm font-semibold text-zinc-600">
+              (Pagamento Único)
+            </p>
+            <ul className="mt-6 space-y-2 text-left text-sm font-semibold text-zinc-800">
               {[
-                "E-book completo com 50+ receitas (PDF)",
-                "Guia de embalagem e fornecedores",
-                "Planilha de custos e precificação",
-                "Estratégias de venda e captação de clientes",
-                "Bônus: Kit de marketing digital",
-                "Acesso à comunidade exclusiva de alunos",
-                "Atualizações gratuitas para sempre",
-              ].map((item, i) => (
-                <div key={i} className="flex items-center gap-3 p-3 rounded-xl bg-muted/50">
-                  <CheckCircle2 className="w-5 h-5 text-sale flex-shrink-0" />
-                  <span className="text-foreground text-sm sm:text-base">{item}</span>
-                </div>
+                "CURSO 100% ONLINE EM VIDEOAULAS",
+                "ACESSO VITALÍCIO",
+                "CERTIFICADO INCLUSO",
+                "4 BÔNUS EXCLUSIVOS",
+                "GARANTIA DE 7 DIAS",
+              ].map((f) => (
+                <li key={f} className="flex items-center gap-2">
+                  <Check className="h-4 w-4 text-[#e91e63]" />
+                  {f}
+                </li>
               ))}
+            </ul>
+            <div className="mt-6">
+              <CTA>COMPRAR AGORA!</CTA>
             </div>
-
-            <div className="text-center space-y-4">
-              <button
-                onClick={() => window.open("https://wa.me/5511999999999?text=Olá!%20Quero%20comprar%20o%20e-book%20Brigadeiro%20Gourmet", "_blank")}
-                className="btn-cta text-xl w-full sm:w-auto"
-              >
-                Quero Aproveitar Agora
-                <ArrowRight className="w-5 h-5" />
-              </button>
-              <p className="text-sm text-muted-foreground">
-                Pague com Pix, cartão ou boleto — acesso imediato após a confirmação
-              </p>
-            </div>
-
-            {/* Garantia */}
-            <div className="flex items-center gap-4 bg-muted/50 rounded-xl p-4">
-              <div className="w-14 h-14 rounded-full bg-sale/10 flex items-center justify-center flex-shrink-0">
-                <ShieldCheck className="w-7 h-7 text-sale" />
-              </div>
-              <div>
-                <div className="font-bold text-foreground">Garantia de 7 dias</div>
-                <div className="text-sm text-muted-foreground">
-                  Não gostou? Devolvemos 100% do seu dinheiro, sem perguntas.
-                </div>
-              </div>
-            </div>
+            <p className="mt-3 text-[10px] uppercase tracking-wider text-zinc-500">
+              Pagamento seguro • Cartão e PIX
+            </p>
           </div>
         </div>
       </section>
 
       {/* FAQ */}
-      <section className="py-20 bg-muted/30">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
-              Dúvidas frequentes
-            </h2>
-          </div>
-
-          <div className="space-y-4">
-            {[
-              {
-                q: "Preciso ter experiência na cozinha?",
-                a: "Não! As receitas são passo a passo, com fotos e dicas para quem nunca fez nada na cozinha. Muitos alunos começaram do zero.",
-              },
-              {
-                q: "Quanto preciso investir para começar?",
-                a: "Com menos de R$100 em ingredientes e embalagens básicas você já consegue fazer as primeiras vendas. Não precisa de equipamentos caros.",
-              },
-              {
-                q: "Como recebo o conteúdo após a compra?",
-                a: "Imediatamente após a confirmação do pagamento, você recebe um e-mail com o link de download do e-book e acesso à comunidade.",
-              },
-              {
-                q: "Posso vender os brigadeiros que faço?",
-                a: "Sim! O e-book foi feito exatamente para isso. Incluímos inclusive dicas sobre como regularizar e precificar corretamente.",
-              },
-              {
-                q: "E se eu não gostar?",
-                a: "Você tem 7 dias de garantia incondicional. Se não gostar por qualquer motivo, devolvemos 100% do seu dinheiro.",
-              },
-            ].map((faq, i) => (
-              <details
-                key={i}
-                className="group bg-card border border-border rounded-xl overflow-hidden"
-              >
-                <summary className="flex items-center justify-between gap-4 p-5 cursor-pointer list-none text-foreground font-semibold hover:bg-muted/50 transition-colors">
-                  {faq.q}
-                  <span className="w-8 h-8 rounded-full bg-muted flex items-center justify-center flex-shrink-0 group-open:rotate-180 transition-transform">
-                    <ArrowRight className="w-4 h-4 rotate-90" />
-                  </span>
-                </summary>
-                <div className="px-5 pb-5 text-muted-foreground leading-relaxed">
-                  {faq.a}
-                </div>
-              </details>
+      <section className="bg-[#fde7ee] py-16">
+        <div className="mx-auto max-w-2xl px-4">
+          <h2 className="text-center text-3xl font-black text-[#e91e63]">
+            Dúvidas Frequentes
+          </h2>
+          <div className="mt-8 space-y-3">
+            {FAQS.map((f) => (
+              <FaqItem key={f.q} q={f.q} a={f.a} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Final */}
-      <section className="py-20 bg-chocolate text-chocolate-foreground">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center space-y-8">
-          <h2 className="text-3xl sm:text-4xl font-bold">
-            Não deixe essa oportunidade passar
-          </h2>
-          <p className="text-lg opacity-90 max-w-xl mx-auto">
-            Por menos que o preço de uma pizza, você pode ter acesso a todo o
-            conhecimento que já ajudou mais de 3.500 pessoas a começar uma renda
-            extra de verdade.
-          </p>
-          <button
-            onClick={() => scrollToSection("oferta")}
-            className="btn-cta text-xl"
-          >
-            Quero Começar Agora
-            <ArrowRight className="w-5 h-5" />
-          </button>
-          <div className="flex items-center justify-center gap-2 text-sm opacity-70">
-            <ShieldCheck className="w-4 h-4" />
-            Pagamento seguro — Garantia de 7 dias
+      {/* GARANTIA */}
+      <section className="bg-white py-16">
+        <div className="mx-auto flex max-w-3xl flex-col items-center gap-6 px-4 text-center md:flex-row md:text-left">
+          <img
+            src={garantia}
+            alt="Garantia de 7 dias"
+            loading="lazy"
+            width={180}
+            height={180}
+            className="h-40 w-40 flex-none"
+          />
+          <div>
+            <p className="text-2xl font-black text-[#e91e63]">
+              RISCO ZERO PARA VOCÊ
+            </p>
+            <p className="mt-2 text-zinc-700">
+              O Código de Defesa do Consumidor (Art. 49) garante 7 dias para
+              solicitar reembolso em caso de insatisfação. Você terá{" "}
+              <strong>7 dias de garantia incondicional</strong>.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-8 border-t border-border">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center text-sm text-muted-foreground space-y-2">
-          <p>
-            Brigadeiro Gourmet — E-book para Renda Extra
-          </p>
-          <p>
-            Este site não garante resultados específicos. Seu sucesso depende do
-            seu esforço e dedicação.
-          </p>
-        </div>
+      {/* FOOTER */}
+      <footer className="bg-zinc-900 py-10 text-center text-sm text-zinc-400">
+        <img
+          src={logo}
+          alt="Receitas Criativas"
+          width={80}
+          height={80}
+          className="mx-auto h-20 w-20 opacity-90"
+          loading="lazy"
+        />
+        <p className="mt-4">
+          Copyright © Geladinho Gourmet — Todos os direitos reservados.
+        </p>
       </footer>
+    </main>
+  );
+}
+
+function CTA({ children }: { children: React.ReactNode }) {
+  return (
+    <a
+      href={CHECKOUT_URL}
+      className="inline-block w-full max-w-md animate-pulse-cta rounded-full bg-gradient-to-b from-[#43a047] to-[#1b5e20] px-8 py-5 text-lg font-black uppercase tracking-wide text-white shadow-lg shadow-green-600/30 transition-transform hover:scale-105"
+    >
+      {children}
+    </a>
+  );
+}
+
+function FaqItem({ q, a }: { q: string; a: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="overflow-hidden rounded-xl border border-pink-200 bg-white">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        className="flex w-full items-center justify-between gap-3 px-5 py-4 text-left font-semibold text-zinc-900"
+      >
+        <span>{q}</span>
+        <ChevronDown
+          className={`h-5 w-5 flex-none text-[#e91e63] transition-transform ${open ? "rotate-180" : ""}`}
+        />
+      </button>
+      {open && (
+        <div className="border-t border-pink-100 bg-[#fff5f8] px-5 py-4 text-sm text-zinc-700">
+          {a}
+        </div>
+      )}
     </div>
   );
 }
