@@ -77,14 +77,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Brigadeiro Gourmet — Receitas para Renda Extra" },
+      { name: "description", content: "Aprenda a fazer brigadeiros gourmet e lucre de R$2.000 a R$5.000 por mês. E-book completo com 50+ receitas, guia de embalagem e estratégias de venda." },
+      { name: "author", content: "Brigadeiro Gourmet" },
+      { property: "og:title", content: "Brigadeiro Gourmet — Receitas para Renda Extra" },
+      { property: "og:description", content: "Aprenda a fazer brigadeiros gourmet e lucre de R$2.000 a R$5.000 por mês. Mais de 50 receitas testadas e aprovadas." },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:site", content: "@brigadeirogourmet" },
     ],
     links: [
       {
