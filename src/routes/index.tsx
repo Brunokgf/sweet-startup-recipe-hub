@@ -66,13 +66,13 @@ const FAQS = [
 
 function LandingPage() {
   return (
-    <main className="min-h-screen bg-[#fde7ee] text-zinc-900">
+    <main className="min-h-screen bg-[#f5f0eb] text-zinc-900">
       {/* HERO */}
       <section
         className="relative bg-cover bg-center"
         style={{ backgroundImage: `url(${heroBg})` }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-[#fde7ee]/85 via-[#fde7ee]/70 to-[#fde7ee]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#f5f0eb]/85 via-[#f5f0eb]/70 to-[#f5f0eb]" />
         <div className="relative mx-auto max-w-3xl px-4 py-10 text-center">
           <img
             src={logo}
@@ -84,13 +84,13 @@ function LandingPage() {
           <p className="mt-6 text-xl sm:text-2xl font-extrabold tracking-wide text-zinc-900">
             APRENDA A PRODUZIR
           </p>
-          <h1 className="mt-2 text-4xl sm:text-6xl font-black uppercase tracking-tight text-[#e91e63] drop-shadow-sm">
+          <h1 className="mt-2 text-4xl sm:text-6xl font-black uppercase tracking-tight text-[#5d3a1a] drop-shadow-sm">
             Brigadeiros Gourmet
           </h1>
-          <div className="mt-4 inline-block w-full max-w-xl rounded-md bg-[#ec407a] px-4 py-3 text-xl sm:text-2xl font-extrabold uppercase text-white shadow">
+          <div className="mt-4 inline-block w-full max-w-xl rounded-md bg-[#5d3a1a] px-4 py-3 text-xl sm:text-2xl font-extrabold uppercase text-white shadow">
             E crie uma renda extra
           </div>
-          <p className="mt-4 text-lg sm:text-xl font-semibold text-[#f06292]">
+          <p className="mt-4 text-lg sm:text-xl font-semibold text-[#8b5e3c]">
             Mesmo começando do zero!
           </p>
           <p className="mt-6 text-3xl font-black text-zinc-900">+6.000 Alunas</p>
@@ -108,7 +108,7 @@ function LandingPage() {
             <div className="relative aspect-video">
               {/* Substitua este bloco pelo embed do seu VSL */}
               <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-zinc-800 to-zinc-950 text-white">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#e91e63] shadow-lg">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#5d3a1a] shadow-lg">
                   <svg viewBox="0 0 24 24" className="ml-1 h-8 w-8 fill-white">
                     <path d="M8 5v14l11-7z" />
                   </svg>
@@ -132,7 +132,7 @@ function LandingPage() {
       {/* PARA QUEM É */}
       <section className="bg-white py-16">
         <div className="mx-auto max-w-4xl px-4">
-          <h2 className="text-center text-3xl sm:text-4xl font-black text-[#e91e63]">
+          <h2 className="text-center text-3xl sm:text-4xl font-black text-[#5d3a1a]">
             Pra quem é esse treinamento?
           </h2>
           <ul className="mt-10 grid gap-4 sm:grid-cols-2">
@@ -146,14 +146,14 @@ function LandingPage() {
             ].map((t) => (
               <li
                 key={t}
-                className="flex items-start gap-3 rounded-xl bg-[#fde7ee] px-5 py-4 font-semibold text-zinc-800"
+                className="flex items-start gap-3 rounded-xl bg-[#f5f0eb] px-5 py-4 font-semibold text-zinc-800"
               >
-                <Check className="mt-0.5 h-5 w-5 flex-none text-[#e91e63]" />
+                <Check className="mt-0.5 h-5 w-5 flex-none text-[#5d3a1a]" />
                 <span>{t}</span>
               </li>
             ))}
           </ul>
-          <p className="mt-8 rounded-xl border-2 border-dashed border-[#f48fb1] p-5 text-center font-medium text-zinc-700">
+          <p className="mt-8 rounded-xl border-2 border-dashed border-[#c4a882] p-5 text-center font-medium text-zinc-700">
             Mesmo que você nunca tenha produzido um brigadeiro gourmet, as aulas
             mostram o <strong>passo a passo completo em videoaulas</strong>.
           </p>
@@ -161,9 +161,9 @@ function LandingPage() {
       </section>
 
       {/* VOCÊ VAI ENCONTRAR */}
-      <section className="bg-[#fde7ee] py-16">
+      <section className="bg-[#f5f0eb] py-16">
         <div className="mx-auto max-w-5xl px-4">
-          <h2 className="text-center text-3xl sm:text-4xl font-black text-[#e91e63]">
+          <h2 className="text-center text-3xl sm:text-4xl font-black text-[#5d3a1a]">
             VOCÊ VAI ENCONTRAR!
           </h2>
           <div className="mt-10 grid gap-6 md:grid-cols-3">
@@ -183,12 +183,12 @@ function LandingPage() {
             ].map((c) => (
               <div
                 key={c.t}
-                className="rounded-2xl bg-white p-6 text-center shadow-md ring-1 ring-pink-100"
+                className="rounded-2xl bg-white p-6 text-center shadow-md ring-1 ring-[#e8ddd0]"
               >
-                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#e91e63] text-2xl font-black text-white">
+                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#5d3a1a] text-2xl font-black text-white">
                   ★
                 </div>
-                <h3 className="text-lg font-extrabold text-[#e91e63]">{c.t}</h3>
+                <h3 className="text-lg font-extrabold text-[#5d3a1a]">{c.t}</h3>
                 <p className="mt-2 text-sm text-zinc-700">{c.d}</p>
               </div>
             ))}
@@ -227,9 +227,9 @@ function LandingPage() {
       </section>
 
       {/* BENEFÍCIOS */}
-      <section className="bg-[#fde7ee] py-16">
+      <section className="bg-[#f5f0eb] py-16">
         <div className="mx-auto max-w-5xl px-4">
-          <h2 className="text-center text-3xl sm:text-4xl font-black text-[#e91e63]">
+          <h2 className="text-center text-3xl sm:text-4xl font-black text-[#5d3a1a]">
             O curso ideal para você que busca:
           </h2>
           <div className="mt-10 grid gap-6 md:grid-cols-2">
@@ -252,7 +252,7 @@ function LandingPage() {
               },
             ].map((c) => (
               <div key={c.t} className="rounded-2xl bg-white p-6 shadow-md">
-                <h3 className="text-lg font-extrabold text-[#e91e63]">{c.t}</h3>
+                <h3 className="text-lg font-extrabold text-[#5d3a1a]">{c.t}</h3>
                 <p className="mt-2 text-sm text-zinc-700">{c.d}</p>
               </div>
             ))}
@@ -261,7 +261,7 @@ function LandingPage() {
       </section>
 
       {/* BÔNUS */}
-      <section className="bg-gradient-to-b from-[#e91e63] to-[#ad1457] py-16 text-white">
+      <section className="bg-gradient-to-b from-[#6b4226] to-[#3d2314] py-16 text-white">
         <div className="mx-auto max-w-3xl px-4 text-center">
           <p className="text-7xl font-black leading-none">4</p>
           <p className="text-3xl font-extrabold">Super Bônus Exclusivos!</p>
@@ -291,8 +291,8 @@ function LandingPage() {
       {/* OFERTA */}
       <section className="bg-white py-16">
         <div className="mx-auto max-w-xl px-4">
-          <div className="rounded-3xl border-4 border-[#e91e63] bg-white p-8 text-center shadow-xl">
-            <p className="inline-block rounded-full bg-[#e91e63] px-4 py-1 text-xs font-black uppercase tracking-wider text-white">
+          <div className="rounded-3xl border-4 border-[#5d3a1a] bg-white p-8 text-center shadow-xl">
+            <p className="inline-block rounded-full bg-[#5d3a1a] px-4 py-1 text-xs font-black uppercase tracking-wider text-white">
               Oferta Especial
             </p>
             <p className="mt-4 text-lg font-bold text-zinc-700">
@@ -301,7 +301,7 @@ function LandingPage() {
             <p className="mt-4 text-lg text-zinc-500">
               DE: <span className="line-through">R$ 97,00</span> POR APENAS
             </p>
-            <p className="text-6xl font-black text-[#e91e63]">R$ 37,00</p>
+            <p className="text-6xl font-black text-[#5d3a1a]">R$ 37,00</p>
             <p className="text-sm font-semibold text-zinc-600">
               (Pagamento Único)
             </p>
@@ -314,7 +314,7 @@ function LandingPage() {
                 "GARANTIA DE 7 DIAS",
               ].map((f) => (
                 <li key={f} className="flex items-center gap-2">
-                  <Check className="h-4 w-4 text-[#e91e63]" />
+                  <Check className="h-4 w-4 text-[#5d3a1a]" />
                   {f}
                 </li>
               ))}
@@ -330,9 +330,9 @@ function LandingPage() {
       </section>
 
       {/* FAQ */}
-      <section className="bg-[#fde7ee] py-16">
+      <section className="bg-[#f5f0eb] py-16">
         <div className="mx-auto max-w-2xl px-4">
-          <h2 className="text-center text-3xl font-black text-[#e91e63]">
+          <h2 className="text-center text-3xl font-black text-[#5d3a1a]">
             Dúvidas Frequentes
           </h2>
           <div className="mt-8 space-y-3">
@@ -355,7 +355,7 @@ function LandingPage() {
             className="h-40 w-40 flex-none"
           />
           <div>
-            <p className="text-2xl font-black text-[#e91e63]">
+            <p className="text-2xl font-black text-[#5d3a1a]">
               RISCO ZERO PARA VOCÊ
             </p>
             <p className="mt-2 text-zinc-700">
@@ -399,7 +399,7 @@ function CTA({ children }: { children: React.ReactNode }) {
 function FaqItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="overflow-hidden rounded-xl border border-pink-200 bg-white">
+    <div className="overflow-hidden rounded-xl border border-[#d4c4b0] bg-white">
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
@@ -407,11 +407,11 @@ function FaqItem({ q, a }: { q: string; a: string }) {
       >
         <span>{q}</span>
         <ChevronDown
-          className={`h-5 w-5 flex-none text-[#e91e63] transition-transform ${open ? "rotate-180" : ""}`}
+          className={`h-5 w-5 flex-none text-[#5d3a1a] transition-transform ${open ? "rotate-180" : ""}`}
         />
       </button>
       {open && (
-        <div className="border-t border-pink-100 bg-[#fff5f8] px-5 py-4 text-sm text-zinc-700">
+        <div className="border-t border-[#e8ddd0] bg-[#faf6f1] px-5 py-4 text-sm text-zinc-700">
           {a}
         </div>
       )}
