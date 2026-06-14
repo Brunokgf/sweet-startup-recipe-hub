@@ -2,20 +2,20 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Check, Star, ChevronDown } from "lucide-react";
 
-import heroBg from "@/assets/geladinho-hero.jpg";
-import logo from "@/assets/logo-geladinho.png";
-import sabores from "@/assets/sabores-geladinho.jpg";
+import heroBg from "@/assets/brigadeiro-hero.jpg";
+import logo from "@/assets/logo-brigadeiro.png";
+import sabores from "@/assets/sabores-brigadeiro.jpg";
 import garantia from "@/assets/garantia-7dias.png";
 
 export const Route = createFileRoute("/")({
   component: LandingPage,
   head: () => ({
     meta: [
-      { title: "Geladinho Gourmet — Receitas para Renda Extra" },
+      { title: "Brigadeiro Gourmet — Receitas para Renda Extra" },
       {
         name: "description",
         content:
-          "Aprenda a produzir Geladinhos Gourmet e crie uma renda extra — mesmo começando do zero. +6.000 alunas já transformaram suas vidas.",
+          "Aprenda a produzir Brigadeiros Gourmet e crie uma renda extra — mesmo começando do zero. +6.000 alunas já transformaram suas vidas.",
       },
     ],
   }),
@@ -24,12 +24,12 @@ export const Route = createFileRoute("/")({
 const CHECKOUT_URL = "#"; // troque pelo link do Kiwify/Hotmart
 
 const SABORES = [
-  { nome: "KIWI", cor: "from-lime-400 to-green-500" },
-  { nome: "KITKAT", cor: "from-amber-700 to-amber-900" },
-  { nome: "DOCE DE LEITE", cor: "from-amber-300 to-orange-500" },
-  { nome: "NINHO + MORANGO", cor: "from-pink-300 to-rose-500" },
-  { nome: "GALAK", cor: "from-amber-50 to-amber-200" },
+  { nome: "TRADICIONAL", cor: "from-amber-800 to-amber-950" },
+  { nome: "BEIJINHO", cor: "from-zinc-100 to-zinc-300" },
+  { nome: "PISTACHE", cor: "from-green-400 to-emerald-600" },
+  { nome: "MORANGO", cor: "from-pink-400 to-rose-600" },
   { nome: "OREO", cor: "from-zinc-700 to-zinc-900" },
+  { nome: "AMENDOIN", cor: "from-amber-500 to-orange-700" },
 ];
 
 const FAQS = [
@@ -85,7 +85,7 @@ function LandingPage() {
             APRENDA A PRODUZIR
           </p>
           <h1 className="mt-2 text-4xl sm:text-6xl font-black uppercase tracking-tight text-[#e91e63] drop-shadow-sm">
-            Geladinhos Gourmet
+            Brigadeiros Gourmet
           </h1>
           <div className="mt-4 inline-block w-full max-w-xl rounded-md bg-[#ec407a] px-4 py-3 text-xl sm:text-2xl font-extrabold uppercase text-white shadow">
             E crie uma renda extra
@@ -154,7 +154,7 @@ function LandingPage() {
             ))}
           </ul>
           <p className="mt-8 rounded-xl border-2 border-dashed border-[#f48fb1] p-5 text-center font-medium text-zinc-700">
-            Mesmo que você nunca tenha produzido um geladinho gourmet, as aulas
+            Mesmo que você nunca tenha produzido um brigadeiro gourmet, as aulas
             mostram o <strong>passo a passo completo em videoaulas</strong>.
           </p>
         </div>
@@ -204,7 +204,7 @@ function LandingPage() {
           </h2>
           <img
             src={sabores}
-            alt="Sabores de geladinho gourmet"
+            alt="Sabores de brigadeiro gourmet"
             loading="lazy"
             width={1600}
             height={800}
@@ -236,7 +236,7 @@ function LandingPage() {
             {[
               {
                 t: "Método de sucesso e comprovado",
-                d: "Domine um método totalmente comprovado para produzir os melhores Geladinhos Gourmet da sua região.",
+                d: "Domine um método totalmente comprovado para produzir os melhores Brigadeiros Gourmet da sua região.",
               },
               {
                 t: "Conteúdo 100% em vídeo com aulas didáticas",
@@ -378,7 +378,7 @@ function LandingPage() {
           loading="lazy"
         />
         <p className="mt-4">
-          Copyright © Geladinho Gourmet — Todos os direitos reservados.
+          Copyright © Brigadeiro Gourmet — Todos os direitos reservados.
         </p>
       </footer>
     </main>
