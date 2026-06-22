@@ -433,6 +433,9 @@ function LandingPage() {
         <p className="mt-4">
           Copyright © Brigadeiro Gourmet — Todos os direitos reservados.
         </p>
+        <p className="mt-2 text-xs text-zinc-500">
+          CNPJ: 39.450.086/0001-90
+        </p>
       </footer>
     </main>
   );
