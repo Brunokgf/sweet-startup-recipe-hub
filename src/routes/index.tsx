@@ -4,7 +4,7 @@ import { Check, Star, ChevronDown, Timer } from "lucide-react";
 
 import heroBg from "@/assets/brigadeiro-hero.jpg";
 import logo from "@/assets/logo-brigadeiro.png";
-import sabores from "@/assets/sabores-brigadeiro.jpg";
+import sabores from "@/assets/sabores-brigadeiro.png.asset.json";
 import garantia from "@/assets/garantia-7dias.png";
 
 export const Route = createFileRoute("/")({
@@ -256,7 +256,7 @@ function LandingPage() {
             VEJA ALGUNS SABORES QUE VOCÊ VAI APRENDER A FAZER
           </h2>
           <img
-            src={sabores}
+            src={sabores.url}
             alt="Sabores de brigadeiro gourmet"
             loading="lazy"
             width={1600}
