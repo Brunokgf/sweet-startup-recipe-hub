@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
 import { Check, Star, ChevronDown, Timer } from "lucide-react";
 
@@ -485,12 +485,12 @@ function CountdownTimer() {
 
 function CTA({ children }: { children: React.ReactNode }) {
   return (
-    <a
-      href={CHECKOUT_URL}
+    <Link
+      to="/checkout"
       className="inline-block w-full max-w-md animate-pulse-cta rounded-full bg-gradient-to-b from-[#8b5e3c] to-[#5d3a1a] px-8 py-5 text-lg font-black uppercase tracking-wide text-white shadow-lg shadow-amber-900/30 transition-transform hover:scale-105"
     >
       {children}
-    </a>
+    </Link>
   );
 }
 
