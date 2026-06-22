@@ -130,7 +130,7 @@ function LandingPage() {
       </section>
 
       {/* PARA QUEM É */}
-      <section className="bg-white py-16">
+      <section className="bg-[#ebe4db] py-16">
         <div className="mx-auto max-w-4xl px-4">
           <h2 className="text-center text-3xl sm:text-4xl font-black text-[#5d3a1a]">
             Pra quem é esse treinamento?
@@ -250,7 +250,7 @@ function LandingPage() {
       </section>
 
       {/* SABORES */}
-      <section className="bg-white py-16">
+      <section className="bg-[#ebe4db] py-16">
         <div className="mx-auto max-w-5xl px-4">
           <h2 className="text-center text-2xl sm:text-3xl font-black text-zinc-900">
             VEJA ALGUNS SABORES QUE VOCÊ VAI APRENDER A FAZER
@@ -404,7 +404,7 @@ function LandingPage() {
       </section>
 
       {/* GARANTIA */}
-      <section className="bg-white py-16">
+      <section className="bg-[#ebe4db] py-16">
         <div className="mx-auto flex max-w-3xl flex-col items-center gap-6 px-4 text-center md:flex-row md:text-left">
           <img
             src={garantia}
@@ -428,7 +428,7 @@ function LandingPage() {
       </section>
 
       {/* FOOTER */}
-      <footer className="bg-zinc-900 py-10 text-center text-sm text-zinc-400">
+      <footer className="bg-[#3d2314] py-10 text-center text-sm text-[#c4a882]">
         <img
           src={logo}
           alt="Receitas Criativas"
@@ -487,7 +487,7 @@ function CTA({ children }: { children: React.ReactNode }) {
   return (
     <a
       href={CHECKOUT_URL}
-      className="inline-block w-full max-w-md animate-pulse-cta rounded-full bg-gradient-to-b from-[#43a047] to-[#1b5e20] px-8 py-5 text-lg font-black uppercase tracking-wide text-white shadow-lg shadow-green-600/30 transition-transform hover:scale-105"
+      className="inline-block w-full max-w-md animate-pulse-cta rounded-full bg-gradient-to-b from-[#8b5e3c] to-[#5d3a1a] px-8 py-5 text-lg font-black uppercase tracking-wide text-white shadow-lg shadow-amber-900/30 transition-transform hover:scale-105"
     >
       {children}
     </a>
