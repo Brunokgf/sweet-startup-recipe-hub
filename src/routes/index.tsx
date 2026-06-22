@@ -348,6 +348,13 @@ function LandingPage() {
             <p className="inline-block rounded-full bg-[#5d3a1a] px-4 py-1 text-xs font-black uppercase tracking-wider text-white">
               Oferta Especial
             </p>
+            <div className="mt-4 flex items-center justify-center gap-2 rounded-xl bg-red-50 px-4 py-3 text-red-700 ring-1 ring-red-200">
+              <Timer className="h-5 w-5" />
+              <span className="text-sm font-bold uppercase tracking-wide">
+                Oferta expira em:
+              </span>
+              <CountdownTimer />
+            </div>
             <p className="mt-4 text-lg font-bold text-zinc-700">
               PROMOÇÃO DE LANÇAMENTO!
             </p>
