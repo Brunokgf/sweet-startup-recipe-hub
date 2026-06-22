@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import { Check, Star, ChevronDown } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Check, Star, ChevronDown, Timer } from "lucide-react";
 
 import heroBg from "@/assets/brigadeiro-hero.jpg";
 import logo from "@/assets/logo-brigadeiro.png";
