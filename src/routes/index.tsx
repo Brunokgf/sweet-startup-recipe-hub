@@ -256,7 +256,7 @@ function LandingPage() {
             VEJA ALGUNS SABORES QUE VOCÊ VAI APRENDER A FAZER
           </h2>
           <img
-            src={sabores}
+            src={sabores.url}
             alt="Sabores de brigadeiro gourmet"
             loading="lazy"
             width={1600}
