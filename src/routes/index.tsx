@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import { Check, Star, ChevronDown } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Check, Star, ChevronDown, Timer } from "lucide-react";
 
 import heroBg from "@/assets/brigadeiro-hero.jpg";
 import logo from "@/assets/logo-brigadeiro.png";
@@ -348,6 +348,13 @@ function LandingPage() {
             <p className="inline-block rounded-full bg-[#5d3a1a] px-4 py-1 text-xs font-black uppercase tracking-wider text-white">
               Oferta Especial
             </p>
+            <div className="mt-4 flex items-center justify-center gap-2 rounded-xl bg-red-50 px-4 py-3 text-red-700 ring-1 ring-red-200">
+              <Timer className="h-5 w-5" />
+              <span className="text-sm font-bold uppercase tracking-wide">
+                Oferta expira em:
+              </span>
+              <CountdownTimer />
+            </div>
             <p className="mt-4 text-lg font-bold text-zinc-700">
               PROMOÇÃO DE LANÇAMENTO!
             </p>
@@ -438,6 +445,41 @@ function LandingPage() {
         </p>
       </footer>
     </main>
+  );
+}
+
+function CountdownTimer() {
+  const [timeLeft, setTimeLeft] = useState(() => {
+    const saved = typeof window !== "undefined" ? localStorage.getItem("brigadeiro-timer") : null;
+    const end = saved ? parseInt(saved, 10) : Date.now() + 15 * 60 * 1000;
+    if (!saved && typeof window !== "undefined") {
+      localStorage.setItem("brigadeiro-timer", String(end));
+    }
+    return Math.max(0, end - Date.now());
+  });
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const saved = localStorage.getItem("brigadeiro-timer");
+      const end = saved ? parseInt(saved, 10) : Date.now() + 15 * 60 * 1000;
+      const remaining = Math.max(0, end - Date.now());
+      setTimeLeft(remaining);
+      if (remaining === 0) {
+        const newEnd = Date.now() + 15 * 60 * 1000;
+        localStorage.setItem("brigadeiro-timer", String(newEnd));
+        setTimeLeft(15 * 60 * 1000);
+      }
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const minutes = Math.floor(timeLeft / 60000);
+  const seconds = Math.floor((timeLeft % 60000) / 1000);
+
+  return (
+    <span className="font-mono text-lg font-black tabular-nums">
+      {String(minutes).padStart(2, "0")}:{String(seconds).padStart(2, "0")}
+    </span>
   );
 }
 
