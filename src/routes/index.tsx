@@ -4,7 +4,7 @@ import { Check, Star, ChevronDown, Timer } from "lucide-react";
 
 import heroBg from "@/assets/brigadeiro-hero.jpg";
 import logo from "@/assets/logo-brigadeiro.png";
-import sabores from "@/assets/sabores-brigadeiro.jpg";
+import sabores from "@/assets/sabores-brigadeiro.png.asset.json";
 import garantia from "@/assets/garantia-7dias.png";
 
 export const Route = createFileRoute("/")({
