@@ -160,6 +160,59 @@ function LandingPage() {
         </div>
       </section>
 
+      {/* DEPOIMENTOS */}
+      <section className="bg-[#f5f0eb] py-16">
+        <div className="mx-auto max-w-5xl px-4">
+          <h2 className="text-center text-3xl sm:text-4xl font-black text-[#5d3a1a]">
+            O QUE NOSSAS ALUNAS ESTÃO DIZENDO
+          </h2>
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {[
+              {
+                nome: "Ana Paula M.",
+                texto:
+                  "Comecei a vender brigadeiros na minha vizinhança e em 2 semanas já tinha pedidos fixos de festas. O curso é muito didático!",
+              },
+              {
+                nome: "Juliana R.",
+                texto:
+                  "Nunca imaginei que daria para ganhar dinheiro com receitas em casa. Agora fatura todos os meses com encomendas pelo WhatsApp.",
+              },
+              {
+                nome: "Camila S.",
+                texto:
+                  "O cálculo de lucro mudou minha vida. Antes vendia no prejuízo, agora sei exatamente quanto cobrar e tenho lucro real.",
+              },
+            ].map((d) => (
+              <div
+                key={d.nome}
+                className="rounded-2xl bg-white p-6 shadow-md ring-1 ring-[#e8ddd0]"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#5d3a1a] text-sm font-black text-white">
+                    {d.nome
+                      .split(" ")
+                      .map((w) => w[0])
+                      .join("")}
+                  </div>
+                  <div>
+                    <p className="font-extrabold text-zinc-900">{d.nome}</p>
+                    <div className="flex gap-0.5 text-amber-400">
+                      {[0, 1, 2, 3, 4].map((i) => (
+                        <Star key={i} className="h-3.5 w-3.5 fill-amber-400" />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                <p className="mt-4 text-sm font-medium text-zinc-700 leading-relaxed">
+                  "{d.texto}"
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* VOCÊ VAI ENCONTRAR */}
       <section className="bg-[#f5f0eb] py-16">
         <div className="mx-auto max-w-5xl px-4">
@@ -379,6 +432,9 @@ function LandingPage() {
         />
         <p className="mt-4">
           Copyright © Brigadeiro Gourmet — Todos os direitos reservados.
+        </p>
+        <p className="mt-2 text-xs text-zinc-500">
+          CNPJ: 39.450.086/0001-90
         </p>
       </footer>
     </main>
