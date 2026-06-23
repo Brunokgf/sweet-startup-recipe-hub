@@ -459,31 +459,54 @@ function LandingPage() {
         </div>
       </section>
 
-      {/* BÔNUS */}
+      {/* BÔNUS + CERTIFICADO */}
       <section className="bg-gradient-to-b from-[#6b4226] to-[#3d2314] py-16 text-white">
-        <div className="mx-auto max-w-3xl px-4 text-center">
-          <p className="text-7xl font-black leading-none">4</p>
-          <p className="text-3xl font-extrabold">Super Bônus Exclusivos!</p>
-          <p className="mt-4 text-base opacity-90">
-            Fazendo sua inscrição <strong>HOJE</strong>, você ganha{" "}
-            <strong>4 BÔNUS EXCLUSIVOS + CERTIFICADO</strong>.
-          </p>
-          <ul className="mx-auto mt-8 grid max-w-xl gap-3 text-left">
-            {[
-              "Bônus 1 — Apostila de embalagens lucrativas",
-              "Bônus 2 — Guia de divulgação no WhatsApp e Instagram",
-              "Bônus 3 — Planilha de precificação automática",
-              "Bônus 4 — Receitas extras de sucesso",
-            ].map((b) => (
-              <li
-                key={b}
-                className="flex items-start gap-3 rounded-lg bg-white/10 px-4 py-3 backdrop-blur"
-              >
-                <Check className="mt-0.5 h-5 w-5 flex-none text-amber-300" />
-                <span className="font-medium">{b}</span>
-              </li>
-            ))}
-          </ul>
+        <div className="mx-auto max-w-5xl px-4">
+          <div className="grid items-center gap-10 lg:grid-cols-2">
+            {/* Certificado */}
+            <div className="order-2 lg:order-1">
+              <div className="relative mx-auto max-w-md">
+                <div className="absolute -inset-3 rounded-2xl bg-amber-400/20 blur-xl" />
+                <img
+                  src={certificado}
+                  alt="Certificado de Conclusão Brigadeiro Gourmet"
+                  width={1024}
+                  height={768}
+                  loading="lazy"
+                  className="relative w-full rounded-xl shadow-2xl ring-2 ring-amber-300/30"
+                />
+                <p className="relative mt-3 text-center text-sm font-semibold text-amber-200">
+                  Certificado de Conclusão incluso ao finalizar o curso
+                </p>
+              </div>
+            </div>
+
+            {/* Bônus */}
+            <div className="order-1 text-center lg:order-2 lg:text-left">
+              <p className="text-7xl font-black leading-none">4</p>
+              <p className="text-3xl font-extrabold">Super Bônus Exclusivos!</p>
+              <p className="mt-4 text-base opacity-90">
+                Fazendo sua inscrição <strong>HOJE</strong>, você ganha{" "}
+                <strong>4 BÔNUS EXCLUSIVOS + CERTIFICADO</strong>.
+              </p>
+              <ul className="mx-auto mt-8 grid max-w-xl gap-3 text-left lg:mx-0">
+                {[
+                  "Bônus 1 — Apostila de embalagens lucrativas",
+                  "Bônus 2 — Guia de divulgação no WhatsApp e Instagram",
+                  "Bônus 3 — Planilha de precificação automática",
+                  "Bônus 4 — Receitas extras de sucesso",
+                ].map((b) => (
+                  <li
+                    key={b}
+                    className="flex items-start gap-3 rounded-lg bg-white/10 px-4 py-3 backdrop-blur"
+                  >
+                    <Check className="mt-0.5 h-5 w-5 flex-none text-amber-300" />
+                    <span className="font-medium">{b}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
       </section>
 
