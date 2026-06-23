@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
-import { Check, Star, ChevronDown, Timer } from "lucide-react";
+import { Check, Star, ChevronDown, ChevronLeft, ChevronRight, Timer } from "lucide-react";
 
 import heroBg from "@/assets/brigadeiro-hero.jpg";
 import logo from "@/assets/logo-brigadeiro.png";
@@ -216,7 +216,7 @@ function LandingPage() {
 
       {/* PROVAS SOCIAIS - PRINTS */}
       <section className="bg-[#ebe4db] py-16">
-        <div className="mx-auto max-w-6xl px-4">
+        <div className="mx-auto max-w-5xl px-4">
           <span className="mx-auto block w-fit rounded-full bg-emerald-100 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-emerald-700">
             Provas Reais
           </span>
@@ -224,131 +224,10 @@ function LandingPage() {
             Prints de alunas vendendo de verdade
           </h2>
           <p className="mt-3 text-center text-sm text-zinc-600">
-            Mensagens e comprovantes enviados pelas nossas alunas 👇
+            Conversas reais de pedidos fechados pelo WhatsApp 👇
           </p>
 
-          <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {/* Print 1 - WhatsApp pedido */}
-            <WhatsAppPrint
-              contact="Mariana 💕"
-              status="online"
-              initials="MC"
-              avatarColor="bg-rose-400"
-            >
-              <Bubble side="left" time="14:18">
-                Oii! Vc faz brigadeiro gourmet pra festa? 🎉
-              </Bubble>
-              <Bubble side="right" time="14:19">
-                Faço sim! Tenho 12 sabores 😋 Quantos vc precisa?
-              </Bubble>
-              <Bubble side="left" time="14:20">
-                100 unidades pro aniversário da minha filha 🎂
-              </Bubble>
-              <Bubble side="right" time="14:21">
-                Fechado! Fica R$ 280,00 💕
-              </Bubble>
-              <Bubble side="left" time="14:23">
-                Acabei de fazer o PIX ✅
-              </Bubble>
-            </WhatsAppPrint>
-
-            {/* Print 2 - Comprovante PIX Nubank */}
-            <NubankPrint
-              amount="R$ 280,00"
-              from="Mariana Costa Silva"
-              description="Brigadeiros aniversário — 100un"
-              time="Hoje • 14:23"
-              caption="Mais um pedido fechado essa semana 🥳"
-            />
-
-            {/* Print 3 - Depoimento aluna */}
-            <WhatsAppPrint
-              contact="Patrícia 👩‍🍳"
-              status="digitando…"
-              initials="PA"
-              avatarColor="bg-amber-500"
-            >
-              <Bubble side="left" name="Patrícia" time="20:11">
-                Gente, eu não acredito!! 😭
-              </Bubble>
-              <Bubble side="left" name="Patrícia" time="20:11">
-                Faturei R$ 1.480 só esse mês vendendo no condomínio 🏠
-              </Bubble>
-              <Bubble side="left" name="Patrícia" time="20:12">
-                Obrigada pelo curso, mudou minha vida ❤️
-              </Bubble>
-              <Bubble side="right" time="20:14">
-                Que orgulho de você!! 🥰
-              </Bubble>
-              <Bubble side="left" name="Patrícia" time="20:15">
-                Já tô separando dinheiro pra ampliar 🚀
-              </Bubble>
-            </WhatsAppPrint>
-
-            {/* Print 4 - Lock screen com notificações */}
-            <LockScreenPrint
-              notifications={[
-                {
-                  app: "Nubank",
-                  title: "Você recebeu um Pix",
-                  body: "R$ 145,00 de Juliana Alves R.",
-                  time: "agora",
-                },
-                {
-                  app: "Nubank",
-                  title: "Você recebeu um Pix",
-                  body: "R$ 92,50 de Roberto P. Lima",
-                  time: "5min",
-                },
-                {
-                  app: "Nubank",
-                  title: "Você recebeu um Pix",
-                  body: "R$ 220,00 de Festa Kids Buffet",
-                  time: "12min",
-                },
-                {
-                  app: "WhatsApp",
-                  title: "Cliente novo (3)",
-                  body: "Oi, queria encomendar 50 brigadeiros…",
-                  time: "18min",
-                },
-              ]}
-            />
-
-            {/* Print 5 - Instagram DM (mantido como WhatsApp visual) */}
-            <WhatsAppPrint
-              contact="Thaís — Eventos"
-              status="visto por último hoje 11:42"
-              initials="TE"
-              avatarColor="bg-fuchsia-500"
-            >
-              <Bubble side="left" name="Thaís" time="11:30">
-                Vi seus brigadeiros no story, são lindos! 😍
-              </Bubble>
-              <Bubble side="left" name="Thaís" time="11:31">
-                Faz pra casamento? Preciso de 500 unidades
-              </Bubble>
-              <Bubble side="right" time="11:35">
-                Faço sim! Te mando o orçamento agora 💌
-              </Bubble>
-              <Bubble side="right" time="11:38">
-                Sai por R$ 1.250 com 4 sabores 🍫
-              </Bubble>
-              <Bubble side="left" name="Thaís" time="11:42">
-                Fechado!! Me passa a chave pix 🙏
-              </Bubble>
-            </WhatsAppPrint>
-
-            {/* Print 6 - Comprovante alto valor */}
-            <NubankPrint
-              amount="R$ 1.250,00"
-              from="Eventos Bella Vista LTDA"
-              description="400 brigadeiros gourmet — casamento"
-              time="Sexta • 19:47"
-              caption="Maior pedido até hoje! 🚀"
-            />
-          </div>
-
+          <WhatsAppCarousel />
 
           <div className="mt-10 text-center">
             <p className="mb-4 text-sm font-semibold text-zinc-700">
@@ -928,5 +807,161 @@ function LockScreenPrint({
         </div>
       </div>
     </PhoneFrame>
+  );
+}
+
+function WhatsAppCarousel() {
+  const [index, setIndex] = useState(0);
+
+  const prints = [
+    <WhatsAppPrint
+      key="1"
+      contact="Mariana 💕"
+      status="online"
+      initials="MC"
+      avatarColor="bg-rose-400"
+    >
+      <Bubble side="left" time="14:18">
+        Oii! Vc faz brigadeiro gourmet pra festa? 🎉
+      </Bubble>
+      <Bubble side="right" time="14:19">
+        Faço sim! Tenho 12 sabores 😋 Quantos vc precisa?
+      </Bubble>
+      <Bubble side="left" time="14:20">
+        100 unidades pro aniversário da minha filha 🎂
+      </Bubble>
+      <Bubble side="right" time="14:21">
+        Fechado! Fica R$ 280,00 💕
+      </Bubble>
+      <Bubble side="left" time="14:23">
+        Acabei de fazer o PIX ✅
+      </Bubble>
+    </WhatsAppPrint>,
+
+    <WhatsAppPrint
+      key="2"
+      contact="Patrícia 👩‍🍳"
+      status="digitando…"
+      initials="PA"
+      avatarColor="bg-amber-500"
+    >
+      <Bubble side="left" name="Patrícia" time="20:11">
+        Gente, eu não acredito!! 😭
+      </Bubble>
+      <Bubble side="left" name="Patrícia" time="20:11">
+        Faturei R$ 1.480 só esse mês vendendo no condomínio 🏠
+      </Bubble>
+      <Bubble side="left" name="Patrícia" time="20:12">
+        Obrigada pelo curso, mudou minha vida ❤️
+      </Bubble>
+      <Bubble side="right" time="20:14">
+        Que orgulho de você!! 🥰
+      </Bubble>
+      <Bubble side="left" name="Patrícia" time="20:15">
+        Já tô separando dinheiro pra ampliar 🚀
+      </Bubble>
+    </WhatsAppPrint>,
+
+    <WhatsAppPrint
+      key="3"
+      contact="Thaís — Eventos"
+      status="visto por último hoje 11:42"
+      initials="TE"
+      avatarColor="bg-fuchsia-500"
+    >
+      <Bubble side="left" name="Thaís" time="11:30">
+        Vi seus brigadeiros no story, são lindos! 😍
+      </Bubble>
+      <Bubble side="left" name="Thaís" time="11:31">
+        Faz pra casamento? Preciso de 500 unidades
+      </Bubble>
+      <Bubble side="right" time="11:35">
+        Faço sim! Te mando o orçamento agora 💌
+      </Bubble>
+      <Bubble side="right" time="11:38">
+        Sai por R$ 1.250 com 4 sabores 🍫
+      </Bubble>
+      <Bubble side="left" name="Thaís" time="11:42">
+        Fechado!! Me passa a chave pix 🙏
+      </Bubble>
+    </WhatsAppPrint>,
+
+    <WhatsAppPrint
+      key="4"
+      contact="Juliana 🎂"
+      status="online"
+      initials="JA"
+      avatarColor="bg-emerald-400"
+    >
+      <Bubble side="left" time="09:12">
+        Bom dia! Queria encomendar 50 brigadeiros para o chá de bebê
+      </Bubble>
+      <Bubble side="right" time="09:15">
+        Bom dia! Com certeza 😊 Qual tema?
+      </Bubble>
+      <Bubble side="left" time="09:17">
+        Rosa e dourado, pode ser?
+      </Bubble>
+      <Bubble side="right" time="09:18">
+        Pode sim! Fica R$ 145,00 com embalagem personalizada 🎀
+      </Bubble>
+      <Bubble side="left" time="09:22">
+        Perfeito! Fiz o pix agora, manda o endereço pra retirada?
+      </Bubble>
+    </WhatsAppPrint>,
+  ];
+
+  const prev = () => setIndex((i) => (i === 0 ? prints.length - 1 : i - 1));
+  const next = () => setIndex((i) => (i === prints.length - 1 ? 0 : i + 1));
+
+  return (
+    <div className="mt-10">
+      <div className="relative mx-auto flex max-w-[340px] items-center justify-center gap-3 sm:max-w-[380px]">
+        <button
+          type="button"
+          onClick={prev}
+          className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-white shadow-md ring-1 ring-[#e8ddd0] transition hover:scale-105"
+          aria-label="Anterior"
+        >
+          <ChevronLeft className="h-5 w-5 text-[#5d3a1a]" />
+        </button>
+
+        <div className="w-full overflow-hidden rounded-[44px]">
+          <div
+            className="flex transition-transform duration-500 ease-out"
+            style={{ transform: `translateX(-${index * 100}%)` }}
+          >
+            {prints.map((print, i) => (
+              <div key={i} className="w-full flex-none">
+                {print}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <button
+          type="button"
+          onClick={next}
+          className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-white shadow-md ring-1 ring-[#e8ddd0] transition hover:scale-105"
+          aria-label="Próximo"
+        >
+          <ChevronRight className="h-5 w-5 text-[#5d3a1a]" />
+        </button>
+      </div>
+
+      <div className="mt-4 flex justify-center gap-2">
+        {prints.map((_, i) => (
+          <button
+            key={i}
+            type="button"
+            onClick={() => setIndex(i)}
+            className={`h-2 w-2 rounded-full transition ${
+              i === index ? "bg-[#5d3a1a]" : "bg-[#c4a882]/60"
+            }`}
+            aria-label={`Ir para print ${i + 1}`}
+          />
+        ))}
+      </div>
+    </div>
   );
 }
