@@ -18,7 +18,7 @@ function pick(obj: any, keys: string[]): string | null {
   return null;
 }
 
-export const Route = createFileRoute("/api/medusapay/create-pix")({
+export const Route = createFileRoute("/api/public/medusapay/create-pix")({
   server: {
     handlers: {
       POST: async ({ request }) => {

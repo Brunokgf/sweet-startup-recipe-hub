@@ -40,7 +40,7 @@ function CheckoutPage() {
     setError(null);
     setLoading(true);
     try {
-      const res = await fetch("/api/medusapay/create-pix", {
+      const res = await fetch("/api/public/medusapay/create-pix", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
