@@ -50,6 +50,53 @@ type CardResult = {
   transactionId: string;
 };
 
+const BUMPS = [
+  {
+    id: "rocambole",
+    title: "CURSO ROCAMBOLE LUCRATIVO",
+    description: "Curso em videoaulas",
+    badge: null,
+    priceCents: 1095,
+    installment: "5x de R$ 2,19",
+    icon: <Gift className="h-4 w-4" />,
+    borderColor: "border-amber-400",
+    bgLight: "bg-amber-50",
+  },
+  {
+    id: "bolos",
+    title: "Bolos Caseiros",
+    description: "Curso em videoaulas + Certificado",
+    badge: "93% APROVEITARAM E COMPRARAM JUNTO",
+    priceCents: 1980,
+    installment: "5x de R$ 3,96",
+    icon: <Star className="h-4 w-4" />,
+    borderColor: "border-rose-400",
+    bgLight: "bg-rose-50",
+  },
+  {
+    id: "iogurte",
+    title: "Iogurte Caseiro",
+    description: "Curso em videoaulas + Bônus exclusivo + Certificado de Conclusão",
+    badge: "95% APROVEITARAM E COMPRARAM JUNTO",
+    priceCents: 4095,
+    installment: "5x de R$ 8,19",
+    icon: <Zap className="h-4 w-4" />,
+    borderColor: "border-emerald-400",
+    bgLight: "bg-emerald-50",
+  },
+  {
+    id: "caldos",
+    title: "ENRIQUECENDO COM CALDOS",
+    description: "Adicionar a compra",
+    badge: "LANÇAMENTO ESPECIAL!!",
+    priceCents: 2990,
+    installment: "5x de R$ 5,98",
+    icon: <Gift className="h-4 w-4" />,
+    borderColor: "border-sky-400",
+    bgLight: "bg-sky-50",
+  },
+];
+
 function CheckoutPage() {
   const [method, setMethod] = useState<"pix" | "card">("pix");
   const [form, setForm] = useState({
@@ -71,6 +118,7 @@ function CheckoutPage() {
   const [cardResult, setCardResult] = useState<CardResult | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
+  const [acceptedBumps, setAcceptedBumps] = useState<Set<string>>(new Set());
 
   const handlePixSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
