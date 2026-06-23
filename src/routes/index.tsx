@@ -6,6 +6,7 @@ import heroBg from "@/assets/brigadeiro-hero.jpg";
 import logo from "@/assets/logo-brigadeiro.png";
 import sabores from "@/assets/sabores-brigadeiro.png.asset.json";
 import garantia from "@/assets/garantia-7dias.png";
+import certificado from "@/assets/certificado-brigadeiro.png";
 
 export const Route = createFileRoute("/")({
   component: LandingPage,
