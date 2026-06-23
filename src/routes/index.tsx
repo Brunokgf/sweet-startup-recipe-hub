@@ -226,146 +226,128 @@ function LandingPage() {
             Mensagens e comprovantes enviados pelas nossas alunas 👇
           </p>
 
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {/* Print 1 - WhatsApp pedido */}
-            <PrintCard title="Pedido fechado pelo WhatsApp">
-              <div className="space-y-2">
-                <Bubble side="left" name="Cliente">
-                  Oii! Vc faz brigadeiro gourmet pra festa? 🎉
-                </Bubble>
-                <Bubble side="right">
-                  Faço sim! Tenho 12 sabores 😋 Quantos vc precisa?
-                </Bubble>
-                <Bubble side="left" name="Cliente">
-                  100 unidades pro aniversário da minha filha
-                </Bubble>
-                <Bubble side="right">Fechado! R$ 280,00 💕</Bubble>
-                <Bubble side="left" name="Cliente">
-                  Acabei de fazer o PIX ✅
-                </Bubble>
-              </div>
-            </PrintCard>
+            <WhatsAppPrint
+              contact="Mariana 💕"
+              status="online"
+              initials="MC"
+              avatarColor="bg-rose-400"
+            >
+              <Bubble side="left" time="14:18">
+                Oii! Vc faz brigadeiro gourmet pra festa? 🎉
+              </Bubble>
+              <Bubble side="right" time="14:19">
+                Faço sim! Tenho 12 sabores 😋 Quantos vc precisa?
+              </Bubble>
+              <Bubble side="left" time="14:20">
+                100 unidades pro aniversário da minha filha 🎂
+              </Bubble>
+              <Bubble side="right" time="14:21">
+                Fechado! Fica R$ 280,00 💕
+              </Bubble>
+              <Bubble side="left" time="14:23">
+                Acabei de fazer o PIX ✅
+              </Bubble>
+            </WhatsAppPrint>
 
-            {/* Print 2 - Comprovante PIX */}
-            <PrintCard title="Comprovante recebido" variant="pix">
-              <div className="rounded-xl bg-white p-4 shadow-inner ring-1 ring-zinc-200">
-                <div className="flex items-center gap-2 border-b border-zinc-100 pb-2">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-md bg-emerald-500 text-xs font-black text-white">
-                    PIX
-                  </div>
-                  <div>
-                    <p className="text-[10px] font-bold uppercase text-zinc-500">
-                      Transferência recebida
-                    </p>
-                    <p className="text-[10px] text-zinc-400">Hoje, 14:23</p>
-                  </div>
-                </div>
-                <p className="mt-3 text-2xl font-black text-emerald-600">
-                  + R$ 280,00
-                </p>
-                <p className="mt-1 text-xs text-zinc-600">de Mariana Costa S.</p>
-                <div className="mt-3 rounded-md bg-emerald-50 px-2 py-1 text-[10px] font-bold text-emerald-700">
-                  ✓ Crédito confirmado
-                </div>
-              </div>
-              <p className="mt-3 text-center text-xs italic text-zinc-600">
-                "Mais um pedido fechado essa semana! 🥳"
-              </p>
-            </PrintCard>
+            {/* Print 2 - Comprovante PIX Nubank */}
+            <NubankPrint
+              amount="R$ 280,00"
+              from="Mariana Costa Silva"
+              description="Brigadeiros aniversário — 100un"
+              time="Hoje • 14:23"
+              caption="Mais um pedido fechado essa semana 🥳"
+            />
 
-            {/* Print 3 - Depoimento */}
-            <PrintCard title="Mensagem da aluna">
-              <div className="space-y-2">
-                <Bubble side="left" name="Patrícia 👩‍🍳">
-                  Gente, eu não acredito!! 😭
-                </Bubble>
-                <Bubble side="left" name="Patrícia 👩‍🍳">
-                  Faturei R$ 1.480 só esse mês vendendo no condomínio 🏠
-                </Bubble>
-                <Bubble side="left" name="Patrícia 👩‍🍳">
-                  Obrigada pelo curso, mudou minha vida ❤️
-                </Bubble>
-                <Bubble side="right">Que orgulho de vc!! 🥰</Bubble>
-              </div>
-            </PrintCard>
+            {/* Print 3 - Depoimento aluna */}
+            <WhatsAppPrint
+              contact="Patrícia 👩‍🍳"
+              status="digitando…"
+              initials="PA"
+              avatarColor="bg-amber-500"
+            >
+              <Bubble side="left" name="Patrícia" time="20:11">
+                Gente, eu não acredito!! 😭
+              </Bubble>
+              <Bubble side="left" name="Patrícia" time="20:11">
+                Faturei R$ 1.480 só esse mês vendendo no condomínio 🏠
+              </Bubble>
+              <Bubble side="left" name="Patrícia" time="20:12">
+                Obrigada pelo curso, mudou minha vida ❤️
+              </Bubble>
+              <Bubble side="right" time="20:14">
+                Que orgulho de você!! 🥰
+              </Bubble>
+              <Bubble side="left" name="Patrícia" time="20:15">
+                Já tô separando dinheiro pra ampliar 🚀
+              </Bubble>
+            </WhatsAppPrint>
 
-            {/* Print 4 - Notificação banco */}
-            <PrintCard title="Notificação do banco" variant="bank">
-              <div className="rounded-xl bg-gradient-to-br from-zinc-900 to-zinc-800 p-4 text-white shadow-lg">
-                <div className="flex items-center justify-between text-[10px] opacity-70">
-                  <span>NUBANK</span>
-                  <span>agora</span>
-                </div>
-                <p className="mt-2 text-xs font-semibold">
-                  💰 Você recebeu um Pix
-                </p>
-                <p className="mt-1 text-xl font-black text-emerald-400">
-                  R$ 145,00
-                </p>
-                <p className="text-[10px] opacity-70">de Juliana Alves R.</p>
-              </div>
-              <div className="mt-2 rounded-xl bg-gradient-to-br from-purple-900 to-purple-700 p-4 text-white shadow-lg">
-                <div className="flex items-center justify-between text-[10px] opacity-70">
-                  <span>NUBANK</span>
-                  <span>5min</span>
-                </div>
-                <p className="mt-2 text-xs font-semibold">
-                  💰 Você recebeu um Pix
-                </p>
-                <p className="mt-1 text-xl font-black text-emerald-400">
-                  R$ 92,50
-                </p>
-                <p className="text-[10px] opacity-70">de Roberto P. Lima</p>
-              </div>
-            </PrintCard>
+            {/* Print 4 - Lock screen com notificações */}
+            <LockScreenPrint
+              notifications={[
+                {
+                  app: "Nubank",
+                  title: "Você recebeu um Pix",
+                  body: "R$ 145,00 de Juliana Alves R.",
+                  time: "agora",
+                },
+                {
+                  app: "Nubank",
+                  title: "Você recebeu um Pix",
+                  body: "R$ 92,50 de Roberto P. Lima",
+                  time: "5min",
+                },
+                {
+                  app: "Nubank",
+                  title: "Você recebeu um Pix",
+                  body: "R$ 220,00 de Festa Kids Buffet",
+                  time: "12min",
+                },
+                {
+                  app: "WhatsApp",
+                  title: "Cliente novo (3)",
+                  body: "Oi, queria encomendar 50 brigadeiros…",
+                  time: "18min",
+                },
+              ]}
+            />
 
-            {/* Print 5 - Instagram DM */}
-            <PrintCard title="Pedido vindo do Instagram">
-              <div className="space-y-2">
-                <Bubble side="left" name="@thais.eventos">
-                  Vi seus brigadeiros no story, sao lindos! 😍
-                </Bubble>
-                <Bubble side="left" name="@thais.eventos">
-                  Faz pra casamento? Preciso de 500 unidades
-                </Bubble>
-                <Bubble side="right">
-                  Faço sim! Vou te mandar o orçamento agora 💌
-                </Bubble>
-                <Bubble side="left" name="@thais.eventos">
-                  Fechado!! Pode mandar a chave pix
-                </Bubble>
-              </div>
-            </PrintCard>
+            {/* Print 5 - Instagram DM (mantido como WhatsApp visual) */}
+            <WhatsAppPrint
+              contact="Thaís — Eventos"
+              status="visto por último hoje 11:42"
+              initials="TE"
+              avatarColor="bg-fuchsia-500"
+            >
+              <Bubble side="left" name="Thaís" time="11:30">
+                Vi seus brigadeiros no story, são lindos! 😍
+              </Bubble>
+              <Bubble side="left" name="Thaís" time="11:31">
+                Faz pra casamento? Preciso de 500 unidades
+              </Bubble>
+              <Bubble side="right" time="11:35">
+                Faço sim! Te mando o orçamento agora 💌
+              </Bubble>
+              <Bubble side="right" time="11:38">
+                Sai por R$ 1.250 com 4 sabores 🍫
+              </Bubble>
+              <Bubble side="left" name="Thaís" time="11:42">
+                Fechado!! Me passa a chave pix 🙏
+              </Bubble>
+            </WhatsAppPrint>
 
             {/* Print 6 - Comprovante alto valor */}
-            <PrintCard title="Encomenda de festa" variant="pix">
-              <div className="rounded-xl bg-white p-4 shadow-inner ring-1 ring-zinc-200">
-                <div className="flex items-center gap-2 border-b border-zinc-100 pb-2">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-md bg-emerald-500 text-xs font-black text-white">
-                    PIX
-                  </div>
-                  <div>
-                    <p className="text-[10px] font-bold uppercase text-zinc-500">
-                      Comprovante de pagamento
-                    </p>
-                    <p className="text-[10px] text-zinc-400">Sexta, 19:47</p>
-                  </div>
-                </div>
-                <p className="mt-3 text-2xl font-black text-emerald-600">
-                  + R$ 1.250,00
-                </p>
-                <p className="mt-1 text-xs text-zinc-600">
-                  de Eventos Bella Vista
-                </p>
-                <div className="mt-3 rounded-md bg-emerald-50 px-2 py-1 text-[10px] font-bold text-emerald-700">
-                  ✓ 400 brigadeiros — casamento
-                </div>
-              </div>
-              <p className="mt-3 text-center text-xs italic text-zinc-600">
-                "Maior pedido até hoje! 🚀"
-              </p>
-            </PrintCard>
+            <NubankPrint
+              amount="R$ 1.250,00"
+              from="Eventos Bella Vista LTDA"
+              description="400 brigadeiros gourmet — casamento"
+              time="Sexta • 19:47"
+              caption="Maior pedido até hoje! 🚀"
+            />
           </div>
+
 
           <div className="mt-10 text-center">
             <p className="mb-4 text-sm font-semibold text-zinc-700">
