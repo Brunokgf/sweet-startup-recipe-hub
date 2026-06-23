@@ -226,146 +226,128 @@ function LandingPage() {
             Mensagens e comprovantes enviados pelas nossas alunas 👇
           </p>
 
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {/* Print 1 - WhatsApp pedido */}
-            <PrintCard title="Pedido fechado pelo WhatsApp">
-              <div className="space-y-2">
-                <Bubble side="left" name="Cliente">
-                  Oii! Vc faz brigadeiro gourmet pra festa? 🎉
-                </Bubble>
-                <Bubble side="right">
-                  Faço sim! Tenho 12 sabores 😋 Quantos vc precisa?
-                </Bubble>
-                <Bubble side="left" name="Cliente">
-                  100 unidades pro aniversário da minha filha
-                </Bubble>
-                <Bubble side="right">Fechado! R$ 280,00 💕</Bubble>
-                <Bubble side="left" name="Cliente">
-                  Acabei de fazer o PIX ✅
-                </Bubble>
-              </div>
-            </PrintCard>
+            <WhatsAppPrint
+              contact="Mariana 💕"
+              status="online"
+              initials="MC"
+              avatarColor="bg-rose-400"
+            >
+              <Bubble side="left" time="14:18">
+                Oii! Vc faz brigadeiro gourmet pra festa? 🎉
+              </Bubble>
+              <Bubble side="right" time="14:19">
+                Faço sim! Tenho 12 sabores 😋 Quantos vc precisa?
+              </Bubble>
+              <Bubble side="left" time="14:20">
+                100 unidades pro aniversário da minha filha 🎂
+              </Bubble>
+              <Bubble side="right" time="14:21">
+                Fechado! Fica R$ 280,00 💕
+              </Bubble>
+              <Bubble side="left" time="14:23">
+                Acabei de fazer o PIX ✅
+              </Bubble>
+            </WhatsAppPrint>
 
-            {/* Print 2 - Comprovante PIX */}
-            <PrintCard title="Comprovante recebido" variant="pix">
-              <div className="rounded-xl bg-white p-4 shadow-inner ring-1 ring-zinc-200">
-                <div className="flex items-center gap-2 border-b border-zinc-100 pb-2">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-md bg-emerald-500 text-xs font-black text-white">
-                    PIX
-                  </div>
-                  <div>
-                    <p className="text-[10px] font-bold uppercase text-zinc-500">
-                      Transferência recebida
-                    </p>
-                    <p className="text-[10px] text-zinc-400">Hoje, 14:23</p>
-                  </div>
-                </div>
-                <p className="mt-3 text-2xl font-black text-emerald-600">
-                  + R$ 280,00
-                </p>
-                <p className="mt-1 text-xs text-zinc-600">de Mariana Costa S.</p>
-                <div className="mt-3 rounded-md bg-emerald-50 px-2 py-1 text-[10px] font-bold text-emerald-700">
-                  ✓ Crédito confirmado
-                </div>
-              </div>
-              <p className="mt-3 text-center text-xs italic text-zinc-600">
-                "Mais um pedido fechado essa semana! 🥳"
-              </p>
-            </PrintCard>
+            {/* Print 2 - Comprovante PIX Nubank */}
+            <NubankPrint
+              amount="R$ 280,00"
+              from="Mariana Costa Silva"
+              description="Brigadeiros aniversário — 100un"
+              time="Hoje • 14:23"
+              caption="Mais um pedido fechado essa semana 🥳"
+            />
 
-            {/* Print 3 - Depoimento */}
-            <PrintCard title="Mensagem da aluna">
-              <div className="space-y-2">
-                <Bubble side="left" name="Patrícia 👩‍🍳">
-                  Gente, eu não acredito!! 😭
-                </Bubble>
-                <Bubble side="left" name="Patrícia 👩‍🍳">
-                  Faturei R$ 1.480 só esse mês vendendo no condomínio 🏠
-                </Bubble>
-                <Bubble side="left" name="Patrícia 👩‍🍳">
-                  Obrigada pelo curso, mudou minha vida ❤️
-                </Bubble>
-                <Bubble side="right">Que orgulho de vc!! 🥰</Bubble>
-              </div>
-            </PrintCard>
+            {/* Print 3 - Depoimento aluna */}
+            <WhatsAppPrint
+              contact="Patrícia 👩‍🍳"
+              status="digitando…"
+              initials="PA"
+              avatarColor="bg-amber-500"
+            >
+              <Bubble side="left" name="Patrícia" time="20:11">
+                Gente, eu não acredito!! 😭
+              </Bubble>
+              <Bubble side="left" name="Patrícia" time="20:11">
+                Faturei R$ 1.480 só esse mês vendendo no condomínio 🏠
+              </Bubble>
+              <Bubble side="left" name="Patrícia" time="20:12">
+                Obrigada pelo curso, mudou minha vida ❤️
+              </Bubble>
+              <Bubble side="right" time="20:14">
+                Que orgulho de você!! 🥰
+              </Bubble>
+              <Bubble side="left" name="Patrícia" time="20:15">
+                Já tô separando dinheiro pra ampliar 🚀
+              </Bubble>
+            </WhatsAppPrint>
 
-            {/* Print 4 - Notificação banco */}
-            <PrintCard title="Notificação do banco" variant="bank">
-              <div className="rounded-xl bg-gradient-to-br from-zinc-900 to-zinc-800 p-4 text-white shadow-lg">
-                <div className="flex items-center justify-between text-[10px] opacity-70">
-                  <span>NUBANK</span>
-                  <span>agora</span>
-                </div>
-                <p className="mt-2 text-xs font-semibold">
-                  💰 Você recebeu um Pix
-                </p>
-                <p className="mt-1 text-xl font-black text-emerald-400">
-                  R$ 145,00
-                </p>
-                <p className="text-[10px] opacity-70">de Juliana Alves R.</p>
-              </div>
-              <div className="mt-2 rounded-xl bg-gradient-to-br from-purple-900 to-purple-700 p-4 text-white shadow-lg">
-                <div className="flex items-center justify-between text-[10px] opacity-70">
-                  <span>NUBANK</span>
-                  <span>5min</span>
-                </div>
-                <p className="mt-2 text-xs font-semibold">
-                  💰 Você recebeu um Pix
-                </p>
-                <p className="mt-1 text-xl font-black text-emerald-400">
-                  R$ 92,50
-                </p>
-                <p className="text-[10px] opacity-70">de Roberto P. Lima</p>
-              </div>
-            </PrintCard>
+            {/* Print 4 - Lock screen com notificações */}
+            <LockScreenPrint
+              notifications={[
+                {
+                  app: "Nubank",
+                  title: "Você recebeu um Pix",
+                  body: "R$ 145,00 de Juliana Alves R.",
+                  time: "agora",
+                },
+                {
+                  app: "Nubank",
+                  title: "Você recebeu um Pix",
+                  body: "R$ 92,50 de Roberto P. Lima",
+                  time: "5min",
+                },
+                {
+                  app: "Nubank",
+                  title: "Você recebeu um Pix",
+                  body: "R$ 220,00 de Festa Kids Buffet",
+                  time: "12min",
+                },
+                {
+                  app: "WhatsApp",
+                  title: "Cliente novo (3)",
+                  body: "Oi, queria encomendar 50 brigadeiros…",
+                  time: "18min",
+                },
+              ]}
+            />
 
-            {/* Print 5 - Instagram DM */}
-            <PrintCard title="Pedido vindo do Instagram">
-              <div className="space-y-2">
-                <Bubble side="left" name="@thais.eventos">
-                  Vi seus brigadeiros no story, sao lindos! 😍
-                </Bubble>
-                <Bubble side="left" name="@thais.eventos">
-                  Faz pra casamento? Preciso de 500 unidades
-                </Bubble>
-                <Bubble side="right">
-                  Faço sim! Vou te mandar o orçamento agora 💌
-                </Bubble>
-                <Bubble side="left" name="@thais.eventos">
-                  Fechado!! Pode mandar a chave pix
-                </Bubble>
-              </div>
-            </PrintCard>
+            {/* Print 5 - Instagram DM (mantido como WhatsApp visual) */}
+            <WhatsAppPrint
+              contact="Thaís — Eventos"
+              status="visto por último hoje 11:42"
+              initials="TE"
+              avatarColor="bg-fuchsia-500"
+            >
+              <Bubble side="left" name="Thaís" time="11:30">
+                Vi seus brigadeiros no story, são lindos! 😍
+              </Bubble>
+              <Bubble side="left" name="Thaís" time="11:31">
+                Faz pra casamento? Preciso de 500 unidades
+              </Bubble>
+              <Bubble side="right" time="11:35">
+                Faço sim! Te mando o orçamento agora 💌
+              </Bubble>
+              <Bubble side="right" time="11:38">
+                Sai por R$ 1.250 com 4 sabores 🍫
+              </Bubble>
+              <Bubble side="left" name="Thaís" time="11:42">
+                Fechado!! Me passa a chave pix 🙏
+              </Bubble>
+            </WhatsAppPrint>
 
             {/* Print 6 - Comprovante alto valor */}
-            <PrintCard title="Encomenda de festa" variant="pix">
-              <div className="rounded-xl bg-white p-4 shadow-inner ring-1 ring-zinc-200">
-                <div className="flex items-center gap-2 border-b border-zinc-100 pb-2">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-md bg-emerald-500 text-xs font-black text-white">
-                    PIX
-                  </div>
-                  <div>
-                    <p className="text-[10px] font-bold uppercase text-zinc-500">
-                      Comprovante de pagamento
-                    </p>
-                    <p className="text-[10px] text-zinc-400">Sexta, 19:47</p>
-                  </div>
-                </div>
-                <p className="mt-3 text-2xl font-black text-emerald-600">
-                  + R$ 1.250,00
-                </p>
-                <p className="mt-1 text-xs text-zinc-600">
-                  de Eventos Bella Vista
-                </p>
-                <div className="mt-3 rounded-md bg-emerald-50 px-2 py-1 text-[10px] font-bold text-emerald-700">
-                  ✓ 400 brigadeiros — casamento
-                </div>
-              </div>
-              <p className="mt-3 text-center text-xs italic text-zinc-600">
-                "Maior pedido até hoje! 🚀"
-              </p>
-            </PrintCard>
+            <NubankPrint
+              amount="R$ 1.250,00"
+              from="Eventos Bella Vista LTDA"
+              description="400 brigadeiros gourmet — casamento"
+              time="Sexta • 19:47"
+              caption="Maior pedido até hoje! 🚀"
+            />
           </div>
+
 
           <div className="mt-10 text-center">
             <p className="mb-4 text-sm font-semibold text-zinc-700">
@@ -677,60 +659,250 @@ function FaqItem({ q, a }: { q: string; a: string }) {
   );
 }
 
-function PrintCard({
-  title,
+function PhoneFrame({
   children,
-  variant = "chat",
+  time = "9:41",
 }: {
-  title: string;
   children: React.ReactNode;
-  variant?: "chat" | "pix" | "bank";
+  time?: string;
 }) {
-  const bg =
-    variant === "chat"
-      ? "bg-[#e5ddd5]"
-      : variant === "pix"
-        ? "bg-gradient-to-b from-emerald-50 to-emerald-100"
-        : "bg-gradient-to-b from-zinc-100 to-zinc-200";
   return (
-    <div className="overflow-hidden rounded-[28px] border-[6px] border-zinc-900 bg-zinc-900 shadow-2xl">
-      <div className="flex items-center justify-between bg-zinc-900 px-4 py-1.5 text-[10px] font-bold text-white">
-        <span>9:41</span>
-        <span>📶 🔋</span>
+    <div className="relative mx-auto w-full max-w-[320px]">
+      {/* Phone body */}
+      <div className="relative overflow-hidden rounded-[44px] border-[10px] border-zinc-900 bg-zinc-900 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.5)] ring-1 ring-zinc-700/40">
+        {/* Status bar */}
+        <div className="relative flex items-center justify-between bg-black px-6 pb-2 pt-2 text-[11px] font-semibold text-white">
+          <span className="tabular-nums">{time}</span>
+          {/* Dynamic island */}
+          <div className="absolute left-1/2 top-1.5 h-5 w-20 -translate-x-1/2 rounded-full bg-black" />
+          <span className="flex items-center gap-1 tabular-nums">
+            <svg viewBox="0 0 18 12" className="h-3 w-4 fill-white">
+              <circle cx="2" cy="10" r="1.5" />
+              <circle cx="6" cy="10" r="1.5" />
+              <circle cx="10" cy="10" r="1.5" />
+              <circle cx="14" cy="10" r="1.5" />
+            </svg>
+            <svg viewBox="0 0 16 12" className="h-3 w-4 fill-white">
+              <path d="M0 8h2v4H0zm4-2h2v6H4zm4-3h2v9H8zm4-3h2v12h-2z" />
+            </svg>
+            <div className="ml-0.5 flex h-2.5 w-5 items-center rounded-[3px] border border-white/80 p-[1px]">
+              <div className="h-full w-3 rounded-[1px] bg-white" />
+            </div>
+          </span>
+        </div>
+        {children}
       </div>
-      <div className="bg-[#075e54] px-4 py-2 text-xs font-bold text-white">
-        {title}
-      </div>
-      <div className={`${bg} min-h-[280px] p-3`}>{children}</div>
     </div>
+  );
+}
+
+function WhatsAppPrint({
+  contact,
+  status = "online",
+  avatarColor = "bg-amber-500",
+  initials,
+  children,
+}: {
+  contact: string;
+  status?: string;
+  avatarColor?: string;
+  initials: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <PhoneFrame>
+      {/* WA Header */}
+      <div className="flex items-center gap-3 bg-[#075e54] px-3 py-2.5 text-white">
+        <svg viewBox="0 0 24 24" className="h-5 w-5 fill-white">
+          <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
+        </svg>
+        <div
+          className={`flex h-9 w-9 items-center justify-center rounded-full ${avatarColor} text-xs font-black text-white shadow`}
+        >
+          {initials}
+        </div>
+        <div className="flex-1 leading-tight">
+          <p className="text-sm font-semibold">{contact}</p>
+          <p className="text-[10px] opacity-80">{status}</p>
+        </div>
+        <svg viewBox="0 0 24 24" className="h-5 w-5 fill-white/90">
+          <path d="M15 3h6v6h-2V6.41l-9.83 9.83-1.41-1.41L17.59 5H15V3z" />
+        </svg>
+      </div>
+      {/* Chat surface */}
+      <div
+        className="relative min-h-[320px] space-y-1.5 p-3"
+        style={{
+          backgroundColor: "#ece5dd",
+          backgroundImage:
+            "radial-gradient(circle at 20% 10%, rgba(0,0,0,0.04) 1px, transparent 1px), radial-gradient(circle at 80% 60%, rgba(0,0,0,0.03) 1px, transparent 1px)",
+          backgroundSize: "24px 24px, 32px 32px",
+        }}
+      >
+        <div className="mx-auto mb-2 w-fit rounded-md bg-[#e1f3fb] px-2 py-0.5 text-[9px] font-medium text-zinc-600 shadow-sm">
+          HOJE
+        </div>
+        {children}
+      </div>
+    </PhoneFrame>
   );
 }
 
 function Bubble({
   side,
   name,
+  time = "14:23",
+  read = true,
   children,
 }: {
   side: "left" | "right";
   name?: string;
+  time?: string;
+  read?: boolean;
   children: React.ReactNode;
 }) {
   const isRight = side === "right";
   return (
     <div className={`flex ${isRight ? "justify-end" : "justify-start"}`}>
       <div
-        className={`max-w-[85%] rounded-xl px-3 py-2 text-xs shadow-sm ${
+        className={`relative max-w-[82%] rounded-lg px-2.5 py-1.5 text-[12px] shadow-sm ${
           isRight ? "bg-[#dcf8c6] text-zinc-900" : "bg-white text-zinc-900"
         }`}
       >
-        {name && (
+        {name && !isRight && (
           <p className="text-[10px] font-bold text-rose-600">{name}</p>
         )}
-        <p className="leading-snug">{children}</p>
-        <p className="mt-0.5 text-right text-[9px] text-zinc-400">
-          {isRight ? "✓✓" : ""}
-        </p>
+        <p className="pr-10 leading-snug">{children}</p>
+        <span className="absolute bottom-1 right-2 flex items-center gap-0.5 text-[9px] text-zinc-500">
+          {time}
+          {isRight && (
+            <svg
+              viewBox="0 0 16 11"
+              className={`h-2.5 w-3.5 ${read ? "fill-[#34b7f1]" : "fill-zinc-400"}`}
+            >
+              <path d="M11.07.59 5.65 6.01l-2.12-2.12-1.41 1.41L5.65 8.84 12.49 2 11.07.59zm4.24 0L9.9 6.01l-.62-.62-1.41 1.41 2.03 2.03L16.72 2 15.31.59z" />
+            </svg>
+          )}
+        </span>
       </div>
     </div>
+  );
+}
+
+function NubankPrint({
+  amount,
+  from,
+  description,
+  time = "Hoje • 14:23",
+  caption,
+}: {
+  amount: string;
+  from: string;
+  description: string;
+  time?: string;
+  caption?: string;
+}) {
+  return (
+    <PhoneFrame>
+      <div className="bg-gradient-to-b from-[#8a05be] to-[#5d0a8a] px-4 pb-3 pt-2 text-white">
+        <div className="flex items-center justify-between">
+          <svg viewBox="0 0 24 24" className="h-5 w-5 fill-white">
+            <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
+          </svg>
+          <span className="text-[11px] font-bold tracking-wider opacity-90">
+            Nubank
+          </span>
+          <svg viewBox="0 0 24 24" className="h-5 w-5 fill-white">
+            <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+          </svg>
+        </div>
+        <p className="mt-3 text-[11px] opacity-80">Comprovante</p>
+        <p className="text-base font-bold">Transferência recebida</p>
+      </div>
+      <div className="space-y-3 bg-white p-4">
+        <div className="flex items-center gap-2 rounded-md bg-emerald-50 px-3 py-2">
+          <div className="flex h-7 w-7 items-center justify-center rounded-full bg-emerald-500 text-[10px] font-black text-white">
+            ✓
+          </div>
+          <span className="text-[11px] font-bold text-emerald-700">
+            Pix concluído
+          </span>
+        </div>
+        <div>
+          <p className="text-[10px] uppercase tracking-wide text-zinc-500">
+            Valor
+          </p>
+          <p className="text-2xl font-black text-zinc-900">{amount}</p>
+        </div>
+        <div className="border-t border-dashed border-zinc-200 pt-3">
+          <p className="text-[10px] uppercase tracking-wide text-zinc-500">
+            Recebido de
+          </p>
+          <p className="text-sm font-semibold text-zinc-900">{from}</p>
+          <p className="mt-2 text-[10px] uppercase tracking-wide text-zinc-500">
+            Descrição
+          </p>
+          <p className="text-xs text-zinc-700">{description}</p>
+          <p className="mt-2 text-[10px] uppercase tracking-wide text-zinc-500">
+            Data
+          </p>
+          <p className="text-xs text-zinc-700">{time}</p>
+        </div>
+        {caption && (
+          <div className="rounded-md bg-zinc-100 px-3 py-2 text-[11px] italic text-zinc-600">
+            {caption}
+          </div>
+        )}
+      </div>
+    </PhoneFrame>
+  );
+}
+
+function LockScreenPrint({
+  notifications,
+}: {
+  notifications: { app: string; title: string; body: string; time: string }[];
+}) {
+  return (
+    <PhoneFrame time="9:41">
+      <div
+        className="min-h-[420px] space-y-2 px-3 pb-4 pt-3"
+        style={{
+          background:
+            "linear-gradient(160deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%)",
+        }}
+      >
+        <div className="text-center text-white">
+          <p className="text-[10px] font-medium opacity-80">
+            terça-feira, 23 de junho
+          </p>
+          <p className="text-5xl font-thin tabular-nums tracking-tight">
+            9:41
+          </p>
+        </div>
+        <div className="space-y-2 pt-3">
+          {notifications.map((n, i) => (
+            <div
+              key={i}
+              className="rounded-2xl bg-white/15 px-3 py-2 text-white shadow-lg backdrop-blur-md ring-1 ring-white/10"
+            >
+              <div className="flex items-center justify-between text-[9px] opacity-80">
+                <span className="flex items-center gap-1.5">
+                  <span className="flex h-4 w-4 items-center justify-center rounded-[5px] bg-[#8a05be] text-[7px] font-black">
+                    N
+                  </span>
+                  <span className="font-bold uppercase tracking-wider">
+                    {n.app}
+                  </span>
+                </span>
+                <span>{n.time}</span>
+              </div>
+              <p className="mt-1 text-[11px] font-bold">{n.title}</p>
+              <p className="text-[10px] opacity-90">{n.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </PhoneFrame>
   );
 }
