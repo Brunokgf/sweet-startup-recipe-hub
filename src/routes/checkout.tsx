@@ -442,7 +442,29 @@ function CheckoutPage() {
               <div className="mt-4 space-y-2 text-sm">
                 <Row label="De" value={OLD_PRICE_LABEL} strike />
                 <Row label="Desconto" value="-R$ 60,00" highlight />
-                <Row label="Total" value={PRICE_LABEL} bold />
+                {Array.from(acceptedBumps).map((id) => {
+                  const b = BUMPS.find((x) => x.id === id);
+                  if (!b) return null;
+                  return (
+                    <Row
+                      key={b.id}
+                      label={b.title}
+                      value={formatBRL(b.priceCents)}
+                    />
+                  );
+                })}
+                <Row
+                  label="Total"
+                  value={formatBRL(
+                    PRICE_CENTS +
+                      Array.from(acceptedBumps).reduce(
+                        (sum, id) =>
+                          sum + (BUMPS.find((b) => b.id === id)?.priceCents ?? 0),
+                        0,
+                      ),
+                  )}
+                  bold
+                />
               </div>
               <div className="mt-4 rounded-lg bg-amber-50 px-3 py-2 text-center text-[11px] font-bold uppercase tracking-wider text-amber-800">
                 Economia de 62%
