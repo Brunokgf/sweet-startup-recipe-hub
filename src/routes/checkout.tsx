@@ -50,6 +50,53 @@ type CardResult = {
   transactionId: string;
 };
 
+const BUMPS = [
+  {
+    id: "rocambole",
+    title: "CURSO ROCAMBOLE LUCRATIVO",
+    description: "Curso em videoaulas",
+    badge: null,
+    priceCents: 1095,
+    installment: "5x de R$ 2,19",
+    icon: <Gift className="h-4 w-4" />,
+    borderColor: "border-amber-400",
+    bgLight: "bg-amber-50",
+  },
+  {
+    id: "bolos",
+    title: "Bolos Caseiros",
+    description: "Curso em videoaulas + Certificado",
+    badge: "93% APROVEITARAM E COMPRARAM JUNTO",
+    priceCents: 1980,
+    installment: "5x de R$ 3,96",
+    icon: <Star className="h-4 w-4" />,
+    borderColor: "border-rose-400",
+    bgLight: "bg-rose-50",
+  },
+  {
+    id: "iogurte",
+    title: "Iogurte Caseiro",
+    description: "Curso em videoaulas + Bônus exclusivo + Certificado de Conclusão",
+    badge: "95% APROVEITARAM E COMPRARAM JUNTO",
+    priceCents: 4095,
+    installment: "5x de R$ 8,19",
+    icon: <Zap className="h-4 w-4" />,
+    borderColor: "border-emerald-400",
+    bgLight: "bg-emerald-50",
+  },
+  {
+    id: "caldos",
+    title: "ENRIQUECENDO COM CALDOS",
+    description: "Adicionar a compra",
+    badge: "LANÇAMENTO ESPECIAL!!",
+    priceCents: 2990,
+    installment: "5x de R$ 5,98",
+    icon: <Gift className="h-4 w-4" />,
+    borderColor: "border-sky-400",
+    bgLight: "bg-sky-50",
+  },
+];
+
 function CheckoutPage() {
   const [method, setMethod] = useState<"pix" | "card">("pix");
   const [form, setForm] = useState({
@@ -71,6 +118,7 @@ function CheckoutPage() {
   const [cardResult, setCardResult] = useState<CardResult | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
+  const [acceptedBumps, setAcceptedBumps] = useState<Set<string>>(new Set());
 
   const handlePixSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -315,6 +363,25 @@ function CheckoutPage() {
                     </div>
                   )}
 
+                  <div className="mt-4 space-y-3">
+                    <p className="text-xs font-bold uppercase tracking-wider text-[#5d3a1a]">
+                      SIM, EU ACEITO ESSA OFERTA ESPECIAL!
+                    </p>
+                    {BUMPS.map((b) => (
+                      <OrderBump
+                        key={b.id}
+                        bump={b}
+                        checked={acceptedBumps.has(b.id)}
+                        onToggle={() => {
+                          const next = new Set(acceptedBumps);
+                          if (next.has(b.id)) next.delete(b.id);
+                          else next.add(b.id);
+                          setAcceptedBumps(next);
+                        }}
+                      />
+                    ))}
+                  </div>
+
                   {error && (
                     <p className="rounded-md bg-red-50 px-3 py-2 text-sm text-red-700 ring-1 ring-red-200">
                       {error}
@@ -375,7 +442,29 @@ function CheckoutPage() {
               <div className="mt-4 space-y-2 text-sm">
                 <Row label="De" value={OLD_PRICE_LABEL} strike />
                 <Row label="Desconto" value="-R$ 60,00" highlight />
-                <Row label="Total" value={PRICE_LABEL} bold />
+                {Array.from(acceptedBumps).map((id) => {
+                  const b = BUMPS.find((x) => x.id === id);
+                  if (!b) return null;
+                  return (
+                    <Row
+                      key={b.id}
+                      label={b.title}
+                      value={formatBRL(b.priceCents)}
+                    />
+                  );
+                })}
+                <Row
+                  label="Total"
+                  value={formatBRL(
+                    PRICE_CENTS +
+                      Array.from(acceptedBumps).reduce(
+                        (sum, id) =>
+                          sum + (BUMPS.find((b) => b.id === id)?.priceCents ?? 0),
+                        0,
+                      ),
+                  )}
+                  bold
+                />
               </div>
               <div className="mt-4 rounded-lg bg-amber-50 px-3 py-2 text-center text-[11px] font-bold uppercase tracking-wider text-amber-800">
                 Economia de 62%
@@ -620,6 +709,46 @@ function PixSuccess({
         Voltar ao checkout
       </button>
     </div>
+  );
+}
+
+function OrderBump({
+  bump,
+  checked,
+  onToggle,
+}: {
+  bump: (typeof BUMPS)[number];
+  checked: boolean;
+  onToggle: () => void;
+}) {
+  return (
+    <label
+      className={`flex cursor-pointer items-start gap-3 rounded-xl border-2 p-4 transition ${
+        checked
+          ? `${bump.borderColor} ${bump.bgLight} shadow-sm`
+          : "border-zinc-200 bg-white hover:border-zinc-300"
+      }`}
+    >
+      <input
+        type="checkbox"
+        checked={checked}
+        onChange={onToggle}
+        className="mt-1 h-4 w-4 accent-[#5d3a1a]"
+      />
+      <div className="flex-1">
+        {bump.badge && (
+          <span className="mb-1 inline-block rounded bg-[#5d3a1a] px-2 py-0.5 text-[10px] font-black uppercase tracking-wider text-white">
+            {bump.badge}
+          </span>
+        )}
+        <p className="text-sm font-black text-[#5d3a1a]">{bump.title}</p>
+        <p className="text-[11px] text-zinc-600">{bump.description}</p>
+        <p className="mt-1 text-xs font-bold text-emerald-700">
+          {bump.installment}
+        </p>
+      </div>
+      <span className="text-amber-600">{bump.icon}</span>
+    </label>
   );
 }
 
