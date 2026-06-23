@@ -676,3 +676,61 @@ function FaqItem({ q, a }: { q: string; a: string }) {
     </div>
   );
 }
+
+function PrintCard({
+  title,
+  children,
+  variant = "chat",
+}: {
+  title: string;
+  children: React.ReactNode;
+  variant?: "chat" | "pix" | "bank";
+}) {
+  const bg =
+    variant === "chat"
+      ? "bg-[#e5ddd5]"
+      : variant === "pix"
+        ? "bg-gradient-to-b from-emerald-50 to-emerald-100"
+        : "bg-gradient-to-b from-zinc-100 to-zinc-200";
+  return (
+    <div className="overflow-hidden rounded-[28px] border-[6px] border-zinc-900 bg-zinc-900 shadow-2xl">
+      <div className="flex items-center justify-between bg-zinc-900 px-4 py-1.5 text-[10px] font-bold text-white">
+        <span>9:41</span>
+        <span>📶 🔋</span>
+      </div>
+      <div className="bg-[#075e54] px-4 py-2 text-xs font-bold text-white">
+        {title}
+      </div>
+      <div className={`${bg} min-h-[280px] p-3`}>{children}</div>
+    </div>
+  );
+}
+
+function Bubble({
+  side,
+  name,
+  children,
+}: {
+  side: "left" | "right";
+  name?: string;
+  children: React.ReactNode;
+}) {
+  const isRight = side === "right";
+  return (
+    <div className={`flex ${isRight ? "justify-end" : "justify-start"}`}>
+      <div
+        className={`max-w-[85%] rounded-xl px-3 py-2 text-xs shadow-sm ${
+          isRight ? "bg-[#dcf8c6] text-zinc-900" : "bg-white text-zinc-900"
+        }`}
+      >
+        {name && (
+          <p className="text-[10px] font-bold text-rose-600">{name}</p>
+        )}
+        <p className="leading-snug">{children}</p>
+        <p className="mt-0.5 text-right text-[9px] text-zinc-400">
+          {isRight ? "✓✓" : ""}
+        </p>
+      </div>
+    </div>
+  );
+}
