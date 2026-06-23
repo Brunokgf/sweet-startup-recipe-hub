@@ -363,6 +363,25 @@ function CheckoutPage() {
                     </div>
                   )}
 
+                  <div className="mt-4 space-y-3">
+                    <p className="text-xs font-bold uppercase tracking-wider text-[#5d3a1a]">
+                      SIM, EU ACEITO ESSA OFERTA ESPECIAL!
+                    </p>
+                    {BUMPS.map((b) => (
+                      <OrderBump
+                        key={b.id}
+                        bump={b}
+                        checked={acceptedBumps.has(b.id)}
+                        onToggle={() => {
+                          const next = new Set(acceptedBumps);
+                          if (next.has(b.id)) next.delete(b.id);
+                          else next.add(b.id);
+                          setAcceptedBumps(next);
+                        }}
+                      />
+                    ))}
+                  </div>
+
                   {error && (
                     <p className="rounded-md bg-red-50 px-3 py-2 text-sm text-red-700 ring-1 ring-red-200">
                       {error}
