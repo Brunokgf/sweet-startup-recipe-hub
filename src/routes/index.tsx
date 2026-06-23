@@ -813,39 +813,3 @@ function WhatsAppCarousel() {
     </div>
   );
 }
-            style={{ transform: `translateX(-${index * 100}%)` }}
-          >
-            {prints.map((print, i) => (
-              <div key={i} className="w-full flex-none">
-                {print}
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <button
-          type="button"
-          onClick={next}
-          className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-white shadow-md ring-1 ring-[#e8ddd0] transition hover:scale-105"
-          aria-label="Próximo"
-        >
-          <ChevronRight className="h-5 w-5 text-[#5d3a1a]" />
-        </button>
-      </div>
-
-      <div className="mt-4 flex justify-center gap-2">
-        {prints.map((_, i) => (
-          <button
-            key={i}
-            type="button"
-            onClick={() => setIndex(i)}
-            className={`h-2 w-2 rounded-full transition ${
-              i === index ? "bg-[#5d3a1a]" : "bg-[#c4a882]/60"
-            }`}
-            aria-label={`Ir para print ${i + 1}`}
-          />
-        ))}
-      </div>
-    </div>
-  );
-}
