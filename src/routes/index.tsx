@@ -213,6 +213,169 @@ function LandingPage() {
         </div>
       </section>
 
+      {/* PROVAS SOCIAIS - PRINTS */}
+      <section className="bg-[#ebe4db] py-16">
+        <div className="mx-auto max-w-6xl px-4">
+          <span className="mx-auto block w-fit rounded-full bg-emerald-100 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-emerald-700">
+            Provas Reais
+          </span>
+          <h2 className="mt-3 text-center text-3xl sm:text-4xl font-black text-[#5d3a1a]">
+            Prints de alunas vendendo de verdade
+          </h2>
+          <p className="mt-3 text-center text-sm text-zinc-600">
+            Mensagens e comprovantes enviados pelas nossas alunas 👇
+          </p>
+
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {/* Print 1 - WhatsApp pedido */}
+            <PrintCard title="Pedido fechado pelo WhatsApp">
+              <div className="space-y-2">
+                <Bubble side="left" name="Cliente">
+                  Oii! Vc faz brigadeiro gourmet pra festa? 🎉
+                </Bubble>
+                <Bubble side="right">
+                  Faço sim! Tenho 12 sabores 😋 Quantos vc precisa?
+                </Bubble>
+                <Bubble side="left" name="Cliente">
+                  100 unidades pro aniversário da minha filha
+                </Bubble>
+                <Bubble side="right">Fechado! R$ 280,00 💕</Bubble>
+                <Bubble side="left" name="Cliente">
+                  Acabei de fazer o PIX ✅
+                </Bubble>
+              </div>
+            </PrintCard>
+
+            {/* Print 2 - Comprovante PIX */}
+            <PrintCard title="Comprovante recebido" variant="pix">
+              <div className="rounded-xl bg-white p-4 shadow-inner ring-1 ring-zinc-200">
+                <div className="flex items-center gap-2 border-b border-zinc-100 pb-2">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-md bg-emerald-500 text-xs font-black text-white">
+                    PIX
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-bold uppercase text-zinc-500">
+                      Transferência recebida
+                    </p>
+                    <p className="text-[10px] text-zinc-400">Hoje, 14:23</p>
+                  </div>
+                </div>
+                <p className="mt-3 text-2xl font-black text-emerald-600">
+                  + R$ 280,00
+                </p>
+                <p className="mt-1 text-xs text-zinc-600">de Mariana Costa S.</p>
+                <div className="mt-3 rounded-md bg-emerald-50 px-2 py-1 text-[10px] font-bold text-emerald-700">
+                  ✓ Crédito confirmado
+                </div>
+              </div>
+              <p className="mt-3 text-center text-xs italic text-zinc-600">
+                "Mais um pedido fechado essa semana! 🥳"
+              </p>
+            </PrintCard>
+
+            {/* Print 3 - Depoimento */}
+            <PrintCard title="Mensagem da aluna">
+              <div className="space-y-2">
+                <Bubble side="left" name="Patrícia 👩‍🍳">
+                  Gente, eu não acredito!! 😭
+                </Bubble>
+                <Bubble side="left" name="Patrícia 👩‍🍳">
+                  Faturei R$ 1.480 só esse mês vendendo no condomínio 🏠
+                </Bubble>
+                <Bubble side="left" name="Patrícia 👩‍🍳">
+                  Obrigada pelo curso, mudou minha vida ❤️
+                </Bubble>
+                <Bubble side="right">Que orgulho de vc!! 🥰</Bubble>
+              </div>
+            </PrintCard>
+
+            {/* Print 4 - Notificação banco */}
+            <PrintCard title="Notificação do banco" variant="bank">
+              <div className="rounded-xl bg-gradient-to-br from-zinc-900 to-zinc-800 p-4 text-white shadow-lg">
+                <div className="flex items-center justify-between text-[10px] opacity-70">
+                  <span>NUBANK</span>
+                  <span>agora</span>
+                </div>
+                <p className="mt-2 text-xs font-semibold">
+                  💰 Você recebeu um Pix
+                </p>
+                <p className="mt-1 text-xl font-black text-emerald-400">
+                  R$ 145,00
+                </p>
+                <p className="text-[10px] opacity-70">de Juliana Alves R.</p>
+              </div>
+              <div className="mt-2 rounded-xl bg-gradient-to-br from-purple-900 to-purple-700 p-4 text-white shadow-lg">
+                <div className="flex items-center justify-between text-[10px] opacity-70">
+                  <span>NUBANK</span>
+                  <span>5min</span>
+                </div>
+                <p className="mt-2 text-xs font-semibold">
+                  💰 Você recebeu um Pix
+                </p>
+                <p className="mt-1 text-xl font-black text-emerald-400">
+                  R$ 92,50
+                </p>
+                <p className="text-[10px] opacity-70">de Roberto P. Lima</p>
+              </div>
+            </PrintCard>
+
+            {/* Print 5 - Instagram DM */}
+            <PrintCard title="Pedido vindo do Instagram">
+              <div className="space-y-2">
+                <Bubble side="left" name="@thais.eventos">
+                  Vi seus brigadeiros no story, sao lindos! 😍
+                </Bubble>
+                <Bubble side="left" name="@thais.eventos">
+                  Faz pra casamento? Preciso de 500 unidades
+                </Bubble>
+                <Bubble side="right">
+                  Faço sim! Vou te mandar o orçamento agora 💌
+                </Bubble>
+                <Bubble side="left" name="@thais.eventos">
+                  Fechado!! Pode mandar a chave pix
+                </Bubble>
+              </div>
+            </PrintCard>
+
+            {/* Print 6 - Comprovante alto valor */}
+            <PrintCard title="Encomenda de festa" variant="pix">
+              <div className="rounded-xl bg-white p-4 shadow-inner ring-1 ring-zinc-200">
+                <div className="flex items-center gap-2 border-b border-zinc-100 pb-2">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-md bg-emerald-500 text-xs font-black text-white">
+                    PIX
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-bold uppercase text-zinc-500">
+                      Comprovante de pagamento
+                    </p>
+                    <p className="text-[10px] text-zinc-400">Sexta, 19:47</p>
+                  </div>
+                </div>
+                <p className="mt-3 text-2xl font-black text-emerald-600">
+                  + R$ 1.250,00
+                </p>
+                <p className="mt-1 text-xs text-zinc-600">
+                  de Eventos Bella Vista
+                </p>
+                <div className="mt-3 rounded-md bg-emerald-50 px-2 py-1 text-[10px] font-bold text-emerald-700">
+                  ✓ 400 brigadeiros — casamento
+                </div>
+              </div>
+              <p className="mt-3 text-center text-xs italic text-zinc-600">
+                "Maior pedido até hoje! 🚀"
+              </p>
+            </PrintCard>
+          </div>
+
+          <div className="mt-10 text-center">
+            <p className="mb-4 text-sm font-semibold text-zinc-700">
+              Você pode ser a próxima a receber esses prints 💸
+            </p>
+            <CTA>QUERO COMEÇAR AGORA</CTA>
+          </div>
+        </div>
+      </section>
+
       {/* VOCÊ VAI ENCONTRAR */}
       <section className="bg-[#f5f0eb] py-16">
         <div className="mx-auto max-w-5xl px-4">
@@ -510,6 +673,64 @@ function FaqItem({ q, a }: { q: string; a: string }) {
           {a}
         </div>
       )}
+    </div>
+  );
+}
+
+function PrintCard({
+  title,
+  children,
+  variant = "chat",
+}: {
+  title: string;
+  children: React.ReactNode;
+  variant?: "chat" | "pix" | "bank";
+}) {
+  const bg =
+    variant === "chat"
+      ? "bg-[#e5ddd5]"
+      : variant === "pix"
+        ? "bg-gradient-to-b from-emerald-50 to-emerald-100"
+        : "bg-gradient-to-b from-zinc-100 to-zinc-200";
+  return (
+    <div className="overflow-hidden rounded-[28px] border-[6px] border-zinc-900 bg-zinc-900 shadow-2xl">
+      <div className="flex items-center justify-between bg-zinc-900 px-4 py-1.5 text-[10px] font-bold text-white">
+        <span>9:41</span>
+        <span>📶 🔋</span>
+      </div>
+      <div className="bg-[#075e54] px-4 py-2 text-xs font-bold text-white">
+        {title}
+      </div>
+      <div className={`${bg} min-h-[280px] p-3`}>{children}</div>
+    </div>
+  );
+}
+
+function Bubble({
+  side,
+  name,
+  children,
+}: {
+  side: "left" | "right";
+  name?: string;
+  children: React.ReactNode;
+}) {
+  const isRight = side === "right";
+  return (
+    <div className={`flex ${isRight ? "justify-end" : "justify-start"}`}>
+      <div
+        className={`max-w-[85%] rounded-xl px-3 py-2 text-xs shadow-sm ${
+          isRight ? "bg-[#dcf8c6] text-zinc-900" : "bg-white text-zinc-900"
+        }`}
+      >
+        {name && (
+          <p className="text-[10px] font-bold text-rose-600">{name}</p>
+        )}
+        <p className="leading-snug">{children}</p>
+        <p className="mt-0.5 text-right text-[9px] text-zinc-400">
+          {isRight ? "✓✓" : ""}
+        </p>
+      </div>
     </div>
   );
 }
