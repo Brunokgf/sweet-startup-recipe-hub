@@ -449,25 +449,22 @@ function LandingPage() {
 }
 
 function CountdownTimer() {
-  const [timeLeft, setTimeLeft] = useState(() => {
-    const saved = typeof window !== "undefined" ? localStorage.getItem("brigadeiro-timer") : null;
-    const end = saved ? parseInt(saved, 10) : Date.now() + 15 * 60 * 1000;
-    if (!saved && typeof window !== "undefined") {
-      localStorage.setItem("brigadeiro-timer", String(end));
-    }
-    return Math.max(0, end - Date.now());
-  });
+  const [timeLeft, setTimeLeft] = useState(15 * 60 * 1000);
 
   useEffect(() => {
+    const saved = localStorage.getItem("brigadeiro-timer");
+    let end = saved ? parseInt(saved, 10) : Date.now() + 15 * 60 * 1000;
+    if (!saved) localStorage.setItem("brigadeiro-timer", String(end));
+    setTimeLeft(Math.max(0, end - Date.now()));
+
     const interval = setInterval(() => {
-      const saved = localStorage.getItem("brigadeiro-timer");
-      const end = saved ? parseInt(saved, 10) : Date.now() + 15 * 60 * 1000;
       const remaining = Math.max(0, end - Date.now());
-      setTimeLeft(remaining);
       if (remaining === 0) {
-        const newEnd = Date.now() + 15 * 60 * 1000;
-        localStorage.setItem("brigadeiro-timer", String(newEnd));
+        end = Date.now() + 15 * 60 * 1000;
+        localStorage.setItem("brigadeiro-timer", String(end));
         setTimeLeft(15 * 60 * 1000);
+      } else {
+        setTimeLeft(remaining);
       }
     }, 1000);
     return () => clearInterval(interval);
