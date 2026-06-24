@@ -14,6 +14,7 @@ import {
   Gift,
   Star,
   Zap,
+  Cake,
 } from "lucide-react";
 
 const PRICE_CENTS = 3700; // R$ 37,00
@@ -72,6 +73,17 @@ const BUMPS = [
     icon: <Star className="h-4 w-4" />,
     borderColor: "border-rose-400",
     bgLight: "bg-rose-50",
+  },
+  {
+    id: "bolo-de-pote",
+    title: "BOLO DE POTE LUCRATIVO",
+    description: "Curso em videoaulas + Apostila exclusiva",
+    badge: "MAIS VENDIDO!",
+    priceCents: 2495,
+    installment: "5x de R$ 4,99",
+    icon: <Cake className="h-4 w-4" />,
+    borderColor: "border-fuchsia-400",
+    bgLight: "bg-fuchsia-50",
   },
   {
     id: "iogurte",
