@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
-import { Check, Star, ChevronDown, ChevronLeft, ChevronRight, Timer } from "lucide-react";
+import { Check, Star, ChevronDown, ChevronLeft, ChevronRight, Timer, TrendingUp, Briefcase, Home, Users, PiggyBank, GraduationCap } from "lucide-react";
 
 import heroBg from "@/assets/brigadeiro-hero.jpg";
 import logo from "@/assets/logo-brigadeiro.png";
@@ -132,32 +132,82 @@ function LandingPage() {
 
       {/* PARA QUEM É */}
       <section className="bg-[#ebe4db] py-16">
-        <div className="mx-auto max-w-4xl px-4">
-          <h2 className="text-center text-3xl sm:text-4xl font-black text-[#5d3a1a]">
-            Pra quem é esse treinamento?
-          </h2>
-          <ul className="mt-10 grid gap-4 sm:grid-cols-2">
+        <div className="mx-auto max-w-5xl px-4">
+          <div className="text-center">
+            <span className="inline-block rounded-full bg-[#5d3a1a] px-4 py-1.5 text-xs font-black uppercase tracking-widest text-white shadow">
+              Feito para você
+            </span>
+            <h2 className="mt-4 text-3xl sm:text-4xl font-black text-[#5d3a1a]">
+              Pra quem é esse treinamento?
+            </h2>
+            <p className="mt-3 text-lg font-semibold text-[#8b5e3c]">
+              Se você se identifica com algum desses perfis, esse curso é para você!
+            </p>
+          </div>
+
+          <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {[
-              "Quem deseja uma renda extra",
-              "Pessoas desempregadas que querem começar a vender",
-              "Quem busca trabalhar em casa",
-              "Mulheres que desejam independência financeira",
-              "Quem procura uma atividade com baixo investimento",
-              "Pessoas sem experiência",
-            ].map((t) => (
-              <li
-                key={t}
-                className="flex items-start gap-3 rounded-xl bg-[#f5f0eb] px-5 py-4 font-semibold text-zinc-800"
-              >
-                <Check className="mt-0.5 h-5 w-5 flex-none text-[#5d3a1a]" />
-                <span>{t}</span>
-              </li>
-            ))}
+              {
+                t: "Quem deseja uma renda extra",
+                icon: TrendingUp,
+                cor: "bg-emerald-50 border-emerald-200 text-emerald-700",
+                iconeCor: "text-emerald-600",
+              },
+              {
+                t: "Pessoas desempregadas que querem começar a vender",
+                icon: Briefcase,
+                cor: "bg-amber-50 border-amber-200 text-amber-700",
+                iconeCor: "text-amber-600",
+              },
+              {
+                t: "Quem busca trabalhar em casa",
+                icon: Home,
+                cor: "bg-sky-50 border-sky-200 text-sky-700",
+                iconeCor: "text-sky-600",
+              },
+              {
+                t: "Mulheres que desejam independência financeira",
+                icon: Users,
+                cor: "bg-rose-50 border-rose-200 text-rose-700",
+                iconeCor: "text-rose-600",
+              },
+              {
+                t: "Quem procura uma atividade com baixo investimento",
+                icon: PiggyBank,
+                cor: "bg-violet-50 border-violet-200 text-violet-700",
+                iconeCor: "text-violet-600",
+              },
+              {
+                t: "Pessoas sem experiência",
+                icon: GraduationCap,
+                cor: "bg-orange-50 border-orange-200 text-orange-700",
+                iconeCor: "text-orange-600",
+              },
+            ].map((item) => {
+              const Icon = item.icon;
+              return (
+                <li
+                  key={item.t}
+                  className={`flex flex-col items-center gap-3 rounded-2xl border-2 ${item.cor} p-6 text-center shadow-sm transition-transform hover:-translate-y-1 hover:shadow-md`}
+                >
+                  <div className={`flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-sm`}>
+                    <Icon className={`h-6 w-6 ${item.iconeCor}`} />
+                  </div>
+                  <span className="font-bold leading-snug">{item.t}</span>
+                </li>
+              );
+            })}
           </ul>
-          <p className="mt-8 rounded-xl border-2 border-dashed border-[#c4a882] p-5 text-center font-medium text-zinc-700">
-            Mesmo que você nunca tenha produzido um brigadeiro gourmet, as aulas
-            mostram o <strong>passo a passo completo em videoaulas</strong>.
-          </p>
+
+          <div className="mt-10 rounded-2xl bg-[#5d3a1a] p-6 text-center text-white shadow-lg sm:p-8">
+            <p className="text-lg font-bold sm:text-xl">
+              Mesmo que você nunca tenha produzido um brigadeiro gourmet, as aulas
+              mostram o <span className="underline decoration-amber-400 underline-offset-4">passo a passo completo em videoaulas</span>.
+            </p>
+            <div className="mt-5">
+              <CTA>QUERO COMEÇAR AGORA</CTA>
+            </div>
+          </div>
         </div>
       </section>
 
