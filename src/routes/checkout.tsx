@@ -421,9 +421,11 @@ function CheckoutPage() {
                   )}
 
                   <div className="mt-4 space-y-3">
-                    <p className="text-xs font-bold uppercase tracking-wider text-[#5d3a1a]">
-                      SIM, EU ACEITO ESSA OFERTA ESPECIAL!
-                    </p>
+                    <div className="rounded-lg bg-gradient-to-r from-amber-100 to-orange-100 px-4 py-3 text-center ring-1 ring-amber-300">
+                      <p className="text-xs font-black uppercase tracking-wider text-amber-900">
+                        🔥 SIM, EU ACEITO ESSA OFERTA ESPECIAL!
+                      </p>
+                    </div>
                     {BUMPS.map((b) => (
                       <OrderBump
                         key={b.id}
