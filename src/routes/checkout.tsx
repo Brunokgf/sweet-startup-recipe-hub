@@ -624,6 +624,7 @@ function Field({
   placeholder,
   required,
   className = "",
+  name,
 }: {
   label: string;
   value: string;
@@ -632,6 +633,7 @@ function Field({
   placeholder?: string;
   required?: boolean;
   className?: string;
+  name?: string;
 }) {
   return (
     <label className={`block ${className}`}>
@@ -640,6 +642,7 @@ function Field({
       </span>
       <input
         type={type}
+        name={name}
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
