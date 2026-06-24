@@ -783,31 +783,36 @@ function OrderBump({
 }) {
   return (
     <label
-      className={`flex cursor-pointer items-start gap-3 rounded-xl border-2 p-4 transition ${
+      className={`relative flex cursor-pointer items-start gap-3 rounded-xl border-2 p-4 transition-all ${
         checked
-          ? `${bump.borderColor} ${bump.bgLight} shadow-sm`
-          : "border-zinc-200 bg-white hover:border-zinc-300"
+          ? `${bump.borderColor} ${bump.bgLight} shadow-lg ring-2 ring-amber-400/40 scale-[1.02]`
+          : "border-zinc-200 bg-white hover:border-zinc-300 hover:shadow-md"
       }`}
     >
+      {checked && (
+        <div className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500 text-white shadow-md">
+          <Check className="h-3.5 w-3.5" />
+        </div>
+      )}
       <input
         type="checkbox"
         checked={checked}
         onChange={onToggle}
-        className="mt-1 h-4 w-4 accent-[#5d3a1a]"
+        className="mt-1 h-5 w-5 accent-[#5d3a1a]"
       />
       <div className="flex-1">
         {bump.badge && (
-          <span className="mb-1 inline-block rounded bg-[#5d3a1a] px-2 py-0.5 text-[10px] font-black uppercase tracking-wider text-white">
+          <span className="mb-1 inline-block rounded bg-amber-500 px-2 py-0.5 text-[10px] font-black uppercase tracking-wider text-white shadow-sm">
             {bump.badge}
           </span>
         )}
         <p className="text-sm font-black text-[#5d3a1a]">{bump.title}</p>
         <p className="text-[11px] text-zinc-600">{bump.description}</p>
-        <p className="mt-1 text-xs font-bold text-emerald-700">
+        <p className="mt-1 text-sm font-black text-emerald-700">
           {bump.installment}
         </p>
       </div>
-      <span className="text-amber-600">{bump.icon}</span>
+      <span className={`${checked ? "text-amber-600" : "text-zinc-300"}`}>{bump.icon}</span>
     </label>
   );
 }
