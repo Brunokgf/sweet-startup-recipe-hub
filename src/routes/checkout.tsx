@@ -75,6 +75,17 @@ const BUMPS = [
     bgLight: "bg-rose-50",
   },
   {
+    id: "bolo-de-pote",
+    title: "BOLO DE POTE LUCRATIVO",
+    description: "Curso em videoaulas + Apostila exclusiva",
+    badge: "MAIS VENDIDO!",
+    priceCents: 2495,
+    installment: "5x de R$ 4,99",
+    icon: <Cake className="h-4 w-4" />,
+    borderColor: "border-fuchsia-400",
+    bgLight: "bg-fuchsia-50",
+  },
+  {
     id: "iogurte",
     title: "Iogurte Caseiro",
     description: "Curso em videoaulas + Bônus exclusivo + Certificado de Conclusão",
