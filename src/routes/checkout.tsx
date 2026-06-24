@@ -14,6 +14,7 @@ import {
   Gift,
   Star,
   Zap,
+  Cake,
 } from "lucide-react";
 
 const PRICE_CENTS = 3700; // R$ 37,00
