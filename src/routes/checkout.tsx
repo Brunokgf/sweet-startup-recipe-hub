@@ -736,11 +736,18 @@ function PixSuccess({
           alt="QR Code PIX"
           className="mx-auto mt-6 h-64 w-64 rounded-lg border border-zinc-200"
         />
+      ) : pix.qrCode ? (
+        <img
+          src={`https://api.qrserver.com/v1/create-qr-code/?size=300x300&margin=10&data=${encodeURIComponent(pix.qrCode)}`}
+          alt="QR Code PIX"
+          className="mx-auto mt-6 h-64 w-64 rounded-lg border border-zinc-200 bg-white"
+        />
       ) : (
         <p className="mt-6 rounded-md bg-amber-50 px-3 py-2 text-sm text-amber-800">
           QR não retornado. Use o código copia-e-cola abaixo.
         </p>
       )}
+
 
       {pix.qrCode && (
         <div className="mt-6 text-left">
