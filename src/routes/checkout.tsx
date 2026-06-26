@@ -132,6 +132,19 @@ function CheckoutPage() {
   const [copied, setCopied] = useState(false);
   const [acceptedBumps, setAcceptedBumps] = useState<Set<string>>(new Set());
 
+  const bumpsTotal = Array.from(acceptedBumps).reduce(
+    (sum, id) => sum + (BUMPS.find((b) => b.id === id)?.priceCents ?? 0),
+    0,
+  );
+  const totalAmount = PRICE_CENTS + bumpsTotal;
+  const bumpTitles = Array.from(acceptedBumps)
+    .map((id) => BUMPS.find((b) => b.id === id)?.title)
+    .filter(Boolean)
+    .join(" + ");
+  const productTitle = bumpTitles
+    ? `Curso Brigadeiro Gourmet + ${bumpTitles}`
+    : "Curso Brigadeiro Gourmet";
+
   const handlePixSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
@@ -142,8 +155,8 @@ function CheckoutPage() {
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
           ...form,
-          amount: PRICE_CENTS,
-          productTitle: "Curso Brigadeiro Gourmet",
+          amount: totalAmount,
+          productTitle,
         }),
       });
       const data = await res.json();
@@ -166,8 +179,8 @@ function CheckoutPage() {
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
           ...form,
-          amount: PRICE_CENTS,
-          productTitle: "Curso Brigadeiro Gourmet",
+          amount: totalAmount,
+          productTitle,
           installments: Number(card.installments),
           card: {
             number: card.number,
