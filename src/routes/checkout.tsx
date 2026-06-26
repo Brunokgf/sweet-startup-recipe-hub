@@ -179,8 +179,8 @@ function CheckoutPage() {
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
           ...form,
-          amount: PRICE_CENTS,
-          productTitle: "Curso Brigadeiro Gourmet",
+          amount: totalAmount,
+          productTitle,
           installments: Number(card.installments),
           card: {
             number: card.number,
