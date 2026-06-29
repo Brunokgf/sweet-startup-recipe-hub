@@ -734,6 +734,7 @@ function WhatsAppCarousel() {
       status="online"
       initials="MC"
       avatarColor="bg-rose-400"
+      avatarUrl={avatarMariana.url}
     >
       <Bubble side="left" time="14:18">
         Oii! Vc faz brigadeiro gourmet pra festa? 🎉
@@ -758,6 +759,7 @@ function WhatsAppCarousel() {
       status="digitando…"
       initials="PA"
       avatarColor="bg-amber-500"
+      avatarUrl={avatarPatricia.url}
     >
       <Bubble side="left" name="Patrícia" time="20:11">
         Gente, eu não acredito!! 😭
@@ -782,6 +784,7 @@ function WhatsAppCarousel() {
       status="visto por último hoje 11:42"
       initials="TE"
       avatarColor="bg-fuchsia-500"
+      avatarUrl={avatarThais.url}
     >
       <Bubble side="left" name="Thaís" time="11:30">
         Vi seus brigadeiros no story, são lindos! 😍
@@ -806,6 +809,7 @@ function WhatsAppCarousel() {
       status="online"
       initials="JA"
       avatarColor="bg-emerald-400"
+      avatarUrl={avatarJuliana.url}
     >
       <Bubble side="left" time="09:12">
         Bom dia! Queria encomendar 50 brigadeiros para o chá de bebê
