@@ -621,12 +621,14 @@ function WhatsAppPrint({
   status = "online",
   avatarColor = "bg-amber-500",
   initials,
+  avatarUrl,
   children,
 }: {
   contact: string;
   status?: string;
   avatarColor?: string;
   initials: string;
+  avatarUrl?: string;
   children: React.ReactNode;
 }) {
   return (
@@ -637,11 +639,21 @@ function WhatsAppPrint({
           <svg viewBox="0 0 24 24" className="h-5 w-5 fill-[#5d3a1a]">
             <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
           </svg>
-          <div
-            className={`flex h-10 w-10 items-center justify-center rounded-full ${avatarColor} text-sm font-black text-white shadow`}
-          >
-            {initials}
-          </div>
+          {avatarUrl ? (
+            <img
+              src={avatarUrl}
+              alt={contact}
+              className="h-10 w-10 rounded-full object-cover shadow ring-1 ring-black/10"
+              width={40}
+              height={40}
+            />
+          ) : (
+            <div
+              className={`flex h-10 w-10 items-center justify-center rounded-full ${avatarColor} text-sm font-black text-white shadow`}
+            >
+              {initials}
+            </div>
+          )}
           <div className="flex-1 leading-tight">
             <p className="text-[13px] font-bold text-zinc-900">{contact}</p>
             <p className="text-[11px] text-emerald-600">{status}</p>
