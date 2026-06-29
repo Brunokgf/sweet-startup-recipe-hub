@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
 import { Check, Star, ChevronDown, ChevronLeft, ChevronRight, Timer, TrendingUp, Briefcase, Home, Users, PiggyBank, GraduationCap } from "lucide-react";
+import { SaleNotifications } from "@/components/SaleNotifications";
+import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 import heroBg from "@/assets/brigadeiro-hero.jpg";
 import logo from "@/assets/logo-brigadeiro.png";
@@ -70,8 +72,10 @@ const FAQS = [
 ];
 
 function LandingPage() {
+  useScrollReveal();
   return (
     <main className="min-h-screen bg-[#f5f0eb] text-zinc-900">
+      <SaleNotifications />
       {/* HERO */}
       <section
         className="relative bg-cover bg-center"
