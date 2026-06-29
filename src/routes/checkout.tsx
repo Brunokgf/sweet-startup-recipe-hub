@@ -493,6 +493,10 @@ function CheckoutPage() {
                     )}
                   </button>
 
+                  <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-3 text-center text-xs text-emerald-800">
+                    <span className="font-bold">📱 As aulas serão enviadas pelo WhatsApp</span> assim que o pagamento for confirmado.
+                  </div>
+
                   <p className="text-center text-[10px] uppercase tracking-wider text-zinc-500">
                     Ambiente criptografado · SSL 256 bits
                   </p>
