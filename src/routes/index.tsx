@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
-import { Check, Star, ChevronDown, ChevronLeft, ChevronRight, Timer, TrendingUp, Briefcase, Home, Users, PiggyBank, GraduationCap } from "lucide-react";
+import { Check, Star, ChevronDown, ChevronLeft, ChevronRight, Timer, TrendingUp, Briefcase, Home, Users, PiggyBank, GraduationCap, MessageCircle } from "lucide-react";
 import { SaleNotifications } from "@/components/SaleNotifications";
 import { StickyUrgencyBar } from "@/components/StickyUrgencyBar";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
@@ -64,7 +64,7 @@ const FAQS = [
   },
   {
     q: "Quando vou receber o acesso ao curso?",
-    a: "Após a confirmação do pagamento o curso é liberado imediatamente — os dados de acesso são enviados ao seu e-mail.",
+    a: "Assim que o pagamento for confirmado, você receberá as aulas e o acesso pelo WhatsApp — rápido e prático!",
   },
   {
     q: "Como faço para receber o certificado?",
@@ -480,6 +480,7 @@ function LandingPage() {
                 "CERTIFICADO INCLUSO",
                 "4 BÔNUS EXCLUSIVOS",
                 "GARANTIA DE 7 DIAS",
+                "AULAS ENVIADAS PELO WHATSAPP",
               ].map((f) => (
                 <li key={f} className="flex items-center gap-2">
                   <Check className="h-4 w-4 text-[#5d3a1a]" />
@@ -489,6 +490,12 @@ function LandingPage() {
             </ul>
             <div className="mt-6">
               <CTA>COMPRAR AGORA!</CTA>
+            </div>
+            <div className="mt-4 flex items-center justify-center gap-2 rounded-lg bg-emerald-50 px-4 py-2.5 text-emerald-700 ring-1 ring-emerald-200">
+              <MessageCircle className="h-4 w-4" />
+              <span className="text-xs font-bold">
+                As aulas serão enviadas pelo WhatsApp assim que o pagamento for confirmado
+              </span>
             </div>
             <p className="mt-3 text-[10px] uppercase tracking-wider text-zinc-500">
               Pagamento seguro • Cartão e PIX
