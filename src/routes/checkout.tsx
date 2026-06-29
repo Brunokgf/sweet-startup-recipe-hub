@@ -577,6 +577,10 @@ function CheckoutPage() {
                 icon={<Lock className="h-4 w-4" />}
                 text="Compra 100% segura"
               />
+              <Benefit
+                icon={<MessageCircle className="h-4 w-4" />}
+                text="Aulas enviadas pelo WhatsApp"
+              />
             </div>
           </aside>
         </div>
