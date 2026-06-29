@@ -7,6 +7,10 @@ import logo from "@/assets/logo-brigadeiro.png";
 import sabores from "@/assets/sabores-brigadeiro.png.asset.json";
 import garantia from "@/assets/garantia-7dias.png";
 import certificado from "@/assets/certificado-brigadeiro.png";
+import avatarMariana from "@/assets/avatar-mariana.jpg.asset.json";
+import avatarPatricia from "@/assets/avatar-patricia.jpg.asset.json";
+import avatarThais from "@/assets/avatar-thais.jpg.asset.json";
+import avatarJuliana from "@/assets/avatar-juliana.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   component: LandingPage,
@@ -617,12 +621,14 @@ function WhatsAppPrint({
   status = "online",
   avatarColor = "bg-amber-500",
   initials,
+  avatarUrl,
   children,
 }: {
   contact: string;
   status?: string;
   avatarColor?: string;
   initials: string;
+  avatarUrl?: string;
   children: React.ReactNode;
 }) {
   return (
@@ -633,11 +639,21 @@ function WhatsAppPrint({
           <svg viewBox="0 0 24 24" className="h-5 w-5 fill-[#5d3a1a]">
             <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
           </svg>
-          <div
-            className={`flex h-10 w-10 items-center justify-center rounded-full ${avatarColor} text-sm font-black text-white shadow`}
-          >
-            {initials}
-          </div>
+          {avatarUrl ? (
+            <img
+              src={avatarUrl}
+              alt={contact}
+              className="h-10 w-10 rounded-full object-cover shadow ring-1 ring-black/10"
+              width={40}
+              height={40}
+            />
+          ) : (
+            <div
+              className={`flex h-10 w-10 items-center justify-center rounded-full ${avatarColor} text-sm font-black text-white shadow`}
+            >
+              {initials}
+            </div>
+          )}
           <div className="flex-1 leading-tight">
             <p className="text-[13px] font-bold text-zinc-900">{contact}</p>
             <p className="text-[11px] text-emerald-600">{status}</p>
@@ -718,6 +734,7 @@ function WhatsAppCarousel() {
       status="online"
       initials="MC"
       avatarColor="bg-rose-400"
+      avatarUrl={avatarMariana.url}
     >
       <Bubble side="left" time="14:18">
         Oii! Vc faz brigadeiro gourmet pra festa? 🎉
@@ -742,6 +759,7 @@ function WhatsAppCarousel() {
       status="digitando…"
       initials="PA"
       avatarColor="bg-amber-500"
+      avatarUrl={avatarPatricia.url}
     >
       <Bubble side="left" name="Patrícia" time="20:11">
         Gente, eu não acredito!! 😭
@@ -766,6 +784,7 @@ function WhatsAppCarousel() {
       status="visto por último hoje 11:42"
       initials="TE"
       avatarColor="bg-fuchsia-500"
+      avatarUrl={avatarThais.url}
     >
       <Bubble side="left" name="Thaís" time="11:30">
         Vi seus brigadeiros no story, são lindos! 😍
@@ -790,6 +809,7 @@ function WhatsAppCarousel() {
       status="online"
       initials="JA"
       avatarColor="bg-emerald-400"
+      avatarUrl={avatarJuliana.url}
     >
       <Bubble side="left" time="09:12">
         Bom dia! Queria encomendar 50 brigadeiros para o chá de bebê
