@@ -491,6 +491,12 @@ function LandingPage() {
             <div className="mt-6">
               <CTA>COMPRAR AGORA!</CTA>
             </div>
+            <div className="mt-4 flex items-center justify-center gap-2 rounded-lg bg-emerald-50 px-4 py-2.5 text-emerald-700 ring-1 ring-emerald-200">
+              <MessageCircle className="h-4 w-4" />
+              <span className="text-xs font-bold">
+                As aulas serão enviadas pelo WhatsApp assim que o pagamento for confirmado
+              </span>
+            </div>
             <p className="mt-3 text-[10px] uppercase tracking-wider text-zinc-500">
               Pagamento seguro • Cartão e PIX
             </p>
