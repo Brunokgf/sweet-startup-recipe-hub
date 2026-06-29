@@ -108,6 +108,28 @@ const BUMPS = [
     borderColor: "border-sky-400",
     bgLight: "bg-sky-50",
   },
+  {
+    id: "mousse",
+    title: "MOUSSE LUCRATIVO",
+    description: "Curso em videoaulas + Receitas exclusivas",
+    badge: "NOVIDADE!",
+    priceCents: 1790,
+    installment: "5x de R$ 3,58",
+    icon: <Zap className="h-4 w-4" />,
+    borderColor: "border-orange-400",
+    bgLight: "bg-orange-50",
+  },
+  {
+    id: "cheesecake-pote",
+    title: "CHEESECAKE NO POTE",
+    description: "Curso em videoaulas + Apostila de vendas",
+    badge: "SUPER PEDIDO!",
+    priceCents: 1990,
+    installment: "5x de R$ 3,98",
+    icon: <Star className="h-4 w-4" />,
+    borderColor: "border-violet-400",
+    bgLight: "bg-violet-50",
+  },
 ];
 
 function CheckoutPage() {
