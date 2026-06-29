@@ -26,15 +26,18 @@ function PagamentoConcluido() {
           Pagamento Concluído!
         </h1>
         <p className="mt-3 text-sm text-zinc-600 sm:text-base">
-          Recebemos seus dados com sucesso. Em instantes nossa equipe entrará em
-          contato pelo seu e-mail ou WhatsApp para confirmar a compra e liberar
-          o acesso ao curso.
+          Recebemos seus dados com sucesso. Assim que o pagamento for
+          confirmado, nossa equipe enviará as aulas e o acesso ao curso
+          diretamente pelo seu <strong>WhatsApp</strong>.
         </p>
         <div className="mt-6 rounded-xl bg-amber-50 p-4 text-left text-sm text-amber-900 ring-1 ring-amber-200">
-          <p className="font-bold">📩 Próximos passos</p>
+          <p className="font-bold">📱 Próximos passos</p>
           <ul className="mt-2 list-disc space-y-1 pl-4 text-xs">
-            <li>Verifique seu e-mail (e a caixa de spam).</li>
-            <li>Em breve você receberá os dados de acesso.</li>
+            <li>
+              Assim que o pagamento for confirmado, você receberá as aulas pelo
+              WhatsApp.
+            </li>
+            <li>Fique atento(a) às mensagens no seu celular.</li>
             <li>Qualquer dúvida, fale com nosso suporte no WhatsApp.</li>
           </ul>
         </div>

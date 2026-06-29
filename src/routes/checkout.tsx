@@ -15,6 +15,7 @@ import {
   Star,
   Zap,
   Cake,
+  MessageCircle,
 } from "lucide-react";
 
 const PRICE_CENTS = 3700; // R$ 37,00
@@ -492,6 +493,10 @@ function CheckoutPage() {
                     )}
                   </button>
 
+                  <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-3 text-center text-xs text-emerald-800">
+                    <span className="font-bold">📱 As aulas serão enviadas pelo WhatsApp</span> assim que o pagamento for confirmado.
+                  </div>
+
                   <p className="text-center text-[10px] uppercase tracking-wider text-zinc-500">
                     Ambiente criptografado · SSL 256 bits
                   </p>
@@ -571,6 +576,10 @@ function CheckoutPage() {
               <Benefit
                 icon={<Lock className="h-4 w-4" />}
                 text="Compra 100% segura"
+              />
+              <Benefit
+                icon={<MessageCircle className="h-4 w-4" />}
+                text="Aulas enviadas pelo WhatsApp"
               />
             </div>
           </aside>
