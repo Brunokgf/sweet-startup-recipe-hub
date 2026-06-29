@@ -77,6 +77,7 @@ function LandingPage() {
   return (
     <main className="min-h-screen bg-[#f5f0eb] text-zinc-900">
       <SaleNotifications />
+      <StickyUrgencyBar />
       {/* HERO */}
       <section
         className="relative bg-cover bg-center"
