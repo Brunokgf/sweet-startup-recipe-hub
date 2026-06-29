@@ -15,6 +15,7 @@ import {
   Star,
   Zap,
   Cake,
+  MessageCircle,
 } from "lucide-react";
 
 const PRICE_CENTS = 3700; // R$ 37,00
