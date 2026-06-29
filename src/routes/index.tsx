@@ -64,7 +64,7 @@ const FAQS = [
   },
   {
     q: "Quando vou receber o acesso ao curso?",
-    a: "Após a confirmação do pagamento o curso é liberado imediatamente — os dados de acesso são enviados ao seu e-mail.",
+    a: "Assim que o pagamento for confirmado, você receberá as aulas e o acesso pelo WhatsApp — rápido e prático!",
   },
   {
     q: "Como faço para receber o certificado?",
