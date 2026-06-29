@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
 import { Check, Star, ChevronDown, ChevronLeft, ChevronRight, Timer, TrendingUp, Briefcase, Home, Users, PiggyBank, GraduationCap } from "lucide-react";
 import { SaleNotifications } from "@/components/SaleNotifications";
+import { StickyUrgencyBar } from "@/components/StickyUrgencyBar";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 import heroBg from "@/assets/brigadeiro-hero.jpg";
@@ -76,6 +77,7 @@ function LandingPage() {
   return (
     <main className="min-h-screen bg-[#f5f0eb] text-zinc-900">
       <SaleNotifications />
+      <StickyUrgencyBar />
       {/* HERO */}
       <section
         className="relative bg-cover bg-center"
