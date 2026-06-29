@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
 import { Check, Star, ChevronDown, ChevronLeft, ChevronRight, Timer, TrendingUp, Briefcase, Home, Users, PiggyBank, GraduationCap } from "lucide-react";
 import { SaleNotifications } from "@/components/SaleNotifications";
+import { StickyUrgencyBar } from "@/components/StickyUrgencyBar";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 import heroBg from "@/assets/brigadeiro-hero.jpg";
