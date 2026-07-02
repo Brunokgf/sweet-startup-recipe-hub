@@ -104,7 +104,11 @@ function LandingPage() {
           <p className="mt-4 text-lg sm:text-xl font-semibold text-[#8b5e3c]">
             Mesmo começando do zero!
           </p>
-          <p className="mt-6 text-3xl font-black text-zinc-900">+6.000 Alunas</p>
+          <p className="mt-4 inline-flex items-center gap-2 rounded-full bg-[#5d3a1a]/10 px-4 py-1.5 text-sm font-bold text-[#5d3a1a]">
+            <Users className="h-4 w-4" />
+            Mentorado por Luiza Quadros
+          </p>
+          <p className="mt-4 text-3xl font-black text-zinc-900">+6.000 Alunas</p>
           <p className="text-sm font-medium text-zinc-700">
             Já transformaram sua vida com nossas receitas
           </p>
