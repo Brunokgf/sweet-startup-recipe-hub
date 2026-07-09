@@ -75,7 +75,7 @@ const FAQS = [
 function LandingPage() {
   useScrollReveal();
   return (
-    <main className="min-h-screen bg-[#f5f0eb] text-zinc-900">
+    <main className="min-h-screen bg-[#4a2c18] text-zinc-900">
       <SaleNotifications />
       <StickyUrgencyBar />
       {/* HERO */}
@@ -83,7 +83,7 @@ function LandingPage() {
         className="relative overflow-hidden bg-cover bg-center"
         style={{ backgroundImage: `url(${heroBg})` }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-[#f5f0eb]/85 via-[#f5f0eb]/70 to-[#f5f0eb]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#4a2c18]/85 via-[#4a2c18]/75 to-[#4a2c18]" />
 
         {/* Emojis flutuantes */}
         <span className="float-emoji left-[6%] top-[12%]" style={{ animationDelay: "0s" }}>🍫</span>
@@ -157,7 +157,7 @@ function LandingPage() {
       </section>
 
       {/* PARA QUEM É */}
-      <section className="bg-[#ebe4db] py-16">
+      <section className="bg-[#3d2314] py-16">
         <div className="mx-auto max-w-5xl px-4">
           <div className="text-center">
             <span className="inline-block rounded-full bg-[#5d3a1a] px-4 py-1.5 text-xs font-black uppercase tracking-widest text-white shadow">
@@ -238,7 +238,7 @@ function LandingPage() {
       </section>
 
       {/* DEPOIMENTOS */}
-      <section className="bg-[#f5f0eb] py-16">
+      <section className="bg-[#4a2c18] py-16">
         <div className="mx-auto max-w-5xl px-4">
           <h2 className="text-center text-3xl sm:text-4xl font-black text-[#5d3a1a]">
             O QUE NOSSAS ALUNAS ESTÃO DIZENDO
@@ -291,7 +291,7 @@ function LandingPage() {
       </section>
 
       {/* PROVAS SOCIAIS - PRINTS */}
-      <section className="bg-[#ebe4db] py-16">
+      <section className="bg-[#3d2314] py-16">
         <div className="mx-auto max-w-5xl px-4">
           <span className="mx-auto block w-fit rounded-full bg-emerald-100 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-emerald-700">
             Provas Reais
@@ -315,7 +315,7 @@ function LandingPage() {
       </section>
 
       {/* VOCÊ VAI ENCONTRAR */}
-      <section className="bg-[#f5f0eb] py-16">
+      <section className="bg-[#4a2c18] py-16">
         <div className="mx-auto max-w-5xl px-4">
           <h2 className="text-center text-3xl sm:text-4xl font-black text-[#5d3a1a]">
             VOCÊ VAI ENCONTRAR!
@@ -351,7 +351,7 @@ function LandingPage() {
       </section>
 
       {/* SABORES */}
-      <section className="bg-[#ebe4db] py-16">
+      <section className="bg-[#3d2314] py-16">
         <div className="mx-auto max-w-5xl px-4">
           <h2 className="text-center text-2xl sm:text-3xl font-black text-zinc-900">
             VEJA ALGUNS SABORES QUE VOCÊ VAI APRENDER A FAZER
@@ -381,7 +381,7 @@ function LandingPage() {
       </section>
 
       {/* BENEFÍCIOS */}
-      <section className="bg-[#f5f0eb] py-16">
+      <section className="bg-[#4a2c18] py-16">
         <div className="mx-auto max-w-5xl px-4">
           <h2 className="text-center text-3xl sm:text-4xl font-black text-[#5d3a1a]">
             O curso ideal para você que busca:
@@ -521,7 +521,7 @@ function LandingPage() {
       </section>
 
       {/* FAQ */}
-      <section className="bg-[#f5f0eb] py-16">
+      <section className="bg-[#4a2c18] py-16">
         <div className="mx-auto max-w-2xl px-4">
           <h2 className="text-center text-3xl font-black text-[#5d3a1a]">
             Dúvidas Frequentes
@@ -535,7 +535,7 @@ function LandingPage() {
       </section>
 
       {/* GARANTIA */}
-      <section className="bg-[#ebe4db] py-16">
+      <section className="bg-[#3d2314] py-16">
         <div className="mx-auto flex max-w-3xl flex-col items-center gap-6 px-4 text-center md:flex-row md:text-left">
           <img
             src={garantia}
