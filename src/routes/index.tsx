@@ -150,7 +150,7 @@ function LandingPage() {
           <div className="mt-8">
             <CTA>QUERO COMEÇAR AGORA</CTA>
           </div>
-          <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-zinc-600">
+          <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-amber-200">
             Pagamento 100% seguro • Cartão e PIX
           </p>
         </div>
@@ -299,14 +299,14 @@ function LandingPage() {
           <h2 className="mt-3 text-center text-3xl sm:text-4xl font-black text-amber-300">
             Prints de alunas vendendo de verdade
           </h2>
-          <p className="mt-3 text-center text-sm text-zinc-600">
+          <p className="mt-3 text-center text-sm text-amber-200">
             Conversas reais de pedidos fechados pelo WhatsApp 👇
           </p>
 
           <WhatsAppCarousel />
 
           <div className="mt-10 text-center">
-            <p className="mb-4 text-sm font-semibold text-zinc-700">
+            <p className="mb-4 text-sm font-semibold text-amber-100">
               Você pode ser a próxima a receber esses prints 💸
             </p>
             <CTA>QUERO COMEÇAR AGORA</CTA>
