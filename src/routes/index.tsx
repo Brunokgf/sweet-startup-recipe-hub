@@ -80,43 +80,55 @@ function LandingPage() {
       <StickyUrgencyBar />
       {/* HERO */}
       <section
-        className="relative bg-cover bg-center"
+        className="relative overflow-hidden bg-cover bg-center"
         style={{ backgroundImage: `url(${heroBg})` }}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-[#f5f0eb]/85 via-[#f5f0eb]/70 to-[#f5f0eb]" />
+
+        {/* Emojis flutuantes */}
+        <span className="float-emoji left-[6%] top-[12%]" style={{ animationDelay: "0s" }}>🍫</span>
+        <span className="float-emoji right-[8%] top-[18%]" style={{ animationDelay: "1.2s" }}>✨</span>
+        <span className="float-emoji left-[10%] top-[55%]" style={{ animationDelay: "2.4s" }}>💰</span>
+        <span className="float-emoji right-[6%] top-[60%]" style={{ animationDelay: "0.6s" }}>🎉</span>
+        <span className="float-emoji left-[85%] top-[35%] hidden sm:block" style={{ animationDelay: "3s" }}>🍬</span>
+        <span className="float-emoji left-[3%] top-[38%] hidden sm:block" style={{ animationDelay: "1.8s" }}>⭐</span>
+
         <div className="relative mx-auto max-w-3xl px-4 py-10 text-center">
           <img
             src={logo}
             alt="Receitas Criativas"
             width={160}
             height={160}
-            className="mx-auto h-32 w-32 sm:h-40 sm:w-40 drop-shadow-lg"
+            className="mx-auto h-32 w-32 sm:h-40 sm:w-40 drop-shadow-lg animate-bounce-in"
           />
           <p className="mt-6 text-xl sm:text-2xl font-extrabold tracking-wide text-zinc-900">
             APRENDA A PRODUZIR
           </p>
-          <h1 className="mt-2 text-4xl sm:text-6xl font-black uppercase tracking-tight text-[#5d3a1a] drop-shadow-sm">
+          <h1 className="mt-2 text-4xl sm:text-6xl font-black uppercase tracking-tight text-gradient-hot drop-shadow-sm">
             Brigadeiros Gourmet
           </h1>
           <div className="mt-4 inline-block w-full max-w-xl rounded-md bg-[#5d3a1a] px-4 py-3 text-xl sm:text-2xl font-extrabold uppercase text-white shadow">
-            E crie uma renda extra
+            E crie uma renda extra 💸
           </div>
           <p className="mt-4 text-lg sm:text-xl font-semibold text-[#8b5e3c]">
             Mesmo começando do zero!
           </p>
-          <p className="mt-4 inline-flex items-center gap-2 rounded-full bg-[#5d3a1a]/10 px-4 py-1.5 text-sm font-bold text-[#5d3a1a]">
+          <p className="mt-4 inline-flex animate-wiggle items-center gap-2 rounded-full bg-gradient-to-r from-amber-400 to-amber-500 px-4 py-1.5 text-sm font-black uppercase tracking-wide text-[#3d2314] shadow-lg">
             <Users className="h-4 w-4" />
             Mentorado por Luiza Quadros
           </p>
-          <p className="mt-4 text-3xl font-black text-zinc-900">+6.000 Alunas</p>
+          <p className="mt-4 text-3xl font-black text-zinc-900">
+            <span className="sparkle-glow">+6.000 Alunas 🔥</span>
+          </p>
           <p className="text-sm font-medium text-zinc-700">
             Já transformaram sua vida com nossas receitas
           </p>
           <div className="mt-3 flex justify-center gap-1 text-amber-400">
             {[0, 1, 2, 3, 4].map((i) => (
-              <Star key={i} className="h-6 w-6 fill-amber-400" />
+              <Star key={i} className="h-6 w-6 fill-amber-400 animate-bounce-in" style={{ animationDelay: `${i * 0.1}s` }} />
             ))}
           </div>
+
 
           {/* VSL PLACEHOLDER */}
           <div className="mx-auto mt-8 w-full max-w-2xl overflow-hidden rounded-xl border-4 border-white bg-zinc-900 shadow-2xl">
@@ -603,9 +615,9 @@ function CTA({ children }: { children: React.ReactNode }) {
   return (
     <Link
       to="/checkout"
-      className="inline-block w-full max-w-md animate-pulse-cta rounded-full bg-gradient-to-b from-[#8b5e3c] to-[#5d3a1a] px-8 py-5 text-lg font-black uppercase tracking-wide text-white shadow-lg shadow-amber-900/30 transition-transform hover:scale-105"
+      className="btn-shine inline-block w-full max-w-md animate-pulse-cta rounded-full bg-gradient-to-b from-[#a06a3f] via-[#8b5e3c] to-[#5d3a1a] px-8 py-5 text-lg font-black uppercase tracking-wide text-white shadow-xl shadow-amber-900/40 transition-transform hover:scale-105"
     >
-      {children}
+      {children} 🚀
     </Link>
   );
 }
