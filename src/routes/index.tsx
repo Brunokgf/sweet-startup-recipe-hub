@@ -75,7 +75,7 @@ const FAQS = [
 function LandingPage() {
   useScrollReveal();
   return (
-    <main className="min-h-screen bg-[#f5f0eb] text-zinc-900">
+    <main className="min-h-screen bg-[#4a2c18] text-zinc-900">
       <SaleNotifications />
       <StickyUrgencyBar />
       {/* HERO */}
@@ -83,7 +83,7 @@ function LandingPage() {
         className="relative overflow-hidden bg-cover bg-center"
         style={{ backgroundImage: `url(${heroBg})` }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-[#f5f0eb]/85 via-[#f5f0eb]/70 to-[#f5f0eb]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#4a2c18]/85 via-[#4a2c18]/75 to-[#4a2c18]" />
 
         {/* Emojis flutuantes */}
         <span className="float-emoji left-[6%] top-[12%]" style={{ animationDelay: "0s" }}>🍫</span>
@@ -101,7 +101,7 @@ function LandingPage() {
             height={160}
             className="mx-auto h-32 w-32 sm:h-40 sm:w-40 drop-shadow-lg animate-bounce-in"
           />
-          <p className="mt-6 text-xl sm:text-2xl font-extrabold tracking-wide text-zinc-900">
+          <p className="mt-6 text-xl sm:text-2xl font-extrabold tracking-wide text-amber-100">
             APRENDA A PRODUZIR
           </p>
           <h1 className="mt-2 text-4xl sm:text-6xl font-black uppercase tracking-tight text-gradient-hot drop-shadow-sm">
@@ -110,17 +110,17 @@ function LandingPage() {
           <div className="mt-4 inline-block w-full max-w-xl rounded-md bg-[#5d3a1a] px-4 py-3 text-xl sm:text-2xl font-extrabold uppercase text-white shadow">
             E crie uma renda extra 💸
           </div>
-          <p className="mt-4 text-lg sm:text-xl font-semibold text-[#8b5e3c]">
+          <p className="mt-4 text-lg sm:text-xl font-semibold text-amber-200">
             Mesmo começando do zero!
           </p>
           <p className="mt-4 inline-flex animate-wiggle items-center gap-2 rounded-full bg-gradient-to-r from-amber-400 to-amber-500 px-4 py-1.5 text-sm font-black uppercase tracking-wide text-[#3d2314] shadow-lg">
             <Users className="h-4 w-4" />
             Mentorado por Luiza Quadros
           </p>
-          <p className="mt-4 text-3xl font-black text-zinc-900">
+          <p className="mt-4 text-3xl font-black text-white">
             <span className="sparkle-glow">+6.000 Alunas 🔥</span>
           </p>
-          <p className="text-sm font-medium text-zinc-700">
+          <p className="text-sm font-medium text-amber-200">
             Já transformaram sua vida com nossas receitas
           </p>
           <div className="mt-3 flex justify-center gap-1 text-amber-400">
@@ -150,23 +150,23 @@ function LandingPage() {
           <div className="mt-8">
             <CTA>QUERO COMEÇAR AGORA</CTA>
           </div>
-          <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-zinc-600">
+          <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-amber-200">
             Pagamento 100% seguro • Cartão e PIX
           </p>
         </div>
       </section>
 
       {/* PARA QUEM É */}
-      <section className="bg-[#ebe4db] py-16">
+      <section className="bg-[#3d2314] py-16">
         <div className="mx-auto max-w-5xl px-4">
           <div className="text-center">
             <span className="inline-block rounded-full bg-[#5d3a1a] px-4 py-1.5 text-xs font-black uppercase tracking-widest text-white shadow">
               Feito para você
             </span>
-            <h2 className="mt-4 text-3xl sm:text-4xl font-black text-[#5d3a1a]">
+            <h2 className="mt-4 text-3xl sm:text-4xl font-black text-amber-300">
               Pra quem é esse treinamento?
             </h2>
-            <p className="mt-3 text-lg font-semibold text-[#8b5e3c]">
+            <p className="mt-3 text-lg font-semibold text-amber-200">
               Se você se identifica com algum desses perfis, esse curso é para você!
             </p>
           </div>
@@ -238,9 +238,9 @@ function LandingPage() {
       </section>
 
       {/* DEPOIMENTOS */}
-      <section className="bg-[#f5f0eb] py-16">
+      <section className="bg-[#4a2c18] py-16">
         <div className="mx-auto max-w-5xl px-4">
-          <h2 className="text-center text-3xl sm:text-4xl font-black text-[#5d3a1a]">
+          <h2 className="text-center text-3xl sm:text-4xl font-black text-amber-300">
             O QUE NOSSAS ALUNAS ESTÃO DIZENDO
           </h2>
           <div className="mt-10 grid gap-6 md:grid-cols-3">
@@ -291,22 +291,22 @@ function LandingPage() {
       </section>
 
       {/* PROVAS SOCIAIS - PRINTS */}
-      <section className="bg-[#ebe4db] py-16">
+      <section className="bg-[#3d2314] py-16">
         <div className="mx-auto max-w-5xl px-4">
           <span className="mx-auto block w-fit rounded-full bg-emerald-100 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-emerald-700">
             Provas Reais
           </span>
-          <h2 className="mt-3 text-center text-3xl sm:text-4xl font-black text-[#5d3a1a]">
+          <h2 className="mt-3 text-center text-3xl sm:text-4xl font-black text-amber-300">
             Prints de alunas vendendo de verdade
           </h2>
-          <p className="mt-3 text-center text-sm text-zinc-600">
+          <p className="mt-3 text-center text-sm text-amber-200">
             Conversas reais de pedidos fechados pelo WhatsApp 👇
           </p>
 
           <WhatsAppCarousel />
 
           <div className="mt-10 text-center">
-            <p className="mb-4 text-sm font-semibold text-zinc-700">
+            <p className="mb-4 text-sm font-semibold text-amber-100">
               Você pode ser a próxima a receber esses prints 💸
             </p>
             <CTA>QUERO COMEÇAR AGORA</CTA>
@@ -315,9 +315,9 @@ function LandingPage() {
       </section>
 
       {/* VOCÊ VAI ENCONTRAR */}
-      <section className="bg-[#f5f0eb] py-16">
+      <section className="bg-[#4a2c18] py-16">
         <div className="mx-auto max-w-5xl px-4">
-          <h2 className="text-center text-3xl sm:text-4xl font-black text-[#5d3a1a]">
+          <h2 className="text-center text-3xl sm:text-4xl font-black text-amber-300">
             VOCÊ VAI ENCONTRAR!
           </h2>
           <div className="mt-10 grid gap-6 md:grid-cols-3">
@@ -351,7 +351,7 @@ function LandingPage() {
       </section>
 
       {/* SABORES */}
-      <section className="bg-[#ebe4db] py-16">
+      <section className="bg-[#3d2314] py-16">
         <div className="mx-auto max-w-5xl px-4">
           <h2 className="text-center text-2xl sm:text-3xl font-black text-zinc-900">
             VEJA ALGUNS SABORES QUE VOCÊ VAI APRENDER A FAZER
@@ -381,9 +381,9 @@ function LandingPage() {
       </section>
 
       {/* BENEFÍCIOS */}
-      <section className="bg-[#f5f0eb] py-16">
+      <section className="bg-[#4a2c18] py-16">
         <div className="mx-auto max-w-5xl px-4">
-          <h2 className="text-center text-3xl sm:text-4xl font-black text-[#5d3a1a]">
+          <h2 className="text-center text-3xl sm:text-4xl font-black text-amber-300">
             O curso ideal para você que busca:
           </h2>
           <div className="mt-10 grid gap-6 md:grid-cols-2">
@@ -466,7 +466,7 @@ function LandingPage() {
       </section>
 
       {/* OFERTA */}
-      <section className="bg-white py-16">
+      <section className="bg-[#4a2c18] py-16">
         <div className="mx-auto max-w-xl px-4">
           <div className="rounded-3xl border-4 border-[#5d3a1a] bg-white p-8 text-center shadow-xl">
             <p className="inline-block rounded-full bg-[#5d3a1a] px-4 py-1 text-xs font-black uppercase tracking-wider text-white">
@@ -521,9 +521,9 @@ function LandingPage() {
       </section>
 
       {/* FAQ */}
-      <section className="bg-[#f5f0eb] py-16">
+      <section className="bg-[#4a2c18] py-16">
         <div className="mx-auto max-w-2xl px-4">
-          <h2 className="text-center text-3xl font-black text-[#5d3a1a]">
+          <h2 className="text-center text-3xl font-black text-amber-300">
             Dúvidas Frequentes
           </h2>
           <div className="mt-8 space-y-3">
@@ -535,7 +535,7 @@ function LandingPage() {
       </section>
 
       {/* GARANTIA */}
-      <section className="bg-[#ebe4db] py-16">
+      <section className="bg-[#3d2314] py-16">
         <div className="mx-auto flex max-w-3xl flex-col items-center gap-6 px-4 text-center md:flex-row md:text-left">
           <img
             src={garantia}
@@ -546,10 +546,10 @@ function LandingPage() {
             className="h-40 w-40 flex-none"
           />
           <div>
-            <p className="text-2xl font-black text-[#5d3a1a]">
+            <p className="text-2xl font-black text-amber-300">
               RISCO ZERO PARA VOCÊ
             </p>
-            <p className="mt-2 text-zinc-700">
+            <p className="mt-2 text-amber-100">
               O Código de Defesa do Consumidor (Art. 49) garante 7 dias para
               solicitar reembolso em caso de insatisfação. Você terá{" "}
               <strong>7 dias de garantia incondicional</strong>.
