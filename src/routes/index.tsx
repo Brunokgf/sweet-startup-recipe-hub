@@ -101,7 +101,7 @@ function LandingPage() {
             height={160}
             className="mx-auto h-32 w-32 sm:h-40 sm:w-40 drop-shadow-lg animate-bounce-in"
           />
-          <p className="mt-6 text-xl sm:text-2xl font-extrabold tracking-wide text-zinc-900">
+          <p className="mt-6 text-xl sm:text-2xl font-extrabold tracking-wide text-amber-100">
             APRENDA A PRODUZIR
           </p>
           <h1 className="mt-2 text-4xl sm:text-6xl font-black uppercase tracking-tight text-gradient-hot drop-shadow-sm">
@@ -120,7 +120,7 @@ function LandingPage() {
           <p className="mt-4 text-3xl font-black text-white">
             <span className="sparkle-glow">+6.000 Alunas 🔥</span>
           </p>
-          <p className="text-sm font-medium text-zinc-700">
+          <p className="text-sm font-medium text-amber-200">
             Já transformaram sua vida com nossas receitas
           </p>
           <div className="mt-3 flex justify-center gap-1 text-amber-400">
