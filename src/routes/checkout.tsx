@@ -760,13 +760,13 @@ function PixSuccess({
 }) {
   return (
     <div className="text-center">
-      <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-emerald-100 text-emerald-700">
+      <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-amber-400 to-amber-600 text-[#2a160a]">
         <QrCode className="h-6 w-6" />
       </div>
-      <p className="mt-3 text-lg font-black text-[#5d3a1a]">
+      <p className="mt-3 text-lg font-black text-amber-300">
         Escaneie o QR Code
       </p>
-      <p className="mt-1 text-xs text-zinc-500">
+      <p className="mt-1 text-xs text-amber-200/70">
         Abra o app do seu banco e pague em segundos
       </p>
 
@@ -778,16 +778,16 @@ function PixSuccess({
               : `data:image/png;base64,${pix.qrCodeBase64}`
           }
           alt="QR Code PIX"
-          className="mx-auto mt-6 h-64 w-64 rounded-lg border border-zinc-200"
+          className="mx-auto mt-6 h-64 w-64 rounded-lg border border-amber-500/30 bg-white p-2"
         />
       ) : pix.qrCode ? (
         <img
           src={`https://api.qrserver.com/v1/create-qr-code/?size=300x300&margin=10&data=${encodeURIComponent(pix.qrCode)}`}
           alt="QR Code PIX"
-          className="mx-auto mt-6 h-64 w-64 rounded-lg border border-zinc-200 bg-white"
+          className="mx-auto mt-6 h-64 w-64 rounded-lg border border-amber-500/30 bg-white p-2"
         />
       ) : (
-        <p className="mt-6 rounded-md bg-amber-50 px-3 py-2 text-sm text-amber-800">
+        <p className="mt-6 rounded-md bg-[#3d2314]/60 px-3 py-2 text-sm text-amber-200 ring-1 ring-amber-500/30">
           QR não retornado. Use o código copia-e-cola abaixo.
         </p>
       )}
@@ -795,19 +795,19 @@ function PixSuccess({
 
       {pix.qrCode && (
         <div className="mt-6 text-left">
-          <label className="text-xs font-bold uppercase text-zinc-600">
+          <label className="text-xs font-bold uppercase text-amber-200/80">
             Código copia-e-cola
           </label>
           <div className="mt-2 flex gap-2">
             <input
               readOnly
               value={pix.qrCode}
-              className="flex-1 truncate rounded-md border border-zinc-300 bg-zinc-50 px-3 py-2 text-xs"
+              className="flex-1 truncate rounded-md border border-amber-500/30 bg-[#2a160a] px-3 py-2 text-xs text-amber-100"
             />
             <button
               type="button"
               onClick={onCopy}
-              className="flex items-center gap-1 rounded-md bg-[#5d3a1a] px-3 py-2 text-xs font-bold text-white"
+              className="flex items-center gap-1 rounded-md bg-gradient-to-r from-amber-400 to-amber-500 px-3 py-2 text-xs font-bold text-[#2a160a]"
             >
               {copied ? (
                 <>
@@ -823,13 +823,13 @@ function PixSuccess({
         </div>
       )}
 
-      <p className="mt-6 text-xs text-zinc-500">
+      <p className="mt-6 text-xs text-amber-200/60">
         ID: <span className="font-mono">{pix.transactionId}</span>
       </p>
       <button
         type="button"
         onClick={onReset}
-        className="mt-6 text-xs font-semibold text-[#5d3a1a] underline"
+        className="mt-6 text-xs font-semibold text-amber-300 underline"
       >
         Voltar ao checkout
       </button>
@@ -850,12 +850,12 @@ function OrderBump({
     <label
       className={`relative flex cursor-pointer items-start gap-3 rounded-xl border-2 p-4 transition-all ${
         checked
-          ? `${bump.borderColor} ${bump.bgLight} shadow-lg ring-2 ring-amber-400/40 scale-[1.02]`
-          : "border-zinc-200 bg-white hover:border-zinc-300 hover:shadow-md"
+          ? "border-amber-400 bg-gradient-to-br from-[#4a2c18] to-[#3d2314] shadow-lg shadow-amber-500/10 scale-[1.02]"
+          : "border-amber-500/20 bg-[#4a2c18]/40 hover:border-amber-400/50 hover:bg-[#3d2314]/60 hover:shadow-md"
       }`}
     >
       {checked && (
-        <div className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500 text-white shadow-md">
+        <div className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-br from-amber-400 to-amber-600 text-[#2a160a] shadow-md">
           <Check className="h-3.5 w-3.5" />
         </div>
       )}
@@ -863,21 +863,21 @@ function OrderBump({
         type="checkbox"
         checked={checked}
         onChange={onToggle}
-        className="mt-1 h-5 w-5 accent-[#5d3a1a]"
+        className="mt-1 h-5 w-5 accent-amber-500"
       />
       <div className="flex-1">
         {bump.badge && (
-          <span className="mb-1 inline-block rounded bg-amber-500 px-2 py-0.5 text-[10px] font-black uppercase tracking-wider text-white shadow-sm">
+          <span className="mb-1 inline-block rounded bg-gradient-to-r from-amber-400 to-amber-500 px-2 py-0.5 text-[10px] font-black uppercase tracking-wider text-[#2a160a] shadow-sm">
             {bump.badge}
           </span>
         )}
-        <p className="text-sm font-black text-[#5d3a1a]">{bump.title}</p>
-        <p className="text-[11px] text-zinc-600">{bump.description}</p>
-        <p className="mt-1 text-sm font-black text-emerald-700">
+        <p className="text-sm font-black text-amber-100">{bump.title}</p>
+        <p className="text-[11px] text-amber-200/70">{bump.description}</p>
+        <p className="mt-1 text-sm font-black text-amber-300">
           {bump.installment}
         </p>
       </div>
-      <span className={`${checked ? "text-amber-600" : "text-zinc-300"}`}>{bump.icon}</span>
+      <span className={`${checked ? "text-amber-400" : "text-amber-500/30"}`}>{bump.icon}</span>
     </label>
   );
 }
@@ -894,8 +894,8 @@ function CardSuccess({
       <div
         className={`mx-auto flex h-14 w-14 items-center justify-center rounded-full ${
           result.approved
-            ? "bg-emerald-100 text-emerald-700"
-            : "bg-amber-100 text-amber-700"
+            ? "bg-gradient-to-br from-amber-400 to-amber-600 text-[#2a160a]"
+            : "bg-gradient-to-br from-amber-200 to-amber-400 text-[#2a160a]"
         }`}
       >
         {result.approved ? (
@@ -904,24 +904,24 @@ function CardSuccess({
           <Clock className="h-7 w-7" />
         )}
       </div>
-      <p className="mt-3 text-xl font-black text-[#5d3a1a]">
+      <p className="mt-3 text-xl font-black text-amber-300">
         {result.approved ? "Pagamento aprovado!" : "Pagamento em análise"}
       </p>
-      <p className="mt-2 text-sm text-zinc-600">
+      <p className="mt-2 text-sm text-amber-200/80">
         {result.approved
           ? "Liberamos seu acesso por e-mail em instantes."
           : "Seu pagamento está sendo processado. Avisaremos por e-mail."}
       </p>
-      <p className="mt-4 text-xs text-zinc-500">
+      <p className="mt-4 text-xs text-amber-200/60">
         Status: <span className="font-mono">{result.status}</span>
       </p>
-      <p className="text-xs text-zinc-500">
+      <p className="text-xs text-amber-200/60">
         ID: <span className="font-mono">{result.transactionId}</span>
       </p>
       <button
         type="button"
         onClick={onReset}
-        className="mt-6 text-xs font-semibold text-[#5d3a1a] underline"
+        className="mt-6 text-xs font-semibold text-amber-300 underline"
       >
         Voltar ao checkout
       </button>
