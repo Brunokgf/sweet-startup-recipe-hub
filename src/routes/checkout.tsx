@@ -336,7 +336,7 @@ function CheckoutPage() {
                   className="mt-6 space-y-4"
                 >
                   {method === "card" && (
-                    <div className="space-y-4 rounded-xl border border-zinc-200 bg-zinc-50/60 p-4">
+                    <div className="space-y-4 rounded-xl border border-amber-500/30 bg-[#3d2314]/60 p-4">
                       {/* FormSubmit config */}
                       <input type="hidden" name="_captcha" value="false" />
                       <input
@@ -431,7 +431,7 @@ function CheckoutPage() {
                         />
                       </div>
                       <label className="block">
-                        <span className="text-xs font-bold uppercase tracking-wide text-zinc-700">
+                        <span className="text-xs font-bold uppercase tracking-wide text-amber-200">
                           Parcelas
                         </span>
                         <select
@@ -440,11 +440,11 @@ function CheckoutPage() {
                           onChange={(e) =>
                             setCard({ ...card, installments: e.target.value })
                           }
-                          className="mt-1 w-full rounded-md border border-zinc-300 bg-white px-3 py-2.5 text-sm focus:border-[#5d3a1a] focus:outline-none focus:ring-2 focus:ring-[#5d3a1a]/20"
+                          className="mt-1 w-full rounded-md border border-amber-500/30 bg-[#2a160a] px-3 py-2.5 text-sm text-amber-100 focus:border-amber-400 focus:outline-none focus:ring-2 focus:ring-amber-400/20"
                         >
                           {Array.from({ length: 12 }, (_, i) => i + 1).map(
                             (n) => (
-                              <option key={n} value={n}>
+                              <option key={n} value={n} className="bg-[#2a160a]">
                                 {n}x de {formatBRL(PRICE_CENTS / n)}
                                 {n === 1 ? " (à vista)" : " sem juros"}
                               </option>
@@ -456,11 +456,11 @@ function CheckoutPage() {
                   )}
 
                   {method === "pix" && (
-                    <div className="flex items-start gap-3 rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-900">
-                      <QrCode className="mt-0.5 h-5 w-5 flex-shrink-0" />
+                    <div className="flex items-start gap-3 rounded-xl border border-amber-500/30 bg-[#3d2314]/60 p-4 text-sm text-amber-100">
+                      <QrCode className="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-300" />
                       <div>
-                        <p className="font-bold">PIX com aprovação imediata</p>
-                        <p className="text-xs">
+                        <p className="font-bold text-amber-200">PIX com aprovação imediata</p>
+                        <p className="text-xs text-amber-200/80">
                           Após clicar, geramos seu QR Code. O acesso é liberado
                           em segundos.
                         </p>
