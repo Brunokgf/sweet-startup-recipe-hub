@@ -293,7 +293,7 @@ function LandingPage() {
       {/* PROVAS SOCIAIS - PRINTS */}
       <section className="bg-[#3d2314] py-16">
         <div className="mx-auto max-w-5xl px-4">
-          <span className="mx-auto block w-fit rounded-full bg-emerald-100 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-emerald-700">
+          <span className="mx-auto block w-fit rounded-full bg-gradient-to-r from-amber-500 to-yellow-400 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-[#2a160a]">
             Provas Reais
           </span>
           <h2 className="mt-3 text-center text-3xl sm:text-4xl font-black text-amber-300">
@@ -315,7 +315,7 @@ function LandingPage() {
       </section>
 
       {/* VOCÊ VAI ENCONTRAR */}
-      <section className="bg-[#4a2c18] py-16">
+      <section className="bg-[#2a160a] py-16">
         <div className="mx-auto max-w-5xl px-4">
           <h2 className="text-center text-3xl sm:text-4xl font-black text-amber-300">
             VOCÊ VAI ENCONTRAR!
@@ -337,13 +337,13 @@ function LandingPage() {
             ].map((c) => (
               <div
                 key={c.t}
-                className="rounded-2xl bg-white p-6 text-center shadow-md ring-1 ring-[#e8ddd0]"
+                className="rounded-2xl bg-gradient-to-br from-[#4a2c18] to-[#3d2314] p-6 text-center shadow-lg shadow-black/20 ring-1 ring-amber-500/20"
               >
-                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#5d3a1a] text-2xl font-black text-white">
+                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-amber-300 to-amber-500 text-2xl font-black text-[#2a160a] shadow-md shadow-amber-900/30">
                   ★
                 </div>
-                <h3 className="text-lg font-extrabold text-[#5d3a1a]">{c.t}</h3>
-                <p className="mt-2 text-sm text-zinc-700">{c.d}</p>
+                <h3 className="text-lg font-extrabold text-amber-300">{c.t}</h3>
+                <p className="mt-2 text-sm text-amber-200/90">{c.d}</p>
               </div>
             ))}
           </div>
@@ -353,7 +353,7 @@ function LandingPage() {
       {/* SABORES */}
       <section className="bg-[#3d2314] py-16">
         <div className="mx-auto max-w-5xl px-4">
-          <h2 className="text-center text-2xl sm:text-3xl font-black text-zinc-900">
+          <h2 className="text-center text-2xl sm:text-3xl font-black text-amber-300">
             VEJA ALGUNS SABORES QUE VOCÊ VAI APRENDER A FAZER
           </h2>
           <img
@@ -362,7 +362,7 @@ function LandingPage() {
             loading="lazy"
             width={1600}
             height={800}
-            className="mx-auto mt-8 w-full max-w-3xl rounded-2xl shadow-lg"
+            className="mx-auto mt-8 w-full max-w-3xl rounded-2xl shadow-lg shadow-black/30 ring-1 ring-amber-500/20"
           />
           <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-6">
             {SABORES.map((s) => (
