@@ -621,10 +621,10 @@ function formatBRL(cents: number) {
 function Step({ number, title }: { number: number; title: string }) {
   return (
     <div className="flex items-center gap-3">
-      <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#5d3a1a] text-xs font-black text-white">
+      <span className="flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-amber-400 to-amber-600 text-xs font-black text-[#2a160a]">
         {number}
       </span>
-      <h2 className="text-base font-black uppercase tracking-wide text-[#5d3a1a]">
+      <h2 className="text-base font-black uppercase tracking-wide text-amber-300">
         {title}
       </h2>
     </div>
@@ -650,26 +650,26 @@ function MethodButton({
       onClick={onClick}
       className={`flex flex-col items-start gap-1 rounded-xl border-2 px-4 py-3 text-left transition ${
         active
-          ? "border-[#5d3a1a] bg-[#5d3a1a]/5 shadow-sm"
-          : "border-zinc-200 bg-white hover:border-zinc-300"
+          ? "border-amber-400 bg-[#3d2314]/60 shadow-md shadow-amber-500/10"
+          : "border-amber-500/20 bg-[#4a2c18]/40 hover:border-amber-400/50 hover:bg-[#3d2314]/60"
       }`}
     >
       <div className="flex w-full items-center justify-between">
         <span
           className={`flex h-8 w-8 items-center justify-center rounded-lg ${
-            active ? "bg-[#5d3a1a] text-white" : "bg-zinc-100 text-zinc-600"
+            active ? "bg-gradient-to-br from-amber-400 to-amber-600 text-[#2a160a]" : "bg-[#2a160a] text-amber-300/70"
           }`}
         >
           {icon}
         </span>
         <span
           className={`h-4 w-4 rounded-full border-2 ${
-            active ? "border-[#5d3a1a] bg-[#5d3a1a]" : "border-zinc-300"
+            active ? "border-amber-400 bg-amber-400" : "border-amber-500/30"
           }`}
         />
       </div>
-      <span className="text-sm font-bold text-zinc-900">{label}</span>
-      <span className="text-[11px] text-zinc-500">{hint}</span>
+      <span className="text-sm font-bold text-amber-100">{label}</span>
+      <span className="text-[11px] text-amber-200/70">{hint}</span>
     </button>
   );
 }
@@ -695,7 +695,7 @@ function Field({
 }) {
   return (
     <label className={`block ${className}`}>
-      <span className="text-xs font-bold uppercase tracking-wide text-zinc-700">
+      <span className="text-xs font-bold uppercase tracking-wide text-amber-200">
         {label}
       </span>
       <input
@@ -705,7 +705,7 @@ function Field({
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
         required={required}
-        className="mt-1 w-full rounded-md border border-zinc-300 bg-white px-3 py-2.5 text-sm focus:border-[#5d3a1a] focus:outline-none focus:ring-2 focus:ring-[#5d3a1a]/20"
+        className="mt-1 w-full rounded-md border border-amber-500/30 bg-[#2a160a] px-3 py-2.5 text-sm text-amber-100 placeholder:text-amber-200/30 focus:border-amber-400 focus:outline-none focus:ring-2 focus:ring-amber-400/20"
       />
     </label>
   );
@@ -726,11 +726,11 @@ function Row({
 }) {
   return (
     <div className="flex items-center justify-between">
-      <span className="text-zinc-600">{label}</span>
+      <span className="text-amber-200/80">{label}</span>
       <span
-        className={`${strike ? "text-zinc-400 line-through" : ""} ${
-          highlight ? "text-emerald-600 font-bold" : ""
-        } ${bold ? "text-lg font-black text-[#5d3a1a]" : ""}`}
+        className={`${strike ? "text-amber-200/50 line-through" : ""} ${
+          highlight ? "text-amber-300 font-bold" : ""
+        } ${bold ? "text-lg font-black text-amber-300" : ""}`}
       >
         {value}
       </span>
@@ -740,8 +740,8 @@ function Row({
 
 function Benefit({ icon, text }: { icon: React.ReactNode; text: string }) {
   return (
-    <div className="flex items-center gap-2 py-1.5 text-xs text-zinc-700">
-      <span className="text-emerald-600">{icon}</span>
+    <div className="flex items-center gap-2 py-1.5 text-xs text-amber-100">
+      <span className="text-amber-400">{icon}</span>
       {text}
     </div>
   );
