@@ -46,18 +46,18 @@ export function SaleNotifications() {
 
   return (
     <div className="fixed bottom-5 left-5 z-40 max-w-[300px] animate-slide-up-fade">
-      <div className="flex items-start gap-3 rounded-xl bg-white px-3 py-3 pr-8 shadow-2xl ring-1 ring-black/10">
-        <div className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-gradient-to-br from-[#8b5e3c] to-[#5d3a1a] text-white">
+      <div className="flex items-start gap-3 rounded-xl bg-gradient-to-br from-[#4a2c18] to-[#3d2314] px-3 py-3 pr-8 shadow-2xl shadow-amber-900/30 ring-1 ring-amber-500/30">
+        <div className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-gradient-to-br from-amber-400 to-amber-600 text-[#2a160a]">
           <ShoppingBag className="h-5 w-5" />
         </div>
         <div className="min-w-0">
-          <p className="text-[13px] font-bold leading-tight text-zinc-900">
+          <p className="text-[13px] font-bold leading-tight text-amber-100">
             {current.name} de {current.city}
           </p>
-          <p className="mt-0.5 text-[12px] leading-tight text-zinc-600">
+          <p className="mt-0.5 text-[12px] leading-tight text-amber-200/80">
             acabou de comprar o curso 🎉
           </p>
-          <p className="mt-1 text-[10px] uppercase tracking-wide text-zinc-400">
+          <p className="mt-1 text-[10px] uppercase tracking-wide text-amber-300/70">
             há {current.mins} minutos · compra verificada
           </p>
         </div>
@@ -65,7 +65,7 @@ export function SaleNotifications() {
           type="button"
           onClick={() => setClosed(true)}
           aria-label="Fechar"
-          className="absolute right-1.5 top-1.5 rounded-full p-1 text-zinc-400 hover:text-zinc-700"
+          className="absolute right-1.5 top-1.5 rounded-full p-1 text-amber-300/70 hover:text-amber-100"
         >
           <X className="h-3.5 w-3.5" />
         </button>
