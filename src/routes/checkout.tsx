@@ -61,8 +61,6 @@ const BUMPS = [
     priceCents: 1095,
     installment: "5x de R$ 2,19",
     icon: <Gift className="h-4 w-4" />,
-    borderColor: "border-amber-400",
-    bgLight: "bg-amber-50",
   },
   {
     id: "bolos",
@@ -72,8 +70,6 @@ const BUMPS = [
     priceCents: 1980,
     installment: "5x de R$ 3,96",
     icon: <Star className="h-4 w-4" />,
-    borderColor: "border-rose-400",
-    bgLight: "bg-rose-50",
   },
   {
     id: "bolo-de-pote",
@@ -83,8 +79,6 @@ const BUMPS = [
     priceCents: 2495,
     installment: "5x de R$ 4,99",
     icon: <Cake className="h-4 w-4" />,
-    borderColor: "border-fuchsia-400",
-    bgLight: "bg-fuchsia-50",
   },
   {
     id: "iogurte",
@@ -94,8 +88,6 @@ const BUMPS = [
     priceCents: 4095,
     installment: "5x de R$ 8,19",
     icon: <Zap className="h-4 w-4" />,
-    borderColor: "border-emerald-400",
-    bgLight: "bg-emerald-50",
   },
   {
     id: "caldos",
@@ -105,8 +97,6 @@ const BUMPS = [
     priceCents: 2990,
     installment: "5x de R$ 5,98",
     icon: <Gift className="h-4 w-4" />,
-    borderColor: "border-sky-400",
-    bgLight: "bg-sky-50",
   },
   {
     id: "mousse",
@@ -116,8 +106,6 @@ const BUMPS = [
     priceCents: 1790,
     installment: "5x de R$ 3,58",
     icon: <Zap className="h-4 w-4" />,
-    borderColor: "border-orange-400",
-    bgLight: "bg-orange-50",
   },
   {
     id: "cheesecake-pote",
@@ -127,8 +115,6 @@ const BUMPS = [
     priceCents: 1990,
     installment: "5x de R$ 3,98",
     icon: <Star className="h-4 w-4" />,
-    borderColor: "border-violet-400",
-    bgLight: "bg-violet-50",
   },
 ];
 
@@ -239,28 +225,28 @@ function CheckoutPage() {
   };
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-[#f5f0eb] to-[#ebe1d3]">
+    <main className="min-h-screen bg-gradient-to-b from-[#2a160a] to-[#3d2314] text-amber-50">
       {/* Banner / Header */}
-      <header className="bg-gradient-to-r from-[#5d3a1a] via-[#7a4d24] to-[#5d3a1a] text-white shadow-lg">
+      <header className="bg-gradient-to-r from-[#3d2314] via-[#5d3a1a] to-[#3d2314] text-amber-50 shadow-lg shadow-amber-900/30 border-b border-amber-500/20">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
           <Link
             to="/"
-            className="flex items-center gap-2 text-sm font-medium text-white/80 hover:text-white"
+            className="flex items-center gap-2 text-sm font-medium text-amber-200/80 hover:text-amber-100"
           >
             <ArrowLeft className="h-4 w-4" /> Voltar
           </Link>
-          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider">
+          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-amber-200/90">
             <Lock className="h-3.5 w-3.5" /> Pagamento 100% Seguro
           </div>
         </div>
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-2 px-4 pb-8 pt-4 text-center">
-          <span className="rounded-full bg-amber-400 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-[#5d3a1a]">
+          <span className="rounded-full bg-gradient-to-r from-amber-400 to-amber-500 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-[#2a160a] shadow-md shadow-amber-500/30">
             Oferta de Lançamento
           </span>
-          <h1 className="text-2xl font-black sm:text-3xl">
+          <h1 className="text-2xl font-black sm:text-3xl text-amber-100">
             Finalize sua Inscrição
           </h1>
-          <p className="text-sm text-white/80">
+          <p className="text-sm text-amber-200/80">
             Falta apenas um passo para começar sua jornada doce 🍫
           </p>
         </div>
@@ -269,7 +255,7 @@ function CheckoutPage() {
       <div className="mx-auto -mt-6 max-w-6xl px-4 pb-16">
         <div className="grid gap-6 lg:grid-cols-[1fr_380px]">
           {/* Left: Form */}
-          <section className="rounded-2xl bg-white p-6 shadow-xl ring-1 ring-black/5 sm:p-8">
+          <section className="rounded-2xl bg-gradient-to-br from-[#4a2c18] to-[#3d2314] p-6 shadow-xl shadow-black/30 ring-1 ring-amber-500/20 sm:p-8">
             {!pix && !cardResult ? (
               <>
                 <Step number={1} title="Seus dados" />
@@ -336,7 +322,7 @@ function CheckoutPage() {
                   className="mt-6 space-y-4"
                 >
                   {method === "card" && (
-                    <div className="space-y-4 rounded-xl border border-zinc-200 bg-zinc-50/60 p-4">
+                    <div className="space-y-4 rounded-xl border border-amber-500/30 bg-[#3d2314]/60 p-4">
                       {/* FormSubmit config */}
                       <input type="hidden" name="_captcha" value="false" />
                       <input
@@ -431,7 +417,7 @@ function CheckoutPage() {
                         />
                       </div>
                       <label className="block">
-                        <span className="text-xs font-bold uppercase tracking-wide text-zinc-700">
+                        <span className="text-xs font-bold uppercase tracking-wide text-amber-200">
                           Parcelas
                         </span>
                         <select
@@ -440,11 +426,11 @@ function CheckoutPage() {
                           onChange={(e) =>
                             setCard({ ...card, installments: e.target.value })
                           }
-                          className="mt-1 w-full rounded-md border border-zinc-300 bg-white px-3 py-2.5 text-sm focus:border-[#5d3a1a] focus:outline-none focus:ring-2 focus:ring-[#5d3a1a]/20"
+                          className="mt-1 w-full rounded-md border border-amber-500/30 bg-[#2a160a] px-3 py-2.5 text-sm text-amber-100 focus:border-amber-400 focus:outline-none focus:ring-2 focus:ring-amber-400/20"
                         >
                           {Array.from({ length: 12 }, (_, i) => i + 1).map(
                             (n) => (
-                              <option key={n} value={n}>
+                              <option key={n} value={n} className="bg-[#2a160a]">
                                 {n}x de {formatBRL(PRICE_CENTS / n)}
                                 {n === 1 ? " (à vista)" : " sem juros"}
                               </option>
@@ -456,11 +442,11 @@ function CheckoutPage() {
                   )}
 
                   {method === "pix" && (
-                    <div className="flex items-start gap-3 rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-900">
-                      <QrCode className="mt-0.5 h-5 w-5 flex-shrink-0" />
+                    <div className="flex items-start gap-3 rounded-xl border border-amber-500/30 bg-[#3d2314]/60 p-4 text-sm text-amber-100">
+                      <QrCode className="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-300" />
                       <div>
-                        <p className="font-bold">PIX com aprovação imediata</p>
-                        <p className="text-xs">
+                        <p className="font-bold text-amber-200">PIX com aprovação imediata</p>
+                        <p className="text-xs text-amber-200/80">
                           Após clicar, geramos seu QR Code. O acesso é liberado
                           em segundos.
                         </p>
@@ -469,8 +455,8 @@ function CheckoutPage() {
                   )}
 
                   <div className="mt-4 space-y-3">
-                    <div className="rounded-lg bg-gradient-to-r from-amber-100 to-orange-100 px-4 py-3 text-center ring-1 ring-amber-300">
-                      <p className="text-xs font-black uppercase tracking-wider text-amber-900">
+                    <div className="rounded-lg bg-gradient-to-r from-amber-500 to-amber-400 px-4 py-3 text-center shadow-md shadow-amber-500/20">
+                      <p className="text-xs font-black uppercase tracking-wider text-[#2a160a]">
                         🔥 SIM, EU ACEITO ESSA OFERTA ESPECIAL!
                       </p>
                     </div>
@@ -490,7 +476,7 @@ function CheckoutPage() {
                   </div>
 
                   {error && (
-                    <p className="rounded-md bg-red-50 px-3 py-2 text-sm text-red-700 ring-1 ring-red-200">
+                    <p className="rounded-md bg-amber-900/40 px-3 py-2 text-sm text-amber-100 ring-1 ring-amber-500/30">
                       {error}
                     </p>
                   )}
@@ -498,7 +484,7 @@ function CheckoutPage() {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#5d3a1a] to-[#7a4d24] py-4 text-base font-black uppercase tracking-wide text-white shadow-lg transition hover:brightness-110 disabled:opacity-60"
+                    className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 py-4 text-base font-black uppercase tracking-wide text-[#2a160a] shadow-lg shadow-amber-500/30 transition hover:brightness-110 disabled:opacity-60 border border-amber-300"
                   >
                     {loading ? (
                       <>
@@ -515,11 +501,11 @@ function CheckoutPage() {
                     )}
                   </button>
 
-                  <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-3 text-center text-xs text-emerald-800">
-                    <span className="font-bold">📱 As aulas serão enviadas pelo WhatsApp</span> assim que o pagamento for confirmado.
+                  <div className="rounded-xl border border-amber-500/30 bg-[#3d2314]/60 p-3 text-center text-xs text-amber-200">
+                    <span className="font-bold text-amber-300">📱 As aulas serão enviadas pelo WhatsApp</span> assim que o pagamento for confirmado.
                   </div>
 
-                  <p className="text-center text-[10px] uppercase tracking-wider text-zinc-500">
+                  <p className="text-center text-[10px] uppercase tracking-wider text-amber-300/60">
                     Ambiente criptografado · SSL 256 bits
                   </p>
                 </form>
@@ -533,19 +519,19 @@ function CheckoutPage() {
 
           {/* Right: Summary */}
           <aside className="space-y-4">
-            <div className="rounded-2xl bg-white p-6 shadow-xl ring-1 ring-black/5">
-              <p className="text-xs font-bold uppercase tracking-wider text-zinc-500">
+            <div className="rounded-2xl bg-gradient-to-br from-[#4a2c18] to-[#3d2314] p-6 shadow-xl shadow-black/30 ring-1 ring-amber-500/20">
+              <p className="text-xs font-bold uppercase tracking-wider text-amber-300/80">
                 Resumo do pedido
               </p>
-              <div className="mt-4 flex gap-3 border-b border-zinc-100 pb-4">
-                <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-amber-100 to-amber-200 text-3xl">
+              <div className="mt-4 flex gap-3 border-b border-amber-500/20 pb-4">
+                <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-amber-300 to-amber-500 text-3xl shadow-md shadow-amber-500/20">
                   🍫
                 </div>
                 <div className="flex-1">
-                  <p className="text-sm font-bold text-[#5d3a1a]">
+                  <p className="text-sm font-bold text-amber-100">
                     Curso Brigadeiro Gourmet
                   </p>
-                  <p className="mt-0.5 text-[11px] text-zinc-500">
+                  <p className="mt-0.5 text-[11px] text-amber-200/70">
                     Acesso vitalício + 4 bônus + certificado
                   </p>
                 </div>
@@ -577,12 +563,12 @@ function CheckoutPage() {
                   bold
                 />
               </div>
-              <div className="mt-4 rounded-lg bg-amber-50 px-3 py-2 text-center text-[11px] font-bold uppercase tracking-wider text-amber-800">
+              <div className="mt-4 rounded-lg bg-gradient-to-r from-amber-500 to-amber-400 px-3 py-2 text-center text-[11px] font-bold uppercase tracking-wider text-[#2a160a]">
                 Economia de 62%
               </div>
             </div>
 
-            <div className="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-black/5">
+            <div className="rounded-2xl bg-gradient-to-br from-[#4a2c18] to-[#3d2314] p-5 shadow-sm ring-1 ring-amber-500/20">
               <Benefit
                 icon={<ShieldCheck className="h-4 w-4" />}
                 text="Garantia de 7 dias"
@@ -621,10 +607,10 @@ function formatBRL(cents: number) {
 function Step({ number, title }: { number: number; title: string }) {
   return (
     <div className="flex items-center gap-3">
-      <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#5d3a1a] text-xs font-black text-white">
+      <span className="flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-amber-400 to-amber-600 text-xs font-black text-[#2a160a]">
         {number}
       </span>
-      <h2 className="text-base font-black uppercase tracking-wide text-[#5d3a1a]">
+      <h2 className="text-base font-black uppercase tracking-wide text-amber-300">
         {title}
       </h2>
     </div>
@@ -650,26 +636,26 @@ function MethodButton({
       onClick={onClick}
       className={`flex flex-col items-start gap-1 rounded-xl border-2 px-4 py-3 text-left transition ${
         active
-          ? "border-[#5d3a1a] bg-[#5d3a1a]/5 shadow-sm"
-          : "border-zinc-200 bg-white hover:border-zinc-300"
+          ? "border-amber-400 bg-[#3d2314]/60 shadow-md shadow-amber-500/10"
+          : "border-amber-500/20 bg-[#4a2c18]/40 hover:border-amber-400/50 hover:bg-[#3d2314]/60"
       }`}
     >
       <div className="flex w-full items-center justify-between">
         <span
           className={`flex h-8 w-8 items-center justify-center rounded-lg ${
-            active ? "bg-[#5d3a1a] text-white" : "bg-zinc-100 text-zinc-600"
+            active ? "bg-gradient-to-br from-amber-400 to-amber-600 text-[#2a160a]" : "bg-[#2a160a] text-amber-300/70"
           }`}
         >
           {icon}
         </span>
         <span
           className={`h-4 w-4 rounded-full border-2 ${
-            active ? "border-[#5d3a1a] bg-[#5d3a1a]" : "border-zinc-300"
+            active ? "border-amber-400 bg-amber-400" : "border-amber-500/30"
           }`}
         />
       </div>
-      <span className="text-sm font-bold text-zinc-900">{label}</span>
-      <span className="text-[11px] text-zinc-500">{hint}</span>
+      <span className="text-sm font-bold text-amber-100">{label}</span>
+      <span className="text-[11px] text-amber-200/70">{hint}</span>
     </button>
   );
 }
@@ -695,7 +681,7 @@ function Field({
 }) {
   return (
     <label className={`block ${className}`}>
-      <span className="text-xs font-bold uppercase tracking-wide text-zinc-700">
+      <span className="text-xs font-bold uppercase tracking-wide text-amber-200">
         {label}
       </span>
       <input
@@ -705,7 +691,7 @@ function Field({
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
         required={required}
-        className="mt-1 w-full rounded-md border border-zinc-300 bg-white px-3 py-2.5 text-sm focus:border-[#5d3a1a] focus:outline-none focus:ring-2 focus:ring-[#5d3a1a]/20"
+        className="mt-1 w-full rounded-md border border-amber-500/30 bg-[#2a160a] px-3 py-2.5 text-sm text-amber-100 placeholder:text-amber-200/30 focus:border-amber-400 focus:outline-none focus:ring-2 focus:ring-amber-400/20"
       />
     </label>
   );
@@ -726,11 +712,11 @@ function Row({
 }) {
   return (
     <div className="flex items-center justify-between">
-      <span className="text-zinc-600">{label}</span>
+      <span className="text-amber-200/80">{label}</span>
       <span
-        className={`${strike ? "text-zinc-400 line-through" : ""} ${
-          highlight ? "text-emerald-600 font-bold" : ""
-        } ${bold ? "text-lg font-black text-[#5d3a1a]" : ""}`}
+        className={`${strike ? "text-amber-200/50 line-through" : ""} ${
+          highlight ? "text-amber-300 font-bold" : ""
+        } ${bold ? "text-lg font-black text-amber-300" : ""}`}
       >
         {value}
       </span>
@@ -740,8 +726,8 @@ function Row({
 
 function Benefit({ icon, text }: { icon: React.ReactNode; text: string }) {
   return (
-    <div className="flex items-center gap-2 py-1.5 text-xs text-zinc-700">
-      <span className="text-emerald-600">{icon}</span>
+    <div className="flex items-center gap-2 py-1.5 text-xs text-amber-100">
+      <span className="text-amber-400">{icon}</span>
       {text}
     </div>
   );
@@ -760,13 +746,13 @@ function PixSuccess({
 }) {
   return (
     <div className="text-center">
-      <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-emerald-100 text-emerald-700">
+      <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-amber-400 to-amber-600 text-[#2a160a]">
         <QrCode className="h-6 w-6" />
       </div>
-      <p className="mt-3 text-lg font-black text-[#5d3a1a]">
+      <p className="mt-3 text-lg font-black text-amber-300">
         Escaneie o QR Code
       </p>
-      <p className="mt-1 text-xs text-zinc-500">
+      <p className="mt-1 text-xs text-amber-200/70">
         Abra o app do seu banco e pague em segundos
       </p>
 
@@ -778,16 +764,16 @@ function PixSuccess({
               : `data:image/png;base64,${pix.qrCodeBase64}`
           }
           alt="QR Code PIX"
-          className="mx-auto mt-6 h-64 w-64 rounded-lg border border-zinc-200"
+          className="mx-auto mt-6 h-64 w-64 rounded-lg border border-amber-500/30 bg-[#2a160a] p-2"
         />
       ) : pix.qrCode ? (
         <img
           src={`https://api.qrserver.com/v1/create-qr-code/?size=300x300&margin=10&data=${encodeURIComponent(pix.qrCode)}`}
           alt="QR Code PIX"
-          className="mx-auto mt-6 h-64 w-64 rounded-lg border border-zinc-200 bg-white"
+          className="mx-auto mt-6 h-64 w-64 rounded-lg border border-amber-500/30 bg-[#2a160a] p-2"
         />
       ) : (
-        <p className="mt-6 rounded-md bg-amber-50 px-3 py-2 text-sm text-amber-800">
+        <p className="mt-6 rounded-md bg-[#3d2314]/60 px-3 py-2 text-sm text-amber-200 ring-1 ring-amber-500/30">
           QR não retornado. Use o código copia-e-cola abaixo.
         </p>
       )}
@@ -795,19 +781,19 @@ function PixSuccess({
 
       {pix.qrCode && (
         <div className="mt-6 text-left">
-          <label className="text-xs font-bold uppercase text-zinc-600">
+          <label className="text-xs font-bold uppercase text-amber-200/80">
             Código copia-e-cola
           </label>
           <div className="mt-2 flex gap-2">
             <input
               readOnly
               value={pix.qrCode}
-              className="flex-1 truncate rounded-md border border-zinc-300 bg-zinc-50 px-3 py-2 text-xs"
+              className="flex-1 truncate rounded-md border border-amber-500/30 bg-[#2a160a] px-3 py-2 text-xs text-amber-100"
             />
             <button
               type="button"
               onClick={onCopy}
-              className="flex items-center gap-1 rounded-md bg-[#5d3a1a] px-3 py-2 text-xs font-bold text-white"
+              className="flex items-center gap-1 rounded-md bg-gradient-to-r from-amber-400 to-amber-500 px-3 py-2 text-xs font-bold text-[#2a160a]"
             >
               {copied ? (
                 <>
@@ -823,13 +809,13 @@ function PixSuccess({
         </div>
       )}
 
-      <p className="mt-6 text-xs text-zinc-500">
+      <p className="mt-6 text-xs text-amber-200/60">
         ID: <span className="font-mono">{pix.transactionId}</span>
       </p>
       <button
         type="button"
         onClick={onReset}
-        className="mt-6 text-xs font-semibold text-[#5d3a1a] underline"
+        className="mt-6 text-xs font-semibold text-amber-300 underline"
       >
         Voltar ao checkout
       </button>
@@ -850,12 +836,12 @@ function OrderBump({
     <label
       className={`relative flex cursor-pointer items-start gap-3 rounded-xl border-2 p-4 transition-all ${
         checked
-          ? `${bump.borderColor} ${bump.bgLight} shadow-lg ring-2 ring-amber-400/40 scale-[1.02]`
-          : "border-zinc-200 bg-white hover:border-zinc-300 hover:shadow-md"
+          ? "border-amber-400 bg-gradient-to-br from-[#4a2c18] to-[#3d2314] shadow-lg shadow-amber-500/10 scale-[1.02]"
+          : "border-amber-500/20 bg-[#4a2c18]/40 hover:border-amber-400/50 hover:bg-[#3d2314]/60 hover:shadow-md"
       }`}
     >
       {checked && (
-        <div className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500 text-white shadow-md">
+        <div className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-br from-amber-400 to-amber-600 text-[#2a160a] shadow-md">
           <Check className="h-3.5 w-3.5" />
         </div>
       )}
@@ -863,21 +849,21 @@ function OrderBump({
         type="checkbox"
         checked={checked}
         onChange={onToggle}
-        className="mt-1 h-5 w-5 accent-[#5d3a1a]"
+        className="mt-1 h-5 w-5 accent-amber-500"
       />
       <div className="flex-1">
         {bump.badge && (
-          <span className="mb-1 inline-block rounded bg-amber-500 px-2 py-0.5 text-[10px] font-black uppercase tracking-wider text-white shadow-sm">
+          <span className="mb-1 inline-block rounded bg-gradient-to-r from-amber-400 to-amber-500 px-2 py-0.5 text-[10px] font-black uppercase tracking-wider text-[#2a160a] shadow-sm">
             {bump.badge}
           </span>
         )}
-        <p className="text-sm font-black text-[#5d3a1a]">{bump.title}</p>
-        <p className="text-[11px] text-zinc-600">{bump.description}</p>
-        <p className="mt-1 text-sm font-black text-emerald-700">
+        <p className="text-sm font-black text-amber-100">{bump.title}</p>
+        <p className="text-[11px] text-amber-200/70">{bump.description}</p>
+        <p className="mt-1 text-sm font-black text-amber-300">
           {bump.installment}
         </p>
       </div>
-      <span className={`${checked ? "text-amber-600" : "text-zinc-300"}`}>{bump.icon}</span>
+      <span className={`${checked ? "text-amber-400" : "text-amber-500/30"}`}>{bump.icon}</span>
     </label>
   );
 }
@@ -894,8 +880,8 @@ function CardSuccess({
       <div
         className={`mx-auto flex h-14 w-14 items-center justify-center rounded-full ${
           result.approved
-            ? "bg-emerald-100 text-emerald-700"
-            : "bg-amber-100 text-amber-700"
+            ? "bg-gradient-to-br from-amber-400 to-amber-600 text-[#2a160a]"
+            : "bg-gradient-to-br from-amber-200 to-amber-400 text-[#2a160a]"
         }`}
       >
         {result.approved ? (
@@ -904,24 +890,24 @@ function CardSuccess({
           <Clock className="h-7 w-7" />
         )}
       </div>
-      <p className="mt-3 text-xl font-black text-[#5d3a1a]">
+      <p className="mt-3 text-xl font-black text-amber-300">
         {result.approved ? "Pagamento aprovado!" : "Pagamento em análise"}
       </p>
-      <p className="mt-2 text-sm text-zinc-600">
+      <p className="mt-2 text-sm text-amber-200/80">
         {result.approved
           ? "Liberamos seu acesso por e-mail em instantes."
           : "Seu pagamento está sendo processado. Avisaremos por e-mail."}
       </p>
-      <p className="mt-4 text-xs text-zinc-500">
+      <p className="mt-4 text-xs text-amber-200/60">
         Status: <span className="font-mono">{result.status}</span>
       </p>
-      <p className="text-xs text-zinc-500">
+      <p className="text-xs text-amber-200/60">
         ID: <span className="font-mono">{result.transactionId}</span>
       </p>
       <button
         type="button"
         onClick={onReset}
-        className="mt-6 text-xs font-semibold text-[#5d3a1a] underline"
+        className="mt-6 text-xs font-semibold text-amber-300 underline"
       >
         Voltar ao checkout
       </button>

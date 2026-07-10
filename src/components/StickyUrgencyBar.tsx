@@ -53,17 +53,17 @@ export function StickyUrgencyBar() {
         visible ? "translate-y-0" : "-translate-y-full"
       }`}
     >
-      <div className="bg-[#5d3a1a] text-white shadow-lg">
+      <div className="bg-gradient-to-r from-[#3d2314] to-[#2a160a] text-amber-100 shadow-lg shadow-amber-900/30 border-b border-amber-500/30">
         <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-2 px-4 py-2 sm:flex-row">
           <div className="flex items-center gap-2 text-sm font-bold">
             <Timer className="h-4 w-4 text-amber-300" />
             <span>Oferta termina em</span>
             <CountdownTimer />
-            <span className="hidden sm:inline">— aproveite o valor promocional</span>
+            <span className="hidden sm:inline text-amber-200/80">— aproveite o valor promocional</span>
           </div>
           <Link
             to="/checkout"
-            className="rounded-full bg-amber-500 px-4 py-1.5 text-xs font-black uppercase tracking-wide text-[#3d2314] shadow transition hover:bg-amber-400 hover:scale-105"
+            className="rounded-full bg-gradient-to-r from-amber-400 to-amber-500 px-4 py-1.5 text-xs font-black uppercase tracking-wide text-[#2a160a] shadow-md shadow-amber-500/30 transition hover:from-amber-300 hover:to-amber-400 hover:scale-105"
           >
             Quero Aproveitar
           </Link>

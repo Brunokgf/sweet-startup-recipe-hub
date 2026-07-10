@@ -32,12 +32,12 @@ export const Route = createFileRoute("/")({
 const CHECKOUT_URL = "#"; // troque pelo link do Kiwify/Hotmart
 
 const SABORES = [
-  { nome: "TRADICIONAL", cor: "from-amber-800 to-amber-950" },
-  { nome: "BEIJINHO", cor: "from-zinc-100 to-zinc-300" },
-  { nome: "PISTACHE", cor: "from-green-400 to-emerald-600" },
-  { nome: "MORANGO", cor: "from-pink-400 to-rose-600" },
-  { nome: "OREO", cor: "from-zinc-700 to-zinc-900" },
-  { nome: "AMENDOIN", cor: "from-amber-500 to-orange-700" },
+  { nome: "TRADICIONAL", cor: "from-amber-600 to-amber-800" },
+  { nome: "BEIJINHO", cor: "from-[#5d3a1a] to-[#3d2314]" },
+  { nome: "PISTACHE", cor: "from-amber-500 to-amber-700" },
+  { nome: "MORANGO", cor: "from-[#7c4d24] to-[#4a2c18]" },
+  { nome: "OREO", cor: "from-[#3d2314] to-[#1a0d06]" },
+  { nome: "AMENDOIN", cor: "from-amber-400 to-amber-600" },
 ];
 
 const FAQS = [
@@ -75,7 +75,7 @@ const FAQS = [
 function LandingPage() {
   useScrollReveal();
   return (
-    <main className="min-h-screen bg-[#4a2c18] text-zinc-900">
+    <main className="min-h-screen bg-[#2a160a] text-amber-50">
       <SaleNotifications />
       <StickyUrgencyBar />
       {/* HERO */}
@@ -83,7 +83,7 @@ function LandingPage() {
         className="relative overflow-hidden bg-cover bg-center"
         style={{ backgroundImage: `url(${heroBg})` }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-[#4a2c18]/85 via-[#4a2c18]/75 to-[#4a2c18]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#2a160a]/90 via-[#3d2314]/80 to-[#2a160a]" />
 
         {/* Emojis flutuantes */}
         <span className="float-emoji left-[6%] top-[12%]" style={{ animationDelay: "0s" }}>🍫</span>
@@ -99,48 +99,48 @@ function LandingPage() {
             alt="Receitas Criativas"
             width={160}
             height={160}
-            className="mx-auto h-32 w-32 sm:h-40 sm:w-40 drop-shadow-lg animate-bounce-in"
+            className="mx-auto h-32 w-32 sm:h-40 sm:w-40 drop-shadow-[0_8px_30px_rgba(251,191,36,0.35)] animate-bounce-in"
           />
-          <p className="mt-6 text-xl sm:text-2xl font-extrabold tracking-wide text-amber-100">
+          <p className="mt-6 text-xl sm:text-2xl font-extrabold tracking-wide text-amber-200">
             APRENDA A PRODUZIR
           </p>
           <h1 className="mt-2 text-4xl sm:text-6xl font-black uppercase tracking-tight text-gradient-hot drop-shadow-sm">
             Brigadeiros Gourmet
           </h1>
-          <div className="mt-4 inline-block w-full max-w-xl rounded-md bg-[#5d3a1a] px-4 py-3 text-xl sm:text-2xl font-extrabold uppercase text-white shadow">
+          <div className="mt-4 inline-block w-full max-w-xl rounded-md bg-gradient-to-r from-[#5d3a1a] to-[#7c4d24] px-4 py-3 text-xl sm:text-2xl font-extrabold uppercase text-amber-100 shadow-lg border border-amber-500/30">
             E crie uma renda extra 💸
           </div>
-          <p className="mt-4 text-lg sm:text-xl font-semibold text-amber-200">
+          <p className="mt-4 text-lg sm:text-xl font-semibold text-amber-300">
             Mesmo começando do zero!
           </p>
-          <p className="mt-4 inline-flex animate-wiggle items-center gap-2 rounded-full bg-gradient-to-r from-amber-400 to-amber-500 px-4 py-1.5 text-sm font-black uppercase tracking-wide text-[#3d2314] shadow-lg">
+          <p className="mt-4 inline-flex animate-wiggle items-center gap-2 rounded-full bg-gradient-to-r from-amber-300 to-yellow-400 px-4 py-1.5 text-sm font-black uppercase tracking-wide text-[#2a160a] shadow-lg shadow-amber-500/30">
             <Users className="h-4 w-4" />
             Mentorado por Luiza Quadros
           </p>
-          <p className="mt-4 text-3xl font-black text-white">
+          <p className="mt-4 text-3xl font-black text-amber-100">
             <span className="sparkle-glow">+6.000 Alunas 🔥</span>
           </p>
-          <p className="text-sm font-medium text-amber-200">
+          <p className="text-sm font-medium text-amber-300">
             Já transformaram sua vida com nossas receitas
           </p>
-          <div className="mt-3 flex justify-center gap-1 text-amber-400">
+          <div className="mt-3 flex justify-center gap-1 text-amber-300">
             {[0, 1, 2, 3, 4].map((i) => (
-              <Star key={i} className="h-6 w-6 fill-amber-400 animate-bounce-in" style={{ animationDelay: `${i * 0.1}s` }} />
+              <Star key={i} className="h-6 w-6 fill-amber-300 animate-bounce-in" style={{ animationDelay: `${i * 0.1}s` }} />
             ))}
           </div>
 
 
           {/* VSL PLACEHOLDER */}
-          <div className="mx-auto mt-8 w-full max-w-2xl overflow-hidden rounded-xl border-4 border-white bg-zinc-900 shadow-2xl">
+          <div className="mx-auto mt-8 w-full max-w-2xl overflow-hidden rounded-xl border-4 border-amber-400/60 bg-[#2a160a] shadow-2xl shadow-amber-900/40">
             <div className="relative aspect-video">
               {/* Substitua este bloco pelo embed do seu VSL */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-zinc-800 to-zinc-950 text-white">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#5d3a1a] shadow-lg">
-                  <svg viewBox="0 0 24 24" className="ml-1 h-8 w-8 fill-white">
+              <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-[#3d2314] to-[#1a0d06] text-amber-100">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-amber-400 to-amber-600 shadow-lg shadow-amber-500/40">
+                  <svg viewBox="0 0 24 24" className="ml-1 h-8 w-8 fill-[#2a160a]">
                     <path d="M8 5v14l11-7z" />
                   </svg>
                 </div>
-                <p className="mt-4 text-sm font-semibold opacity-80">
+                <p className="mt-4 text-sm font-semibold text-amber-300">
                   Seu VSL será exibido aqui
                 </p>
               </div>
@@ -150,7 +150,7 @@ function LandingPage() {
           <div className="mt-8">
             <CTA>QUERO COMEÇAR AGORA</CTA>
           </div>
-          <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-amber-200">
+          <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-amber-300">
             Pagamento 100% seguro • Cartão e PIX
           </p>
         </div>
@@ -160,7 +160,7 @@ function LandingPage() {
       <section className="bg-[#3d2314] py-16">
         <div className="mx-auto max-w-5xl px-4">
           <div className="text-center">
-            <span className="inline-block rounded-full bg-[#5d3a1a] px-4 py-1.5 text-xs font-black uppercase tracking-widest text-white shadow">
+            <span className="inline-block rounded-full bg-gradient-to-r from-amber-500 to-yellow-400 px-4 py-1.5 text-xs font-black uppercase tracking-widest text-[#2a160a] shadow-lg shadow-amber-500/20">
               Feito para você
             </span>
             <h2 className="mt-4 text-3xl sm:text-4xl font-black text-amber-300">
@@ -176,48 +176,48 @@ function LandingPage() {
               {
                 t: "Quem deseja uma renda extra",
                 icon: TrendingUp,
-                cor: "bg-emerald-50 border-emerald-200 text-emerald-700",
-                iconeCor: "text-emerald-600",
+                cor: "bg-[#4a2c18] border-amber-500/40 text-amber-100",
+                iconeCor: "text-amber-300",
               },
               {
                 t: "Pessoas desempregadas que querem começar a vender",
                 icon: Briefcase,
-                cor: "bg-amber-50 border-amber-200 text-amber-700",
-                iconeCor: "text-amber-600",
+                cor: "bg-[#4a2c18] border-amber-500/40 text-amber-100",
+                iconeCor: "text-amber-300",
               },
               {
                 t: "Quem busca trabalhar em casa",
                 icon: Home,
-                cor: "bg-sky-50 border-sky-200 text-sky-700",
-                iconeCor: "text-sky-600",
+                cor: "bg-[#4a2c18] border-amber-500/40 text-amber-100",
+                iconeCor: "text-amber-300",
               },
               {
                 t: "Mulheres que desejam independência financeira",
                 icon: Users,
-                cor: "bg-rose-50 border-rose-200 text-rose-700",
-                iconeCor: "text-rose-600",
+                cor: "bg-[#4a2c18] border-amber-500/40 text-amber-100",
+                iconeCor: "text-amber-300",
               },
               {
                 t: "Quem procura uma atividade com baixo investimento",
                 icon: PiggyBank,
-                cor: "bg-violet-50 border-violet-200 text-violet-700",
-                iconeCor: "text-violet-600",
+                cor: "bg-[#4a2c18] border-amber-500/40 text-amber-100",
+                iconeCor: "text-amber-300",
               },
               {
                 t: "Pessoas sem experiência",
                 icon: GraduationCap,
-                cor: "bg-orange-50 border-orange-200 text-orange-700",
-                iconeCor: "text-orange-600",
+                cor: "bg-[#4a2c18] border-amber-500/40 text-amber-100",
+                iconeCor: "text-amber-300",
               },
             ].map((item) => {
               const Icon = item.icon;
               return (
                 <li
                   key={item.t}
-                  className={`flex flex-col items-center gap-3 rounded-2xl border-2 ${item.cor} p-6 text-center shadow-sm transition-transform hover:-translate-y-1 hover:shadow-md`}
+                  className={`flex flex-col items-center gap-3 rounded-2xl border-2 ${item.cor} p-6 text-center shadow-lg shadow-black/20 transition-transform hover:-translate-y-1 hover:border-amber-400 hover:shadow-xl hover:shadow-amber-900/20`}
                 >
-                  <div className={`flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-sm`}>
-                    <Icon className={`h-6 w-6 ${item.iconeCor}`} />
+                  <div className={`flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-amber-400 to-amber-600 shadow-md`}>
+                    <Icon className={`h-6 w-6 text-[#2a160a]`} />
                   </div>
                   <span className="font-bold leading-snug">{item.t}</span>
                 </li>
@@ -225,10 +225,10 @@ function LandingPage() {
             })}
           </ul>
 
-          <div className="mt-10 rounded-2xl bg-[#5d3a1a] p-6 text-center text-white shadow-lg sm:p-8">
+          <div className="mt-10 rounded-2xl bg-gradient-to-br from-[#5d3a1a] to-[#3d2314] p-6 text-center text-amber-50 shadow-xl shadow-black/25 sm:p-8 border border-amber-500/20">
             <p className="text-lg font-bold sm:text-xl">
               Mesmo que você nunca tenha produzido um brigadeiro gourmet, as aulas
-              mostram o <span className="underline decoration-amber-400 underline-offset-4">passo a passo completo em videoaulas</span>.
+              mostram o <span className="underline decoration-amber-300 underline-offset-4">passo a passo completo em videoaulas</span>.
             </p>
             <div className="mt-5">
               <CTA>QUERO COMEÇAR AGORA</CTA>
@@ -238,7 +238,7 @@ function LandingPage() {
       </section>
 
       {/* DEPOIMENTOS */}
-      <section className="bg-[#4a2c18] py-16">
+      <section className="bg-[#2a160a] py-16">
         <div className="mx-auto max-w-5xl px-4">
           <h2 className="text-center text-3xl sm:text-4xl font-black text-amber-300">
             O QUE NOSSAS ALUNAS ESTÃO DIZENDO
@@ -263,25 +263,25 @@ function LandingPage() {
             ].map((d) => (
               <div
                 key={d.nome}
-                className="rounded-2xl bg-white p-6 shadow-md ring-1 ring-[#e8ddd0]"
+                className="rounded-2xl bg-gradient-to-br from-[#4a2c18] to-[#3d2314] p-6 shadow-lg shadow-black/20 ring-1 ring-amber-500/20"
               >
                 <div className="flex items-center gap-3">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#5d3a1a] text-sm font-black text-white">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-amber-400 to-amber-600 text-sm font-black text-[#2a160a]">
                     {d.nome
                       .split(" ")
                       .map((w) => w[0])
                       .join("")}
                   </div>
                   <div>
-                    <p className="font-extrabold text-zinc-900">{d.nome}</p>
-                    <div className="flex gap-0.5 text-amber-400">
+                    <p className="font-extrabold text-amber-100">{d.nome}</p>
+                    <div className="flex gap-0.5 text-amber-300">
                       {[0, 1, 2, 3, 4].map((i) => (
-                        <Star key={i} className="h-3.5 w-3.5 fill-amber-400" />
+                        <Star key={i} className="h-3.5 w-3.5 fill-amber-300" />
                       ))}
                     </div>
                   </div>
                 </div>
-                <p className="mt-4 text-sm font-medium text-zinc-700 leading-relaxed">
+                <p className="mt-4 text-sm font-medium text-amber-200/90 leading-relaxed">
                   "{d.texto}"
                 </p>
               </div>
@@ -293,7 +293,7 @@ function LandingPage() {
       {/* PROVAS SOCIAIS - PRINTS */}
       <section className="bg-[#3d2314] py-16">
         <div className="mx-auto max-w-5xl px-4">
-          <span className="mx-auto block w-fit rounded-full bg-emerald-100 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-emerald-700">
+          <span className="mx-auto block w-fit rounded-full bg-gradient-to-r from-amber-500 to-yellow-400 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-[#2a160a]">
             Provas Reais
           </span>
           <h2 className="mt-3 text-center text-3xl sm:text-4xl font-black text-amber-300">
@@ -315,7 +315,7 @@ function LandingPage() {
       </section>
 
       {/* VOCÊ VAI ENCONTRAR */}
-      <section className="bg-[#4a2c18] py-16">
+      <section className="bg-[#2a160a] py-16">
         <div className="mx-auto max-w-5xl px-4">
           <h2 className="text-center text-3xl sm:text-4xl font-black text-amber-300">
             VOCÊ VAI ENCONTRAR!
@@ -337,13 +337,13 @@ function LandingPage() {
             ].map((c) => (
               <div
                 key={c.t}
-                className="rounded-2xl bg-white p-6 text-center shadow-md ring-1 ring-[#e8ddd0]"
+                className="rounded-2xl bg-gradient-to-br from-[#4a2c18] to-[#3d2314] p-6 text-center shadow-lg shadow-black/20 ring-1 ring-amber-500/20"
               >
-                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#5d3a1a] text-2xl font-black text-white">
+                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-amber-300 to-amber-500 text-2xl font-black text-[#2a160a] shadow-md shadow-amber-900/30">
                   ★
                 </div>
-                <h3 className="text-lg font-extrabold text-[#5d3a1a]">{c.t}</h3>
-                <p className="mt-2 text-sm text-zinc-700">{c.d}</p>
+                <h3 className="text-lg font-extrabold text-amber-300">{c.t}</h3>
+                <p className="mt-2 text-sm text-amber-200/90">{c.d}</p>
               </div>
             ))}
           </div>
@@ -353,7 +353,7 @@ function LandingPage() {
       {/* SABORES */}
       <section className="bg-[#3d2314] py-16">
         <div className="mx-auto max-w-5xl px-4">
-          <h2 className="text-center text-2xl sm:text-3xl font-black text-zinc-900">
+          <h2 className="text-center text-2xl sm:text-3xl font-black text-amber-300">
             VEJA ALGUNS SABORES QUE VOCÊ VAI APRENDER A FAZER
           </h2>
           <img
@@ -362,7 +362,7 @@ function LandingPage() {
             loading="lazy"
             width={1600}
             height={800}
-            className="mx-auto mt-8 w-full max-w-3xl rounded-2xl shadow-lg"
+            className="mx-auto mt-8 w-full max-w-3xl rounded-2xl shadow-lg shadow-black/30 ring-1 ring-amber-500/20"
           />
           <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-6">
             {SABORES.map((s) => (
@@ -381,7 +381,7 @@ function LandingPage() {
       </section>
 
       {/* BENEFÍCIOS */}
-      <section className="bg-[#4a2c18] py-16">
+      <section className="bg-[#2a160a] py-16">
         <div className="mx-auto max-w-5xl px-4">
           <h2 className="text-center text-3xl sm:text-4xl font-black text-amber-300">
             O curso ideal para você que busca:
@@ -405,9 +405,9 @@ function LandingPage() {
                 d: "Milhares de pessoas já utilizam nossas receitas para gerar renda extra todos os meses.",
               },
             ].map((c) => (
-              <div key={c.t} className="rounded-2xl bg-white p-6 shadow-md">
-                <h3 className="text-lg font-extrabold text-[#5d3a1a]">{c.t}</h3>
-                <p className="mt-2 text-sm text-zinc-700">{c.d}</p>
+              <div key={c.t} className="rounded-2xl bg-gradient-to-br from-[#4a2c18] to-[#3d2314] p-6 shadow-lg shadow-black/20 ring-1 ring-amber-500/20">
+                <h3 className="text-lg font-extrabold text-amber-300">{c.t}</h3>
+                <p className="mt-2 text-sm text-amber-200/90">{c.d}</p>
               </div>
             ))}
           </div>
@@ -415,20 +415,20 @@ function LandingPage() {
       </section>
 
       {/* BÔNUS + CERTIFICADO */}
-      <section className="bg-gradient-to-b from-[#6b4226] to-[#3d2314] py-16 text-white">
+      <section className="bg-gradient-to-b from-[#5d3a1a] to-[#2a160a] py-16 text-amber-50">
         <div className="mx-auto max-w-5xl px-4">
           <div className="grid items-center gap-10 lg:grid-cols-2">
             {/* Certificado */}
             <div className="order-2 lg:order-1">
               <div className="relative mx-auto max-w-md">
-                <div className="absolute -inset-3 rounded-2xl bg-amber-400/20 blur-xl" />
+                <div className="absolute -inset-3 rounded-2xl bg-amber-400/30 blur-xl" />
                 <img
                   src={certificado}
                   alt="Certificado de Conclusão Brigadeiro Gourmet"
                   width={1024}
                   height={768}
                   loading="lazy"
-                  className="relative w-full rounded-xl shadow-2xl ring-2 ring-amber-300/30"
+                  className="relative w-full rounded-xl shadow-2xl shadow-amber-900/40 ring-2 ring-amber-300/40"
                 />
                 <p className="relative mt-3 text-center text-sm font-semibold text-amber-200">
                   Certificado de Conclusão incluso ao finalizar o curso
@@ -438,11 +438,11 @@ function LandingPage() {
 
             {/* Bônus */}
             <div className="order-1 text-center lg:order-2 lg:text-left">
-              <p className="text-7xl font-black leading-none">4</p>
-              <p className="text-3xl font-extrabold">Super Bônus Exclusivos!</p>
-              <p className="mt-4 text-base opacity-90">
-                Fazendo sua inscrição <strong>HOJE</strong>, você ganha{" "}
-                <strong>4 BÔNUS EXCLUSIVOS + CERTIFICADO</strong>.
+              <p className="text-7xl font-black leading-none text-amber-300">4</p>
+              <p className="text-3xl font-extrabold text-amber-100">Super Bônus Exclusivos!</p>
+              <p className="mt-4 text-base text-amber-200/90">
+                Fazendo sua inscrição <strong className="text-amber-300">HOJE</strong>, você ganha{" "}
+                <strong className="text-amber-300">4 BÔNUS EXCLUSIVOS + CERTIFICADO</strong>.
               </p>
               <ul className="mx-auto mt-8 grid max-w-xl gap-3 text-left lg:mx-0">
                 {[
@@ -453,10 +453,10 @@ function LandingPage() {
                 ].map((b) => (
                   <li
                     key={b}
-                    className="flex items-start gap-3 rounded-lg bg-white/10 px-4 py-3 backdrop-blur"
+                    className="flex items-start gap-3 rounded-lg bg-[#4a2c18]/80 px-4 py-3 backdrop-blur border border-amber-500/20"
                   >
                     <Check className="mt-0.5 h-5 w-5 flex-none text-amber-300" />
-                    <span className="font-medium">{b}</span>
+                    <span className="font-medium text-amber-100">{b}</span>
                   </li>
                 ))}
               </ul>
@@ -466,30 +466,30 @@ function LandingPage() {
       </section>
 
       {/* OFERTA */}
-      <section className="bg-[#4a2c18] py-16">
+      <section className="bg-[#2a160a] py-16">
         <div className="mx-auto max-w-xl px-4">
-          <div className="rounded-3xl border-4 border-[#5d3a1a] bg-white p-8 text-center shadow-xl">
-            <p className="inline-block rounded-full bg-[#5d3a1a] px-4 py-1 text-xs font-black uppercase tracking-wider text-white">
+          <div className="rounded-3xl border-4 border-amber-500/40 bg-gradient-to-br from-[#4a2c18] to-[#3d2314] p-8 text-center shadow-xl shadow-black/30">
+            <p className="inline-block rounded-full bg-gradient-to-r from-amber-500 to-yellow-400 px-4 py-1 text-xs font-black uppercase tracking-wider text-[#2a160a]">
               Oferta Especial
             </p>
-            <div className="mt-4 flex items-center justify-center gap-2 rounded-xl bg-red-50 px-4 py-3 text-red-700 ring-1 ring-red-200">
-              <Timer className="h-5 w-5" />
+            <div className="mt-4 flex items-center justify-center gap-2 rounded-xl bg-[#2a160a]/60 px-4 py-3 text-amber-100 ring-1 ring-amber-500/30">
+              <Timer className="h-5 w-5 text-amber-300" />
               <span className="text-sm font-bold uppercase tracking-wide">
                 Oferta expira em:
               </span>
               <CountdownTimer />
             </div>
-            <p className="mt-4 text-lg font-bold text-zinc-700">
+            <p className="mt-4 text-lg font-bold text-amber-200">
               PROMOÇÃO DE LANÇAMENTO!
             </p>
-            <p className="mt-4 text-lg text-zinc-500">
+            <p className="mt-4 text-lg text-amber-200/80">
               DE: <span className="line-through">R$ 97,00</span> POR APENAS
             </p>
-            <p className="text-6xl font-black text-[#5d3a1a]">R$ 37,00</p>
-            <p className="text-sm font-semibold text-zinc-600">
+            <p className="text-6xl font-black text-amber-300">R$ 37,00</p>
+            <p className="text-sm font-semibold text-amber-200/80">
               (Pagamento Único)
             </p>
-            <ul className="mt-6 space-y-2 text-left text-sm font-semibold text-zinc-800">
+            <ul className="mt-6 space-y-2 text-left text-sm font-semibold text-amber-100">
               {[
                 "CURSO 100% ONLINE EM VIDEOAULAS",
                 "ACESSO VITALÍCIO",
@@ -499,7 +499,7 @@ function LandingPage() {
                 "AULAS ENVIADAS PELO WHATSAPP",
               ].map((f) => (
                 <li key={f} className="flex items-center gap-2">
-                  <Check className="h-4 w-4 text-[#5d3a1a]" />
+                  <Check className="h-4 w-4 text-amber-300" />
                   {f}
                 </li>
               ))}
@@ -507,13 +507,13 @@ function LandingPage() {
             <div className="mt-6">
               <CTA>COMPRAR AGORA!</CTA>
             </div>
-            <div className="mt-4 flex items-center justify-center gap-2 rounded-lg bg-emerald-50 px-4 py-2.5 text-emerald-700 ring-1 ring-emerald-200">
+            <div className="mt-4 flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-amber-400 to-amber-500 px-4 py-2.5 text-[#2a160a] ring-1 ring-amber-300">
               <MessageCircle className="h-4 w-4" />
               <span className="text-xs font-bold">
                 As aulas serão enviadas pelo WhatsApp assim que o pagamento for confirmado
               </span>
             </div>
-            <p className="mt-3 text-[10px] uppercase tracking-wider text-zinc-500">
+            <p className="mt-3 text-[10px] uppercase tracking-wider text-amber-300/70">
               Pagamento seguro • Cartão e PIX
             </p>
           </div>
@@ -521,7 +521,7 @@ function LandingPage() {
       </section>
 
       {/* FAQ */}
-      <section className="bg-[#4a2c18] py-16">
+      <section className="bg-[#2a160a] py-16">
         <div className="mx-auto max-w-2xl px-4">
           <h2 className="text-center text-3xl font-black text-amber-300">
             Dúvidas Frequentes
@@ -543,35 +543,35 @@ function LandingPage() {
             loading="lazy"
             width={180}
             height={180}
-            className="h-40 w-40 flex-none"
+            className="h-40 w-40 flex-none drop-shadow-[0_8px_30px_rgba(251,191,36,0.25)]"
           />
           <div>
             <p className="text-2xl font-black text-amber-300">
               RISCO ZERO PARA VOCÊ
             </p>
-            <p className="mt-2 text-amber-100">
+            <p className="mt-2 text-amber-200/90">
               O Código de Defesa do Consumidor (Art. 49) garante 7 dias para
               solicitar reembolso em caso de insatisfação. Você terá{" "}
-              <strong>7 dias de garantia incondicional</strong>.
+              <strong className="text-amber-300">7 dias de garantia incondicional</strong>.
             </p>
           </div>
         </div>
       </section>
 
       {/* FOOTER */}
-      <footer className="bg-[#3d2314] py-10 text-center text-sm text-[#c4a882]">
+      <footer className="bg-[#1a0d06] py-10 text-center text-sm text-amber-300/70">
         <img
           src={logo}
           alt="Receitas Criativas"
           width={80}
           height={80}
-          className="mx-auto h-20 w-20 opacity-90"
+          className="mx-auto h-20 w-20 opacity-90 drop-shadow-[0_6px_20px_rgba(251,191,36,0.2)]"
           loading="lazy"
         />
-        <p className="mt-4">
+        <p className="mt-4 text-amber-200/80">
           Copyright © Brigadeiro Gourmet — Todos os direitos reservados.
         </p>
-        <p className="mt-2 text-xs text-zinc-500">
+        <p className="mt-2 text-xs text-amber-400/60">
           CNPJ: 39.450.086/0001-90
         </p>
       </footer>
@@ -615,7 +615,7 @@ function CTA({ children }: { children: React.ReactNode }) {
   return (
     <Link
       to="/checkout"
-      className="btn-shine inline-block w-full max-w-md animate-pulse-cta rounded-full bg-gradient-to-b from-[#a06a3f] via-[#8b5e3c] to-[#5d3a1a] px-8 py-5 text-lg font-black uppercase tracking-wide text-white shadow-xl shadow-amber-900/40 transition-transform hover:scale-105"
+      className="btn-shine inline-block w-full max-w-md animate-pulse-cta rounded-full bg-gradient-to-b from-amber-400 via-amber-500 to-amber-600 px-8 py-5 text-lg font-black uppercase tracking-wide text-[#2a160a] shadow-xl shadow-amber-500/40 transition-transform hover:scale-105 border border-amber-300"
     >
       {children} 🚀
     </Link>
@@ -625,19 +625,19 @@ function CTA({ children }: { children: React.ReactNode }) {
 function FaqItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="overflow-hidden rounded-xl border border-[#d4c4b0] bg-white">
+    <div className="overflow-hidden rounded-xl border border-amber-500/30 bg-gradient-to-br from-[#4a2c18] to-[#3d2314]">
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="flex w-full items-center justify-between gap-3 px-5 py-4 text-left font-semibold text-zinc-900"
+        className="flex w-full items-center justify-between gap-3 px-5 py-4 text-left font-semibold text-amber-100"
       >
         <span>{q}</span>
         <ChevronDown
-          className={`h-5 w-5 flex-none text-[#5d3a1a] transition-transform ${open ? "rotate-180" : ""}`}
+          className={`h-5 w-5 flex-none text-amber-300 transition-transform ${open ? "rotate-180" : ""}`}
         />
       </button>
       {open && (
-        <div className="border-t border-[#e8ddd0] bg-[#faf6f1] px-5 py-4 text-sm text-zinc-700">
+        <div className="border-t border-amber-500/20 bg-[#3d2314]/80 px-5 py-4 text-sm text-amber-200/90">
           {a}
         </div>
       )}
@@ -662,17 +662,17 @@ function WhatsAppPrint({
 }) {
   return (
     <div className="relative mx-auto w-full max-w-[360px]">
-      <div className="overflow-hidden rounded-[32px] bg-white shadow-[0_20px_50px_-12px_rgba(0,0,0,0.25)] ring-1 ring-black/5">
+      <div className="overflow-hidden rounded-[32px] bg-gradient-to-br from-[#4a2c18] to-[#3d2314] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.45)] ring-2 ring-amber-500/30">
         {/* WA Header */}
-        <div className="flex items-center gap-3 bg-[#f7f7f7] px-4 py-3">
-          <svg viewBox="0 0 24 24" className="h-5 w-5 fill-[#5d3a1a]">
+        <div className="flex items-center gap-3 bg-gradient-to-r from-[#3d2314] to-[#2a160a] px-4 py-3">
+          <svg viewBox="0 0 24 24" className="h-5 w-5 fill-amber-300">
             <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
           </svg>
           {avatarUrl ? (
             <img
               src={avatarUrl}
               alt={contact}
-              className="h-10 w-10 rounded-full object-cover shadow ring-1 ring-black/10"
+              className="h-10 w-10 rounded-full object-cover shadow ring-2 ring-amber-400/40"
               width={40}
               height={40}
             />
@@ -684,10 +684,10 @@ function WhatsAppPrint({
             </div>
           )}
           <div className="flex-1 leading-tight">
-            <p className="text-[13px] font-bold text-zinc-900">{contact}</p>
-            <p className="text-[11px] text-emerald-600">{status}</p>
+            <p className="text-[13px] font-bold text-amber-100">{contact}</p>
+            <p className="text-[11px] text-amber-300/80">{status}</p>
           </div>
-          <svg viewBox="0 0 24 24" className="h-5 w-5 fill-[#5d3a1a]">
+          <svg viewBox="0 0 24 24" className="h-5 w-5 fill-amber-300">
             <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
           </svg>
         </div>
@@ -695,13 +695,13 @@ function WhatsAppPrint({
         <div
           className="relative min-h-[340px] space-y-2 p-4"
           style={{
-            backgroundColor: "#efeae2",
+            backgroundColor: "#2a160a",
             backgroundImage:
-              "radial-gradient(circle at 20% 10%, rgba(0,0,0,0.03) 1px, transparent 1px), radial-gradient(circle at 80% 60%, rgba(0,0,0,0.02) 1px, transparent 1px)",
+              "radial-gradient(circle at 20% 10%, rgba(251,191,36,0.04) 1px, transparent 1px), radial-gradient(circle at 80% 60%, rgba(251,191,36,0.03) 1px, transparent 1px)",
             backgroundSize: "24px 24px, 32px 32px",
           }}
         >
-          <div className="mx-auto mb-3 w-fit rounded-md bg-white px-2 py-1 text-[10px] font-medium text-zinc-500 shadow-sm">
+          <div className="mx-auto mb-3 w-fit rounded-md bg-[#3d2314] px-2 py-1 text-[10px] font-medium text-amber-100 shadow-sm ring-1 ring-amber-500/20">
             HOJE
           </div>
           {children}
@@ -728,21 +728,21 @@ function Bubble({
   return (
     <div className={`flex ${isRight ? "justify-end" : "justify-start"}`}>
       <div
-        className={`relative max-w-[85%] rounded-xl rounded-${isRight ? "tl" : "tr"}-[4px] px-3 py-2 text-[13px] shadow-sm ${
-          isRight ? "bg-[#d9fdd3] text-zinc-900" : "bg-white text-zinc-900"
+        className={`relative max-w-[85%] rounded-xl px-3 py-2 text-[13px] shadow-sm ${
+          isRight ? "bg-gradient-to-br from-amber-300 to-amber-500 text-[#2a160a]" : "bg-[#3d2314] text-amber-100"
         }`}
         style={{ borderRadius: isRight ? "16px 16px 4px 16px" : "16px 16px 16px 4px" }}
       >
         {name && !isRight && (
-          <p className="text-[11px] font-bold text-rose-600">{name}</p>
+          <p className="text-[11px] font-bold text-amber-300">{name}</p>
         )}
         <p className="pr-14 leading-snug">{children}</p>
-        <span className="absolute bottom-1.5 right-2 flex items-center gap-0.5 text-[10px] text-zinc-400">
+        <span className={`absolute bottom-1.5 right-2 flex items-center gap-0.5 text-[10px] ${isRight ? "text-[#2a160a]/60" : "text-amber-300/60"}`}>
           {time}
           {isRight && (
             <svg
               viewBox="0 0 16 11"
-              className={`h-3 w-4 ${read ? "fill-[#53bdeb]" : "fill-zinc-400"}`}
+              className={`h-3 w-4 ${read ? "fill-[#2a160a]" : "fill-[#2a160a]/50"}`}
             >
               <path d="M11.07.59 5.65 6.01l-2.12-2.12-1.41 1.41L5.65 8.84 12.49 2 11.07.59zm4.24 0L9.9 6.01l-.62-.62-1.41 1.41 2.03 2.03L16.72 2 15.31.59z" />
             </svg>
@@ -837,7 +837,7 @@ function WhatsAppCarousel() {
       contact="Juliana 🎂"
       status="online"
       initials="JA"
-      avatarColor="bg-emerald-400"
+      avatarColor="bg-amber-400"
       avatarUrl={avatarJuliana.url}
     >
       <Bubble side="left" time="09:12">
@@ -867,10 +867,10 @@ function WhatsAppCarousel() {
         <button
           type="button"
           onClick={prev}
-          className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-white shadow-md ring-1 ring-[#e8ddd0] transition hover:scale-105"
+          className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-gradient-to-br from-amber-400 to-amber-600 shadow-md shadow-amber-500/20 ring-1 ring-amber-300 transition hover:scale-105"
           aria-label="Anterior"
         >
-          <ChevronLeft className="h-5 w-5 text-[#5d3a1a]" />
+          <ChevronLeft className="h-5 w-5 text-[#2a160a]" />
         </button>
 
         <div className="w-full overflow-hidden rounded-[32px]">
@@ -889,10 +889,10 @@ function WhatsAppCarousel() {
         <button
           type="button"
           onClick={next}
-          className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-white shadow-md ring-1 ring-[#e8ddd0] transition hover:scale-105"
+          className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-gradient-to-br from-amber-400 to-amber-600 shadow-md shadow-amber-500/20 ring-1 ring-amber-300 transition hover:scale-105"
           aria-label="Próximo"
         >
-          <ChevronRight className="h-5 w-5 text-[#5d3a1a]" />
+          <ChevronRight className="h-5 w-5 text-[#2a160a]" />
         </button>
       </div>
 
@@ -903,7 +903,7 @@ function WhatsAppCarousel() {
             type="button"
             onClick={() => setIndex(i)}
             className={`h-2 w-2 rounded-full transition-all ${
-              i === index ? "bg-[#5d3a1a] w-5" : "bg-[#d4c4b0]"
+              i === index ? "bg-amber-400 w-5" : "bg-amber-500/30"
             }`}
             aria-label={`Ir para print ${i + 1}`}
           />
