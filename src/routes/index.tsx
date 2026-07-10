@@ -662,9 +662,9 @@ function WhatsAppPrint({
 }) {
   return (
     <div className="relative mx-auto w-full max-w-[360px]">
-      <div className="overflow-hidden rounded-[32px] bg-white shadow-[0_20px_50px_-12px_rgba(0,0,0,0.35)] ring-2 ring-amber-500/20">
+      <div className="overflow-hidden rounded-[32px] bg-gradient-to-br from-[#4a2c18] to-[#3d2314] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.45)] ring-2 ring-amber-500/30">
         {/* WA Header */}
-        <div className="flex items-center gap-3 bg-gradient-to-r from-[#4a2c18] to-[#3d2314] px-4 py-3">
+        <div className="flex items-center gap-3 bg-gradient-to-r from-[#3d2314] to-[#2a160a] px-4 py-3">
           <svg viewBox="0 0 24 24" className="h-5 w-5 fill-amber-300">
             <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
           </svg>
@@ -695,13 +695,13 @@ function WhatsAppPrint({
         <div
           className="relative min-h-[340px] space-y-2 p-4"
           style={{
-            backgroundColor: "#efeae2",
+            backgroundColor: "#2a160a",
             backgroundImage:
-              "radial-gradient(circle at 20% 10%, rgba(0,0,0,0.03) 1px, transparent 1px), radial-gradient(circle at 80% 60%, rgba(0,0,0,0.02) 1px, transparent 1px)",
+              "radial-gradient(circle at 20% 10%, rgba(251,191,36,0.04) 1px, transparent 1px), radial-gradient(circle at 80% 60%, rgba(251,191,36,0.03) 1px, transparent 1px)",
             backgroundSize: "24px 24px, 32px 32px",
           }}
         >
-          <div className="mx-auto mb-3 w-fit rounded-md bg-[#4a2c18] px-2 py-1 text-[10px] font-medium text-amber-100 shadow-sm">
+          <div className="mx-auto mb-3 w-fit rounded-md bg-[#3d2314] px-2 py-1 text-[10px] font-medium text-amber-100 shadow-sm ring-1 ring-amber-500/20">
             HOJE
           </div>
           {children}
@@ -728,21 +728,21 @@ function Bubble({
   return (
     <div className={`flex ${isRight ? "justify-end" : "justify-start"}`}>
       <div
-        className={`relative max-w-[85%] rounded-xl rounded-${isRight ? "tl" : "tr"}-[4px] px-3 py-2 text-[13px] shadow-sm ${
-          isRight ? "bg-gradient-to-br from-amber-100 to-amber-200 text-[#2a160a]" : "bg-white text-[#2a160a]"
+        className={`relative max-w-[85%] rounded-xl px-3 py-2 text-[13px] shadow-sm ${
+          isRight ? "bg-gradient-to-br from-amber-300 to-amber-500 text-[#2a160a]" : "bg-[#3d2314] text-amber-100"
         }`}
         style={{ borderRadius: isRight ? "16px 16px 4px 16px" : "16px 16px 16px 4px" }}
       >
         {name && !isRight && (
-          <p className="text-[11px] font-bold text-amber-700">{name}</p>
+          <p className="text-[11px] font-bold text-amber-300">{name}</p>
         )}
         <p className="pr-14 leading-snug">{children}</p>
-        <span className="absolute bottom-1.5 right-2 flex items-center gap-0.5 text-[10px] text-amber-800/60">
+        <span className={`absolute bottom-1.5 right-2 flex items-center gap-0.5 text-[10px] ${isRight ? "text-[#2a160a]/60" : "text-amber-300/60"}`}>
           {time}
           {isRight && (
             <svg
               viewBox="0 0 16 11"
-              className={`h-3 w-4 ${read ? "fill-amber-600" : "fill-amber-400"}`}
+              className={`h-3 w-4 ${read ? "fill-[#2a160a]" : "fill-[#2a160a]/50"}`}
             >
               <path d="M11.07.59 5.65 6.01l-2.12-2.12-1.41 1.41L5.65 8.84 12.49 2 11.07.59zm4.24 0L9.9 6.01l-.62-.62-1.41 1.41 2.03 2.03L16.72 2 15.31.59z" />
             </svg>
