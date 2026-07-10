@@ -469,8 +469,8 @@ function CheckoutPage() {
                   )}
 
                   <div className="mt-4 space-y-3">
-                    <div className="rounded-lg bg-gradient-to-r from-amber-100 to-orange-100 px-4 py-3 text-center ring-1 ring-amber-300">
-                      <p className="text-xs font-black uppercase tracking-wider text-amber-900">
+                    <div className="rounded-lg bg-gradient-to-r from-amber-500 to-amber-400 px-4 py-3 text-center shadow-md shadow-amber-500/20">
+                      <p className="text-xs font-black uppercase tracking-wider text-[#2a160a]">
                         🔥 SIM, EU ACEITO ESSA OFERTA ESPECIAL!
                       </p>
                     </div>
@@ -490,7 +490,7 @@ function CheckoutPage() {
                   </div>
 
                   {error && (
-                    <p className="rounded-md bg-red-50 px-3 py-2 text-sm text-red-700 ring-1 ring-red-200">
+                    <p className="rounded-md bg-amber-900/40 px-3 py-2 text-sm text-amber-100 ring-1 ring-amber-500/30">
                       {error}
                     </p>
                   )}
@@ -498,7 +498,7 @@ function CheckoutPage() {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#5d3a1a] to-[#7a4d24] py-4 text-base font-black uppercase tracking-wide text-white shadow-lg transition hover:brightness-110 disabled:opacity-60"
+                    className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 py-4 text-base font-black uppercase tracking-wide text-[#2a160a] shadow-lg shadow-amber-500/30 transition hover:brightness-110 disabled:opacity-60 border border-amber-300"
                   >
                     {loading ? (
                       <>
@@ -515,11 +515,11 @@ function CheckoutPage() {
                     )}
                   </button>
 
-                  <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-3 text-center text-xs text-emerald-800">
-                    <span className="font-bold">📱 As aulas serão enviadas pelo WhatsApp</span> assim que o pagamento for confirmado.
+                  <div className="rounded-xl border border-amber-500/30 bg-[#3d2314]/60 p-3 text-center text-xs text-amber-200">
+                    <span className="font-bold text-amber-300">📱 As aulas serão enviadas pelo WhatsApp</span> assim que o pagamento for confirmado.
                   </div>
 
-                  <p className="text-center text-[10px] uppercase tracking-wider text-zinc-500">
+                  <p className="text-center text-[10px] uppercase tracking-wider text-amber-300/60">
                     Ambiente criptografado · SSL 256 bits
                   </p>
                 </form>
@@ -533,19 +533,19 @@ function CheckoutPage() {
 
           {/* Right: Summary */}
           <aside className="space-y-4">
-            <div className="rounded-2xl bg-white p-6 shadow-xl ring-1 ring-black/5">
-              <p className="text-xs font-bold uppercase tracking-wider text-zinc-500">
+            <div className="rounded-2xl bg-gradient-to-br from-[#4a2c18] to-[#3d2314] p-6 shadow-xl shadow-black/30 ring-1 ring-amber-500/20">
+              <p className="text-xs font-bold uppercase tracking-wider text-amber-300/80">
                 Resumo do pedido
               </p>
-              <div className="mt-4 flex gap-3 border-b border-zinc-100 pb-4">
-                <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-amber-100 to-amber-200 text-3xl">
+              <div className="mt-4 flex gap-3 border-b border-amber-500/20 pb-4">
+                <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-amber-300 to-amber-500 text-3xl shadow-md shadow-amber-500/20">
                   🍫
                 </div>
                 <div className="flex-1">
-                  <p className="text-sm font-bold text-[#5d3a1a]">
+                  <p className="text-sm font-bold text-amber-100">
                     Curso Brigadeiro Gourmet
                   </p>
-                  <p className="mt-0.5 text-[11px] text-zinc-500">
+                  <p className="mt-0.5 text-[11px] text-amber-200/70">
                     Acesso vitalício + 4 bônus + certificado
                   </p>
                 </div>
@@ -577,12 +577,12 @@ function CheckoutPage() {
                   bold
                 />
               </div>
-              <div className="mt-4 rounded-lg bg-amber-50 px-3 py-2 text-center text-[11px] font-bold uppercase tracking-wider text-amber-800">
+              <div className="mt-4 rounded-lg bg-gradient-to-r from-amber-500 to-amber-400 px-3 py-2 text-center text-[11px] font-bold uppercase tracking-wider text-[#2a160a]">
                 Economia de 62%
               </div>
             </div>
 
-            <div className="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-black/5">
+            <div className="rounded-2xl bg-gradient-to-br from-[#4a2c18] to-[#3d2314] p-5 shadow-sm ring-1 ring-amber-500/20">
               <Benefit
                 icon={<ShieldCheck className="h-4 w-4" />}
                 text="Garantia de 7 dias"
