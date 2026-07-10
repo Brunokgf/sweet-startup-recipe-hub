@@ -521,7 +521,7 @@ function LandingPage() {
       </section>
 
       {/* FAQ */}
-      <section className="bg-[#4a2c18] py-16">
+      <section className="bg-[#2a160a] py-16">
         <div className="mx-auto max-w-2xl px-4">
           <h2 className="text-center text-3xl font-black text-amber-300">
             Dúvidas Frequentes
@@ -543,35 +543,35 @@ function LandingPage() {
             loading="lazy"
             width={180}
             height={180}
-            className="h-40 w-40 flex-none"
+            className="h-40 w-40 flex-none drop-shadow-[0_8px_30px_rgba(251,191,36,0.25)]"
           />
           <div>
             <p className="text-2xl font-black text-amber-300">
               RISCO ZERO PARA VOCÊ
             </p>
-            <p className="mt-2 text-amber-100">
+            <p className="mt-2 text-amber-200/90">
               O Código de Defesa do Consumidor (Art. 49) garante 7 dias para
               solicitar reembolso em caso de insatisfação. Você terá{" "}
-              <strong>7 dias de garantia incondicional</strong>.
+              <strong className="text-amber-300">7 dias de garantia incondicional</strong>.
             </p>
           </div>
         </div>
       </section>
 
       {/* FOOTER */}
-      <footer className="bg-[#3d2314] py-10 text-center text-sm text-[#c4a882]">
+      <footer className="bg-[#1a0d06] py-10 text-center text-sm text-amber-300/70">
         <img
           src={logo}
           alt="Receitas Criativas"
           width={80}
           height={80}
-          className="mx-auto h-20 w-20 opacity-90"
+          className="mx-auto h-20 w-20 opacity-90 drop-shadow-[0_6px_20px_rgba(251,191,36,0.2)]"
           loading="lazy"
         />
-        <p className="mt-4">
+        <p className="mt-4 text-amber-200/80">
           Copyright © Brigadeiro Gourmet — Todos os direitos reservados.
         </p>
-        <p className="mt-2 text-xs text-zinc-500">
+        <p className="mt-2 text-xs text-amber-400/60">
           CNPJ: 39.450.086/0001-90
         </p>
       </footer>
