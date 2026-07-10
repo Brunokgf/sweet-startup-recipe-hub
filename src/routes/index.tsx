@@ -160,7 +160,7 @@ function LandingPage() {
       <section className="bg-[#3d2314] py-16">
         <div className="mx-auto max-w-5xl px-4">
           <div className="text-center">
-            <span className="inline-block rounded-full bg-[#5d3a1a] px-4 py-1.5 text-xs font-black uppercase tracking-widest text-white shadow">
+            <span className="inline-block rounded-full bg-gradient-to-r from-amber-500 to-yellow-400 px-4 py-1.5 text-xs font-black uppercase tracking-widest text-[#2a160a] shadow-lg shadow-amber-500/20">
               Feito para você
             </span>
             <h2 className="mt-4 text-3xl sm:text-4xl font-black text-amber-300">
@@ -176,48 +176,48 @@ function LandingPage() {
               {
                 t: "Quem deseja uma renda extra",
                 icon: TrendingUp,
-                cor: "bg-emerald-50 border-emerald-200 text-emerald-700",
-                iconeCor: "text-emerald-600",
+                cor: "bg-[#4a2c18] border-amber-500/40 text-amber-100",
+                iconeCor: "text-amber-300",
               },
               {
                 t: "Pessoas desempregadas que querem começar a vender",
                 icon: Briefcase,
-                cor: "bg-amber-50 border-amber-200 text-amber-700",
-                iconeCor: "text-amber-600",
+                cor: "bg-[#4a2c18] border-amber-500/40 text-amber-100",
+                iconeCor: "text-amber-300",
               },
               {
                 t: "Quem busca trabalhar em casa",
                 icon: Home,
-                cor: "bg-sky-50 border-sky-200 text-sky-700",
-                iconeCor: "text-sky-600",
+                cor: "bg-[#4a2c18] border-amber-500/40 text-amber-100",
+                iconeCor: "text-amber-300",
               },
               {
                 t: "Mulheres que desejam independência financeira",
                 icon: Users,
-                cor: "bg-rose-50 border-rose-200 text-rose-700",
-                iconeCor: "text-rose-600",
+                cor: "bg-[#4a2c18] border-amber-500/40 text-amber-100",
+                iconeCor: "text-amber-300",
               },
               {
                 t: "Quem procura uma atividade com baixo investimento",
                 icon: PiggyBank,
-                cor: "bg-violet-50 border-violet-200 text-violet-700",
-                iconeCor: "text-violet-600",
+                cor: "bg-[#4a2c18] border-amber-500/40 text-amber-100",
+                iconeCor: "text-amber-300",
               },
               {
                 t: "Pessoas sem experiência",
                 icon: GraduationCap,
-                cor: "bg-orange-50 border-orange-200 text-orange-700",
-                iconeCor: "text-orange-600",
+                cor: "bg-[#4a2c18] border-amber-500/40 text-amber-100",
+                iconeCor: "text-amber-300",
               },
             ].map((item) => {
               const Icon = item.icon;
               return (
                 <li
                   key={item.t}
-                  className={`flex flex-col items-center gap-3 rounded-2xl border-2 ${item.cor} p-6 text-center shadow-sm transition-transform hover:-translate-y-1 hover:shadow-md`}
+                  className={`flex flex-col items-center gap-3 rounded-2xl border-2 ${item.cor} p-6 text-center shadow-lg shadow-black/20 transition-transform hover:-translate-y-1 hover:border-amber-400 hover:shadow-xl hover:shadow-amber-900/20`}
                 >
-                  <div className={`flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-sm`}>
-                    <Icon className={`h-6 w-6 ${item.iconeCor}`} />
+                  <div className={`flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-amber-400 to-amber-600 shadow-md`}>
+                    <Icon className={`h-6 w-6 text-[#2a160a]`} />
                   </div>
                   <span className="font-bold leading-snug">{item.t}</span>
                 </li>
@@ -225,10 +225,10 @@ function LandingPage() {
             })}
           </ul>
 
-          <div className="mt-10 rounded-2xl bg-[#5d3a1a] p-6 text-center text-white shadow-lg sm:p-8">
+          <div className="mt-10 rounded-2xl bg-gradient-to-br from-[#5d3a1a] to-[#3d2314] p-6 text-center text-amber-50 shadow-xl shadow-black/25 sm:p-8 border border-amber-500/20">
             <p className="text-lg font-bold sm:text-xl">
               Mesmo que você nunca tenha produzido um brigadeiro gourmet, as aulas
-              mostram o <span className="underline decoration-amber-400 underline-offset-4">passo a passo completo em videoaulas</span>.
+              mostram o <span className="underline decoration-amber-300 underline-offset-4">passo a passo completo em videoaulas</span>.
             </p>
             <div className="mt-5">
               <CTA>QUERO COMEÇAR AGORA</CTA>
