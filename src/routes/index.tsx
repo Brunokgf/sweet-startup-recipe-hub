@@ -837,7 +837,7 @@ function WhatsAppCarousel() {
       contact="Juliana 🎂"
       status="online"
       initials="JA"
-      avatarColor="bg-emerald-400"
+      avatarColor="bg-amber-400"
       avatarUrl={avatarJuliana.url}
     >
       <Bubble side="left" time="09:12">
