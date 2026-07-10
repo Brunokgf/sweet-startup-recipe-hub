@@ -381,7 +381,7 @@ function LandingPage() {
       </section>
 
       {/* BENEFÍCIOS */}
-      <section className="bg-[#4a2c18] py-16">
+      <section className="bg-[#2a160a] py-16">
         <div className="mx-auto max-w-5xl px-4">
           <h2 className="text-center text-3xl sm:text-4xl font-black text-amber-300">
             O curso ideal para você que busca:
@@ -405,9 +405,9 @@ function LandingPage() {
                 d: "Milhares de pessoas já utilizam nossas receitas para gerar renda extra todos os meses.",
               },
             ].map((c) => (
-              <div key={c.t} className="rounded-2xl bg-white p-6 shadow-md">
-                <h3 className="text-lg font-extrabold text-[#5d3a1a]">{c.t}</h3>
-                <p className="mt-2 text-sm text-zinc-700">{c.d}</p>
+              <div key={c.t} className="rounded-2xl bg-gradient-to-br from-[#4a2c18] to-[#3d2314] p-6 shadow-lg shadow-black/20 ring-1 ring-amber-500/20">
+                <h3 className="text-lg font-extrabold text-amber-300">{c.t}</h3>
+                <p className="mt-2 text-sm text-amber-200/90">{c.d}</p>
               </div>
             ))}
           </div>
