@@ -615,7 +615,7 @@ function CTA({ children }: { children: React.ReactNode }) {
   return (
     <Link
       to="/checkout"
-      className="btn-shine inline-block w-full max-w-md animate-pulse-cta rounded-full bg-gradient-to-b from-[#a06a3f] via-[#8b5e3c] to-[#5d3a1a] px-8 py-5 text-lg font-black uppercase tracking-wide text-white shadow-xl shadow-amber-900/40 transition-transform hover:scale-105"
+      className="btn-shine inline-block w-full max-w-md animate-pulse-cta rounded-full bg-gradient-to-b from-amber-400 via-amber-500 to-amber-600 px-8 py-5 text-lg font-black uppercase tracking-wide text-[#2a160a] shadow-xl shadow-amber-500/40 transition-transform hover:scale-105 border border-amber-300"
     >
       {children} 🚀
     </Link>
@@ -625,19 +625,19 @@ function CTA({ children }: { children: React.ReactNode }) {
 function FaqItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="overflow-hidden rounded-xl border border-[#d4c4b0] bg-white">
+    <div className="overflow-hidden rounded-xl border border-amber-500/30 bg-gradient-to-br from-[#4a2c18] to-[#3d2314]">
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="flex w-full items-center justify-between gap-3 px-5 py-4 text-left font-semibold text-zinc-900"
+        className="flex w-full items-center justify-between gap-3 px-5 py-4 text-left font-semibold text-amber-100"
       >
         <span>{q}</span>
         <ChevronDown
-          className={`h-5 w-5 flex-none text-[#5d3a1a] transition-transform ${open ? "rotate-180" : ""}`}
+          className={`h-5 w-5 flex-none text-amber-300 transition-transform ${open ? "rotate-180" : ""}`}
         />
       </button>
       {open && (
-        <div className="border-t border-[#e8ddd0] bg-[#faf6f1] px-5 py-4 text-sm text-zinc-700">
+        <div className="border-t border-amber-500/20 bg-[#3d2314]/80 px-5 py-4 text-sm text-amber-200/90">
           {a}
         </div>
       )}
