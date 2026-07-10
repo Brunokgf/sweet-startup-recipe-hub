@@ -778,13 +778,13 @@ function PixSuccess({
               : `data:image/png;base64,${pix.qrCodeBase64}`
           }
           alt="QR Code PIX"
-          className="mx-auto mt-6 h-64 w-64 rounded-lg border border-amber-500/30 bg-white p-2"
+          className="mx-auto mt-6 h-64 w-64 rounded-lg border border-amber-500/30 bg-[#2a160a] p-2"
         />
       ) : pix.qrCode ? (
         <img
           src={`https://api.qrserver.com/v1/create-qr-code/?size=300x300&margin=10&data=${encodeURIComponent(pix.qrCode)}`}
           alt="QR Code PIX"
-          className="mx-auto mt-6 h-64 w-64 rounded-lg border border-amber-500/30 bg-white p-2"
+          className="mx-auto mt-6 h-64 w-64 rounded-lg border border-amber-500/30 bg-[#2a160a] p-2"
         />
       ) : (
         <p className="mt-6 rounded-md bg-[#3d2314]/60 px-3 py-2 text-sm text-amber-200 ring-1 ring-amber-500/30">
