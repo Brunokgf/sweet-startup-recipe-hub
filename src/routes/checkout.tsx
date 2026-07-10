@@ -239,28 +239,28 @@ function CheckoutPage() {
   };
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-[#f5f0eb] to-[#ebe1d3]">
+    <main className="min-h-screen bg-gradient-to-b from-[#2a160a] to-[#3d2314] text-amber-50">
       {/* Banner / Header */}
-      <header className="bg-gradient-to-r from-[#5d3a1a] via-[#7a4d24] to-[#5d3a1a] text-white shadow-lg">
+      <header className="bg-gradient-to-r from-[#3d2314] via-[#5d3a1a] to-[#3d2314] text-amber-50 shadow-lg shadow-amber-900/30 border-b border-amber-500/20">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
           <Link
             to="/"
-            className="flex items-center gap-2 text-sm font-medium text-white/80 hover:text-white"
+            className="flex items-center gap-2 text-sm font-medium text-amber-200/80 hover:text-amber-100"
           >
             <ArrowLeft className="h-4 w-4" /> Voltar
           </Link>
-          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider">
+          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-amber-200/90">
             <Lock className="h-3.5 w-3.5" /> Pagamento 100% Seguro
           </div>
         </div>
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-2 px-4 pb-8 pt-4 text-center">
-          <span className="rounded-full bg-amber-400 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-[#5d3a1a]">
+          <span className="rounded-full bg-gradient-to-r from-amber-400 to-amber-500 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-[#2a160a] shadow-md shadow-amber-500/30">
             Oferta de Lançamento
           </span>
-          <h1 className="text-2xl font-black sm:text-3xl">
+          <h1 className="text-2xl font-black sm:text-3xl text-amber-100">
             Finalize sua Inscrição
           </h1>
-          <p className="text-sm text-white/80">
+          <p className="text-sm text-amber-200/80">
             Falta apenas um passo para começar sua jornada doce 🍫
           </p>
         </div>
@@ -269,7 +269,7 @@ function CheckoutPage() {
       <div className="mx-auto -mt-6 max-w-6xl px-4 pb-16">
         <div className="grid gap-6 lg:grid-cols-[1fr_380px]">
           {/* Left: Form */}
-          <section className="rounded-2xl bg-white p-6 shadow-xl ring-1 ring-black/5 sm:p-8">
+          <section className="rounded-2xl bg-gradient-to-br from-[#4a2c18] to-[#3d2314] p-6 shadow-xl shadow-black/30 ring-1 ring-amber-500/20 sm:p-8">
             {!pix && !cardResult ? (
               <>
                 <Step number={1} title="Seus dados" />
