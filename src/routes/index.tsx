@@ -75,7 +75,7 @@ const FAQS = [
 function LandingPage() {
   useScrollReveal();
   return (
-    <main className="min-h-screen bg-[#4a2c18] text-zinc-900">
+    <main className="min-h-screen bg-[#2a160a] text-amber-50">
       <SaleNotifications />
       <StickyUrgencyBar />
       {/* HERO */}
@@ -83,7 +83,7 @@ function LandingPage() {
         className="relative overflow-hidden bg-cover bg-center"
         style={{ backgroundImage: `url(${heroBg})` }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-[#4a2c18]/85 via-[#4a2c18]/75 to-[#4a2c18]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#2a160a]/90 via-[#3d2314]/80 to-[#2a160a]" />
 
         {/* Emojis flutuantes */}
         <span className="float-emoji left-[6%] top-[12%]" style={{ animationDelay: "0s" }}>🍫</span>
@@ -99,48 +99,48 @@ function LandingPage() {
             alt="Receitas Criativas"
             width={160}
             height={160}
-            className="mx-auto h-32 w-32 sm:h-40 sm:w-40 drop-shadow-lg animate-bounce-in"
+            className="mx-auto h-32 w-32 sm:h-40 sm:w-40 drop-shadow-[0_8px_30px_rgba(251,191,36,0.35)] animate-bounce-in"
           />
-          <p className="mt-6 text-xl sm:text-2xl font-extrabold tracking-wide text-amber-100">
+          <p className="mt-6 text-xl sm:text-2xl font-extrabold tracking-wide text-amber-200">
             APRENDA A PRODUZIR
           </p>
           <h1 className="mt-2 text-4xl sm:text-6xl font-black uppercase tracking-tight text-gradient-hot drop-shadow-sm">
             Brigadeiros Gourmet
           </h1>
-          <div className="mt-4 inline-block w-full max-w-xl rounded-md bg-[#5d3a1a] px-4 py-3 text-xl sm:text-2xl font-extrabold uppercase text-white shadow">
+          <div className="mt-4 inline-block w-full max-w-xl rounded-md bg-gradient-to-r from-[#5d3a1a] to-[#7c4d24] px-4 py-3 text-xl sm:text-2xl font-extrabold uppercase text-amber-100 shadow-lg border border-amber-500/30">
             E crie uma renda extra 💸
           </div>
-          <p className="mt-4 text-lg sm:text-xl font-semibold text-amber-200">
+          <p className="mt-4 text-lg sm:text-xl font-semibold text-amber-300">
             Mesmo começando do zero!
           </p>
-          <p className="mt-4 inline-flex animate-wiggle items-center gap-2 rounded-full bg-gradient-to-r from-amber-400 to-amber-500 px-4 py-1.5 text-sm font-black uppercase tracking-wide text-[#3d2314] shadow-lg">
+          <p className="mt-4 inline-flex animate-wiggle items-center gap-2 rounded-full bg-gradient-to-r from-amber-300 to-yellow-400 px-4 py-1.5 text-sm font-black uppercase tracking-wide text-[#2a160a] shadow-lg shadow-amber-500/30">
             <Users className="h-4 w-4" />
             Mentorado por Luiza Quadros
           </p>
-          <p className="mt-4 text-3xl font-black text-white">
+          <p className="mt-4 text-3xl font-black text-amber-100">
             <span className="sparkle-glow">+6.000 Alunas 🔥</span>
           </p>
-          <p className="text-sm font-medium text-amber-200">
+          <p className="text-sm font-medium text-amber-300">
             Já transformaram sua vida com nossas receitas
           </p>
-          <div className="mt-3 flex justify-center gap-1 text-amber-400">
+          <div className="mt-3 flex justify-center gap-1 text-amber-300">
             {[0, 1, 2, 3, 4].map((i) => (
-              <Star key={i} className="h-6 w-6 fill-amber-400 animate-bounce-in" style={{ animationDelay: `${i * 0.1}s` }} />
+              <Star key={i} className="h-6 w-6 fill-amber-300 animate-bounce-in" style={{ animationDelay: `${i * 0.1}s` }} />
             ))}
           </div>
 
 
           {/* VSL PLACEHOLDER */}
-          <div className="mx-auto mt-8 w-full max-w-2xl overflow-hidden rounded-xl border-4 border-white bg-zinc-900 shadow-2xl">
+          <div className="mx-auto mt-8 w-full max-w-2xl overflow-hidden rounded-xl border-4 border-amber-400/60 bg-[#2a160a] shadow-2xl shadow-amber-900/40">
             <div className="relative aspect-video">
               {/* Substitua este bloco pelo embed do seu VSL */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-zinc-800 to-zinc-950 text-white">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#5d3a1a] shadow-lg">
-                  <svg viewBox="0 0 24 24" className="ml-1 h-8 w-8 fill-white">
+              <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-[#3d2314] to-[#1a0d06] text-amber-100">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-amber-400 to-amber-600 shadow-lg shadow-amber-500/40">
+                  <svg viewBox="0 0 24 24" className="ml-1 h-8 w-8 fill-[#2a160a]">
                     <path d="M8 5v14l11-7z" />
                   </svg>
                 </div>
-                <p className="mt-4 text-sm font-semibold opacity-80">
+                <p className="mt-4 text-sm font-semibold text-amber-300">
                   Seu VSL será exibido aqui
                 </p>
               </div>
@@ -150,7 +150,7 @@ function LandingPage() {
           <div className="mt-8">
             <CTA>QUERO COMEÇAR AGORA</CTA>
           </div>
-          <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-amber-200">
+          <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-amber-300">
             Pagamento 100% seguro • Cartão e PIX
           </p>
         </div>
