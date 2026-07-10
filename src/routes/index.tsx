@@ -867,10 +867,10 @@ function WhatsAppCarousel() {
         <button
           type="button"
           onClick={prev}
-          className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-white shadow-md ring-1 ring-[#e8ddd0] transition hover:scale-105"
+          className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-gradient-to-br from-amber-400 to-amber-600 shadow-md shadow-amber-500/20 ring-1 ring-amber-300 transition hover:scale-105"
           aria-label="Anterior"
         >
-          <ChevronLeft className="h-5 w-5 text-[#5d3a1a]" />
+          <ChevronLeft className="h-5 w-5 text-[#2a160a]" />
         </button>
 
         <div className="w-full overflow-hidden rounded-[32px]">
@@ -889,10 +889,10 @@ function WhatsAppCarousel() {
         <button
           type="button"
           onClick={next}
-          className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-white shadow-md ring-1 ring-[#e8ddd0] transition hover:scale-105"
+          className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-gradient-to-br from-amber-400 to-amber-600 shadow-md shadow-amber-500/20 ring-1 ring-amber-300 transition hover:scale-105"
           aria-label="Próximo"
         >
-          <ChevronRight className="h-5 w-5 text-[#5d3a1a]" />
+          <ChevronRight className="h-5 w-5 text-[#2a160a]" />
         </button>
       </div>
 
@@ -903,7 +903,7 @@ function WhatsAppCarousel() {
             type="button"
             onClick={() => setIndex(i)}
             className={`h-2 w-2 rounded-full transition-all ${
-              i === index ? "bg-[#5d3a1a] w-5" : "bg-[#d4c4b0]"
+              i === index ? "bg-amber-400 w-5" : "bg-amber-500/30"
             }`}
             aria-label={`Ir para print ${i + 1}`}
           />
