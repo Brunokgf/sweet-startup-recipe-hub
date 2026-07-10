@@ -32,12 +32,12 @@ export const Route = createFileRoute("/")({
 const CHECKOUT_URL = "#"; // troque pelo link do Kiwify/Hotmart
 
 const SABORES = [
-  { nome: "TRADICIONAL", cor: "from-amber-800 to-amber-950" },
-  { nome: "BEIJINHO", cor: "from-zinc-100 to-zinc-300" },
-  { nome: "PISTACHE", cor: "from-green-400 to-emerald-600" },
-  { nome: "MORANGO", cor: "from-pink-400 to-rose-600" },
-  { nome: "OREO", cor: "from-zinc-700 to-zinc-900" },
-  { nome: "AMENDOIN", cor: "from-amber-500 to-orange-700" },
+  { nome: "TRADICIONAL", cor: "from-amber-600 to-amber-800" },
+  { nome: "BEIJINHO", cor: "from-[#5d3a1a] to-[#3d2314]" },
+  { nome: "PISTACHE", cor: "from-amber-500 to-amber-700" },
+  { nome: "MORANGO", cor: "from-[#7c4d24] to-[#4a2c18]" },
+  { nome: "OREO", cor: "from-[#3d2314] to-[#1a0d06]" },
+  { nome: "AMENDOIN", cor: "from-amber-400 to-amber-600" },
 ];
 
 const FAQS = [
