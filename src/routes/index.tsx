@@ -238,7 +238,7 @@ function LandingPage() {
       </section>
 
       {/* DEPOIMENTOS */}
-      <section className="bg-[#4a2c18] py-16">
+      <section className="bg-[#2a160a] py-16">
         <div className="mx-auto max-w-5xl px-4">
           <h2 className="text-center text-3xl sm:text-4xl font-black text-amber-300">
             O QUE NOSSAS ALUNAS ESTÃO DIZENDO
@@ -263,25 +263,25 @@ function LandingPage() {
             ].map((d) => (
               <div
                 key={d.nome}
-                className="rounded-2xl bg-white p-6 shadow-md ring-1 ring-[#e8ddd0]"
+                className="rounded-2xl bg-gradient-to-br from-[#4a2c18] to-[#3d2314] p-6 shadow-lg shadow-black/20 ring-1 ring-amber-500/20"
               >
                 <div className="flex items-center gap-3">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#5d3a1a] text-sm font-black text-white">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-amber-400 to-amber-600 text-sm font-black text-[#2a160a]">
                     {d.nome
                       .split(" ")
                       .map((w) => w[0])
                       .join("")}
                   </div>
                   <div>
-                    <p className="font-extrabold text-zinc-900">{d.nome}</p>
-                    <div className="flex gap-0.5 text-amber-400">
+                    <p className="font-extrabold text-amber-100">{d.nome}</p>
+                    <div className="flex gap-0.5 text-amber-300">
                       {[0, 1, 2, 3, 4].map((i) => (
-                        <Star key={i} className="h-3.5 w-3.5 fill-amber-400" />
+                        <Star key={i} className="h-3.5 w-3.5 fill-amber-300" />
                       ))}
                     </div>
                   </div>
                 </div>
-                <p className="mt-4 text-sm font-medium text-zinc-700 leading-relaxed">
+                <p className="mt-4 text-sm font-medium text-amber-200/90 leading-relaxed">
                   "{d.texto}"
                 </p>
               </div>
