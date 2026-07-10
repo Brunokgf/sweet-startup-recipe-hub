@@ -61,8 +61,6 @@ const BUMPS = [
     priceCents: 1095,
     installment: "5x de R$ 2,19",
     icon: <Gift className="h-4 w-4" />,
-    borderColor: "border-amber-400",
-    bgLight: "bg-amber-50",
   },
   {
     id: "bolos",
@@ -72,8 +70,6 @@ const BUMPS = [
     priceCents: 1980,
     installment: "5x de R$ 3,96",
     icon: <Star className="h-4 w-4" />,
-    borderColor: "border-amber-400",
-    bgLight: "bg-amber-50",
   },
   {
     id: "bolo-de-pote",
@@ -83,8 +79,6 @@ const BUMPS = [
     priceCents: 2495,
     installment: "5x de R$ 4,99",
     icon: <Cake className="h-4 w-4" />,
-    borderColor: "border-amber-400",
-    bgLight: "bg-amber-50",
   },
   {
     id: "iogurte",
@@ -94,8 +88,6 @@ const BUMPS = [
     priceCents: 4095,
     installment: "5x de R$ 8,19",
     icon: <Zap className="h-4 w-4" />,
-    borderColor: "border-amber-400",
-    bgLight: "bg-amber-50",
   },
   {
     id: "caldos",
@@ -105,8 +97,6 @@ const BUMPS = [
     priceCents: 2990,
     installment: "5x de R$ 5,98",
     icon: <Gift className="h-4 w-4" />,
-    borderColor: "border-amber-400",
-    bgLight: "bg-amber-50",
   },
   {
     id: "mousse",
@@ -116,8 +106,6 @@ const BUMPS = [
     priceCents: 1790,
     installment: "5x de R$ 3,58",
     icon: <Zap className="h-4 w-4" />,
-    borderColor: "border-amber-400",
-    bgLight: "bg-amber-50",
   },
   {
     id: "cheesecake-pote",
@@ -127,8 +115,6 @@ const BUMPS = [
     priceCents: 1990,
     installment: "5x de R$ 3,98",
     icon: <Star className="h-4 w-4" />,
-    borderColor: "border-amber-400",
-    bgLight: "bg-amber-50",
   },
 ];
 
