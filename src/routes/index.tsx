@@ -472,8 +472,8 @@ function LandingPage() {
             <p className="inline-block rounded-full bg-gradient-to-r from-amber-500 to-yellow-400 px-4 py-1 text-xs font-black uppercase tracking-wider text-[#2a160a]">
               Oferta Especial
             </p>
-            <div className="mt-4 flex items-center justify-center gap-2 rounded-xl bg-amber-100 px-4 py-3 text-amber-900 ring-1 ring-amber-300">
-              <Timer className="h-5 w-5" />
+            <div className="mt-4 flex items-center justify-center gap-2 rounded-xl bg-[#2a160a]/60 px-4 py-3 text-amber-100 ring-1 ring-amber-500/30">
+              <Timer className="h-5 w-5 text-amber-300" />
               <span className="text-sm font-bold uppercase tracking-wide">
                 Oferta expira em:
               </span>
@@ -507,7 +507,7 @@ function LandingPage() {
             <div className="mt-6">
               <CTA>COMPRAR AGORA!</CTA>
             </div>
-            <div className="mt-4 flex items-center justify-center gap-2 rounded-lg bg-amber-100 px-4 py-2.5 text-amber-900 ring-1 ring-amber-300">
+            <div className="mt-4 flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-amber-400 to-amber-500 px-4 py-2.5 text-[#2a160a] ring-1 ring-amber-300">
               <MessageCircle className="h-4 w-4" />
               <span className="text-xs font-bold">
                 As aulas serão enviadas pelo WhatsApp assim que o pagamento for confirmado
