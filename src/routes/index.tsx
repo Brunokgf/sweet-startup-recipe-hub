@@ -415,20 +415,20 @@ function LandingPage() {
       </section>
 
       {/* BÔNUS + CERTIFICADO */}
-      <section className="bg-gradient-to-b from-[#6b4226] to-[#3d2314] py-16 text-white">
+      <section className="bg-gradient-to-b from-[#5d3a1a] to-[#2a160a] py-16 text-amber-50">
         <div className="mx-auto max-w-5xl px-4">
           <div className="grid items-center gap-10 lg:grid-cols-2">
             {/* Certificado */}
             <div className="order-2 lg:order-1">
               <div className="relative mx-auto max-w-md">
-                <div className="absolute -inset-3 rounded-2xl bg-amber-400/20 blur-xl" />
+                <div className="absolute -inset-3 rounded-2xl bg-amber-400/30 blur-xl" />
                 <img
                   src={certificado}
                   alt="Certificado de Conclusão Brigadeiro Gourmet"
                   width={1024}
                   height={768}
                   loading="lazy"
-                  className="relative w-full rounded-xl shadow-2xl ring-2 ring-amber-300/30"
+                  className="relative w-full rounded-xl shadow-2xl shadow-amber-900/40 ring-2 ring-amber-300/40"
                 />
                 <p className="relative mt-3 text-center text-sm font-semibold text-amber-200">
                   Certificado de Conclusão incluso ao finalizar o curso
@@ -438,11 +438,11 @@ function LandingPage() {
 
             {/* Bônus */}
             <div className="order-1 text-center lg:order-2 lg:text-left">
-              <p className="text-7xl font-black leading-none">4</p>
-              <p className="text-3xl font-extrabold">Super Bônus Exclusivos!</p>
-              <p className="mt-4 text-base opacity-90">
-                Fazendo sua inscrição <strong>HOJE</strong>, você ganha{" "}
-                <strong>4 BÔNUS EXCLUSIVOS + CERTIFICADO</strong>.
+              <p className="text-7xl font-black leading-none text-amber-300">4</p>
+              <p className="text-3xl font-extrabold text-amber-100">Super Bônus Exclusivos!</p>
+              <p className="mt-4 text-base text-amber-200/90">
+                Fazendo sua inscrição <strong className="text-amber-300">HOJE</strong>, você ganha{" "}
+                <strong className="text-amber-300">4 BÔNUS EXCLUSIVOS + CERTIFICADO</strong>.
               </p>
               <ul className="mx-auto mt-8 grid max-w-xl gap-3 text-left lg:mx-0">
                 {[
@@ -453,10 +453,10 @@ function LandingPage() {
                 ].map((b) => (
                   <li
                     key={b}
-                    className="flex items-start gap-3 rounded-lg bg-white/10 px-4 py-3 backdrop-blur"
+                    className="flex items-start gap-3 rounded-lg bg-[#4a2c18]/80 px-4 py-3 backdrop-blur border border-amber-500/20"
                   >
                     <Check className="mt-0.5 h-5 w-5 flex-none text-amber-300" />
-                    <span className="font-medium">{b}</span>
+                    <span className="font-medium text-amber-100">{b}</span>
                   </li>
                 ))}
               </ul>
@@ -466,30 +466,30 @@ function LandingPage() {
       </section>
 
       {/* OFERTA */}
-      <section className="bg-[#4a2c18] py-16">
+      <section className="bg-[#2a160a] py-16">
         <div className="mx-auto max-w-xl px-4">
-          <div className="rounded-3xl border-4 border-[#5d3a1a] bg-white p-8 text-center shadow-xl">
-            <p className="inline-block rounded-full bg-[#5d3a1a] px-4 py-1 text-xs font-black uppercase tracking-wider text-white">
+          <div className="rounded-3xl border-4 border-amber-500/40 bg-gradient-to-br from-[#4a2c18] to-[#3d2314] p-8 text-center shadow-xl shadow-black/30">
+            <p className="inline-block rounded-full bg-gradient-to-r from-amber-500 to-yellow-400 px-4 py-1 text-xs font-black uppercase tracking-wider text-[#2a160a]">
               Oferta Especial
             </p>
-            <div className="mt-4 flex items-center justify-center gap-2 rounded-xl bg-red-50 px-4 py-3 text-red-700 ring-1 ring-red-200">
+            <div className="mt-4 flex items-center justify-center gap-2 rounded-xl bg-amber-100 px-4 py-3 text-amber-900 ring-1 ring-amber-300">
               <Timer className="h-5 w-5" />
               <span className="text-sm font-bold uppercase tracking-wide">
                 Oferta expira em:
               </span>
               <CountdownTimer />
             </div>
-            <p className="mt-4 text-lg font-bold text-zinc-700">
+            <p className="mt-4 text-lg font-bold text-amber-200">
               PROMOÇÃO DE LANÇAMENTO!
             </p>
-            <p className="mt-4 text-lg text-zinc-500">
+            <p className="mt-4 text-lg text-amber-200/80">
               DE: <span className="line-through">R$ 97,00</span> POR APENAS
             </p>
-            <p className="text-6xl font-black text-[#5d3a1a]">R$ 37,00</p>
-            <p className="text-sm font-semibold text-zinc-600">
+            <p className="text-6xl font-black text-amber-300">R$ 37,00</p>
+            <p className="text-sm font-semibold text-amber-200/80">
               (Pagamento Único)
             </p>
-            <ul className="mt-6 space-y-2 text-left text-sm font-semibold text-zinc-800">
+            <ul className="mt-6 space-y-2 text-left text-sm font-semibold text-amber-100">
               {[
                 "CURSO 100% ONLINE EM VIDEOAULAS",
                 "ACESSO VITALÍCIO",
@@ -499,7 +499,7 @@ function LandingPage() {
                 "AULAS ENVIADAS PELO WHATSAPP",
               ].map((f) => (
                 <li key={f} className="flex items-center gap-2">
-                  <Check className="h-4 w-4 text-[#5d3a1a]" />
+                  <Check className="h-4 w-4 text-amber-300" />
                   {f}
                 </li>
               ))}
@@ -507,13 +507,13 @@ function LandingPage() {
             <div className="mt-6">
               <CTA>COMPRAR AGORA!</CTA>
             </div>
-            <div className="mt-4 flex items-center justify-center gap-2 rounded-lg bg-emerald-50 px-4 py-2.5 text-emerald-700 ring-1 ring-emerald-200">
+            <div className="mt-4 flex items-center justify-center gap-2 rounded-lg bg-amber-100 px-4 py-2.5 text-amber-900 ring-1 ring-amber-300">
               <MessageCircle className="h-4 w-4" />
               <span className="text-xs font-bold">
                 As aulas serão enviadas pelo WhatsApp assim que o pagamento for confirmado
               </span>
             </div>
-            <p className="mt-3 text-[10px] uppercase tracking-wider text-zinc-500">
+            <p className="mt-3 text-[10px] uppercase tracking-wider text-amber-300/70">
               Pagamento seguro • Cartão e PIX
             </p>
           </div>
