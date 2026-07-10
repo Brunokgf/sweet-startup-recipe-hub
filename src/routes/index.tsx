@@ -662,17 +662,17 @@ function WhatsAppPrint({
 }) {
   return (
     <div className="relative mx-auto w-full max-w-[360px]">
-      <div className="overflow-hidden rounded-[32px] bg-white shadow-[0_20px_50px_-12px_rgba(0,0,0,0.25)] ring-1 ring-black/5">
+      <div className="overflow-hidden rounded-[32px] bg-white shadow-[0_20px_50px_-12px_rgba(0,0,0,0.35)] ring-2 ring-amber-500/20">
         {/* WA Header */}
-        <div className="flex items-center gap-3 bg-[#f7f7f7] px-4 py-3">
-          <svg viewBox="0 0 24 24" className="h-5 w-5 fill-[#5d3a1a]">
+        <div className="flex items-center gap-3 bg-gradient-to-r from-[#4a2c18] to-[#3d2314] px-4 py-3">
+          <svg viewBox="0 0 24 24" className="h-5 w-5 fill-amber-300">
             <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
           </svg>
           {avatarUrl ? (
             <img
               src={avatarUrl}
               alt={contact}
-              className="h-10 w-10 rounded-full object-cover shadow ring-1 ring-black/10"
+              className="h-10 w-10 rounded-full object-cover shadow ring-2 ring-amber-400/40"
               width={40}
               height={40}
             />
@@ -684,10 +684,10 @@ function WhatsAppPrint({
             </div>
           )}
           <div className="flex-1 leading-tight">
-            <p className="text-[13px] font-bold text-zinc-900">{contact}</p>
-            <p className="text-[11px] text-emerald-600">{status}</p>
+            <p className="text-[13px] font-bold text-amber-100">{contact}</p>
+            <p className="text-[11px] text-amber-300/80">{status}</p>
           </div>
-          <svg viewBox="0 0 24 24" className="h-5 w-5 fill-[#5d3a1a]">
+          <svg viewBox="0 0 24 24" className="h-5 w-5 fill-amber-300">
             <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
           </svg>
         </div>
@@ -701,7 +701,7 @@ function WhatsAppPrint({
             backgroundSize: "24px 24px, 32px 32px",
           }}
         >
-          <div className="mx-auto mb-3 w-fit rounded-md bg-white px-2 py-1 text-[10px] font-medium text-zinc-500 shadow-sm">
+          <div className="mx-auto mb-3 w-fit rounded-md bg-[#4a2c18] px-2 py-1 text-[10px] font-medium text-amber-100 shadow-sm">
             HOJE
           </div>
           {children}
@@ -729,20 +729,20 @@ function Bubble({
     <div className={`flex ${isRight ? "justify-end" : "justify-start"}`}>
       <div
         className={`relative max-w-[85%] rounded-xl rounded-${isRight ? "tl" : "tr"}-[4px] px-3 py-2 text-[13px] shadow-sm ${
-          isRight ? "bg-[#d9fdd3] text-zinc-900" : "bg-white text-zinc-900"
+          isRight ? "bg-gradient-to-br from-amber-100 to-amber-200 text-[#2a160a]" : "bg-white text-[#2a160a]"
         }`}
         style={{ borderRadius: isRight ? "16px 16px 4px 16px" : "16px 16px 16px 4px" }}
       >
         {name && !isRight && (
-          <p className="text-[11px] font-bold text-rose-600">{name}</p>
+          <p className="text-[11px] font-bold text-amber-700">{name}</p>
         )}
         <p className="pr-14 leading-snug">{children}</p>
-        <span className="absolute bottom-1.5 right-2 flex items-center gap-0.5 text-[10px] text-zinc-400">
+        <span className="absolute bottom-1.5 right-2 flex items-center gap-0.5 text-[10px] text-amber-800/60">
           {time}
           {isRight && (
             <svg
               viewBox="0 0 16 11"
-              className={`h-3 w-4 ${read ? "fill-[#53bdeb]" : "fill-zinc-400"}`}
+              className={`h-3 w-4 ${read ? "fill-amber-600" : "fill-amber-400"}`}
             >
               <path d="M11.07.59 5.65 6.01l-2.12-2.12-1.41 1.41L5.65 8.84 12.49 2 11.07.59zm4.24 0L9.9 6.01l-.62-.62-1.41 1.41 2.03 2.03L16.72 2 15.31.59z" />
             </svg>
