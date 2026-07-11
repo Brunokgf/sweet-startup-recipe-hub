@@ -648,7 +648,7 @@ function FaqItem({ q, a }: { q: string; a: string }) {
 function WhatsAppPrint({
   contact,
   status = "online",
-  avatarColor = "bg-amber-500",
+  avatarColor = "bg-emerald-600",
   initials,
   avatarUrl,
   children,
@@ -662,17 +662,17 @@ function WhatsAppPrint({
 }) {
   return (
     <div className="relative mx-auto w-full max-w-[360px]">
-      <div className="overflow-hidden rounded-[32px] bg-gradient-to-br from-[#4a2c18] to-[#3d2314] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.45)] ring-2 ring-amber-500/30">
+      <div className="overflow-hidden rounded-[32px] bg-white shadow-[0_20px_50px_-12px_rgba(0,0,0,0.45)] ring-2 ring-[#128c7e]/30">
         {/* WA Header */}
-        <div className="flex items-center gap-3 bg-gradient-to-r from-[#3d2314] to-[#2a160a] px-4 py-3">
-          <svg viewBox="0 0 24 24" className="h-5 w-5 fill-amber-300">
+        <div className="flex items-center gap-3 bg-[#075e54] px-4 py-3">
+          <svg viewBox="0 0 24 24" className="h-5 w-5 fill-white">
             <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
           </svg>
           {avatarUrl ? (
             <img
               src={avatarUrl}
               alt={contact}
-              className="h-10 w-10 rounded-full object-cover shadow ring-2 ring-amber-400/40"
+              className="h-10 w-10 rounded-full object-cover shadow ring-2 ring-white/40"
               width={40}
               height={40}
             />
@@ -684,10 +684,10 @@ function WhatsAppPrint({
             </div>
           )}
           <div className="flex-1 leading-tight">
-            <p className="text-[13px] font-bold text-amber-100">{contact}</p>
-            <p className="text-[11px] text-amber-300/80">{status}</p>
+            <p className="text-[13px] font-bold text-white">{contact}</p>
+            <p className="text-[11px] text-white/80">{status}</p>
           </div>
-          <svg viewBox="0 0 24 24" className="h-5 w-5 fill-amber-300">
+          <svg viewBox="0 0 24 24" className="h-5 w-5 fill-white">
             <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
           </svg>
         </div>
@@ -695,13 +695,13 @@ function WhatsAppPrint({
         <div
           className="relative min-h-[340px] space-y-2 p-4"
           style={{
-            backgroundColor: "#2a160a",
+            backgroundColor: "#e5ddd5",
             backgroundImage:
-              "radial-gradient(circle at 20% 10%, rgba(251,191,36,0.04) 1px, transparent 1px), radial-gradient(circle at 80% 60%, rgba(251,191,36,0.03) 1px, transparent 1px)",
+              "radial-gradient(circle at 20% 10%, rgba(0,0,0,0.04) 1px, transparent 1px), radial-gradient(circle at 80% 60%, rgba(0,0,0,0.03) 1px, transparent 1px)",
             backgroundSize: "24px 24px, 32px 32px",
           }}
         >
-          <div className="mx-auto mb-3 w-fit rounded-md bg-[#3d2314] px-2 py-1 text-[10px] font-medium text-amber-100 shadow-sm ring-1 ring-amber-500/20">
+          <div className="mx-auto mb-3 w-fit rounded-md bg-[#d4d4d4]/80 px-2 py-1 text-[10px] font-medium text-[#111b21] shadow-sm">
             HOJE
           </div>
           {children}
@@ -729,20 +729,20 @@ function Bubble({
     <div className={`flex ${isRight ? "justify-end" : "justify-start"}`}>
       <div
         className={`relative max-w-[85%] rounded-xl px-3 py-2 text-[13px] shadow-sm ${
-          isRight ? "bg-gradient-to-br from-amber-300 to-amber-500 text-[#2a160a]" : "bg-[#3d2314] text-amber-100"
+          isRight ? "bg-[#dcf8c6] text-[#111b21]" : "bg-white text-[#111b21]"
         }`}
         style={{ borderRadius: isRight ? "16px 16px 4px 16px" : "16px 16px 16px 4px" }}
       >
         {name && !isRight && (
-          <p className="text-[11px] font-bold text-amber-300">{name}</p>
+          <p className="text-[11px] font-bold text-[#128c7e]">{name}</p>
         )}
         <p className="pr-14 leading-snug">{children}</p>
-        <span className={`absolute bottom-1.5 right-2 flex items-center gap-0.5 text-[10px] ${isRight ? "text-[#2a160a]/60" : "text-amber-300/60"}`}>
+        <span className={`absolute bottom-1.5 right-2 flex items-center gap-0.5 text-[10px] ${isRight ? "text-[#111b21]/60" : "text-[#111b21]/60"}`}>
           {time}
           {isRight && (
             <svg
               viewBox="0 0 16 11"
-              className={`h-3 w-4 ${read ? "fill-[#2a160a]" : "fill-[#2a160a]/50"}`}
+              className={`h-3 w-4 ${read ? "fill-[#53bdeb]" : "fill-[#111b21]/40"}`}
             >
               <path d="M11.07.59 5.65 6.01l-2.12-2.12-1.41 1.41L5.65 8.84 12.49 2 11.07.59zm4.24 0L9.9 6.01l-.62-.62-1.41 1.41 2.03 2.03L16.72 2 15.31.59z" />
             </svg>
