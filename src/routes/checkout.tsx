@@ -519,7 +519,18 @@ function CheckoutPage() {
 
           {/* Right: Summary */}
           <aside className="space-y-4">
+            <div className="overflow-hidden rounded-2xl ring-1 ring-amber-500/30 shadow-xl shadow-black/30">
+              <img
+                src={cursoCover}
+                alt="Curso Brigadeiro Gourmet Lucrativo"
+                width={768}
+                height={1024}
+                loading="lazy"
+                className="w-full h-auto block"
+              />
+            </div>
             <div className="rounded-2xl bg-gradient-to-br from-[#4a2c18] to-[#3d2314] p-6 shadow-xl shadow-black/30 ring-1 ring-amber-500/20">
+
               <p className="text-xs font-bold uppercase tracking-wider text-amber-300/80">
                 Resumo do pedido
               </p>
