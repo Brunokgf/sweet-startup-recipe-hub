@@ -1,6 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import cursoCover from "@/assets/curso-cover.jpg";
+import bumpRocambole from "@/assets/bump-rocambole.jpg";
+import bumpBolos from "@/assets/bump-bolos.jpg";
+import bumpBoloPote from "@/assets/bump-bolo-pote.jpg";
+import bumpIogurte from "@/assets/bump-iogurte.jpg";
+import bumpCaldos from "@/assets/bump-caldos.jpg";
+import bumpMousse from "@/assets/bump-mousse.jpg";
+import bumpCheesecake from "@/assets/bump-cheesecake.jpg";
 
 import {
   Check,
@@ -63,6 +70,7 @@ const BUMPS = [
     priceCents: 1095,
     installment: "5x de R$ 2,19",
     icon: <Gift className="h-4 w-4" />,
+    image: bumpRocambole,
   },
   {
     id: "bolos",
@@ -72,6 +80,7 @@ const BUMPS = [
     priceCents: 1980,
     installment: "5x de R$ 3,96",
     icon: <Star className="h-4 w-4" />,
+    image: bumpBolos,
   },
   {
     id: "bolo-de-pote",
@@ -81,6 +90,7 @@ const BUMPS = [
     priceCents: 2495,
     installment: "5x de R$ 4,99",
     icon: <Cake className="h-4 w-4" />,
+    image: bumpBoloPote,
   },
   {
     id: "iogurte",
@@ -90,6 +100,7 @@ const BUMPS = [
     priceCents: 4095,
     installment: "5x de R$ 8,19",
     icon: <Zap className="h-4 w-4" />,
+    image: bumpIogurte,
   },
   {
     id: "caldos",
@@ -99,6 +110,7 @@ const BUMPS = [
     priceCents: 2990,
     installment: "5x de R$ 5,98",
     icon: <Gift className="h-4 w-4" />,
+    image: bumpCaldos,
   },
   {
     id: "mousse",
@@ -108,6 +120,7 @@ const BUMPS = [
     priceCents: 1790,
     installment: "5x de R$ 3,58",
     icon: <Zap className="h-4 w-4" />,
+    image: bumpMousse,
   },
   {
     id: "cheesecake-pote",
@@ -117,6 +130,7 @@ const BUMPS = [
     priceCents: 1990,
     installment: "5x de R$ 3,98",
     icon: <Star className="h-4 w-4" />,
+    image: bumpCheesecake,
   },
 ];
 
@@ -862,9 +876,17 @@ function OrderBump({
         type="checkbox"
         checked={checked}
         onChange={onToggle}
-        className="mt-1 h-5 w-5 accent-amber-500"
+        className="mt-1 h-5 w-5 accent-amber-500 shrink-0"
       />
-      <div className="flex-1">
+      <img
+        src={bump.image}
+        alt={bump.title}
+        loading="lazy"
+        width={80}
+        height={80}
+        className="h-20 w-20 shrink-0 rounded-lg object-cover ring-1 ring-amber-500/30"
+      />
+      <div className="flex-1 min-w-0">
         {bump.badge && (
           <span className="mb-1 inline-block rounded bg-gradient-to-r from-amber-400 to-amber-500 px-2 py-0.5 text-[10px] font-black uppercase tracking-wider text-[#2a160a] shadow-sm">
             {bump.badge}
@@ -876,7 +898,7 @@ function OrderBump({
           {bump.installment}
         </p>
       </div>
-      <span className={`${checked ? "text-amber-400" : "text-amber-500/30"}`}>{bump.icon}</span>
+      <span className={`shrink-0 ${checked ? "text-amber-400" : "text-amber-500/30"}`}>{bump.icon}</span>
     </label>
   );
 }
