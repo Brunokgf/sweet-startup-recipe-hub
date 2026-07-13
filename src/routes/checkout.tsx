@@ -1,5 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
+import cursoCover from "@/assets/curso-cover.jpg";
+
 import {
   Check,
   Copy,
