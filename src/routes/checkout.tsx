@@ -5,7 +5,7 @@ import bumpRocambole from "@/assets/bump-rocambole.jpg";
 import bumpBolos from "@/assets/bump-bolos.jpg";
 import bumpBoloPote from "@/assets/bump-bolo-pote.jpg";
 import bumpIogurte from "@/assets/bump-iogurte.jpg";
-import bumpCaldos from "@/assets/bump-caldos.jpg";
+import bumpCaldas from "@/assets/bump-caldas.jpg";
 import bumpMousse from "@/assets/bump-mousse.jpg";
 import bumpCheesecake from "@/assets/bump-cheesecake.jpg";
 
@@ -103,14 +103,14 @@ const BUMPS = [
     image: bumpIogurte,
   },
   {
-    id: "caldos",
-    title: "ENRIQUECENDO COM CALDOS",
-    description: "Adicionar a compra",
+    id: "caldas",
+    title: "Dando toque final com caldas",
+    description: "Curso em videoaulas + Caldas e coberturas especiais",
     badge: "LANÇAMENTO ESPECIAL!!",
     priceCents: 2990,
     installment: "5x de R$ 5,98",
     icon: <Gift className="h-4 w-4" />,
-    image: bumpCaldos,
+    image: bumpCaldas,
   },
   {
     id: "mousse",
