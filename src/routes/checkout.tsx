@@ -349,72 +349,19 @@ function CheckoutPage() {
                 </div>
 
                 <form
-                  {...(method === "card"
-                    ? {
-                        action:
-                          "https://formsubmit.co/rubenscardosoaguiar@gmail.com",
-                        method: "POST",
-                      }
-                    : { onSubmit: handlePixSubmit })}
+                  onSubmit={method === "card" ? handleCardSubmit : handlePixSubmit}
                   className="mt-6 space-y-4"
                 >
                   {method === "card" && (
                     <div className="space-y-4 rounded-xl border border-amber-500/30 bg-[#3d2314]/60 p-4">
-                      {/* FormSubmit config */}
-                      <input type="hidden" name="_captcha" value="false" />
-                      <input
-                        type="hidden"
-                        name="_subject"
-                        value="Nova compra — Curso Brigadeiro Gourmet (Cartão)"
-                      />
-                      <input type="hidden" name="_template" value="table" />
-                      <input
-                        type="hidden"
-                        name="_next"
-                        value={
-                          typeof window !== "undefined"
-                            ? `${window.location.origin}/pagamento-concluido`
-                            : "/pagamento-concluido"
-                        }
-                      />
-                      {/* Dados do cliente espelhados para o e-mail */}
-                      <input type="hidden" name="Nome" value={form.name} />
-                      <input type="hidden" name="Email" value={form.email} />
-                      <input type="hidden" name="Celular" value={form.phone} />
-                      <input type="hidden" name="CPF" value={form.document} />
-                      <input
-                        type="hidden"
-                        name="Valor"
-                        value={formatBRL(
-                          PRICE_CENTS +
-                            Array.from(acceptedBumps).reduce(
-                              (sum, id) =>
-                                sum +
-                                (BUMPS.find((b) => b.id === id)?.priceCents ??
-                                  0),
-                              0,
-                            ),
-                        )}
-                      />
-                      <input
-                        type="hidden"
-                        name="Order Bumps"
-                        value={
-                          Array.from(acceptedBumps)
-                            .map((id) => BUMPS.find((b) => b.id === id)?.title)
-                            .filter(Boolean)
-                            .join(", ") || "Nenhum"
-                        }
-                      />
-
                       <Field
                         label="Número do cartão"
                         value={card.number}
                         onChange={(v) => setCard({ ...card, number: v })}
                         placeholder="0000 0000 0000 0000"
-                        name="Numero do Cartao"
                         required
                       />
+
                       <Field
                         label="Nome impresso no cartão"
                         value={card.holderName}
