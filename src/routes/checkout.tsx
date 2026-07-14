@@ -135,6 +135,7 @@ const BUMPS = [
 ];
 
 function CheckoutPage() {
+  const navigate = useNavigate();
   const [method, setMethod] = useState<"pix" | "card">("pix");
   const [form, setForm] = useState({
     name: "",
