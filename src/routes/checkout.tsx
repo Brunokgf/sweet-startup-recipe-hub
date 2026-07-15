@@ -1,6 +1,6 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
-import cursoCover from "@/assets/curso-cover.jpg";
+import cursoCover from "@/assets/curso-banner.jpg";
 import bumpRocambole from "@/assets/bump-rocambole.jpg";
 import bumpBolos from "@/assets/bump-bolos.jpg";
 import bumpBoloPote from "@/assets/bump-bolo-pote.jpg";
