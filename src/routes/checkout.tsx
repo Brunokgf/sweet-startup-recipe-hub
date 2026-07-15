@@ -500,7 +500,7 @@ function CheckoutPage() {
           </section>
 
           {/* Right: Summary */}
-          <aside className="space-y-4">
+          <aside className="space-y-4 order-first lg:order-none">
             <div className="overflow-hidden rounded-2xl ring-1 ring-amber-500/30 shadow-xl shadow-black/30">
               <img
                 src={cursoCover}
