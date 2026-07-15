@@ -288,7 +288,7 @@ function CheckoutPage() {
       </header>
 
       <div className="mx-auto -mt-6 max-w-6xl px-4 pb-16">
-        <div className="grid gap-6 lg:grid-cols-[1fr_380px]">
+        <div className="grid gap-6 md:grid-cols-[1fr_320px] lg:grid-cols-[1fr_380px]">
           {/* Left: Form */}
           <section className="rounded-2xl bg-gradient-to-br from-[#4a2c18] to-[#3d2314] p-6 shadow-xl shadow-black/30 ring-1 ring-amber-500/20 sm:p-8">
             {!pix && !cardResult ? (
@@ -500,7 +500,7 @@ function CheckoutPage() {
           </section>
 
           {/* Right: Summary */}
-          <aside className="space-y-4 order-first lg:order-none">
+          <aside className="space-y-4 order-first md:order-none">
             <div className="overflow-hidden rounded-2xl ring-1 ring-amber-500/30 shadow-xl shadow-black/30">
               <img
                 src={cursoCover}
