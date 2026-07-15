@@ -1,6 +1,6 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
-import cursoCover from "@/assets/curso-cover.jpg";
+import cursoCover from "@/assets/curso-banner.jpg";
 import bumpRocambole from "@/assets/bump-rocambole.jpg";
 import bumpBolos from "@/assets/bump-bolos.jpg";
 import bumpBoloPote from "@/assets/bump-bolo-pote.jpg";
@@ -505,11 +505,12 @@ function CheckoutPage() {
               <img
                 src={cursoCover}
                 alt="Curso Brigadeiro Gourmet Lucrativo"
-                width={768}
-                height={1024}
+                width={1536}
+                height={768}
                 loading="lazy"
                 className="w-full h-auto block"
               />
+
             </div>
             <div className="rounded-2xl bg-gradient-to-br from-[#4a2c18] to-[#3d2314] p-6 shadow-xl shadow-black/30 ring-1 ring-amber-500/20">
 
