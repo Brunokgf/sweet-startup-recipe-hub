@@ -48,13 +48,19 @@ export const Route = createFileRoute("/api/public/medusapay/create-pix")({
             );
           }
 
-          const secret = process.env.MEDUSAPAY_SECRET_KEY;
+          const secret =
+            process.env.MEDUSAPAY_API_KEY ?? process.env.MEDUSAPAY_SECRET_KEY;
           if (!secret) {
             return Response.json(
-              { error: "MEDUSAPAY_SECRET_KEY não configurada." },
+              { error: "MEDUSAPAY_API_KEY não configurada." },
               { status: 500 },
             );
           }
+
+          const base = (
+            process.env.MEDUSAPAY_API_URL ?? DEFAULT_MEDUSA_BASE
+          ).replace(/\/+$/, "");
+          const MEDUSA_URL = `${base}/transactions`;
 
           const authHeader =
             "Basic " + Buffer.from(`${secret}:x`).toString("base64");
