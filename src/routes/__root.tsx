@@ -116,7 +116,9 @@ function RootShell({ children }: { children: ReactNode }) {
 function FloatingWhatsApp() {
   return (
     <a
-      href="whatsapp://send?phone=555399313454"
+      href="https://wa.me/555399313454"
+      target="_blank"
+      rel="noopener noreferrer"
       aria-label="Fale conosco no WhatsApp"
       className="fixed bottom-5 right-5 z-50 flex items-center justify-center rounded-full bg-[#25D366] p-3 text-white shadow-lg transition-transform hover:scale-105"
     >
