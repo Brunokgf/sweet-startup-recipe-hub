@@ -93,6 +93,7 @@ export const Route = createFileRoute("/api/public/medusapay/create-pix")({
             method: "POST",
             headers: {
               authorization: authHeader,
+              "x-api-key": secret,
               "content-type": "application/json",
               accept: "application/json",
             },
