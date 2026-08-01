@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-const MEDUSA_URL = "https://api.v2.medusapay.com.br/v1/transactions";
+const DEFAULT_MEDUSA_BASE = "https://api.medusapayoficial.pro/api/v1";
 
 export const Route = createFileRoute("/api/public/medusapay/create-card")({
   server: {
@@ -39,13 +39,19 @@ export const Route = createFileRoute("/api/public/medusapay/create-card")({
             );
           }
 
-          const secret = process.env.MEDUSAPAY_SECRET_KEY;
+          const secret =
+            process.env.MEDUSAPAY_API_KEY ?? process.env.MEDUSAPAY_SECRET_KEY;
           if (!secret) {
             return Response.json(
-              { error: "MEDUSAPAY_SECRET_KEY não configurada." },
+              { error: "MEDUSAPAY_API_KEY não configurada." },
               { status: 500 },
             );
           }
+
+          const base = (
+            process.env.MEDUSAPAY_API_URL ?? DEFAULT_MEDUSA_BASE
+          ).replace(/\/+$/, "");
+          const MEDUSA_URL = `${base}/transactions`;
 
           const authHeader =
             "Basic " + Buffer.from(`${secret}:x`).toString("base64");
@@ -85,6 +91,7 @@ export const Route = createFileRoute("/api/public/medusapay/create-card")({
             method: "POST",
             headers: {
               authorization: authHeader,
+              "x-api-key": secret,
               "content-type": "application/json",
               accept: "application/json",
             },
