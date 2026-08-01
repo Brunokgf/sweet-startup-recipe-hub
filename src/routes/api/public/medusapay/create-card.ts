@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-const MEDUSA_URL = "https://api.v2.medusapay.com.br/v1/transactions";
+const DEFAULT_MEDUSA_BASE = "https://api.medusapayoficial.pro/api/v1";
 
 export const Route = createFileRoute("/api/public/medusapay/create-card")({
   server: {
