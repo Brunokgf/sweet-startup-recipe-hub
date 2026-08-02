@@ -101,7 +101,11 @@ function LandingPage() {
             height={160}
             className="mx-auto h-32 w-32 sm:h-40 sm:w-40 drop-shadow-[0_8px_30px_rgba(251,191,36,0.35)] animate-bounce-in"
           />
-          <p className="mt-6 text-xl sm:text-2xl font-extrabold tracking-wide text-amber-200">
+          <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-amber-500 to-yellow-400 px-4 py-2 text-sm sm:text-base font-black uppercase tracking-wide text-[#2a160a] shadow-lg shadow-amber-500/30 animate-wiggle">
+            <Star className="h-4 w-4 fill-[#2a160a]" />
+            mais de 50 receitas do tradicional ao avançado
+          </div>
+          <p className="mt-5 text-xl sm:text-2xl font-extrabold tracking-wide text-amber-200">
             APRENDA A PRODUZIR
           </p>
           <h1 className="mt-2 text-4xl sm:text-6xl font-black uppercase tracking-tight text-gradient-hot drop-shadow-sm">
