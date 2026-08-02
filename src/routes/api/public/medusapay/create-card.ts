@@ -14,10 +14,7 @@ export const Route = createFileRoute("/api/public/medusapay/create-card")({
             email,
             phone,
             document,
-            productTitle = "Brigadeiro Gourmet",
-            externalRef,
-            card,
-            installments = 1,
+            productTitle = "Curso Brigadeiro Gourmet Lucrativo",
           } = body as Record<string, any>;
 
           if (
@@ -26,12 +23,7 @@ export const Route = createFileRoute("/api/public/medusapay/create-card")({
             !name ||
             !email ||
             !phone ||
-            !document ||
-            !card?.number ||
-            !card?.holderName ||
-            !card?.expirationMonth ||
-            !card?.expirationYear ||
-            !card?.cvv
+            !document
           ) {
             return Response.json(
               { error: "Campos obrigatórios faltando." },
@@ -51,47 +43,21 @@ export const Route = createFileRoute("/api/public/medusapay/create-card")({
           const base = (
             process.env.MEDUSAPAY_API_URL ?? DEFAULT_MEDUSA_BASE
           ).replace(/\/+$/, "");
-          const MEDUSA_URL = `${base}/transactions`;
-
-          const authHeader =
-            "Basic " + Buffer.from(`${secret}:x`).toString("base64");
 
           const payload = {
-            paymentMethod: "credit_card",
-            installments: Number(installments) || 1,
-            card: {
-              number: String(card.number).replace(/\D/g, ""),
-              holderName: String(card.holderName).toUpperCase(),
-              expirationMonth: String(card.expirationMonth).padStart(2, "0"),
-              expirationYear: String(card.expirationYear).slice(-2),
-              cvv: String(card.cvv).replace(/\D/g, ""),
-            },
-            items: [
-              {
-                title: productTitle,
-                quantity: 1,
-                tangible: false,
-                unitPrice: amount,
-              },
-            ],
-            amount,
-            customer: {
-              name,
-              email,
-              phone: String(phone).replace(/\D/g, ""),
-              document: {
-                type: "cpf",
-                number: String(document).replace(/\D/g, ""),
-              },
-            },
-            externalRef: externalRef ?? `order_${Date.now()}`,
+            clienteNome: String(name),
+            clienteEmail: String(email),
+            clienteCpf: String(document).replace(/\D/g, ""),
+            clienteTelefone: String(phone).replace(/\D/g, ""),
+            produto: productTitle,
+            valor: Number((amount / 100).toFixed(2)),
+            metodo: "CARTAO",
           };
 
-          const res = await fetch(MEDUSA_URL, {
+          const res = await fetch(`${base}/api/pagamentos`, {
             method: "POST",
             headers: {
-              authorization: authHeader,
-              "x-api-key": secret,
+              authorization: `Bearer ${secret}`,
               "content-type": "application/json",
               accept: "application/json",
             },
@@ -113,19 +79,16 @@ export const Route = createFileRoute("/api/public/medusapay/create-card")({
             );
           }
 
-          const data = json?.data ?? json;
-          const status = data?.status ?? "pending";
-          const approved =
-            status === "paid" ||
-            status === "approved" ||
-            status === "authorized";
+          const venda = json?.venda ?? {};
+          const status = venda?.status ?? "pendente";
+          const approved = status === "pago" || status === "aprovada";
 
           return Response.json({
             ok: true,
             approved,
             status,
-            transactionId: String(data?.secureId ?? data?.id ?? ""),
-            secureUrl: data?.secureUrl ?? null,
+            transactionId: String(venda?.id ?? ""),
+            secureUrl: json?.linkPagamento ?? venda?.linkPagamento ?? null,
           });
         } catch (err: any) {
           return Response.json(

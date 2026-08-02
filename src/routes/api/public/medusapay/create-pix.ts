@@ -2,22 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 
 const DEFAULT_MEDUSA_BASE = "https://api.medusapayoficial.pro/api/v1";
 
-function pick(obj: any, keys: string[]): string | null {
-  for (const k of keys) {
-    const parts = k.split(".");
-    let cur = obj;
-    for (const p of parts) {
-      if (cur && typeof cur === "object" && p in cur) cur = cur[p];
-      else {
-        cur = undefined;
-        break;
-      }
-    }
-    if (typeof cur === "string" && cur.length > 0) return cur;
-  }
-  return null;
-}
-
 export const Route = createFileRoute("/api/public/medusapay/create-pix")({
   server: {
     handlers: {
@@ -30,8 +14,7 @@ export const Route = createFileRoute("/api/public/medusapay/create-pix")({
             email,
             phone,
             document,
-            productTitle = "Brigadeiro Gourmet",
-            externalRef,
+            productTitle = "Curso Brigadeiro Gourmet Lucrativo",
           } = body as Record<string, any>;
 
           if (
@@ -60,40 +43,21 @@ export const Route = createFileRoute("/api/public/medusapay/create-pix")({
           const base = (
             process.env.MEDUSAPAY_API_URL ?? DEFAULT_MEDUSA_BASE
           ).replace(/\/+$/, "");
-          const MEDUSA_URL = `${base}/transactions`;
-
-          const authHeader =
-            "Basic " + Buffer.from(`${secret}:x`).toString("base64");
 
           const payload = {
-            paymentMethod: "pix",
-            pix: { expiresInDays: 1 },
-            items: [
-              {
-                title: productTitle,
-                quantity: 1,
-                tangible: false,
-                unitPrice: amount,
-              },
-            ],
-            amount,
-            customer: {
-              name,
-              email,
-              phone: String(phone).replace(/\D/g, ""),
-              document: {
-                type: "cpf",
-                number: String(document).replace(/\D/g, ""),
-              },
-            },
-            externalRef: externalRef ?? `order_${Date.now()}`,
+            clienteNome: String(name),
+            clienteEmail: String(email),
+            clienteCpf: String(document).replace(/\D/g, ""),
+            clienteTelefone: String(phone).replace(/\D/g, ""),
+            produto: productTitle,
+            valor: Number((amount / 100).toFixed(2)),
+            metodo: "PIX",
           };
 
-          const res = await fetch(MEDUSA_URL, {
+          const res = await fetch(`${base}/api/pagamentos`, {
             method: "POST",
             headers: {
-              authorization: authHeader,
-              "x-api-key": secret,
+              authorization: `Bearer ${secret}`,
               "content-type": "application/json",
               accept: "application/json",
             },
@@ -115,40 +79,21 @@ export const Route = createFileRoute("/api/public/medusapay/create-pix")({
             );
           }
 
-          const data = json?.data ?? json;
+          const venda = json?.venda ?? {};
+          const pixData = json?.dadosPagamento ?? venda?.dadosPix ?? {};
 
-          const qrCodeBase64 = pick(data, [
-            "pix.qrcodeBase64",
-            "pix.qrCodeBase64",
-            "pix.encodedImage",
-            "pix.base64",
-            "qrcodeBase64",
-            "qrCodeBase64",
-            "encodedImage",
-          ]);
-
-          const qrCode = pick(data, [
-            "pix.qrcode",
-            "pix.qrCode",
-            "pix.payload",
-            "pix.copyPaste",
-            "pix.code",
-            "qrcode",
-            "qrCode",
-            "payload",
-          ]);
-
-          const transactionId =
-            pick(data, ["secureId", "id"]) ?? String(data?.id ?? "");
+          const qrImage: string | null =
+            json?.pixQrCode ?? pixData?.qrCode ?? null;
+          const copiaECola: string | null =
+            json?.pixCopiaECola ?? pixData?.copiaECola ?? null;
 
           return Response.json({
             ok: true,
-            transactionId,
-            qrCodeBase64,
-            qrCode,
-            secureUrl: pick(data, ["secureUrl"]),
-            status: data?.status ?? "pending",
-            raw: data,
+            transactionId: String(venda?.id ?? pixData?.txid ?? ""),
+            qrCodeBase64: qrImage,
+            qrCode: copiaECola,
+            secureUrl: null,
+            status: venda?.status ?? "pendente",
           });
         } catch (err: any) {
           return Response.json(
