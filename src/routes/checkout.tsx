@@ -185,9 +185,22 @@ function CheckoutPage() {
           productTitle,
         }),
       });
-      const data = await res.json();
-      if (!res.ok || !data.ok) throw new Error(data.error ?? "Falha ao gerar PIX");
+      const raw = await res.text();
+      let data: any = null;
+      try {
+        data = JSON.parse(raw);
+      } catch {
+        throw new Error(
+          "O servidor de pagamento está temporariamente indisponível. Tente novamente em alguns segundos ou use o cartão.",
+        );
+      }
+      if (!res.ok || !data?.ok)
+        throw new Error(
+          data?.error ??
+            "Não foi possível gerar o PIX agora. Tente novamente em alguns segundos.",
+        );
       setPix(data);
+
     } catch (err: any) {
       setError(err.message ?? "Erro");
     } finally {
