@@ -101,10 +101,6 @@ function LandingPage() {
             height={160}
             className="mx-auto h-32 w-32 sm:h-40 sm:w-40 drop-shadow-[0_8px_30px_rgba(251,191,36,0.35)] animate-bounce-in"
           />
-          <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-amber-500 to-yellow-400 px-4 py-2 text-sm sm:text-base font-black uppercase tracking-wide text-[#2a160a] shadow-lg shadow-amber-500/30 animate-wiggle">
-            <Star className="h-4 w-4 fill-[#2a160a]" />
-            mais de 50 receitas do tradicional ao avançado
-          </div>
           <p className="mt-5 text-xl sm:text-2xl font-extrabold tracking-wide text-amber-200">
             APRENDA A PRODUZIR
           </p>
@@ -114,6 +110,10 @@ function LandingPage() {
           <div className="mt-4 inline-block w-full max-w-xl rounded-md bg-gradient-to-r from-[#5d3a1a] to-[#7c4d24] px-4 py-3 text-xl sm:text-2xl font-extrabold uppercase text-amber-100 shadow-lg border border-amber-500/30">
             E crie uma renda extra 💸
           </div>
+          <p className="mt-3 inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-amber-300/90">
+            <Star className="h-3.5 w-3.5 fill-amber-300 text-amber-300" />
+            mais de 50 receitas do tradicional ao avançado
+          </p>
           <p className="mt-4 text-lg sm:text-xl font-semibold text-amber-300">
             Mesmo começando do zero!
           </p>
