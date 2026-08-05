@@ -756,6 +756,15 @@ function Benefit({ icon, text }: { icon: React.ReactNode; text: string }) {
   );
 }
 
+function ValueItem({ text }: { text: string }) {
+  return (
+    <li className="flex items-start gap-2 text-xs text-amber-100">
+      <Check className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-amber-400" />
+      <span>{text}</span>
+    </li>
+  );
+}
+
 function PixSuccess({
   pix,
   copied,
