@@ -552,8 +552,8 @@ function CheckoutPage() {
                 </div>
               </div>
               <div className="mt-4 space-y-2 text-sm">
-                <Row label="Valor real do pacote" value="R$ 497,00" strike />
-                <Row label="Desconto de hoje" value="-R$ 460,00" highlight />
+                <Row label="Valor real do pacote" value="R$ 97,00" strike />
+                <Row label="Desconto de hoje" value="-R$ 60,00" highlight />
                 {Array.from(acceptedBumps).map((id) => {
                   const b = BUMPS.find((x) => x.id === id);
                   if (!b) return null;
