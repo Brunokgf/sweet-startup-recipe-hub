@@ -862,10 +862,12 @@ function PixSuccess({
 function OrderBump({
   bump,
   checked,
+  popular,
   onToggle,
 }: {
   bump: (typeof BUMPS)[number];
   checked: boolean;
+  popular?: boolean;
   onToggle: () => void;
 }) {
   return (
@@ -908,6 +910,11 @@ function OrderBump({
         className="h-20 w-20 shrink-0 rounded-lg object-cover ring-1 ring-amber-500/30"
       />
       <div className="flex-1 min-w-0">
+        {popular && !checked && (
+          <span className="mb-1 inline-block rounded bg-gradient-to-r from-amber-300 to-amber-500 px-2 py-0.5 text-[10px] font-black uppercase tracking-wider text-[#2a160a] shadow-sm">
+            ⭐ MAIS POPULAR
+          </span>
+        )}
         {bump.badge && (
           <span className={`mb-1 inline-block rounded bg-gradient-to-r from-amber-400 to-amber-500 px-2 py-0.5 text-[10px] font-black uppercase tracking-wider text-[#2a160a] shadow-sm ${checked ? "animate-wiggle" : ""}`}>
             {bump.badge}
