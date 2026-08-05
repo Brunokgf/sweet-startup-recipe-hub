@@ -526,7 +526,6 @@ function CheckoutPage() {
 
             </div>
             <div className="rounded-2xl bg-gradient-to-br from-[#4a2c18] to-[#3d2314] p-6 shadow-xl shadow-black/30 ring-1 ring-amber-500/20">
-
               <p className="text-xs font-bold uppercase tracking-wider text-amber-300/80">
                 Resumo do pedido
               </p>
@@ -539,13 +538,13 @@ function CheckoutPage() {
                     Curso Brigadeiro Gourmet
                   </p>
                   <p className="mt-0.5 text-[11px] text-amber-200/70">
-                    Acesso vitalício + 4 bônus + certificado
+                    +50 receitas · iFood/WhatsApp · precificação · 4 bônus · certificado
                   </p>
                 </div>
               </div>
               <div className="mt-4 space-y-2 text-sm">
-                <Row label="De" value={OLD_PRICE_LABEL} strike />
-                <Row label="Desconto" value="-R$ 60,00" highlight />
+                <Row label="Valor real do pacote" value="R$ 497,00" strike />
+                <Row label="Desconto de hoje" value="-R$ 460,00" highlight />
                 {Array.from(acceptedBumps).map((id) => {
                   const b = BUMPS.find((x) => x.id === id);
                   if (!b) return null;
@@ -571,7 +570,24 @@ function CheckoutPage() {
                 />
               </div>
               <div className="mt-4 rounded-lg bg-gradient-to-r from-amber-500 to-amber-400 px-3 py-2 text-center text-[11px] font-bold uppercase tracking-wider text-[#2a160a]">
-                Economia de 62%
+                Economia de 92% · Oferta por tempo limitado
+              </div>
+            </div>
+
+            <div className="rounded-2xl bg-gradient-to-br from-[#5d3a1a] to-[#3d2314] p-5 shadow-xl shadow-black/30 ring-1 ring-amber-400/30">
+              <p className="flex items-center gap-2 text-sm font-black uppercase tracking-wide text-amber-300">
+                <Star className="h-4 w-4 text-amber-400" /> O que você vai receber
+              </p>
+              <ul className="mt-4 space-y-3">
+                <ValueItem text="Mais de 50 receitas de brigadeiro gourmet do tradicional ao avançado" />
+                <ValueItem text="Estratégias para vender pelo iFood e WhatsApp sem gastar em anúncios" />
+                <ValueItem text="Receitas premium: ensino a vender por R$18 a R$25 cada" />
+                <ValueItem text="Planilha de custo, cálculo de lucro e preço de venda" />
+                <ValueItem text="4 super bônus + certificado de conclusão" />
+                <ValueItem text="Aulas enviadas pelo WhatsApp assim que o pagamento for confirmado" />
+              </ul>
+              <div className="mt-4 rounded-lg border border-amber-500/30 bg-[#2a160a]/60 px-3 py-2 text-center text-[11px] font-bold text-amber-200">
+                Valor real: <span className="text-amber-400">R$ 497,00</span> · Hoje: <span className="text-amber-400">{PRICE_LABEL}</span>
               </div>
             </div>
 
