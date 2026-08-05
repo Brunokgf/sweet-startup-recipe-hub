@@ -63,60 +63,20 @@ type CardResult = {
 
 const BUMPS = [
   {
-    id: "rocambole",
-    title: "CURSO ROCAMBOLE LUCRATIVO",
-    description: "Curso em videoaulas",
-    badge: null,
-    priceCents: 1095,
-    installment: "5x de R$ 2,19",
-    icon: <Gift className="h-4 w-4" />,
-    image: bumpRocambole,
-  },
-  {
-    id: "bolos",
-    title: "Bolos Caseiros",
-    description: "Curso em videoaulas + Certificado",
-    badge: "93% APROVEITARAM E COMPRARAM JUNTO",
-    priceCents: 1980,
-    installment: "5x de R$ 3,96",
-    icon: <Star className="h-4 w-4" />,
-    image: bumpBolos,
-  },
-  {
     id: "bolo-de-pote",
     title: "BOLO DE POTE LUCRATIVO",
-    description: "Curso em videoaulas + Apostila exclusiva",
-    badge: "MAIS VENDIDO!",
+    description: "A combinação perfeita com brigadeiro. Venda potes por R$12 a R$18 com lucro de 3x.",
+    badge: "MAIS VENDIDO · 91% APROVEITAM",
     priceCents: 2495,
     installment: "5x de R$ 4,99",
     icon: <Cake className="h-4 w-4" />,
     image: bumpBoloPote,
   },
   {
-    id: "iogurte",
-    title: "Iogurte Caseiro",
-    description: "Curso em videoaulas + Bônus exclusivo + Certificado de Conclusão",
-    badge: "95% APROVEITARAM E COMPRARAM JUNTO",
-    priceCents: 4095,
-    installment: "5x de R$ 8,19",
-    icon: <Zap className="h-4 w-4" />,
-    image: bumpIogurte,
-  },
-  {
-    id: "caldas",
-    title: "Dando toque final com caldas",
-    description: "Curso em videoaulas + Caldas e coberturas especiais",
-    badge: "LANÇAMENTO ESPECIAL!!",
-    priceCents: 2990,
-    installment: "5x de R$ 5,98",
-    icon: <Gift className="h-4 w-4" />,
-    image: bumpCaldas,
-  },
-  {
     id: "mousse",
     title: "MOUSSE LUCRATIVO",
-    description: "Curso em videoaulas + Receitas exclusivas",
-    badge: "NOVIDADE!",
+    description: "Mousse cremoso que vende o ano todo. Receitas exclusivas + planilha de custo.",
+    badge: "NOVIDADE · ALTA MARGEM",
     priceCents: 1790,
     installment: "5x de R$ 3,58",
     icon: <Zap className="h-4 w-4" />,
@@ -125,12 +85,52 @@ const BUMPS = [
   {
     id: "cheesecake-pote",
     title: "CHEESECAKE NO POTE",
-    description: "Curso em videoaulas + Apostila de vendas",
-    badge: "SUPER PEDIDO!",
+    description: "Sobremesa premium que encanta clientes. Apostila de vendas + fotos prontas.",
+    badge: "SUPER PEDIDO",
     priceCents: 1990,
     installment: "5x de R$ 3,98",
     icon: <Star className="h-4 w-4" />,
     image: bumpCheesecake,
+  },
+  {
+    id: "bolos",
+    title: "Bolos Caseiros",
+    description: "Os sabores caseiros que mais saem. Vídeo-aulas + certificado de conclusão.",
+    badge: "93% APROVEITAM JUNTO",
+    priceCents: 1980,
+    installment: "5x de R$ 3,96",
+    icon: <Star className="h-4 w-4" />,
+    image: bumpBolos,
+  },
+  {
+    id: "caldas",
+    title: "Dando toque final com caldas",
+    description: "Caldas e coberturas especiais que valorizam qualquer sobremesa. Passo a passo.",
+    badge: "LANÇAMENTO ESPECIAL",
+    priceCents: 2990,
+    installment: "5x de R$ 5,98",
+    icon: <Gift className="h-4 w-4" />,
+    image: bumpCaldas,
+  },
+  {
+    id: "iogurte",
+    title: "Iogurte Caseiro",
+    description: "Iogurte natural e grego para vender saudável. Bônus exclusivo + certificado.",
+    badge: "95% APROVEITAM JUNTO",
+    priceCents: 4095,
+    installment: "5x de R$ 8,19",
+    icon: <Zap className="h-4 w-4" />,
+    image: bumpIogurte,
+  },
+  {
+    id: "rocambole",
+    title: "CURSO ROCAMBOLE LUCRATIVO",
+    description: "Rocamboles perfeitos para encomendas de final de semana. Curso em vídeo-aulas.",
+    badge: "COMBO COMPLETO",
+    priceCents: 1095,
+    installment: "5x de R$ 2,19",
+    icon: <Gift className="h-4 w-4" />,
+    image: bumpRocambole,
   },
 ];
 
@@ -450,16 +450,20 @@ function CheckoutPage() {
                   )}
 
                   <div className="mt-4 space-y-3">
-                    <div className="rounded-lg bg-gradient-to-r from-amber-500 to-amber-400 px-4 py-3 text-center shadow-md shadow-amber-500/20">
+                    <div className="rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 px-4 py-3 text-center shadow-md shadow-amber-500/20">
                       <p className="text-xs font-black uppercase tracking-wider text-[#2a160a]">
                         🔥 SIM, EU ACEITO ESSA OFERTA ESPECIAL!
                       </p>
+                      <p className="mt-1 text-[10px] font-semibold text-[#2a160a]/80">
+                        Adicione um ou mais cursos e multiplique sua renda — preços exclusivos desta página
+                      </p>
                     </div>
-                    {BUMPS.map((b) => (
+                    {BUMPS.map((b, idx) => (
                       <OrderBump
                         key={b.id}
                         bump={b}
                         checked={acceptedBumps.has(b.id)}
+                        popular={idx === 0}
                         onToggle={() => {
                           const next = new Set(acceptedBumps);
                           if (next.has(b.id)) next.delete(b.id);
@@ -500,6 +504,11 @@ function CheckoutPage() {
                     <span className="font-bold text-amber-300">📱 As aulas serão enviadas pelo WhatsApp</span> assim que o pagamento for confirmado.
                   </div>
 
+                  <div className="flex items-center justify-center gap-2 rounded-xl border border-amber-500/20 bg-[#2a160a]/40 px-3 py-2 text-center text-[11px] text-amber-200/80">
+                    <ShieldCheck className="h-4 w-4 text-amber-400" />
+                    <span>7 dias de garantia incondicional · Risco zero</span>
+                  </div>
+
                   <p className="text-center text-[10px] uppercase tracking-wider text-amber-300/60">
                     Ambiente criptografado · SSL 256 bits
                   </p>
@@ -526,7 +535,6 @@ function CheckoutPage() {
 
             </div>
             <div className="rounded-2xl bg-gradient-to-br from-[#4a2c18] to-[#3d2314] p-6 shadow-xl shadow-black/30 ring-1 ring-amber-500/20">
-
               <p className="text-xs font-bold uppercase tracking-wider text-amber-300/80">
                 Resumo do pedido
               </p>
@@ -539,13 +547,13 @@ function CheckoutPage() {
                     Curso Brigadeiro Gourmet
                   </p>
                   <p className="mt-0.5 text-[11px] text-amber-200/70">
-                    Acesso vitalício + 4 bônus + certificado
+                    +50 receitas · iFood/WhatsApp · precificação · 4 bônus · certificado
                   </p>
                 </div>
               </div>
               <div className="mt-4 space-y-2 text-sm">
-                <Row label="De" value={OLD_PRICE_LABEL} strike />
-                <Row label="Desconto" value="-R$ 60,00" highlight />
+                <Row label="Valor real do pacote" value="R$ 497,00" strike />
+                <Row label="Desconto de hoje" value="-R$ 460,00" highlight />
                 {Array.from(acceptedBumps).map((id) => {
                   const b = BUMPS.find((x) => x.id === id);
                   if (!b) return null;
@@ -571,7 +579,24 @@ function CheckoutPage() {
                 />
               </div>
               <div className="mt-4 rounded-lg bg-gradient-to-r from-amber-500 to-amber-400 px-3 py-2 text-center text-[11px] font-bold uppercase tracking-wider text-[#2a160a]">
-                Economia de 62%
+                Economia de 92% · Oferta por tempo limitado
+              </div>
+            </div>
+
+            <div className="rounded-2xl bg-gradient-to-br from-[#5d3a1a] to-[#3d2314] p-5 shadow-xl shadow-black/30 ring-1 ring-amber-400/30">
+              <p className="flex items-center gap-2 text-sm font-black uppercase tracking-wide text-amber-300">
+                <Star className="h-4 w-4 text-amber-400" /> O que você vai receber
+              </p>
+              <ul className="mt-4 space-y-3">
+                <ValueItem text="Mais de 50 receitas de brigadeiro gourmet do tradicional ao avançado" />
+                <ValueItem text="Estratégias para vender pelo iFood e WhatsApp sem gastar em anúncios" />
+                <ValueItem text="Receitas premium: ensino a vender por R$18 a R$25 cada" />
+                <ValueItem text="Planilha de custo, cálculo de lucro e preço de venda" />
+                <ValueItem text="4 super bônus + certificado de conclusão" />
+                <ValueItem text="Aulas enviadas pelo WhatsApp assim que o pagamento for confirmado" />
+              </ul>
+              <div className="mt-4 rounded-lg border border-amber-500/30 bg-[#2a160a]/60 px-3 py-2 text-center text-[11px] font-bold text-amber-200">
+                Valor real: <span className="text-amber-400">R$ 497,00</span> · Hoje: <span className="text-amber-400">{PRICE_LABEL}</span>
               </div>
             </div>
 
@@ -740,6 +765,15 @@ function Benefit({ icon, text }: { icon: React.ReactNode; text: string }) {
   );
 }
 
+function ValueItem({ text }: { text: string }) {
+  return (
+    <li className="flex items-start gap-2 text-xs text-amber-100">
+      <Check className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-amber-400" />
+      <span>{text}</span>
+    </li>
+  );
+}
+
 function PixSuccess({
   pix,
   copied,
@@ -833,10 +867,12 @@ function PixSuccess({
 function OrderBump({
   bump,
   checked,
+  popular,
   onToggle,
 }: {
   bump: (typeof BUMPS)[number];
   checked: boolean;
+  popular?: boolean;
   onToggle: () => void;
 }) {
   return (
@@ -879,6 +915,11 @@ function OrderBump({
         className="h-20 w-20 shrink-0 rounded-lg object-cover ring-1 ring-amber-500/30"
       />
       <div className="flex-1 min-w-0">
+        {popular && !checked && (
+          <span className="mb-1 inline-block rounded bg-gradient-to-r from-amber-300 to-amber-500 px-2 py-0.5 text-[10px] font-black uppercase tracking-wider text-[#2a160a] shadow-sm">
+            ⭐ MAIS POPULAR
+          </span>
+        )}
         {bump.badge && (
           <span className={`mb-1 inline-block rounded bg-gradient-to-r from-amber-400 to-amber-500 px-2 py-0.5 text-[10px] font-black uppercase tracking-wider text-[#2a160a] shadow-sm ${checked ? "animate-wiggle" : ""}`}>
             {bump.badge}
