@@ -450,16 +450,20 @@ function CheckoutPage() {
                   )}
 
                   <div className="mt-4 space-y-3">
-                    <div className="rounded-lg bg-gradient-to-r from-amber-500 to-amber-400 px-4 py-3 text-center shadow-md shadow-amber-500/20">
+                    <div className="rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 px-4 py-3 text-center shadow-md shadow-amber-500/20">
                       <p className="text-xs font-black uppercase tracking-wider text-[#2a160a]">
                         🔥 SIM, EU ACEITO ESSA OFERTA ESPECIAL!
                       </p>
+                      <p className="mt-1 text-[10px] font-semibold text-[#2a160a]/80">
+                        Adicione um ou mais cursos e multiplique sua renda — preços exclusivos desta página
+                      </p>
                     </div>
-                    {BUMPS.map((b) => (
+                    {BUMPS.map((b, idx) => (
                       <OrderBump
                         key={b.id}
                         bump={b}
                         checked={acceptedBumps.has(b.id)}
+                        popular={idx === 0}
                         onToggle={() => {
                           const next = new Set(acceptedBumps);
                           if (next.has(b.id)) next.delete(b.id);
