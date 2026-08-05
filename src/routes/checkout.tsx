@@ -579,7 +579,7 @@ function CheckoutPage() {
                 />
               </div>
               <div className="mt-4 rounded-lg bg-gradient-to-r from-amber-500 to-amber-400 px-3 py-2 text-center text-[11px] font-bold uppercase tracking-wider text-[#2a160a]">
-                Economia de 92% · Oferta por tempo limitado
+                Economia de 62% · Oferta por tempo limitado
               </div>
             </div>
 
