@@ -504,6 +504,11 @@ function CheckoutPage() {
                     <span className="font-bold text-amber-300">📱 As aulas serão enviadas pelo WhatsApp</span> assim que o pagamento for confirmado.
                   </div>
 
+                  <div className="flex items-center justify-center gap-2 rounded-xl border border-amber-500/20 bg-[#2a160a]/40 px-3 py-2 text-center text-[11px] text-amber-200/80">
+                    <ShieldCheck className="h-4 w-4 text-amber-400" />
+                    <span>7 dias de garantia incondicional · Risco zero</span>
+                  </div>
+
                   <p className="text-center text-[10px] uppercase tracking-wider text-amber-300/60">
                     Ambiente criptografado · SSL 256 bits
                   </p>
