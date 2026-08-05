@@ -596,7 +596,7 @@ function CheckoutPage() {
                 <ValueItem text="Aulas enviadas pelo WhatsApp assim que o pagamento for confirmado" />
               </ul>
               <div className="mt-4 rounded-lg border border-amber-500/30 bg-[#2a160a]/60 px-3 py-2 text-center text-[11px] font-bold text-amber-200">
-                Valor real: <span className="text-amber-400">R$ 497,00</span> · Hoje: <span className="text-amber-400">{PRICE_LABEL}</span>
+                Valor real: <span className="text-amber-400">R$ 97,00</span> · Hoje: <span className="text-amber-400">{PRICE_LABEL}</span>
               </div>
             </div>
 
