@@ -65,7 +65,8 @@ const BUMPS = [
   {
     id: "bolo-de-pote",
     title: "BOLO DE POTE LUCRATIVO",
-    description: "A combinação perfeita com brigadeiro. Venda potes por R$12 a R$18 com lucro de 3x.",
+    description:
+      "A combinação perfeita com brigadeiro. Mais de 30 receitas exclusivas, planilha de custo, cálculo de lucro e preço de venda. Venda potes por R$12 a R$18 com lucro de 3x.",
     badge: "MAIS VENDIDO · 91% APROVEITAM",
     priceCents: 2495,
     installment: "5x de R$ 4,99",
@@ -75,7 +76,8 @@ const BUMPS = [
   {
     id: "mousse",
     title: "MOUSSE LUCRATIVO",
-    description: "Mousse cremoso que vende o ano todo. Receitas exclusivas + planilha de custo.",
+    description:
+      "Mousse cremoso que vende o ano todo. Mais de 20 receitas, planilha de custo, cálculo de lucro e preço de venda. Alta margem e poucos ingredientes.",
     badge: "NOVIDADE · ALTA MARGEM",
     priceCents: 1790,
     installment: "5x de R$ 3,58",
@@ -85,7 +87,8 @@ const BUMPS = [
   {
     id: "cheesecake-pote",
     title: "CHEESECAKE NO POTE",
-    description: "Sobremesa premium que encanta clientes. Apostila de vendas + fotos prontas.",
+    description:
+      "Sobremesa premium que encanta clientes. Mais de 25 receitas, planilha de custo, cálculo de lucro e preço de venda + apostila de vendas e fotos prontas.",
     badge: "SUPER PEDIDO",
     priceCents: 1990,
     installment: "5x de R$ 3,98",
@@ -95,7 +98,8 @@ const BUMPS = [
   {
     id: "bolos",
     title: "Bolos Caseiros",
-    description: "Os sabores caseiros que mais saem. Vídeo-aulas + certificado de conclusão.",
+    description:
+      "Os sabores caseiros que mais saem. Mais de 25 receitas em vídeo-aulas, planilha de custo, cálculo de lucro e preço de venda + certificado de conclusão.",
     badge: "93% APROVEITAM JUNTO",
     priceCents: 1980,
     installment: "5x de R$ 3,96",
@@ -105,7 +109,8 @@ const BUMPS = [
   {
     id: "caldas",
     title: "Dando toque final com caldas",
-    description: "Caldas e coberturas especiais que valorizam qualquer sobremesa. Passo a passo.",
+    description:
+      "Caldas e coberturas especiais que valorizam qualquer sobremesa. Mais de 15 receitas profissionais, planilha de custo, cálculo de lucro e preço de venda. Passo a passo.",
     badge: "LANÇAMENTO ESPECIAL",
     priceCents: 2990,
     installment: "5x de R$ 5,98",
@@ -115,7 +120,8 @@ const BUMPS = [
   {
     id: "iogurte",
     title: "Iogurte Caseiro",
-    description: "Iogurte natural e grego para vender saudável. Bônus exclusivo + certificado.",
+    description:
+      "Iogurte natural e grego para vender saudável. Mais de 20 receitas, planilha de custo, cálculo de lucro e preço de venda. Bônus exclusivo + certificado.",
     badge: "95% APROVEITAM JUNTO",
     priceCents: 4095,
     installment: "5x de R$ 8,19",
@@ -125,7 +131,8 @@ const BUMPS = [
   {
     id: "rocambole",
     title: "CURSO ROCAMBOLE LUCRATIVO",
-    description: "Rocamboles perfeitos para encomendas de final de semana. Curso em vídeo-aulas.",
+    description:
+      "Rocamboles perfeitos para encomendas de final de semana. Mais de 15 receitas em vídeo-aulas, planilha de custo, cálculo de lucro e preço de venda.",
     badge: "COMBO COMPLETO",
     priceCents: 1095,
     installment: "5x de R$ 2,19",
