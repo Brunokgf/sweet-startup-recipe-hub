@@ -141,6 +141,38 @@ const BUMPS = [
   },
 ];
 
+function CheckoutTimer() {
+  const [timeLeft, setTimeLeft] = useState(15 * 60 * 1000);
+
+  useState(() => {
+    const saved = localStorage.getItem("brigadeiro-timer");
+    let end = saved ? parseInt(saved, 10) : Date.now() + 15 * 60 * 1000;
+    if (!saved) localStorage.setItem("brigadeiro-timer", String(end));
+    setTimeLeft(Math.max(0, end - Date.now()));
+
+    const interval = setInterval(() => {
+      const remaining = Math.max(0, end - Date.now());
+      if (remaining === 0) {
+        end = Date.now() + 15 * 60 * 1000;
+        localStorage.setItem("brigadeiro-timer", String(end));
+        setTimeLeft(15 * 60 * 1000);
+      } else {
+        setTimeLeft(remaining);
+      }
+    }, 1000);
+    return () => clearInterval(interval);
+  });
+
+  const minutes = Math.floor(timeLeft / 60000);
+  const seconds = Math.floor((timeLeft % 60000) / 1000);
+
+  return (
+    <span className="font-mono tabular-nums text-amber-100">
+      {String(minutes).padStart(2, "0")}:{String(seconds).padStart(2, "0")}
+    </span>
+  );
+}
+
 function CheckoutPage() {
   const navigate = useNavigate();
   const [method, setMethod] = useState<"pix" | "card">("pix");
