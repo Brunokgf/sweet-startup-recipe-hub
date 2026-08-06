@@ -456,13 +456,22 @@ function CheckoutPage() {
                     </div>
                   )}
 
-                  <div className="mt-4 space-y-3">
+                  <div className="rounded-xl border border-amber-400/40 bg-gradient-to-r from-[#5d3a1a] to-[#4a2c18] p-4 text-center shadow-md shadow-amber-500/10">
+                    <p className="flex items-center justify-center gap-2 text-sm font-black text-amber-300">
+                      <Gift className="h-4 w-4" /> Valor estimado dos bônus: R$97,00
+                    </p>
+                    <p className="mt-1 text-[11px] text-amber-200/80">
+                      Hoje você recebe tudo sem custo adicional ao adquirir o Curso de Brigadeiro Gourmet.
+                    </p>
+                  </div>
+
+                  <div className="mt-2 space-y-3">
                     <div className="rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 px-4 py-3 text-center shadow-md shadow-amber-500/20">
                       <p className="text-xs font-black uppercase tracking-wider text-[#2a160a]">
                         🔥 SIM, EU ACEITO ESSA OFERTA ESPECIAL!
                       </p>
                       <p className="mt-1 text-[10px] font-semibold text-[#2a160a]/80">
-                        Adicione um ou mais cursos e multiplique sua renda — preços exclusivos desta página
+                        Adicione um ou mais cursos e multiplique sua renda — preços exclusivos desta página. Aumente seu cardápio e aprenda produtos que podem ser vendidos entre R$12 e R$25 cada.
                       </p>
                     </div>
                     {BUMPS.map((b, idx) => (
@@ -597,7 +606,6 @@ function CheckoutPage() {
               <ul className="mt-4 space-y-3">
                 <ValueItem text="Mais de 50 receitas de brigadeiro gourmet do tradicional ao avançado" />
                 <ValueItem text="Estratégias para vender pelo iFood e WhatsApp sem gastar em anúncios" />
-                <ValueItem text="Receitas premium: ensino a vender por R$18 a R$25 cada" />
                 <ValueItem text="Planilha de custo, cálculo de lucro e preço de venda" />
                 <ValueItem text="4 super bônus + certificado de conclusão" />
                 <ValueItem text="Aulas enviadas pelo WhatsApp assim que o pagamento for confirmado" />
