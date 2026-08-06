@@ -456,12 +456,18 @@ function CheckoutPage() {
                     </div>
                   )}
 
+                  <div className="mb-3 flex items-center justify-center gap-2 text-xs font-bold text-amber-300">
+                    <Clock className="h-3.5 w-3.5" />
+                    <span>Oferta especial termina em</span>
+                    <CheckoutTimer />
+                  </div>
+
                   <div className="rounded-xl border border-amber-400/40 bg-gradient-to-r from-[#5d3a1a] to-[#4a2c18] p-4 text-center shadow-md shadow-amber-500/10">
                     <p className="flex items-center justify-center gap-2 text-sm font-black text-amber-300">
-                      <Gift className="h-4 w-4" /> Valor estimado dos bônus: R$97,00
+                      <Gift className="h-4 w-4" /> De presente, veja os benefícios da oferta especial
                     </p>
                     <p className="mt-1 text-[11px] text-amber-200/80">
-                      Hoje você recebe tudo sem custo adicional ao adquirir o Curso de Brigadeiro Gourmet.
+                      Aproveite agora e desbloqueie conteúdos extras sem custo adicional.
                     </p>
                   </div>
 
