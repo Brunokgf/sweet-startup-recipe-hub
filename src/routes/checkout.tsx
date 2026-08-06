@@ -144,7 +144,7 @@ const BUMPS = [
 function CheckoutTimer() {
   const [timeLeft, setTimeLeft] = useState(15 * 60 * 1000);
 
-  useState(() => {
+  useEffect(() => {
     const saved = localStorage.getItem("brigadeiro-timer");
     let end = saved ? parseInt(saved, 10) : Date.now() + 15 * 60 * 1000;
     if (!saved) localStorage.setItem("brigadeiro-timer", String(end));
@@ -161,7 +161,7 @@ function CheckoutTimer() {
       }
     }, 1000);
     return () => clearInterval(interval);
-  });
+  }, []);
 
   const minutes = Math.floor(timeLeft / 60000);
   const seconds = Math.floor((timeLeft % 60000) / 1000);
