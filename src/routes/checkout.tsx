@@ -1,5 +1,5 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import cursoCover from "@/assets/curso-banner.jpg";
 import bumpRocambole from "@/assets/bump-rocambole.jpg";
 import bumpBolos from "@/assets/bump-bolos.jpg";
@@ -140,6 +140,38 @@ const BUMPS = [
     image: bumpRocambole,
   },
 ];
+
+function CheckoutTimer() {
+  const [timeLeft, setTimeLeft] = useState(15 * 60 * 1000);
+
+  useEffect(() => {
+    const saved = localStorage.getItem("brigadeiro-timer");
+    let end = saved ? parseInt(saved, 10) : Date.now() + 15 * 60 * 1000;
+    if (!saved) localStorage.setItem("brigadeiro-timer", String(end));
+    setTimeLeft(Math.max(0, end - Date.now()));
+
+    const interval = setInterval(() => {
+      const remaining = Math.max(0, end - Date.now());
+      if (remaining === 0) {
+        end = Date.now() + 15 * 60 * 1000;
+        localStorage.setItem("brigadeiro-timer", String(end));
+        setTimeLeft(15 * 60 * 1000);
+      } else {
+        setTimeLeft(remaining);
+      }
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const minutes = Math.floor(timeLeft / 60000);
+  const seconds = Math.floor((timeLeft % 60000) / 1000);
+
+  return (
+    <span className="font-mono tabular-nums text-amber-100">
+      {String(minutes).padStart(2, "0")}:{String(seconds).padStart(2, "0")}
+    </span>
+  );
+}
 
 function CheckoutPage() {
   const navigate = useNavigate();
@@ -456,12 +488,18 @@ function CheckoutPage() {
                     </div>
                   )}
 
+                  <div className="mb-3 flex items-center justify-center gap-2 text-xs font-bold text-amber-300">
+                    <Clock className="h-3.5 w-3.5" />
+                    <span>Oferta especial termina em</span>
+                    <CheckoutTimer />
+                  </div>
+
                   <div className="rounded-xl border border-amber-400/40 bg-gradient-to-r from-[#5d3a1a] to-[#4a2c18] p-4 text-center shadow-md shadow-amber-500/10">
                     <p className="flex items-center justify-center gap-2 text-sm font-black text-amber-300">
-                      <Gift className="h-4 w-4" /> Valor estimado dos bônus: R$97,00
+                      <Gift className="h-4 w-4" /> De presente, veja os benefícios da oferta especial
                     </p>
                     <p className="mt-1 text-[11px] text-amber-200/80">
-                      Hoje você recebe tudo sem custo adicional ao adquirir o Curso de Brigadeiro Gourmet.
+                      Aproveite agora e desbloqueie conteúdos extras sem custo adicional.
                     </p>
                   </div>
 
