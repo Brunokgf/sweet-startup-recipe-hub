@@ -570,12 +570,86 @@ function FaqItem({ q, a }: { q: string; a: string }) {
   );
 }
 
+function FlavorCarousel() {
+  const [index, setIndex] = useState(0);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const slides = [...SABORES, { nome: "Mais de 44 sabores", frase: "esperando por você 😍", posicao: "50% 50%" }];
+  const isCta = index === slides.length - 1;
+  const previous = () => setIndex((current) => (current === 0 ? slides.length - 1 : current - 1));
+  const next = () => setIndex((current) => (current === slides.length - 1 ? 0 : current + 1));
+
+  return (
+    <div className="mx-auto mt-8 max-w-3xl">
+      <div
+        className="relative overflow-hidden rounded-2xl border border-amber-500/30 bg-[#2a160a] shadow-xl shadow-black/30"
+        onTouchStart={(event) => setTouchStart(event.touches[0]?.clientX ?? null)}
+        onTouchEnd={(event) => {
+          if (touchStart === null) return;
+          const end = event.changedTouches[0]?.clientX ?? touchStart;
+          if (touchStart - end > 45) next();
+          if (end - touchStart > 45) previous();
+          setTouchStart(null);
+        }}
+      >
+        <div className="relative aspect-[4/3] sm:aspect-[16/9]">
+          <img
+            src={sabores.url}
+            alt={`Brigadeiro sabor ${slides[index].nome}`}
+            loading="lazy"
+            className="absolute inset-0 h-full w-full object-cover transition-[object-position] duration-500"
+            style={{ objectPosition: slides[index].posicao }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#1a0d06] via-[#1a0d06]/20 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 p-6 text-center sm:p-8">
+            <p className="text-2xl font-black text-amber-300 sm:text-3xl">{slides[index].nome}</p>
+            <p className="mt-1 text-sm font-semibold text-amber-50 sm:text-base">{slides[index].frase}</p>
+            {isCta && (
+              <div className="mt-5">
+                <CTA>QUERO APRENDER TODOS</CTA>
+              </div>
+            )}
+          </div>
+          <button
+            type="button"
+            onClick={previous}
+            className="absolute left-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-[#2a160a]/85 text-amber-100 shadow-lg transition hover:bg-[#3d2314]"
+            aria-label="Sabor anterior"
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </button>
+          <button
+            type="button"
+            onClick={next}
+            className="absolute right-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-[#2a160a]/85 text-amber-100 shadow-lg transition hover:bg-[#3d2314]"
+            aria-label="Próximo sabor"
+          >
+            <ChevronRight className="h-5 w-5" />
+          </button>
+        </div>
+      </div>
+      <div className="mt-4 flex items-center justify-center gap-2" aria-label={`Sabor ${index + 1} de ${slides.length}`}>
+        {slides.map((slide, slideIndex) => (
+          <button
+            key={slide.nome}
+            type="button"
+            onClick={() => setIndex(slideIndex)}
+            className={`h-2 rounded-full bg-amber-400 transition-all ${slideIndex === index ? "w-6" : "w-2 opacity-40"}`}
+            aria-label={`Ver ${slide.nome}`}
+          />
+        ))}
+        <span className="ml-2 text-xs font-bold text-amber-200">{index + 1} de {slides.length}</span>
+      </div>
+    </div>
+  );
+}
+
 function WhatsAppPrint({
   contact,
   status = "online",
   avatarColor = "bg-emerald-600",
   initials,
   avatarUrl,
+  phoneTime = "18:27",
   children,
 }: {
   contact: string;
@@ -583,13 +657,18 @@ function WhatsAppPrint({
   avatarColor?: string;
   initials: string;
   avatarUrl?: string;
+  phoneTime?: string;
   children: React.ReactNode;
 }) {
   return (
     <div className="relative mx-auto w-full max-w-[360px]">
-      <div className="overflow-hidden rounded-[32px] bg-white shadow-[0_20px_50px_-12px_rgba(0,0,0,0.45)] ring-2 ring-[#128c7e]/30">
+      <div className="overflow-hidden rounded-[28px] border-[5px] border-[#111b21] bg-[#0b141a] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.45)]">
+        <div className="grid grid-cols-[1fr_auto] items-center bg-[#111b21] px-5 py-2 text-[11px] font-semibold text-white">
+          <span>{phoneTime}</span>
+          <span className="tracking-wider">▮▮▮ ᯤ 78</span>
+        </div>
         {/* WA Header */}
-        <div className="flex items-center gap-3 bg-[#075e54] px-4 py-3">
+        <div className="flex items-center gap-3 bg-[#202c33] px-4 py-3">
           <svg viewBox="0 0 24 24" className="h-5 w-5 fill-white">
             <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
           </svg>
@@ -618,11 +697,11 @@ function WhatsAppPrint({
         </div>
         {/* Chat surface */}
         <div
-          className="relative min-h-[340px] space-y-2 p-4"
+          className="relative min-h-[360px] space-y-2 p-4"
           style={{
-            backgroundColor: "#e5ddd5",
+            backgroundColor: "#0b141a",
             backgroundImage:
-              "radial-gradient(circle at 20% 10%, rgba(0,0,0,0.04) 1px, transparent 1px), radial-gradient(circle at 80% 60%, rgba(0,0,0,0.03) 1px, transparent 1px)",
+              "radial-gradient(circle at 20% 10%, rgba(255,255,255,0.035) 1px, transparent 1px), radial-gradient(circle at 80% 60%, rgba(255,255,255,0.025) 1px, transparent 1px)",
             backgroundSize: "24px 24px, 32px 32px",
           }}
         >
@@ -630,6 +709,11 @@ function WhatsAppPrint({
             HOJE
           </div>
           {children}
+        </div>
+        <div className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2 bg-[#0b141a] px-3 py-3 text-[#8696a0]">
+          <span className="text-xl">☺</span>
+          <div className="truncate rounded-full bg-[#202c33] px-4 py-2 text-xs">Digite uma mensagem</div>
+          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#00a884] text-white">●</span>
         </div>
       </div>
     </div>
@@ -654,15 +738,15 @@ function Bubble({
     <div className={`flex ${isRight ? "justify-end" : "justify-start"}`}>
       <div
         className={`relative max-w-[85%] rounded-xl px-3 py-2 text-[13px] shadow-sm ${
-          isRight ? "bg-[#dcf8c6] text-[#111b21]" : "bg-white text-[#111b21]"
+          isRight ? "bg-[#005c4b] text-white" : "bg-[#202c33] text-white"
         }`}
         style={{ borderRadius: isRight ? "16px 16px 4px 16px" : "16px 16px 16px 4px" }}
       >
         {name && !isRight && (
-          <p className="text-[11px] font-bold text-[#128c7e]">{name}</p>
+          <p className="text-[11px] font-bold text-[#53bdeb]">{name}</p>
         )}
         <p className="pr-14 leading-snug">{children}</p>
-        <span className={`absolute bottom-1.5 right-2 flex items-center gap-0.5 text-[10px] ${isRight ? "text-[#111b21]/60" : "text-[#111b21]/60"}`}>
+        <span className="absolute bottom-1.5 right-2 flex items-center gap-0.5 text-[10px] text-[#aebac1]">
           {time}
           {isRight && (
             <svg
@@ -682,6 +766,24 @@ function WhatsAppCarousel() {
   const [index, setIndex] = useState(0);
 
   const prints = [
+    <img
+      key="grupo-brigadeiro"
+      src={provaGrupoBrigadeiro.url}
+      alt="Conversa do grupo de alunas Delícias Gourmet sobre uma aula de brigadeiro"
+      width={768}
+      height={1152}
+      className="mx-auto block w-full max-w-[360px] rounded-[28px] border-[5px] border-[#111b21] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.45)]"
+      loading="lazy"
+    />,
+    <img
+      key="grupo-bolo-pote"
+      src={provaGrupoBoloPote.url}
+      alt="Conversa do grupo de alunas Delícias Gourmet sobre uma aula de bolo de pote"
+      width={768}
+      height={1152}
+      className="mx-auto block w-full max-w-[360px] rounded-[28px] border-[5px] border-[#111b21] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.45)]"
+      loading="lazy"
+    />,
     <WhatsAppPrint
       key="1"
       contact="Mariana 💕"
@@ -689,6 +791,7 @@ function WhatsAppCarousel() {
       initials="MC"
       avatarColor="bg-rose-400"
       avatarUrl={avatarMariana.url}
+      phoneTime="14:24"
     >
       <Bubble side="left" time="14:18">
         Oii! Vc faz brigadeiro gourmet pra festa? 🎉
@@ -714,6 +817,7 @@ function WhatsAppCarousel() {
       initials="PA"
       avatarColor="bg-amber-500"
       avatarUrl={avatarPatricia.url}
+      phoneTime="20:16"
     >
       <Bubble side="left" name="Patrícia" time="20:11">
         Gente, eu não acredito!! 😭
@@ -739,6 +843,7 @@ function WhatsAppCarousel() {
       initials="TE"
       avatarColor="bg-fuchsia-500"
       avatarUrl={avatarThais.url}
+      phoneTime="11:43"
     >
       <Bubble side="left" name="Thaís" time="11:30">
         Vi seus brigadeiros no story, são lindos! 😍
@@ -764,6 +869,7 @@ function WhatsAppCarousel() {
       initials="JA"
       avatarColor="bg-amber-400"
       avatarUrl={avatarJuliana.url}
+      phoneTime="09:23"
     >
       <Bubble side="left" time="09:12">
         Bom dia! Queria encomendar 50 brigadeiros para o chá de bebê
@@ -788,7 +894,7 @@ function WhatsAppCarousel() {
 
   return (
     <div className="mt-10">
-      <div className="relative mx-auto flex max-w-[400px] items-center justify-center gap-4">
+      <div className="relative mx-auto flex max-w-[440px] items-center justify-center gap-2 sm:gap-4">
         <button
           type="button"
           onClick={prev}
