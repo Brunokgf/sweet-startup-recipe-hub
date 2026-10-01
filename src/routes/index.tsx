@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
 import { Check, Star, ChevronDown, ChevronLeft, ChevronRight, Timer, TrendingUp, Briefcase, Home, Users, PiggyBank, GraduationCap, MessageCircle } from "lucide-react";
-import { SaleNotifications } from "@/components/SaleNotifications";
 import { StickyUrgencyBar } from "@/components/StickyUrgencyBar";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
@@ -9,11 +8,13 @@ import heroBg from "@/assets/brigadeiro-hero.jpg";
 import logo from "@/assets/logo-brigadeiro.png";
 import sabores from "@/assets/sabores-brigadeiro-novo.jpg.asset.json";
 import garantia from "@/assets/garantia-7dias.png";
-import certificado from "@/assets/certificado-brigadeiro.png";
+import certificado from "@/assets/certificado-delicias-gourmet.png";
 import avatarMariana from "@/assets/avatar-mariana.jpg.asset.json";
 import avatarPatricia from "@/assets/avatar-patricia.jpg.asset.json";
 import avatarThais from "@/assets/avatar-thais.jpg.asset.json";
 import avatarJuliana from "@/assets/avatar-juliana.jpg.asset.json";
+import provaGrupoBrigadeiro from "@/assets/prova-grupo-brigadeiro.png.asset.json";
+import provaGrupoBoloPote from "@/assets/prova-grupo-bolo-pote.png.asset.json";
 
 export const Route = createFileRoute("/")({
   component: LandingPage,
@@ -23,8 +24,12 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Aprenda a produzir Brigadeiros Gourmet e crie uma renda extra — mesmo começando do zero. +6.000 alunas já transformaram suas vidas.",
+          "Aprenda brigadeiros gourmet do primeiro preparo à primeira venda, com aulas práticas e apoio de uma comunidade de alunas.",
       },
+      { property: "og:title", content: "Brigadeiro Gourmet — Do primeiro brigadeiro à primeira venda" },
+      { property: "og:description", content: "Um método simples e prático para transformar brigadeiros em uma renda extra real." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
 });
@@ -32,12 +37,12 @@ export const Route = createFileRoute("/")({
 const CHECKOUT_URL = "#"; // troque pelo link do Kiwify/Hotmart
 
 const SABORES = [
-  { nome: "TRADICIONAL", cor: "from-amber-600 to-amber-800" },
-  { nome: "BEIJINHO", cor: "from-[#5d3a1a] to-[#3d2314]" },
-  { nome: "PISTACHE", cor: "from-amber-500 to-amber-700" },
-  { nome: "MORANGO", cor: "from-[#7c4d24] to-[#4a2c18]" },
-  { nome: "OREO", cor: "from-[#3d2314] to-[#1a0d06]" },
-  { nome: "AMENDOIN", cor: "from-amber-400 to-amber-600" },
+  { nome: "Tradicional", frase: "O clássico que nunca sai de moda", posicao: "0% 50%" },
+  { nome: "Beijinho", frase: "Delicado, cremoso e perfeito para festas", posicao: "20% 50%" },
+  { nome: "Pistache", frase: "Um dos sabores gourmet mais pedidos", posicao: "40% 50%" },
+  { nome: "Morango", frase: "Colorido e irresistível para qualquer ocasião", posicao: "60% 50%" },
+  { nome: "Oreo", frase: "Crocante por fora e cremoso por dentro", posicao: "80% 50%" },
+  { nome: "Amendoim", frase: "Sabor marcante com ingredientes acessíveis", posicao: "100% 50%" },
 ];
 
 const FAQS = [
@@ -76,7 +81,6 @@ function LandingPage() {
   useScrollReveal();
   return (
     <main className="min-h-screen bg-[#2a160a] text-amber-50">
-      <SaleNotifications />
       <StickyUrgencyBar />
       {/* HERO */}
       <section
@@ -101,21 +105,17 @@ function LandingPage() {
             height={160}
             className="mx-auto h-32 w-32 sm:h-40 sm:w-40 drop-shadow-[0_8px_30px_rgba(251,191,36,0.35)] animate-bounce-in"
           />
-          <p className="mt-5 text-xl sm:text-2xl font-extrabold tracking-wide text-amber-200">
-            APRENDA A PRODUZIR
-          </p>
-          <h1 className="mt-2 text-4xl sm:text-6xl font-black uppercase tracking-tight text-gradient-hot drop-shadow-sm">
+          <p className="mt-5 text-sm font-extrabold uppercase tracking-wide text-amber-200 sm:text-base">
             Brigadeiros Gourmet
-          </h1>
-          <div className="mt-4 inline-block w-full max-w-xl rounded-md bg-gradient-to-r from-[#5d3a1a] to-[#7c4d24] px-4 py-3 text-xl sm:text-2xl font-extrabold uppercase text-amber-100 shadow-lg border border-amber-500/30">
-            E crie uma renda extra 💸
-          </div>
-          <p className="mt-3 inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-amber-300/90">
-            <Star className="h-3.5 w-3.5 fill-amber-300 text-amber-300" />
-            mais de 50 receitas do tradicional ao avançado
           </p>
-          <p className="mt-4 text-lg sm:text-xl font-semibold text-amber-300">
-            Mesmo começando do zero!
+          <h1 className="mx-auto mt-3 max-w-3xl text-3xl font-black leading-tight text-amber-50 sm:text-5xl">
+            Descubra Como É Possível Sair do Zero e Transformar Brigadeiros em uma Renda Extra Real
+          </h1>
+          <p className="mx-auto mt-4 max-w-2xl text-lg font-bold leading-relaxed text-amber-200 sm:text-xl">
+            Mesmo Sem Experiência e Mesmo Achando Que Não Leva Jeito.
+          </p>
+          <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-amber-100/90 sm:text-base">
+            Um método simples e prático para te guiar, passo a passo, do primeiro brigadeiro à primeira venda 🍫
           </p>
           <p className="mt-4 inline-flex animate-wiggle items-center gap-2 rounded-full bg-gradient-to-r from-amber-300 to-yellow-400 px-4 py-1.5 text-sm font-black uppercase tracking-wide text-[#2a160a] shadow-lg shadow-amber-500/30">
             <Users className="h-4 w-4" />
@@ -123,9 +123,6 @@ function LandingPage() {
           </p>
           <p className="mt-4 text-3xl font-black text-amber-100">
             <span className="sparkle-glow">+6.000 Alunas 🔥</span>
-          </p>
-          <p className="text-sm font-medium text-amber-300">
-            Já transformaram sua vida com nossas receitas
           </p>
           <div className="mt-3 flex justify-center gap-1 text-amber-300">
             {[0, 1, 2, 3, 4].map((i) => (
@@ -241,70 +238,14 @@ function LandingPage() {
         </div>
       </section>
 
-      {/* DEPOIMENTOS */}
-      <section className="bg-[#2a160a] py-16">
-        <div className="mx-auto max-w-5xl px-4">
-          <h2 className="text-center text-3xl sm:text-4xl font-black text-amber-300">
-            O QUE NOSSAS ALUNAS ESTÃO DIZENDO
-          </h2>
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {[
-              {
-                nome: "Ana Paula M.",
-                texto:
-                  "Comecei a vender brigadeiros na minha vizinhança e em 2 semanas já tinha pedidos fixos de festas. O curso é muito didático!",
-              },
-              {
-                nome: "Juliana R.",
-                texto:
-                  "Nunca imaginei que daria para ganhar dinheiro com receitas em casa. Agora fatura todos os meses com encomendas pelo WhatsApp.",
-              },
-              {
-                nome: "Camila S.",
-                texto:
-                  "O cálculo de lucro mudou minha vida. Antes vendia no prejuízo, agora sei exatamente quanto cobrar e tenho lucro real.",
-              },
-            ].map((d) => (
-              <div
-                key={d.nome}
-                className="rounded-2xl bg-gradient-to-br from-[#4a2c18] to-[#3d2314] p-6 shadow-lg shadow-black/20 ring-1 ring-amber-500/20"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-amber-400 to-amber-600 text-sm font-black text-[#2a160a]">
-                    {d.nome
-                      .split(" ")
-                      .map((w) => w[0])
-                      .join("")}
-                  </div>
-                  <div>
-                    <p className="font-extrabold text-amber-100">{d.nome}</p>
-                    <div className="flex gap-0.5 text-amber-300">
-                      {[0, 1, 2, 3, 4].map((i) => (
-                        <Star key={i} className="h-3.5 w-3.5 fill-amber-300" />
-                      ))}
-                    </div>
-                  </div>
-                </div>
-                <p className="mt-4 text-sm font-medium text-amber-200/90 leading-relaxed">
-                  "{d.texto}"
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* PROVAS SOCIAIS - PRINTS */}
       <section className="bg-[#3d2314] py-16">
         <div className="mx-auto max-w-5xl px-4">
-          <span className="mx-auto block w-fit rounded-full bg-gradient-to-r from-amber-500 to-yellow-400 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-[#2a160a]">
-            Provas Reais
-          </span>
-          <h2 className="mt-3 text-center text-3xl sm:text-4xl font-black text-amber-300">
-            Prints de alunas vendendo de verdade
+          <h2 className="text-center text-3xl font-black text-amber-300 sm:text-4xl">
+            E você não vai estar sozinha 💬
           </h2>
-          <p className="mt-3 text-center text-sm text-amber-200">
-            Conversas reais de pedidos fechados pelo WhatsApp 👇
+          <p className="mx-auto mt-3 max-w-2xl text-center text-base leading-relaxed text-amber-200">
+            Nosso grupo de alunas: troca de receitas, dicas de venda e apoio de quem já está aplicando.
           </p>
 
           <WhatsAppCarousel />
@@ -358,29 +299,9 @@ function LandingPage() {
       <section className="bg-[#3d2314] py-16">
         <div className="mx-auto max-w-5xl px-4">
           <h2 className="text-center text-2xl sm:text-3xl font-black text-amber-300">
-            VEJA ALGUNS SABORES QUE VOCÊ VAI APRENDER A FAZER
+            Alguns dos +50 sabores que você vai aprender
           </h2>
-          <img
-            src={sabores.url}
-            alt="Sabores de brigadeiro gourmet"
-            loading="lazy"
-            width={1600}
-            height={800}
-            className="mx-auto mt-8 w-full max-w-3xl rounded-2xl shadow-lg shadow-black/30 ring-1 ring-amber-500/20"
-          />
-          <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-6">
-            {SABORES.map((s) => (
-              <div
-                key={s.nome}
-                className={`rounded-xl bg-gradient-to-br ${s.cor} p-4 text-center text-xs font-extrabold uppercase text-white shadow-md`}
-              >
-                {s.nome}
-              </div>
-            ))}
-          </div>
-          <div className="mt-10 text-center">
-            <CTA>QUERO COMEÇAR AGORA</CTA>
-          </div>
+          <FlavorCarousel />
         </div>
       </section>
 
@@ -388,25 +309,25 @@ function LandingPage() {
       <section className="bg-[#2a160a] py-16">
         <div className="mx-auto max-w-5xl px-4">
           <h2 className="text-center text-3xl sm:text-4xl font-black text-amber-300">
-            O curso ideal para você que busca:
+            Por que esse curso funciona pra quem está começando
           </h2>
           <div className="mt-10 grid gap-6 md:grid-cols-2">
             {[
               {
-                t: "Método de sucesso e comprovado",
-                d: "Domine um método totalmente comprovado para produzir os melhores Brigadeiros Gourmet da sua região.",
+                t: "Um método simples de aplicar",
+                d: "Aprenda o passo a passo para produzir brigadeiros gourmet com aulas claras, do preparo ao acabamento.",
               },
               {
-                t: "Conteúdo 100% em vídeo com aulas didáticas",
-                d: "Aulas didáticas e de fácil entendimento — qualquer pessoa consegue aprender e colocar em prática.",
+                t: "Conteúdo 100% em vídeo",
+                d: "Aulas curtas e diretas, pra você aprender no seu ritmo e já colocar em prática.",
               },
               {
-                t: "Domine uma nova profissão em um mercado em alta",
-                d: "Esteja pronta para atuar no mercado que mais cresce e se destacar como uma profissional de sucesso.",
+                t: "Uma nova fonte de renda, no seu tempo",
+                d: "Brigadeiro gourmet é um mercado que só cresce, com pouco investimento pra começar.",
               },
               {
-                t: "Mais de 6 mil alunas",
-                d: "Milhares de pessoas já utilizam nossas receitas para gerar renda extra todos os meses.",
+                t: "Você não estará sozinha",
+                d: "Faz parte de uma comunidade de mais de 6 mil alunas aprendendo e trocando experiências.",
               },
             ].map((c) => (
               <div key={c.t} className="rounded-2xl bg-gradient-to-br from-[#4a2c18] to-[#3d2314] p-6 shadow-lg shadow-black/20 ring-1 ring-amber-500/20">
@@ -649,12 +570,86 @@ function FaqItem({ q, a }: { q: string; a: string }) {
   );
 }
 
+function FlavorCarousel() {
+  const [index, setIndex] = useState(0);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const slides = [...SABORES, { nome: "Mais de 44 sabores", frase: "esperando por você 😍", posicao: "50% 50%" }];
+  const isCta = index === slides.length - 1;
+  const previous = () => setIndex((current) => (current === 0 ? slides.length - 1 : current - 1));
+  const next = () => setIndex((current) => (current === slides.length - 1 ? 0 : current + 1));
+
+  return (
+    <div className="mx-auto mt-8 max-w-3xl">
+      <div
+        className="relative overflow-hidden rounded-2xl border border-amber-500/30 bg-[#2a160a] shadow-xl shadow-black/30"
+        onTouchStart={(event) => setTouchStart(event.touches[0]?.clientX ?? null)}
+        onTouchEnd={(event) => {
+          if (touchStart === null) return;
+          const end = event.changedTouches[0]?.clientX ?? touchStart;
+          if (touchStart - end > 45) next();
+          if (end - touchStart > 45) previous();
+          setTouchStart(null);
+        }}
+      >
+        <div className="relative aspect-[4/3] sm:aspect-[16/9]">
+          <img
+            src={sabores.url}
+            alt={`Brigadeiro sabor ${slides[index].nome}`}
+            loading="lazy"
+            className="absolute inset-0 h-full w-full object-cover transition-[object-position] duration-500"
+            style={{ objectPosition: slides[index].posicao }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#1a0d06] via-[#1a0d06]/20 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 p-6 text-center sm:p-8">
+            <p className="text-2xl font-black text-amber-300 sm:text-3xl">{slides[index].nome}</p>
+            <p className="mt-1 text-sm font-semibold text-amber-50 sm:text-base">{slides[index].frase}</p>
+            {isCta && (
+              <div className="mt-5">
+                <CTA>QUERO APRENDER TODOS</CTA>
+              </div>
+            )}
+          </div>
+          <button
+            type="button"
+            onClick={previous}
+            className="absolute left-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-[#2a160a]/85 text-amber-100 shadow-lg transition hover:bg-[#3d2314]"
+            aria-label="Sabor anterior"
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </button>
+          <button
+            type="button"
+            onClick={next}
+            className="absolute right-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-[#2a160a]/85 text-amber-100 shadow-lg transition hover:bg-[#3d2314]"
+            aria-label="Próximo sabor"
+          >
+            <ChevronRight className="h-5 w-5" />
+          </button>
+        </div>
+      </div>
+      <div className="mt-4 flex items-center justify-center gap-2" aria-label={`Sabor ${index + 1} de ${slides.length}`}>
+        {slides.map((slide, slideIndex) => (
+          <button
+            key={slide.nome}
+            type="button"
+            onClick={() => setIndex(slideIndex)}
+            className={`h-2 rounded-full bg-amber-400 transition-all ${slideIndex === index ? "w-6" : "w-2 opacity-40"}`}
+            aria-label={`Ver ${slide.nome}`}
+          />
+        ))}
+        <span className="ml-2 text-xs font-bold text-amber-200">{index + 1} de {slides.length}</span>
+      </div>
+    </div>
+  );
+}
+
 function WhatsAppPrint({
   contact,
   status = "online",
   avatarColor = "bg-emerald-600",
   initials,
   avatarUrl,
+  phoneTime = "18:27",
   children,
 }: {
   contact: string;
@@ -662,13 +657,18 @@ function WhatsAppPrint({
   avatarColor?: string;
   initials: string;
   avatarUrl?: string;
+  phoneTime?: string;
   children: React.ReactNode;
 }) {
   return (
     <div className="relative mx-auto w-full max-w-[360px]">
-      <div className="overflow-hidden rounded-[32px] bg-white shadow-[0_20px_50px_-12px_rgba(0,0,0,0.45)] ring-2 ring-[#128c7e]/30">
+      <div className="overflow-hidden rounded-[28px] border-[5px] border-[#111b21] bg-[#0b141a] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.45)]">
+        <div className="grid grid-cols-[1fr_auto] items-center bg-[#111b21] px-5 py-2 text-[11px] font-semibold text-white">
+          <span>{phoneTime}</span>
+          <span className="tracking-wider">▮▮▮ ᯤ 78</span>
+        </div>
         {/* WA Header */}
-        <div className="flex items-center gap-3 bg-[#075e54] px-4 py-3">
+        <div className="flex items-center gap-3 bg-[#202c33] px-4 py-3">
           <svg viewBox="0 0 24 24" className="h-5 w-5 fill-white">
             <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
           </svg>
@@ -697,11 +697,11 @@ function WhatsAppPrint({
         </div>
         {/* Chat surface */}
         <div
-          className="relative min-h-[340px] space-y-2 p-4"
+          className="relative min-h-[360px] space-y-2 p-4"
           style={{
-            backgroundColor: "#e5ddd5",
+            backgroundColor: "#0b141a",
             backgroundImage:
-              "radial-gradient(circle at 20% 10%, rgba(0,0,0,0.04) 1px, transparent 1px), radial-gradient(circle at 80% 60%, rgba(0,0,0,0.03) 1px, transparent 1px)",
+              "radial-gradient(circle at 20% 10%, rgba(255,255,255,0.035) 1px, transparent 1px), radial-gradient(circle at 80% 60%, rgba(255,255,255,0.025) 1px, transparent 1px)",
             backgroundSize: "24px 24px, 32px 32px",
           }}
         >
@@ -709,6 +709,11 @@ function WhatsAppPrint({
             HOJE
           </div>
           {children}
+        </div>
+        <div className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2 bg-[#0b141a] px-3 py-3 text-[#8696a0]">
+          <span className="text-xl">☺</span>
+          <div className="truncate rounded-full bg-[#202c33] px-4 py-2 text-xs">Digite uma mensagem</div>
+          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#00a884] text-white">●</span>
         </div>
       </div>
     </div>
@@ -733,15 +738,15 @@ function Bubble({
     <div className={`flex ${isRight ? "justify-end" : "justify-start"}`}>
       <div
         className={`relative max-w-[85%] rounded-xl px-3 py-2 text-[13px] shadow-sm ${
-          isRight ? "bg-[#dcf8c6] text-[#111b21]" : "bg-white text-[#111b21]"
+          isRight ? "bg-[#005c4b] text-white" : "bg-[#202c33] text-white"
         }`}
         style={{ borderRadius: isRight ? "16px 16px 4px 16px" : "16px 16px 16px 4px" }}
       >
         {name && !isRight && (
-          <p className="text-[11px] font-bold text-[#128c7e]">{name}</p>
+          <p className="text-[11px] font-bold text-[#53bdeb]">{name}</p>
         )}
         <p className="pr-14 leading-snug">{children}</p>
-        <span className={`absolute bottom-1.5 right-2 flex items-center gap-0.5 text-[10px] ${isRight ? "text-[#111b21]/60" : "text-[#111b21]/60"}`}>
+        <span className="absolute bottom-1.5 right-2 flex items-center gap-0.5 text-[10px] text-[#aebac1]">
           {time}
           {isRight && (
             <svg
@@ -761,6 +766,24 @@ function WhatsAppCarousel() {
   const [index, setIndex] = useState(0);
 
   const prints = [
+    <img
+      key="grupo-brigadeiro"
+      src={provaGrupoBrigadeiro.url}
+      alt="Conversa do grupo de alunas Delícias Gourmet sobre uma aula de brigadeiro"
+      width={768}
+      height={1152}
+      className="mx-auto block w-full max-w-[360px] rounded-[28px] border-[5px] border-[#111b21] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.45)]"
+      loading="lazy"
+    />,
+    <img
+      key="grupo-bolo-pote"
+      src={provaGrupoBoloPote.url}
+      alt="Conversa do grupo de alunas Delícias Gourmet sobre uma aula de bolo de pote"
+      width={768}
+      height={1152}
+      className="mx-auto block w-full max-w-[360px] rounded-[28px] border-[5px] border-[#111b21] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.45)]"
+      loading="lazy"
+    />,
     <WhatsAppPrint
       key="1"
       contact="Mariana 💕"
@@ -768,6 +791,7 @@ function WhatsAppCarousel() {
       initials="MC"
       avatarColor="bg-rose-400"
       avatarUrl={avatarMariana.url}
+      phoneTime="14:24"
     >
       <Bubble side="left" time="14:18">
         Oii! Vc faz brigadeiro gourmet pra festa? 🎉
@@ -793,6 +817,7 @@ function WhatsAppCarousel() {
       initials="PA"
       avatarColor="bg-amber-500"
       avatarUrl={avatarPatricia.url}
+      phoneTime="20:16"
     >
       <Bubble side="left" name="Patrícia" time="20:11">
         Gente, eu não acredito!! 😭
@@ -818,6 +843,7 @@ function WhatsAppCarousel() {
       initials="TE"
       avatarColor="bg-fuchsia-500"
       avatarUrl={avatarThais.url}
+      phoneTime="11:43"
     >
       <Bubble side="left" name="Thaís" time="11:30">
         Vi seus brigadeiros no story, são lindos! 😍
@@ -843,6 +869,7 @@ function WhatsAppCarousel() {
       initials="JA"
       avatarColor="bg-amber-400"
       avatarUrl={avatarJuliana.url}
+      phoneTime="09:23"
     >
       <Bubble side="left" time="09:12">
         Bom dia! Queria encomendar 50 brigadeiros para o chá de bebê
@@ -867,7 +894,7 @@ function WhatsAppCarousel() {
 
   return (
     <div className="mt-10">
-      <div className="relative mx-auto flex max-w-[400px] items-center justify-center gap-4">
+      <div className="relative mx-auto flex max-w-[440px] items-center justify-center gap-2 sm:gap-4">
         <button
           type="button"
           onClick={prev}
