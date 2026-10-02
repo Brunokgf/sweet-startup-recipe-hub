@@ -785,6 +785,27 @@ function WhatsAppCarousel() {
       loading="lazy"
     />,
     <WhatsAppPrint
+      key="grupo-bolo-pote"
+      contact="Alunas Delícias Gourmet 🍫"
+      status="toque para ver os dados do grupo"
+      initials="DG"
+      avatarColor="bg-rose-300"
+      phoneTime="19:42"
+    >
+      <Bubble side="right" time="16:20">
+        🎥 Videoaula: Massa de Bolo de Pote (passo a passo). Aqui está a aula, meninas! Qualquer dúvida me chamem! 💖
+      </Bubble>
+      <Bubble side="left" name="Fernanda" time="16:24">
+        Genteee, assisti à videoaula e já fiz aqui em casa 😍 Ficou perfeita! Obrigada, Luiza, por explicar tão bem!
+      </Bubble>
+      <Bubble side="left" name="Jéssica" time="16:32">
+        Muito didática! Já fiz hoje e o sabor ficou incrível 😋
+      </Bubble>
+      <Bubble side="left" name="Carla" time="16:35">
+        Amei as dicas de conservação! Agora já sei certinho como guardar. ❤️
+      </Bubble>
+    </WhatsAppPrint>,
+    <WhatsAppPrint
       key="1"
       contact="Mariana 💕"
       status="online"
