@@ -1,20 +1,24 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
-import { Check, Star, ChevronDown, ChevronLeft, ChevronRight, Timer, TrendingUp, Briefcase, Home, Users, PiggyBank, GraduationCap, MessageCircle } from "lucide-react";
+import { Check, Star, ChevronDown, ChevronLeft, ChevronRight, Timer, TrendingUp, Briefcase, Home, Users, PiggyBank, GraduationCap, MessageCircle, Video, Phone, MoreVertical, Smile, Paperclip, Camera, Mic, Signal, Wifi, BatteryMedium } from "lucide-react";
 import { StickyUrgencyBar } from "@/components/StickyUrgencyBar";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 import heroBg from "@/assets/brigadeiro-hero.jpg";
 import logo from "@/assets/logo-brigadeiro.png";
-import sabores from "@/assets/sabores-brigadeiro-novo.jpg.asset.json";
 import garantia from "@/assets/garantia-7dias.png";
 import certificado from "@/assets/certificado-delicias-gourmet.png";
 import avatarMariana from "@/assets/avatar-mariana.jpg.asset.json";
 import avatarPatricia from "@/assets/avatar-patricia.jpg.asset.json";
 import avatarThais from "@/assets/avatar-thais.jpg.asset.json";
 import avatarJuliana from "@/assets/avatar-juliana.jpg.asset.json";
-import provaGrupoBrigadeiro from "@/assets/prova-grupo-brigadeiro.png.asset.json";
-import provaGrupoBoloPote from "@/assets/prova-grupo-bolo-pote.png.asset.json";
+import provaGrupoBrigadeiro from "@/assets/prova-grupo-brigadeiro-corrigida.png";
+import saborTradicional from "@/assets/sabor-tradicional.jpg";
+import saborBeijinho from "@/assets/sabor-beijinho.jpg";
+import saborPistache from "@/assets/sabor-pistache.jpg";
+import saborMorango from "@/assets/sabor-morango.jpg";
+import saborOreo from "@/assets/sabor-oreo.jpg";
+import saborAmendoim from "@/assets/sabor-amendoim.jpg";
 
 export const Route = createFileRoute("/")({
   component: LandingPage,
@@ -37,12 +41,12 @@ export const Route = createFileRoute("/")({
 const CHECKOUT_URL = "#"; // troque pelo link do Kiwify/Hotmart
 
 const SABORES = [
-  { nome: "Tradicional", frase: "O clássico que nunca sai de moda", posicao: "0% 50%" },
-  { nome: "Beijinho", frase: "Delicado, cremoso e perfeito para festas", posicao: "20% 50%" },
-  { nome: "Pistache", frase: "Um dos sabores gourmet mais pedidos", posicao: "40% 50%" },
-  { nome: "Morango", frase: "Colorido e irresistível para qualquer ocasião", posicao: "60% 50%" },
-  { nome: "Oreo", frase: "Crocante por fora e cremoso por dentro", posicao: "80% 50%" },
-  { nome: "Amendoim", frase: "Sabor marcante com ingredientes acessíveis", posicao: "100% 50%" },
+  { nome: "Tradicional 🍫", frase: "O clássico que nunca sai de moda", imagem: saborTradicional },
+  { nome: "Beijinho 🥥", frase: "Delicado, cremoso e perfeito para festas", imagem: saborBeijinho },
+  { nome: "Pistache 🌿", frase: "Um dos sabores gourmet mais pedidos", imagem: saborPistache },
+  { nome: "Morango 🍓", frase: "Perfeito para festas e caixas presenteáveis", imagem: saborMorango },
+  { nome: "Oreo 🍪", frase: "Crocante por fora e cremoso por dentro", imagem: saborOreo },
+  { nome: "Amendoim 🥜", frase: "Sabor marcante com ingredientes acessíveis", imagem: saborAmendoim },
 ];
 
 const FAQS = [
@@ -573,7 +577,7 @@ function FaqItem({ q, a }: { q: string; a: string }) {
 function FlavorCarousel() {
   const [index, setIndex] = useState(0);
   const [touchStart, setTouchStart] = useState<number | null>(null);
-  const slides = [...SABORES, { nome: "Mais de 44 sabores", frase: "esperando por você 😍", posicao: "50% 50%" }];
+  const slides = [...SABORES, { nome: "Mais de 44 sabores", frase: "esperando por você 😍", imagem: saborTradicional }];
   const isCta = index === slides.length - 1;
   const previous = () => setIndex((current) => (current === 0 ? slides.length - 1 : current - 1));
   const next = () => setIndex((current) => (current === slides.length - 1 ? 0 : current + 1));
@@ -593,11 +597,12 @@ function FlavorCarousel() {
       >
         <div className="relative aspect-[4/3] sm:aspect-[16/9]">
           <img
-            src={sabores.url}
+            src={slides[index].imagem}
             alt={`Brigadeiro sabor ${slides[index].nome}`}
             loading="lazy"
-            className="absolute inset-0 h-full w-full object-cover transition-[object-position] duration-500"
-            style={{ objectPosition: slides[index].posicao }}
+            width={1024}
+            height={1024}
+            className={`absolute inset-0 h-full w-full object-cover transition duration-500 ${isCta ? "scale-105 blur-[2px] brightness-50" : ""}`}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#1a0d06] via-[#1a0d06]/20 to-transparent" />
           <div className="absolute inset-x-0 bottom-0 p-6 text-center sm:p-8">
@@ -665,7 +670,7 @@ function WhatsAppPrint({
       <div className="overflow-hidden rounded-[28px] border-[5px] border-[#111b21] bg-[#0b141a] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.45)]">
         <div className="grid grid-cols-[1fr_auto] items-center bg-[#111b21] px-5 py-2 text-[11px] font-semibold text-white">
           <span>{phoneTime}</span>
-          <span className="tracking-wider">▮▮▮ ᯤ 78</span>
+          <span className="flex items-center gap-1.5"><Signal className="h-3.5 w-3.5" /><Wifi className="h-3.5 w-3.5" /><BatteryMedium className="h-4 w-4" /></span>
         </div>
         {/* WA Header */}
         <div className="flex items-center gap-3 bg-[#202c33] px-4 py-3">
@@ -691,9 +696,11 @@ function WhatsAppPrint({
             <p className="text-[13px] font-bold text-white">{contact}</p>
             <p className="text-[11px] text-white/80">{status}</p>
           </div>
-          <svg viewBox="0 0 24 24" className="h-5 w-5 fill-white">
-            <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
-          </svg>
+          <div className="flex shrink-0 items-center gap-4 text-white">
+            <Video className="h-5 w-5" />
+            <Phone className="h-5 w-5" />
+            <MoreVertical className="h-5 w-5" />
+          </div>
         </div>
         {/* Chat surface */}
         <div
@@ -711,9 +718,11 @@ function WhatsAppPrint({
           {children}
         </div>
         <div className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2 bg-[#0b141a] px-3 py-3 text-[#8696a0]">
-          <span className="text-xl">☺</span>
-          <div className="truncate rounded-full bg-[#202c33] px-4 py-2 text-xs">Digite uma mensagem</div>
-          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#00a884] text-white">●</span>
+          <Smile className="h-6 w-6" />
+          <div className="grid grid-cols-[minmax(0,1fr)_auto_auto] items-center gap-2 rounded-full bg-[#202c33] px-4 py-2 text-xs">
+            <span className="truncate">Digite uma mensagem</span><Paperclip className="h-4 w-4" /><Camera className="h-4 w-4" />
+          </div>
+          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#00a884] text-white"><Mic className="h-4 w-4" /></span>
         </div>
       </div>
     </div>
@@ -768,22 +777,34 @@ function WhatsAppCarousel() {
   const prints = [
     <img
       key="grupo-brigadeiro"
-      src={provaGrupoBrigadeiro.url}
+       src={provaGrupoBrigadeiro}
       alt="Conversa do grupo de alunas Delícias Gourmet sobre uma aula de brigadeiro"
       width={768}
       height={1152}
       className="mx-auto block w-full max-w-[360px] rounded-[28px] border-[5px] border-[#111b21] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.45)]"
       loading="lazy"
     />,
-    <img
+    <WhatsAppPrint
       key="grupo-bolo-pote"
-      src={provaGrupoBoloPote.url}
-      alt="Conversa do grupo de alunas Delícias Gourmet sobre uma aula de bolo de pote"
-      width={768}
-      height={1152}
-      className="mx-auto block w-full max-w-[360px] rounded-[28px] border-[5px] border-[#111b21] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.45)]"
-      loading="lazy"
-    />,
+      contact="Alunas Delícias Gourmet 🍫"
+      status="toque para ver os dados do grupo"
+      initials="DG"
+      avatarColor="bg-rose-300"
+      phoneTime="19:42"
+    >
+      <Bubble side="right" time="16:20">
+        🎥 Videoaula: Massa de Bolo de Pote (passo a passo). Aqui está a aula, meninas! Qualquer dúvida me chamem! 💖
+      </Bubble>
+      <Bubble side="left" name="Fernanda" time="16:24">
+        Genteee, assisti à videoaula e já fiz aqui em casa 😍 Ficou perfeita! Obrigada, Luiza, por explicar tão bem!
+      </Bubble>
+      <Bubble side="left" name="Jéssica" time="16:32">
+        Muito didática! Já fiz hoje e o sabor ficou incrível 😋
+      </Bubble>
+      <Bubble side="left" name="Carla" time="16:35">
+        Amei as dicas de conservação! Agora já sei certinho como guardar. ❤️
+      </Bubble>
+    </WhatsAppPrint>,
     <WhatsAppPrint
       key="1"
       contact="Mariana 💕"
