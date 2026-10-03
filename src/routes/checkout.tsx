@@ -1,5 +1,6 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { saveOrder, nextPathAfterPrincipal, type Order } from "@/lib/order";
 import cursoCover from "@/assets/curso-banner.jpg";
 import bumpRocambole from "@/assets/bump-rocambole.jpg";
 import bumpBolos from "@/assets/bump-bolos.jpg";
@@ -201,7 +202,55 @@ function CheckoutPage() {
     (sum, id) => sum + (BUMPS.find((b) => b.id === id)?.priceCents ?? 0),
     0,
   );
-  const totalAmount = PRICE_CENTS + bumpsTotal;
+  const [downsell, setDownsell] = useState(false);
+  const [showDownsell, setShowDownsell] = useState(false);
+  const downsellShown = useRef(false);
+  const paidOrPending = useRef(false);
+  const basePrice = downsell ? 2700 : PRICE_CENTS;
+  const totalAmount = basePrice + (downsell ? 0 : bumpsTotal);
+
+  const buildOrder = (): Order => ({
+    customer: form,
+    hasBumps: !downsell && acceptedBumps.size > 0,
+    downsell,
+    items: [
+      { title: downsell ? "Curso Brigadeiro Gourmet (oferta especial)" : "Curso Brigadeiro Gourmet", cents: basePrice, charge: "principal" },
+      ...(downsell ? [] : Array.from(acceptedBumps).map((id) => {
+        const b = BUMPS.find((x) => x.id === id)!;
+        return { title: b.title, cents: b.priceCents, charge: "principal" as const };
+      })),
+    ],
+  });
+
+  const triggerDownsell = () => {
+    if (paidOrPending.current || downsellShown.current) return false;
+    downsellShown.current = true;
+    setShowDownsell(true);
+    return true;
+  };
+
+  useEffect(() => {
+    window.history.pushState({ trap: true }, "");
+    const onPop = () => {
+      if (triggerDownsell()) window.history.pushState({ trap: true }, "");
+      else window.history.back();
+    };
+    const onLeave = (e: MouseEvent) => { if (e.clientY <= 0) triggerDownsell(); };
+    const onUnload = (e: BeforeUnloadEvent) => {
+      if (paidOrPending.current || downsellShown.current) return;
+      e.preventDefault();
+      e.returnValue = "";
+    };
+    window.addEventListener("popstate", onPop);
+    document.addEventListener("mouseout", onLeave);
+    window.addEventListener("beforeunload", onUnload);
+    return () => {
+      window.removeEventListener("popstate", onPop);
+      document.removeEventListener("mouseout", onLeave);
+      window.removeEventListener("beforeunload", onUnload);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const bumpTitles = Array.from(acceptedBumps)
     .map((id) => BUMPS.find((b) => b.id === id)?.title)
     .filter(Boolean)
@@ -239,6 +288,8 @@ function CheckoutPage() {
             "Não foi possível gerar o PIX agora. Tente novamente em alguns segundos.",
         );
       setPix(data);
+      paidOrPending.current = true;
+      saveOrder(buildOrder());
 
     } catch (err: any) {
       setError(err.message ?? "Erro");
@@ -252,7 +303,10 @@ function CheckoutPage() {
     setError(null);
     setLoading(true);
     try {
-      const successUrl = `${window.location.origin}/pagamento-concluido`;
+      const order = buildOrder();
+      saveOrder(order);
+      paidOrPending.current = true;
+      const successUrl = `${window.location.origin}${nextPathAfterPrincipal(order)}`;
       const fields: Record<string, string> = {
         _subject: "Nova compra — Curso Brigadeiro Gourmet (Cartão)",
         _template: "table",
@@ -263,7 +317,7 @@ function CheckoutPage() {
         Celular: form.phone,
         CPF: form.document,
         Valor: formatBRL(totalAmount),
-        "Order Bumps":
+        "Order Bumps": downsell ? "Downsell R$27 (sem bumps)" :
           Array.from(acceptedBumps)
             .map((id) => BUMPS.find((b) => b.id === id)?.title)
             .filter(Boolean)
@@ -313,6 +367,30 @@ function CheckoutPage() {
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-[#2a160a] to-[#3d2314] text-amber-50">
+      {showDownsell && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 px-4">
+          <div className="w-full max-w-md rounded-2xl bg-gradient-to-br from-[#5d3a1a] to-[#2a160a] p-6 text-center shadow-2xl ring-2 ring-amber-400">
+            <p className="text-xl font-black text-amber-300">⚠️ Espera! Você tem uma oferta especial</p>
+            <p className="mt-3 text-base font-bold text-amber-100">Garanta o curso completo por R$27 (em vez de R$37)</p>
+            <p className="mt-2 text-xs text-amber-200/80">Essa condição é exclusiva desta tela e não vai aparecer de novo.</p>
+            <p className="mt-1 text-[11px] text-amber-200/60">Válido só para o curso principal, sem cursos extras.</p>
+            <button
+              type="button"
+              onClick={() => { setDownsell(true); setAcceptedBumps(new Set()); setShowDownsell(false); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+              className="mt-5 w-full rounded-xl bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 py-4 text-sm font-black uppercase text-[#2a160a]"
+            >
+              GARANTIR POR R$27 🔥
+            </button>
+            <button
+              type="button"
+              onClick={() => { setShowDownsell(false); navigate({ to: "/" }); }}
+              className="mt-3 text-xs text-amber-200/70 underline"
+            >
+              Não, prefiro sair
+            </button>
+          </div>
+        </div>
+      )}
       {/* Banner / Header */}
       <header className="bg-gradient-to-r from-[#3d2314] via-[#5d3a1a] to-[#3d2314] text-amber-50 shadow-lg shadow-amber-900/30 border-b border-amber-500/20">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
@@ -512,7 +590,7 @@ function CheckoutPage() {
                         Adicione um ou mais cursos e multiplique sua renda — preços exclusivos desta página. Aumente seu cardápio e aprenda produtos que podem ser vendidos entre R$12 e R$25 cada.
                       </p>
                     </div>
-                    {BUMPS.map((b, idx) => (
+                    {!downsell && BUMPS.map((b, idx) => (
                       <OrderBump
                         key={b.id}
                         bump={b}
@@ -548,8 +626,8 @@ function CheckoutPage() {
                       <>
                         <Lock className="h-4 w-4" />
                         {method === "pix"
-                          ? "Gerar PIX e finalizar"
-                          : "Finalizar pagamento"}
+                          ? `Gerar PIX de ${formatBRL(totalAmount)}`
+                          : `Pagar ${formatBRL(totalAmount)}`}
                       </>
                     )}
                   </button>
@@ -569,7 +647,16 @@ function CheckoutPage() {
                 </form>
               </>
             ) : pix ? (
-              <PixSuccess pix={pix} copied={copied} onCopy={copy} onReset={resetAll} />
+              <>
+                <PixSuccess pix={pix} copied={copied} onCopy={copy} onReset={resetAll} />
+                <button
+                  type="button"
+                  onClick={() => navigate({ to: nextPathAfterPrincipal(buildOrder()) as "/oferta-especial" })}
+                  className="mt-4 w-full rounded-xl bg-emerald-600 py-3 text-sm font-black uppercase text-white"
+                >
+                  Já paguei, continuar
+                </button>
+              </>
             ) : cardResult ? (
               <CardSuccess result={cardResult} onReset={resetAll} />
             ) : null}
@@ -607,8 +694,8 @@ function CheckoutPage() {
               </div>
               <div className="mt-4 space-y-2 text-sm">
                 <Row label="Valor real do pacote" value="R$ 97,00" strike />
-                <Row label="Desconto de hoje" value="-R$ 60,00" highlight />
-                {Array.from(acceptedBumps).map((id) => {
+                <Row label="Desconto de hoje" value={downsell ? "-R$ 70,00" : "-R$ 60,00"} highlight />
+                {!downsell && Array.from(acceptedBumps).map((id) => {
                   const b = BUMPS.find((x) => x.id === id);
                   if (!b) return null;
                   return (
@@ -621,14 +708,7 @@ function CheckoutPage() {
                 })}
                 <Row
                   label="Total"
-                  value={formatBRL(
-                    PRICE_CENTS +
-                      Array.from(acceptedBumps).reduce(
-                        (sum, id) =>
-                          sum + (BUMPS.find((b) => b.id === id)?.priceCents ?? 0),
-                        0,
-                      ),
-                  )}
+                  value={formatBRL(totalAmount)}
                   bold
                 />
               </div>

@@ -1,5 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { CheckCircle2, Home } from "lucide-react";
+import { useEffect, useState } from "react";
+import { loadOrder, brl, type Order } from "@/lib/order";
 
 export const Route = createFileRoute("/pagamento-concluido")({
   component: PagamentoConcluido,
@@ -16,6 +18,11 @@ export const Route = createFileRoute("/pagamento-concluido")({
 });
 
 function PagamentoConcluido() {
+  const [order, setOrder] = useState<Order | null>(null);
+  useEffect(() => setOrder(loadOrder()), []);
+  const principal = order?.items.filter((i) => i.charge === "principal") ?? [];
+  const upsell = order?.items.filter((i) => i.charge === "upsell") ?? [];
+  const sum = (l: { cents: number }[]) => l.reduce((a, b) => a + b.cents, 0);
   return (
     <main className="flex min-h-screen items-center justify-center bg-gradient-to-b from-[#2a160a] to-[#3d2314] px-4 py-16">
       <div className="w-full max-w-lg rounded-2xl bg-gradient-to-br from-[#4a2c18] to-[#3d2314] p-8 text-center shadow-xl shadow-black/30 ring-1 ring-amber-500/20 sm:p-10">
@@ -30,6 +37,24 @@ function PagamentoConcluido() {
           confirmado, nossa equipe enviará as aulas e o acesso ao curso
           diretamente pelo seu <strong className="text-amber-300">WhatsApp</strong>.
         </p>
+        {order && (
+          <div className="mt-6 rounded-xl bg-[#2a160a]/60 p-4 text-left text-sm text-amber-100 ring-1 ring-amber-500/30">
+            <p className="font-bold text-amber-300">🧾 Resumo do que você comprou</p>
+            <p className="mt-2 text-xs font-semibold text-amber-200/80">Cobrança 1 — pedido principal</p>
+            {principal.map((i) => (
+              <div key={i.title} className="flex justify-between text-xs"><span>{i.title}</span><span>{brl(i.cents)}</span></div>
+            ))}
+            <div className="mt-1 flex justify-between text-xs font-bold"><span>Total cobrança 1</span><span>{brl(sum(principal))}</span></div>
+            {upsell.length > 0 && (
+              <>
+                <p className="mt-3 text-xs font-semibold text-amber-200/80">Cobrança 2 — oferta adicional (separada)</p>
+                {upsell.map((i) => (
+                  <div key={i.title} className="flex justify-between text-xs"><span>{i.title}</span><span>{brl(i.cents)}</span></div>
+                ))}
+              </>
+            )}
+          </div>
+        )}
         <div className="mt-6 rounded-xl bg-[#2a160a]/60 p-4 text-left text-sm text-amber-100 ring-1 ring-amber-500/30">
           <p className="font-bold text-amber-300">📱 Próximos passos</p>
           <ul className="mt-2 list-disc space-y-1 pl-4 text-xs text-amber-200/80">
