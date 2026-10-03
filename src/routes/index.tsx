@@ -12,6 +12,10 @@ import avatarMariana from "@/assets/avatar-mariana.jpg.asset.json";
 import avatarPatricia from "@/assets/avatar-patricia.jpg.asset.json";
 import avatarThais from "@/assets/avatar-thais.jpg.asset.json";
 import avatarJuliana from "@/assets/avatar-juliana.jpg.asset.json";
+import printPaty from "@/assets/print-7ab6e26c.jpg.asset.json";
+import printLeticia from "@/assets/print-d14f9a5c.jpg.asset.json";
+import printFernanda from "@/assets/print-35d70a0c.jpg.asset.json";
+import printThais from "@/assets/print-ebe22989.jpg.asset.json";
 import provaGrupoBrigadeiro from "@/assets/prova-grupo-brigadeiro-corrigida.png";
 import saborTradicional from "@/assets/sabor-tradicional.jpg";
 import saborBeijinho from "@/assets/sabor-beijinho.jpg";
@@ -805,109 +809,10 @@ function WhatsAppCarousel() {
         Amei as dicas de conservação! Agora já sei certinho como guardar. ❤️
       </Bubble>
     </WhatsAppPrint>,
-    <WhatsAppPrint
-      key="1"
-      contact="Mariana 💕"
-      status="online"
-      initials="MC"
-      avatarColor="bg-rose-400"
-      avatarUrl={avatarMariana.url}
-      phoneTime="14:24"
-    >
-      <Bubble side="left" time="14:18">
-        Oii! Vc faz brigadeiro gourmet pra festa? 🎉
-      </Bubble>
-      <Bubble side="right" time="14:19">
-        Faço sim! Tenho 12 sabores 😋 Quantos vc precisa?
-      </Bubble>
-      <Bubble side="left" time="14:20">
-        100 unidades pro aniversário da minha filha 🎂
-      </Bubble>
-      <Bubble side="right" time="14:21">
-        Fechado! Fica R$ 280,00 💕
-      </Bubble>
-      <Bubble side="left" time="14:23">
-        Acabei de fazer o PIX ✅
-      </Bubble>
-    </WhatsAppPrint>,
-
-    <WhatsAppPrint
-      key="2"
-      contact="Patrícia 👩‍🍳"
-      status="digitando…"
-      initials="PA"
-      avatarColor="bg-amber-500"
-      avatarUrl={avatarPatricia.url}
-      phoneTime="20:16"
-    >
-      <Bubble side="left" name="Patrícia" time="20:11">
-        Gente, eu não acredito!! 😭
-      </Bubble>
-      <Bubble side="left" name="Patrícia" time="20:11">
-        Faturei R$ 1.480 só esse mês vendendo no condomínio 🏠
-      </Bubble>
-      <Bubble side="left" name="Patrícia" time="20:12">
-        Obrigada pelo curso, mudou minha vida ❤️
-      </Bubble>
-      <Bubble side="right" time="20:14">
-        Que orgulho de você!! 🥰
-      </Bubble>
-      <Bubble side="left" name="Patrícia" time="20:15">
-        Já tô separando dinheiro pra ampliar 🚀
-      </Bubble>
-    </WhatsAppPrint>,
-
-    <WhatsAppPrint
-      key="3"
-      contact="Thaís — Eventos"
-      status="visto por último hoje 11:42"
-      initials="TE"
-      avatarColor="bg-fuchsia-500"
-      avatarUrl={avatarThais.url}
-      phoneTime="11:43"
-    >
-      <Bubble side="left" name="Thaís" time="11:30">
-        Vi seus brigadeiros no story, são lindos! 😍
-      </Bubble>
-      <Bubble side="left" name="Thaís" time="11:31">
-        Faz pra casamento? Preciso de 500 unidades
-      </Bubble>
-      <Bubble side="right" time="11:35">
-        Faço sim! Te mando o orçamento agora 💌
-      </Bubble>
-      <Bubble side="right" time="11:38">
-        Sai por R$ 1.250 com 4 sabores 🍫
-      </Bubble>
-      <Bubble side="left" name="Thaís" time="11:42">
-        Fechado!! Me passa a chave pix 🙏
-      </Bubble>
-    </WhatsAppPrint>,
-
-    <WhatsAppPrint
-      key="4"
-      contact="Juliana 🎂"
-      status="online"
-      initials="JA"
-      avatarColor="bg-amber-400"
-      avatarUrl={avatarJuliana.url}
-      phoneTime="09:23"
-    >
-      <Bubble side="left" time="09:12">
-        Bom dia! Queria encomendar 50 brigadeiros para o chá de bebê
-      </Bubble>
-      <Bubble side="right" time="09:15">
-        Bom dia! Com certeza 😊 Qual tema?
-      </Bubble>
-      <Bubble side="left" time="09:17">
-        Rosa e dourado, pode ser?
-      </Bubble>
-      <Bubble side="right" time="09:18">
-        Pode sim! Fica R$ 145,00 com embalagem personalizada 🎀
-      </Bubble>
-      <Bubble side="left" time="09:22">
-        Perfeito! Fiz o pix agora, manda o endereço pra retirada?
-      </Bubble>
-    </WhatsAppPrint>,
+    <img key="paty" src={printPaty.url} alt="Conversa no WhatsApp com a aluna Paty" width={714} height={1599} className="mx-auto block w-full max-w-[360px] rounded-[28px] border-[5px] border-[#111b21] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.45)]" loading="lazy" />,
+    <img key="fernanda" src={printFernanda.url} alt="Conversa no WhatsApp com a aluna Fernanda" width={714} height={1599} className="mx-auto block w-full max-w-[360px] rounded-[28px] border-[5px] border-[#111b21] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.45)]" loading="lazy" />,
+    <img key="thais" src={printThais.url} alt="Conversa no WhatsApp com a aluna Thais" width={714} height={1599} className="mx-auto block w-full max-w-[360px] rounded-[28px] border-[5px] border-[#111b21] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.45)]" loading="lazy" />,
+    <img key="leticia" src={printLeticia.url} alt="Conversa no WhatsApp com a aluna Letícia" width={714} height={1599} className="mx-auto block w-full max-w-[360px] rounded-[28px] border-[5px] border-[#111b21] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.45)]" loading="lazy" />,
   ];
 
   const prev = () => setIndex((i) => (i === 0 ? prints.length - 1 : i - 1));
