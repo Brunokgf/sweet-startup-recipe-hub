@@ -9,15 +9,21 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
-import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as PagamentoConcluidoRouteImport } from './routes/pagamento-concluido'
-import { Route as ApiPublicMedusapayCreateCardRouteImport } from './routes/api/public/medusapay/create-card'
+import { Route as OfertaEspecialRouteImport } from './routes/oferta-especial'
+import { Route as CheckoutRouteImport } from './routes/checkout'
+import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApiPublicMedusapayCreatePixRouteImport } from './routes/api/public/medusapay/create-pix'
+import { Route as ApiPublicMedusapayCreateCardRouteImport } from './routes/api/public/medusapay/create-card'
 
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const PagamentoConcluidoRoute = PagamentoConcluidoRouteImport.update({
+  id: '/pagamento-concluido',
+  path: '/pagamento-concluido',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OfertaEspecialRoute = OfertaEspecialRouteImport.update({
+  id: '/oferta-especial',
+  path: '/oferta-especial',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CheckoutRoute = CheckoutRouteImport.update({
@@ -25,27 +31,28 @@ const CheckoutRoute = CheckoutRouteImport.update({
   path: '/checkout',
   getParentRoute: () => rootRouteImport,
 } as any)
-const PagamentoConcluidoRoute = PagamentoConcluidoRouteImport.update({
-  id: '/pagamento-concluido',
-  path: '/pagamento-concluido',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiPublicMedusapayCreateCardRoute =
-  ApiPublicMedusapayCreateCardRouteImport.update({
-    id: '/api/public/medusapay/create-card',
-    path: '/api/public/medusapay/create-card',
-    getParentRoute: () => rootRouteImport,
-  } as any)
 const ApiPublicMedusapayCreatePixRoute =
   ApiPublicMedusapayCreatePixRouteImport.update({
     id: '/api/public/medusapay/create-pix',
     path: '/api/public/medusapay/create-pix',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ApiPublicMedusapayCreateCardRoute =
+  ApiPublicMedusapayCreateCardRouteImport.update({
+    id: '/api/public/medusapay/create-card',
+    path: '/api/public/medusapay/create-card',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/checkout': typeof CheckoutRoute
+  '/oferta-especial': typeof OfertaEspecialRoute
   '/pagamento-concluido': typeof PagamentoConcluidoRoute
   '/api/public/medusapay/create-card': typeof ApiPublicMedusapayCreateCardRoute
   '/api/public/medusapay/create-pix': typeof ApiPublicMedusapayCreatePixRoute
@@ -53,6 +60,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/checkout': typeof CheckoutRoute
+  '/oferta-especial': typeof OfertaEspecialRoute
   '/pagamento-concluido': typeof PagamentoConcluidoRoute
   '/api/public/medusapay/create-card': typeof ApiPublicMedusapayCreateCardRoute
   '/api/public/medusapay/create-pix': typeof ApiPublicMedusapayCreatePixRoute
@@ -61,6 +69,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/checkout': typeof CheckoutRoute
+  '/oferta-especial': typeof OfertaEspecialRoute
   '/pagamento-concluido': typeof PagamentoConcluidoRoute
   '/api/public/medusapay/create-card': typeof ApiPublicMedusapayCreateCardRoute
   '/api/public/medusapay/create-pix': typeof ApiPublicMedusapayCreatePixRoute
@@ -70,6 +79,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/checkout'
+    | '/oferta-especial'
     | '/pagamento-concluido'
     | '/api/public/medusapay/create-card'
     | '/api/public/medusapay/create-pix'
@@ -77,6 +87,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/checkout'
+    | '/oferta-especial'
     | '/pagamento-concluido'
     | '/api/public/medusapay/create-card'
     | '/api/public/medusapay/create-pix'
@@ -84,6 +95,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/checkout'
+    | '/oferta-especial'
     | '/pagamento-concluido'
     | '/api/public/medusapay/create-card'
     | '/api/public/medusapay/create-pix'
@@ -92,6 +104,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CheckoutRoute: typeof CheckoutRoute
+  OfertaEspecialRoute: typeof OfertaEspecialRoute
   PagamentoConcluidoRoute: typeof PagamentoConcluidoRoute
   ApiPublicMedusapayCreateCardRoute: typeof ApiPublicMedusapayCreateCardRoute
   ApiPublicMedusapayCreatePixRoute: typeof ApiPublicMedusapayCreatePixRoute
@@ -99,11 +112,18 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/pagamento-concluido': {
+      id: '/pagamento-concluido'
+      path: '/pagamento-concluido'
+      fullPath: '/pagamento-concluido'
+      preLoaderRoute: typeof PagamentoConcluidoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/oferta-especial': {
+      id: '/oferta-especial'
+      path: '/oferta-especial'
+      fullPath: '/oferta-especial'
+      preLoaderRoute: typeof OfertaEspecialRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/checkout': {
@@ -113,18 +133,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CheckoutRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/pagamento-concluido': {
-      id: '/pagamento-concluido'
-      path: '/pagamento-concluido'
-      fullPath: '/pagamento-concluido'
-      preLoaderRoute: typeof PagamentoConcluidoRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/public/medusapay/create-card': {
-      id: '/api/public/medusapay/create-card'
-      path: '/api/public/medusapay/create-card'
-      fullPath: '/api/public/medusapay/create-card'
-      preLoaderRoute: typeof ApiPublicMedusapayCreateCardRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/public/medusapay/create-pix': {
@@ -134,12 +147,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiPublicMedusapayCreatePixRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/medusapay/create-card': {
+      id: '/api/public/medusapay/create-card'
+      path: '/api/public/medusapay/create-card'
+      fullPath: '/api/public/medusapay/create-card'
+      preLoaderRoute: typeof ApiPublicMedusapayCreateCardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CheckoutRoute: CheckoutRoute,
+  OfertaEspecialRoute: OfertaEspecialRoute,
   PagamentoConcluidoRoute: PagamentoConcluidoRoute,
   ApiPublicMedusapayCreateCardRoute: ApiPublicMedusapayCreateCardRoute,
   ApiPublicMedusapayCreatePixRoute: ApiPublicMedusapayCreatePixRoute,
