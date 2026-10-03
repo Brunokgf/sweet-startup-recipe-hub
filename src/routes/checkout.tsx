@@ -396,6 +396,7 @@ function CheckoutPage() {
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
           <Link
             to="/"
+            onClick={(e) => { if (triggerDownsell()) e.preventDefault(); }}
             className="flex items-center gap-2 text-sm font-medium text-amber-200/80 hover:text-amber-100"
           >
             <ArrowLeft className="h-4 w-4" /> Voltar

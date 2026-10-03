@@ -10,3 +10,5 @@
 - [x] Criar fotos individuais e consistentes para os seis sabores.
 - [x] Padronizar todos os prints no formato de tela de celular com a interface completa do WhatsApp.
 - [x] Diferenciar as fotos de Carla e Jéssica e corrigir a ordem da conversa sobre bolo de pote.
+- [x] Trocar prints WhatsApp pelos reais (Paty, Letícia, Fernanda, Thais)
+- [x] Downsell R$27 / Upsell combo R$67 / resumo no obrigado
