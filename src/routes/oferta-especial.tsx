@@ -146,7 +146,7 @@ function Upsell() {
               </button>
             )}
             <button onClick={paid} className="mt-5 block w-full rounded-xl bg-emerald-600 py-3 text-sm font-black uppercase text-white">
-              Já paguei, continuar
+              Após o pagamento, clique aqui e garanta um bônus 🎁
             </button>
             <button onClick={decline} className="mt-3 text-xs text-amber-200/70 underline">Desistir do combo</button>
           </div>
