@@ -198,6 +198,22 @@ function CheckoutPage() {
   const [copied, setCopied] = useState(false);
   const [acceptedBumps, setAcceptedBumps] = useState<Set<string>>(new Set());
 
+  // Restaura a tela do PIX se a pessoa voltar da oferta especial
+  useEffect(() => {
+    try {
+      const raw = sessionStorage.getItem("bg-pix-state");
+      if (!raw) return;
+      const s = JSON.parse(raw);
+      if (s?.pix?.ok) {
+        setPix(s.pix);
+        setForm(s.form);
+        setAcceptedBumps(new Set(s.acceptedBumps ?? []));
+        setMethod("pix");
+        paidOrPending.current = true;
+      }
+    } catch {}
+  }, []);
+
   const bumpsTotal = Array.from(acceptedBumps).reduce(
     (sum, id) => sum + (BUMPS.find((b) => b.id === id)?.priceCents ?? 0),
     0,
@@ -290,6 +306,12 @@ function CheckoutPage() {
       setPix(data);
       paidOrPending.current = true;
       saveOrder(buildOrder());
+      try {
+        sessionStorage.setItem(
+          "bg-pix-state",
+          JSON.stringify({ pix: data, form, acceptedBumps: Array.from(acceptedBumps) }),
+        );
+      } catch {}
 
     } catch (err: any) {
       setError(err.message ?? "Erro");
@@ -363,6 +385,7 @@ function CheckoutPage() {
     setPix(null);
     setCardResult(null);
     setError(null);
+    try { sessionStorage.removeItem("bg-pix-state"); } catch {}
   };
 
   return (
@@ -653,9 +676,16 @@ function CheckoutPage() {
                 <button
                   type="button"
                   onClick={() => navigate({ to: nextPathAfterPrincipal(buildOrder()) as "/oferta-especial" })}
-                  className="mt-4 w-full rounded-xl bg-emerald-600 py-3 text-sm font-black uppercase text-white"
+                  className="mt-4 w-full rounded-xl bg-emerald-600 py-3 text-sm font-black uppercase text-white shadow-lg transition hover:bg-emerald-500"
                 >
-                  Já paguei, continuar
+                  Após o pagamento, clique aqui e garanta um bônus 🎁
+                </button>
+                <button
+                  type="button"
+                  onClick={() => window.history.back()}
+                  className="mt-2 block w-full text-center text-xs text-amber-200/70 underline"
+                >
+                  Voltar para a página anterior
                 </button>
               </>
             ) : cardResult ? (

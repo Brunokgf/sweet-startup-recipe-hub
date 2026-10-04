@@ -50,6 +50,8 @@ function Upsell() {
     navigate({ to: "/pagamento-concluido" });
   };
 
+  const goBack = () => navigate({ to: "/checkout" });
+
   const accept = async () => {
     if (!order) return;
     setError(null);
@@ -122,7 +124,10 @@ function Upsell() {
               {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : "SIM, QUERO O COMBO COMPLETO POR R$67 🔥"}
             </button>
             <button onClick={decline} className="mt-4 text-xs text-amber-200/70 underline">
-              Não, quero só o curso de Brigadeiro por enquanto
+              Já paguei o curso de Brigadeiro Gourmet, seguir em frente
+            </button>
+            <button onClick={goBack} className="mt-2 block w-full text-center text-xs text-amber-200/70 underline">
+              Voltar para a página anterior
             </button>
           </>
         ) : (
@@ -146,9 +151,10 @@ function Upsell() {
               </button>
             )}
             <button onClick={paid} className="mt-5 block w-full rounded-xl bg-emerald-600 py-3 text-sm font-black uppercase text-white">
-              Após o pagamento, clique aqui e garanta um bônus 🎁
+              APÓS O PAGAMENTO, GARANTA SEU ACESSO 🔓
             </button>
             <button onClick={decline} className="mt-3 text-xs text-amber-200/70 underline">Desistir do combo</button>
+            <button onClick={goBack} className="mt-2 block w-full text-center text-xs text-amber-200/70 underline">Voltar para a página anterior</button>
           </div>
         )}
       </div>

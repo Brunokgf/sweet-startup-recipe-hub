@@ -12,3 +12,6 @@
 - [x] Diferenciar as fotos de Carla e Jéssica e corrigir a ordem da conversa sobre bolo de pote.
 - [x] Trocar prints WhatsApp pelos reais (Paty, Letícia, Fernanda, Thais)
 - [x] Downsell R$27 / Upsell combo R$67 / resumo no obrigado
+- [x] Trocar textos dos botões do PIX (bônus + acesso liberado) e adicionar "Voltar para a página anterior"
+- [x] Adicionar prints novos (grupo Delícias Gourmet, Rachel, Fernanda atual) e reordenar carrossel de provas
+- [x] Restaurar tela do PIX ao voltar do upsell (sessão salva no navegador)
