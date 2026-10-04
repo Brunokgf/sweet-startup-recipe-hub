@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
-import { Check, Star, ChevronDown, ChevronLeft, ChevronRight, Timer, TrendingUp, Briefcase, Home, Users, PiggyBank, GraduationCap, MessageCircle, Video, Phone, MoreVertical, Smile, Paperclip, Camera, Mic, Signal, Wifi, BatteryMedium } from "lucide-react";
+import { Check, Star, ChevronDown, ChevronLeft, ChevronRight, Timer, TrendingUp, Briefcase, Home, Users, PiggyBank, GraduationCap, MessageCircle } from "lucide-react";
 import { StickyUrgencyBar } from "@/components/StickyUrgencyBar";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
@@ -10,9 +10,10 @@ import garantia from "@/assets/garantia-7dias.png";
 import certificado from "@/assets/certificado-delicias-gourmet.png";
 import printPaty from "@/assets/print-7ab6e26c.jpg.asset.json";
 import printLeticia from "@/assets/print-d14f9a5c.jpg.asset.json";
-import printFernanda from "@/assets/print-35d70a0c.jpg.asset.json";
 import printThais from "@/assets/print-ebe22989.jpg.asset.json";
-import provaGrupoBrigadeiro from "@/assets/prova-grupo-brigadeiro-corrigida.png";
+import printRachel from "@/assets/print-rachel.jpg.asset.json";
+import printFernandaNova from "@/assets/print-fernanda-nova.jpg.asset.json";
+import printGrupoDelicias from "@/assets/print-grupo-delicias.jpg.asset.json";
 import saborTradicional from "@/assets/sabor-tradicional.jpg";
 import saborBeijinho from "@/assets/sabor-beijinho.jpg";
 import saborPistache from "@/assets/sabor-pistache.jpg";
@@ -648,167 +649,18 @@ function FlavorCarousel() {
   );
 }
 
-function WhatsAppPrint({
-  contact,
-  status = "online",
-  avatarColor = "bg-emerald-600",
-  initials,
-  avatarUrl,
-  phoneTime = "18:27",
-  children,
-}: {
-  contact: string;
-  status?: string;
-  avatarColor?: string;
-  initials: string;
-  avatarUrl?: string;
-  phoneTime?: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="relative mx-auto w-full max-w-[360px]">
-      <div className="overflow-hidden rounded-[28px] border-[5px] border-[#111b21] bg-[#0b141a] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.45)]">
-        <div className="grid grid-cols-[1fr_auto] items-center bg-[#111b21] px-5 py-2 text-[11px] font-semibold text-white">
-          <span>{phoneTime}</span>
-          <span className="flex items-center gap-1.5"><Signal className="h-3.5 w-3.5" /><Wifi className="h-3.5 w-3.5" /><BatteryMedium className="h-4 w-4" /></span>
-        </div>
-        {/* WA Header */}
-        <div className="flex items-center gap-3 bg-[#202c33] px-4 py-3">
-          <svg viewBox="0 0 24 24" className="h-5 w-5 fill-white">
-            <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
-          </svg>
-          {avatarUrl ? (
-            <img
-              src={avatarUrl}
-              alt={contact}
-              className="h-10 w-10 rounded-full object-cover shadow ring-2 ring-white/40"
-              width={40}
-              height={40}
-            />
-          ) : (
-            <div
-              className={`flex h-10 w-10 items-center justify-center rounded-full ${avatarColor} text-sm font-black text-white shadow`}
-            >
-              {initials}
-            </div>
-          )}
-          <div className="flex-1 leading-tight">
-            <p className="text-[13px] font-bold text-white">{contact}</p>
-            <p className="text-[11px] text-white/80">{status}</p>
-          </div>
-          <div className="flex shrink-0 items-center gap-4 text-white">
-            <Video className="h-5 w-5" />
-            <Phone className="h-5 w-5" />
-            <MoreVertical className="h-5 w-5" />
-          </div>
-        </div>
-        {/* Chat surface */}
-        <div
-          className="relative min-h-[360px] space-y-2 p-4"
-          style={{
-            backgroundColor: "#0b141a",
-            backgroundImage:
-              "radial-gradient(circle at 20% 10%, rgba(255,255,255,0.035) 1px, transparent 1px), radial-gradient(circle at 80% 60%, rgba(255,255,255,0.025) 1px, transparent 1px)",
-            backgroundSize: "24px 24px, 32px 32px",
-          }}
-        >
-          <div className="mx-auto mb-3 w-fit rounded-md bg-[#d4d4d4]/80 px-2 py-1 text-[10px] font-medium text-[#111b21] shadow-sm">
-            HOJE
-          </div>
-          {children}
-        </div>
-        <div className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2 bg-[#0b141a] px-3 py-3 text-[#8696a0]">
-          <Smile className="h-6 w-6" />
-          <div className="grid grid-cols-[minmax(0,1fr)_auto_auto] items-center gap-2 rounded-full bg-[#202c33] px-4 py-2 text-xs">
-            <span className="truncate">Digite uma mensagem</span><Paperclip className="h-4 w-4" /><Camera className="h-4 w-4" />
-          </div>
-          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#00a884] text-white"><Mic className="h-4 w-4" /></span>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function Bubble({
-  side,
-  name,
-  time = "14:23",
-  read = true,
-  children,
-}: {
-  side: "left" | "right";
-  name?: string;
-  time?: string;
-  read?: boolean;
-  children: React.ReactNode;
-}) {
-  const isRight = side === "right";
-  return (
-    <div className={`flex ${isRight ? "justify-end" : "justify-start"}`}>
-      <div
-        className={`relative max-w-[85%] rounded-xl px-3 py-2 text-[13px] shadow-sm ${
-          isRight ? "bg-[#005c4b] text-white" : "bg-[#202c33] text-white"
-        }`}
-        style={{ borderRadius: isRight ? "16px 16px 4px 16px" : "16px 16px 16px 4px" }}
-      >
-        {name && !isRight && (
-          <p className="text-[11px] font-bold text-[#53bdeb]">{name}</p>
-        )}
-        <p className="pr-14 leading-snug">{children}</p>
-        <span className="absolute bottom-1.5 right-2 flex items-center gap-0.5 text-[10px] text-[#aebac1]">
-          {time}
-          {isRight && (
-            <svg
-              viewBox="0 0 16 11"
-              className={`h-3 w-4 ${read ? "fill-[#53bdeb]" : "fill-[#111b21]/40"}`}
-            >
-              <path d="M11.07.59 5.65 6.01l-2.12-2.12-1.41 1.41L5.65 8.84 12.49 2 11.07.59zm4.24 0L9.9 6.01l-.62-.62-1.41 1.41 2.03 2.03L16.72 2 15.31.59z" />
-            </svg>
-          )}
-        </span>
-      </div>
-    </div>
-  );
-}
-
 function WhatsAppCarousel() {
   const [index, setIndex] = useState(0);
 
+  const printClass = "mx-auto block w-full max-w-[360px] rounded-[28px] border-[5px] border-[#111b21] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.45)]";
+
   const prints = [
-    <img
-      key="grupo-brigadeiro"
-       src={provaGrupoBrigadeiro}
-      alt="Conversa do grupo de alunas Delícias Gourmet sobre uma aula de brigadeiro"
-      width={768}
-      height={1152}
-      className="mx-auto block w-full max-w-[360px] rounded-[28px] border-[5px] border-[#111b21] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.45)]"
-      loading="lazy"
-    />,
-    <WhatsAppPrint
-      key="grupo-bolo-pote"
-      contact="Alunas Delícias Gourmet 🍫"
-      status="toque para ver os dados do grupo"
-      initials="DG"
-      avatarColor="bg-rose-300"
-      phoneTime="19:42"
-    >
-      <Bubble side="right" time="16:20">
-        🎥 Videoaula: Massa de Bolo de Pote (passo a passo). Aqui está a aula, meninas! Qualquer dúvida me chamem! 💖
-      </Bubble>
-      <Bubble side="left" name="Fernanda" time="16:24">
-        Genteee, assisti à videoaula e já fiz aqui em casa 😍 Ficou perfeita! Obrigada, Luiza, por explicar tão bem!
-      </Bubble>
-      <Bubble side="left" name="Jéssica" time="16:32">
-        Muito didática! Já fiz hoje e o sabor ficou incrível 😋
-      </Bubble>
-      <Bubble side="left" name="Carla" time="16:35">
-        Amei as dicas de conservação! Agora já sei certinho como guardar. ❤️
-      </Bubble>
-    </WhatsAppPrint>,
-    <img key="paty" src={printPaty.url} alt="Conversa no WhatsApp com a aluna Paty" width={714} height={1599} className="mx-auto block w-full max-w-[360px] rounded-[28px] border-[5px] border-[#111b21] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.45)]" loading="lazy" />,
-    <img key="fernanda" src={printFernanda.url} alt="Conversa no WhatsApp com a aluna Fernanda" width={714} height={1599} className="mx-auto block w-full max-w-[360px] rounded-[28px] border-[5px] border-[#111b21] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.45)]" loading="lazy" />,
-    <img key="thais" src={printThais.url} alt="Conversa no WhatsApp com a aluna Thais" width={714} height={1599} className="mx-auto block w-full max-w-[360px] rounded-[28px] border-[5px] border-[#111b21] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.45)]" loading="lazy" />,
-    <img key="leticia" src={printLeticia.url} alt="Conversa no WhatsApp com a aluna Letícia" width={714} height={1599} className="mx-auto block w-full max-w-[360px] rounded-[28px] border-[5px] border-[#111b21] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.45)]" loading="lazy" />,
+    <img key="grupo-delicias" src={printGrupoDelicias.url} alt="Grupo de alunas Delícias Gourmet recebendo a videoaula da Luiza" width={744} height={1552} className={printClass} loading="lazy" />,
+    <img key="rachel" src={printRachel.url} alt="Conversa no WhatsApp com a aluna Rachel" width={720} height={1552} className={printClass} loading="lazy" />,
+    <img key="fernanda" src={printFernandaNova.url} alt="Conversa no WhatsApp com a aluna Fernanda" width={744} height={1552} className={printClass} loading="lazy" />,
+    <img key="paty" src={printPaty.url} alt="Conversa no WhatsApp com a aluna Paty" width={714} height={1599} className={printClass} loading="lazy" />,
+    <img key="thais" src={printThais.url} alt="Conversa no WhatsApp com a aluna Thais" width={714} height={1599} className={printClass} loading="lazy" />,
+    <img key="leticia" src={printLeticia.url} alt="Conversa no WhatsApp com a aluna Letícia" width={714} height={1599} className={printClass} loading="lazy" />,
   ];
 
   const prev = () => setIndex((i) => (i === 0 ? prints.length - 1 : i - 1));
