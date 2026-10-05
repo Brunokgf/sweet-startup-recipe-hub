@@ -46,12 +46,7 @@ function Upsell() {
     setOrder(o);
   }, [navigate]);
 
-  const decline = () => {
-    if (order) saveOrder({ ...order, upsellDecided: true });
-    navigate({ to: "/pagamento-concluido" });
-  };
-
-  const goBack = () => navigate({ to: "/pagamento-concluido" });
+  const goBack = () => navigate({ to: "/checkout" });
 
   const accept = async () => {
     if (!order) return;
