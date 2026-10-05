@@ -13,7 +13,7 @@ import printLeticia from "@/assets/print-d14f9a5c.jpg.asset.json";
 import printThais from "@/assets/print-ebe22989.jpg.asset.json";
 import printRachel from "@/assets/print-rachel.jpg.asset.json";
 import printFernandaNova from "@/assets/print-fernanda-nova.jpg.asset.json";
-import printGrupoDelicias from "@/assets/print-grupo-delicias.jpg.asset.json";
+import printGrupoDeliciasUrl from "@/assets/print-grupo-delicias-wide.jpg";
 import saborTradicional from "@/assets/sabor-tradicional.jpg";
 import saborBeijinho from "@/assets/sabor-beijinho.jpg";
 import saborPistache from "@/assets/sabor-pistache.jpg";
