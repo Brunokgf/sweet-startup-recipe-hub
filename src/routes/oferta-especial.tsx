@@ -121,10 +121,7 @@ function Upsell() {
             >
               {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : "SIM, QUERO O COMBO POR R$67 🔥"}
             </button>
-            <button onClick={decline} className="mt-4 text-xs text-amber-200/70 underline">
-              Já paguei o curso de Brigadeiro Gourmet, seguir em frente
-            </button>
-            <button onClick={goBack} className="mt-2 block w-full text-center text-xs text-amber-200/70 underline">
+            <button onClick={goBack} className="mt-4 block w-full text-center text-xs text-amber-200/70 underline">
               Voltar para a página anterior
             </button>
           </>
