@@ -4,6 +4,7 @@ export type Order = {
   items: OrderItem[];
   hasBumps: boolean;
   downsell: boolean;
+  method?: "pix" | "card";
   upsellDecided?: boolean;
 };
 
@@ -15,8 +16,11 @@ export function saveOrder(o: Order) {
 export function loadOrder(): Order | null {
   try { const r = sessionStorage.getItem(KEY); return r ? JSON.parse(r) : null; } catch { return null; }
 }
-export function nextPathAfterPrincipal(o: Order) {
-  return o.hasBumps ? "/pagamento-concluido" : "/oferta-especial";
+export function upsellEligible(o: Order | null) {
+  return !!o && !o.hasBumps && o.method === "pix" && !o.upsellDecided;
+}
+export function nextPathAfterPrincipal(_o?: Order) {
+  return "/pagamento-concluido" as const;
 }
 export function brl(cents: number) {
   return (cents / 100).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });

@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { CheckCircle2, Home } from "lucide-react";
+import { CheckCircle2, Home, Gift } from "lucide-react";
 import { useEffect, useState } from "react";
-import { loadOrder, brl, type Order } from "@/lib/order";
+import { loadOrder, brl, upsellEligible, type Order } from "@/lib/order";
 
 export const Route = createFileRoute("/pagamento-concluido")({
   component: PagamentoConcluido,
@@ -22,6 +22,7 @@ function PagamentoConcluido() {
   useEffect(() => setOrder(loadOrder()), []);
   const principal = order?.items.filter((i) => i.charge === "principal") ?? [];
   const upsell = order?.items.filter((i) => i.charge === "upsell") ?? [];
+  const showUpsell = upsellEligible(order);
   const sum = (l: { cents: number }[]) => l.reduce((a, b) => a + b.cents, 0);
   return (
     <main className="flex min-h-screen items-center justify-center bg-gradient-to-b from-[#2a160a] to-[#3d2314] px-4 py-16">
@@ -30,13 +31,20 @@ function PagamentoConcluido() {
           <CheckCircle2 className="h-12 w-12 text-[#2a160a]" />
         </div>
         <h1 className="mt-6 text-2xl font-black text-amber-100 sm:text-3xl">
-          Pagamento Concluído!
+          {showUpsell ? "Pagamento em confirmação" : "Pagamento Concluído!"}
         </h1>
+        {showUpsell ? (
+          <p className="mt-3 text-sm text-amber-200/80 sm:text-base">
+            Pagamento em confirmação. Assim que recebermos a confirmação, enviaremos as aulas pelo{" "}
+            <strong className="text-amber-300">WhatsApp</strong>.
+          </p>
+        ) : (
         <p className="mt-3 text-sm text-amber-200/80 sm:text-base">
           Recebemos seus dados com sucesso. Assim que o pagamento for
           confirmado, nossa equipe enviará as aulas e o acesso ao curso
           diretamente pelo seu <strong className="text-amber-300">WhatsApp</strong>.
         </p>
+        )}
         {order && (
           <div className="mt-6 rounded-xl bg-[#2a160a]/60 p-4 text-left text-sm text-amber-100 ring-1 ring-amber-500/30">
             <p className="font-bold text-amber-300">🧾 Resumo do que você comprou</p>
@@ -54,6 +62,14 @@ function PagamentoConcluido() {
               </>
             )}
           </div>
+        )}
+        {showUpsell && (
+          <Link
+            to="/oferta-especial"
+            className="mt-6 flex w-full animate-pulse items-center justify-center gap-2 rounded-xl bg-emerald-600 py-4 text-sm font-black uppercase text-white shadow-lg transition hover:bg-emerald-500"
+          >
+            <Gift className="h-5 w-5" /> Clique aqui e garanta um bônus 🎁
+          </Link>
         )}
         <div className="mt-6 rounded-xl bg-[#2a160a]/60 p-4 text-left text-sm text-amber-100 ring-1 ring-amber-500/30">
           <p className="font-bold text-amber-300">📱 Próximos passos</p>
