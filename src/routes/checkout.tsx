@@ -1,6 +1,7 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { saveOrder, nextPathAfterPrincipal, type Order } from "@/lib/order";
+import { useReturnAfterPay } from "@/lib/use-return-after-pay";
 import cursoCover from "@/assets/curso-banner.jpg";
 import bumpRocambole from "@/assets/bump-rocambole.jpg";
 import bumpBolos from "@/assets/bump-bolos.jpg";
@@ -227,6 +228,7 @@ function CheckoutPage() {
 
   const buildOrder = (): Order => ({
     customer: form,
+    method,
     hasBumps: !downsell && acceptedBumps.size > 0,
     downsell,
     items: [
@@ -237,6 +239,8 @@ function CheckoutPage() {
       })),
     ],
   });
+
+  useReturnAfterPay(!!pix, () => navigate({ to: "/pagamento-concluido" }));
 
   const triggerDownsell = () => {
     if (paidOrPending.current || downsellShown.current) return false;
@@ -393,7 +397,7 @@ function CheckoutPage() {
       {showDownsell && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 px-4">
           <div className="w-full max-w-md rounded-2xl bg-gradient-to-br from-[#5d3a1a] to-[#2a160a] p-6 text-center shadow-2xl ring-2 ring-amber-400">
-            <p className="text-xl font-black text-amber-300">⚠️ Espera! Você tem uma oferta especial</p>
+            <p className="text-xl font-black text-amber-300">⚠️ Espera!</p>
             <p className="mt-3 text-base font-bold text-amber-100">Garanta o curso completo por R$27 (em vez de R$37)</p>
             <p className="mt-2 text-xs text-amber-200/80">Essa condição é exclusiva desta tela e não vai aparecer de novo.</p>
             <p className="mt-1 text-[11px] text-amber-200/60">Válido só para o curso principal, sem cursos extras.</p>
@@ -675,7 +679,7 @@ function CheckoutPage() {
                 <PixSuccess pix={pix} copied={copied} onCopy={copy} onReset={resetAll} />
                 <button
                   type="button"
-                  onClick={() => navigate({ to: nextPathAfterPrincipal(buildOrder()) as "/oferta-especial" })}
+                  onClick={() => navigate({ to: nextPathAfterPrincipal(buildOrder()) })}
                   className="mt-4 w-full rounded-xl bg-emerald-600 py-3 text-sm font-black uppercase text-white shadow-lg transition hover:bg-emerald-500"
                 >
                   Após o pagamento, clique aqui e garanta um bônus 🎁

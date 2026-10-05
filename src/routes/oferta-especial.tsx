@@ -1,7 +1,8 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Check, Copy, Loader2 } from "lucide-react";
-import { loadOrder, saveOrder, type Order } from "@/lib/order";
+import { loadOrder, saveOrder, upsellEligible, type Order } from "@/lib/order";
+import { useReturnAfterPay } from "@/lib/use-return-after-pay";
 
 export const Route = createFileRoute("/oferta-especial")({
   component: Upsell,
@@ -38,7 +39,7 @@ function Upsell() {
 
   useEffect(() => {
     const o = loadOrder();
-    if (!o || o.hasBumps || o.upsellDecided) {
+    if (!upsellEligible(o)) {
       navigate({ to: "/pagamento-concluido", replace: true });
       return;
     }
@@ -50,7 +51,7 @@ function Upsell() {
     navigate({ to: "/pagamento-concluido" });
   };
 
-  const goBack = () => navigate({ to: "/checkout" });
+  const goBack = () => navigate({ to: "/pagamento-concluido" });
 
   const accept = async () => {
     if (!order) return;
@@ -81,6 +82,8 @@ function Upsell() {
     });
     navigate({ to: "/pagamento-concluido" });
   };
+
+  useReturnAfterPay(!!pix, paid);
 
   if (!order) return null;
 
@@ -121,7 +124,7 @@ function Upsell() {
               disabled={loading}
               className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 py-4 text-sm font-black uppercase text-[#2a160a] shadow-lg disabled:opacity-60"
             >
-              {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : "SIM, QUERO O COMBO COMPLETO POR R$67 🔥"}
+              {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : "SIM, QUERO O COMBO POR R$67 🔥"}
             </button>
             <button onClick={decline} className="mt-4 text-xs text-amber-200/70 underline">
               Já paguei o curso de Brigadeiro Gourmet, seguir em frente
