@@ -675,23 +675,7 @@ function CheckoutPage() {
                 </form>
               </>
             ) : pix ? (
-              <>
-                <PixSuccess pix={pix} copied={copied} onCopy={copy} onReset={resetAll} />
-                <button
-                  type="button"
-                  onClick={() => navigate({ to: nextPathAfterPrincipal(buildOrder()) })}
-                  className="mt-4 w-full rounded-xl bg-emerald-600 py-3 text-sm font-black uppercase text-white shadow-lg transition hover:bg-emerald-500"
-                >
-                  Após o pagamento, clique aqui e garanta um bônus 🎁
-                </button>
-                <button
-                  type="button"
-                  onClick={() => window.history.back()}
-                  className="mt-2 block w-full text-center text-xs text-amber-200/70 underline"
-                >
-                  Voltar para a página anterior
-                </button>
-              </>
+              <PixSuccess pix={pix} copied={copied} onCopy={copy} onReset={resetAll} />
             ) : cardResult ? (
               <CardSuccess result={cardResult} onReset={resetAll} />
             ) : null}
