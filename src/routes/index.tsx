@@ -13,7 +13,7 @@ import printLeticia from "@/assets/print-d14f9a5c.jpg.asset.json";
 import printThais from "@/assets/print-ebe22989.jpg.asset.json";
 import printRachel from "@/assets/print-rachel.jpg.asset.json";
 import printFernandaNova from "@/assets/print-fernanda-nova.jpg.asset.json";
-import printGrupoDelicias from "@/assets/print-grupo-delicias.jpg.asset.json";
+import printGrupoDeliciasUrl from "@/assets/print-grupo-delicias-wide.jpg";
 import saborTradicional from "@/assets/sabor-tradicional.jpg";
 import saborBeijinho from "@/assets/sabor-beijinho.jpg";
 import saborPistache from "@/assets/sabor-pistache.jpg";
@@ -655,7 +655,7 @@ function WhatsAppCarousel() {
   const printClass = "mx-auto block w-full max-w-[360px] rounded-[28px] border-[5px] border-[#111b21] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.45)]";
 
   const prints = [
-    <img key="grupo-delicias" src={printGrupoDelicias.url} alt="Grupo de alunas Delícias Gourmet recebendo a videoaula da Luiza" width={744} height={1552} className={printClass} loading="lazy" />,
+    <img key="grupo-delicias" src={printGrupoDeliciasUrl} alt="Grupo de alunas Delícias Gourmet recebendo a videoaula da Luiza" width={714} height={1599} className={printClass} loading="lazy" />,
     <img key="rachel" src={printRachel.url} alt="Conversa no WhatsApp com a aluna Rachel" width={720} height={1552} className={printClass} loading="lazy" />,
     <img key="fernanda" src={printFernandaNova.url} alt="Conversa no WhatsApp com a aluna Fernanda" width={744} height={1552} className={printClass} loading="lazy" />,
     <img key="paty" src={printPaty.url} alt="Conversa no WhatsApp com a aluna Paty" width={714} height={1599} className={printClass} loading="lazy" />,
