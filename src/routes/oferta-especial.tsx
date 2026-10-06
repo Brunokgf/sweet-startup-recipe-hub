@@ -46,7 +46,10 @@ function Upsell() {
     setOrder(o);
   }, [navigate]);
 
-  const goBack = () => navigate({ to: "/checkout" });
+  const goBack = () => {
+    if (window.history.length > 1) window.history.back();
+    else navigate({ to: "/checkout" });
+  };
 
   const accept = async () => {
     if (!order) return;
@@ -145,9 +148,9 @@ function Upsell() {
                 {copied ? <><Check className="h-3.5 w-3.5" /> Copiado</> : <><Copy className="h-3.5 w-3.5" /> Copiar código PIX</>}
               </button>
             )}
-            <button onClick={paid} className="mt-5 block w-full rounded-xl bg-emerald-600 py-3 text-sm font-black uppercase text-white">
-              APÓS O PAGAMENTO, GARANTA SEU ACESSO 🔓
-            </button>
+            <p className="mt-5 rounded-xl bg-[#2a160a]/60 px-4 py-3 text-xs font-semibold text-amber-200/90 ring-1 ring-amber-500/30">
+              Após o pagamento, seu acesso será liberado automaticamente nesta página.
+            </p>
             <button onClick={goBack} className="mt-3 block w-full text-center text-xs text-amber-200/70 underline">Voltar para a página anterior</button>
           </div>
         )}
