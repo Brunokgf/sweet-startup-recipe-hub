@@ -1,5 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { CheckCircle2, Home, Gift } from "lucide-react";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { CheckCircle2, Home, Gift, ArrowLeft } from "lucide-react";
 import { useEffect, useState } from "react";
 import { loadOrder, brl, upsellEligible, type Order } from "@/lib/order";
 
@@ -11,13 +11,18 @@ export const Route = createFileRoute("/pagamento-concluido")({
       {
         name: "description",
         content:
-          "Recebemos seus dados. Em instantes você receberá a confirmação e os acessos no seu e-mail.",
+          "Confira seu pedido do Curso Brigadeiro Gourmet. Após a confirmação do pagamento, as aulas serão enviadas pelo WhatsApp.",
       },
+      { property: "og:title", content: "Seu Pedido — Curso Brigadeiro Gourmet" },
+      { property: "og:description", content: "Confira seu pedido e aguarde a confirmação para receber as aulas pelo WhatsApp." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
 });
 
 function PagamentoConcluido() {
+  const navigate = useNavigate();
   const [order, setOrder] = useState<Order | null>(null);
   useEffect(() => setOrder(loadOrder()), []);
   const principal = order?.items.filter((i) => i.charge === "principal") ?? [];
@@ -83,10 +88,16 @@ function PagamentoConcluido() {
           </ul>
         </div>
         <Link
-          to="/"
+          to={upsell.length > 0 ? "/" : "/checkout"}
+          onClick={(event) => {
+            if (upsell.length > 0) return;
+            event.preventDefault();
+            if (window.history.length > 1) window.history.back();
+            else navigate({ to: "/checkout" });
+          }}
           className="mt-8 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 px-6 py-3 text-sm font-black uppercase tracking-wide text-[#2a160a] shadow-lg shadow-amber-500/30 transition hover:brightness-110"
         >
-          <Home className="h-4 w-4" /> Voltar ao início
+          {upsell.length > 0 ? <><Home className="h-4 w-4" /> Voltar ao início</> : <><ArrowLeft className="h-4 w-4" /> Voltar para a página anterior</>}
         </Link>
       </div>
     </main>

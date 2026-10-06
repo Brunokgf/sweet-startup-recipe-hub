@@ -1,5 +1,8 @@
 # Roadmap
 
+- [x] Refinar somente o papel de parede do primeiro print, preservando as mensagens.
+- [x] Voltar uma página após o PIX principal; manter início somente após o combo.
+
 - [x] Simplificar a primeira dobra com a nova mensagem principal.
 - [x] Remover depoimentos em cards e notificações de compra.
 - [x] Integrar os novos prints e deixar todas as conversas com aparência real de WhatsApp no celular.
