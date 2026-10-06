@@ -1,5 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { CheckCircle2, Home, Gift } from "lucide-react";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { CheckCircle2, Home, Gift, ArrowLeft } from "lucide-react";
 import { useEffect, useState } from "react";
 import { loadOrder, brl, upsellEligible, type Order } from "@/lib/order";
 
@@ -18,6 +18,7 @@ export const Route = createFileRoute("/pagamento-concluido")({
 });
 
 function PagamentoConcluido() {
+  const navigate = useNavigate();
   const [order, setOrder] = useState<Order | null>(null);
   useEffect(() => setOrder(loadOrder()), []);
   const principal = order?.items.filter((i) => i.charge === "principal") ?? [];
