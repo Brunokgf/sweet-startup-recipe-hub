@@ -8,12 +8,10 @@ import heroBg from "@/assets/brigadeiro-hero.jpg";
 import logo from "@/assets/logo-brigadeiro.png";
 import garantia from "@/assets/garantia-7dias.png";
 import certificado from "@/assets/certificado-delicias-gourmet.png";
-import printPaty from "@/assets/print-7ab6e26c.jpg.asset.json";
+import printIsabela from "@/assets/print-isabela.jpg.asset.json";
 import printLeticia from "@/assets/print-d14f9a5c.jpg.asset.json";
-import printThais from "@/assets/print-ebe22989.jpg.asset.json";
 import printRachel from "@/assets/print-rachel.jpg.asset.json";
 import printFernandaNova from "@/assets/print-fernanda-nova.jpg.asset.json";
-import printGrupoNovo from "@/assets/print-grupo-refinado.png";
 import saborTradicional from "@/assets/sabor-tradicional.jpg";
 import saborBeijinho from "@/assets/sabor-beijinho.jpg";
 import saborPistache from "@/assets/sabor-pistache.jpg";
@@ -136,23 +134,6 @@ function LandingPage() {
           </div>
 
 
-          {/* VSL PLACEHOLDER */}
-          <div className="mx-auto mt-8 w-full max-w-2xl overflow-hidden rounded-xl border-4 border-amber-400/60 bg-[#2a160a] shadow-2xl shadow-amber-900/40">
-            <div className="relative aspect-video">
-              {/* Substitua este bloco pelo embed do seu VSL */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-[#3d2314] to-[#1a0d06] text-amber-100">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-amber-400 to-amber-600 shadow-lg shadow-amber-500/40">
-                  <svg viewBox="0 0 24 24" className="ml-1 h-8 w-8 fill-[#2a160a]">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                </div>
-                <p className="mt-4 text-sm font-semibold text-amber-300">
-                  Seu VSL será exibido aqui
-                </p>
-              </div>
-            </div>
-          </div>
-
           <div className="mt-8">
             <CTA>QUERO COMEÇAR AGORA</CTA>
           </div>
@@ -250,7 +231,7 @@ function LandingPage() {
             E você não vai estar sozinha 💬
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-center text-base leading-relaxed text-amber-200">
-            Nosso grupo de alunas: troca de receitas, dicas de venda e apoio de quem já está aplicando.
+            te damos total suporte: troca de receitas, dicas de venda e apoio de quem já está aplicando.
           </p>
 
           <WhatsAppCarousel />
@@ -655,12 +636,10 @@ function WhatsAppCarousel() {
   const printClass = "mx-auto block w-full max-w-[360px] rounded-[28px] border-[5px] border-[#111b21] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.45)]";
 
   const prints = [
-    <img key="grupo-delicias" src={printGrupoNovo} alt="Grupo de alunas Delícias Gourmet recebendo a videoaula da Luiza" width={846} height={1859} className={printClass} loading="lazy" />,
-    <img key="rachel" src={printRachel.url} alt="Conversa no WhatsApp com a aluna Rachel" width={720} height={1552} className={printClass} loading="lazy" />,
+    <img key="isabela" src={printIsabela.url} alt="Conversa no WhatsApp com a aluna Isabela" width={714} height={1599} className={printClass} loading="lazy" />,
     <img key="fernanda" src={printFernandaNova.url} alt="Conversa no WhatsApp com a aluna Fernanda" width={744} height={1552} className={printClass} loading="lazy" />,
-    <img key="paty" src={printPaty.url} alt="Conversa no WhatsApp com a aluna Paty" width={714} height={1599} className={printClass} loading="lazy" />,
-    <img key="thais" src={printThais.url} alt="Conversa no WhatsApp com a aluna Thais" width={714} height={1599} className={printClass} loading="lazy" />,
     <img key="leticia" src={printLeticia.url} alt="Conversa no WhatsApp com a aluna Letícia" width={714} height={1599} className={printClass} loading="lazy" />,
+    <img key="rachel" src={printRachel.url} alt="Conversa no WhatsApp com a aluna Rachel" width={720} height={1552} className={printClass} loading="lazy" />,
   ];
 
   const prev = () => setIndex((i) => (i === 0 ? prints.length - 1 : i - 1));
