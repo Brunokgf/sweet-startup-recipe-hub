@@ -1,5 +1,9 @@
 # Roadmap
 
+- [x] Atualizar suporte, prints Isabela/Fernanda/Letícia/Rachel e remover espaço VSL.
+- [x] Atualizar agradecimento e simplificar apresentação do downsell com botão Finalizar compra.
+- [x] Instalar pixel Meta 1637360294046834 e validar alterações visuais; recebimento dos eventos pela Meta não confirmado no ambiente local.
+
 - [x] Refinar somente o papel de parede do primeiro print, preservando as mensagens.
 - [x] Voltar uma página após o PIX principal; manter início somente após o combo.
 

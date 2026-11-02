@@ -36,20 +36,13 @@ function PagamentoConcluido() {
           <CheckCircle2 className="h-12 w-12 text-[#2a160a]" />
         </div>
         <h1 className="mt-6 text-2xl font-black text-amber-100 sm:text-3xl">
-          {showUpsell ? "Pagamento em confirmação" : "Pagamento Concluído!"}
+          Pagamento Concluído!
         </h1>
-        {showUpsell ? (
-          <p className="mt-3 text-sm text-amber-200/80 sm:text-base">
-            Pagamento em confirmação. Assim que recebermos a confirmação, enviaremos as aulas pelo{" "}
-            <strong className="text-amber-300">WhatsApp</strong>.
-          </p>
-        ) : (
         <p className="mt-3 text-sm text-amber-200/80 sm:text-base">
           Recebemos seus dados com sucesso. Assim que o pagamento for
-          confirmado, nossa equipe enviará as aulas e o acesso ao curso
+          {" "}<u>confirmado</u>, nossa equipe enviará as aulas e o acesso ao curso
           diretamente pelo seu <strong className="text-amber-300">WhatsApp</strong>.
         </p>
-        )}
         {order && (
           <div className="mt-6 rounded-xl bg-[#2a160a]/60 p-4 text-left text-sm text-amber-100 ring-1 ring-amber-500/30">
             <p className="font-bold text-amber-300">🧾 Resumo do que você comprou</p>

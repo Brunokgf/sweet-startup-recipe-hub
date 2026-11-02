@@ -43,6 +43,10 @@ export const Route = createFileRoute("/checkout")({
         content:
           "Finalize sua inscrição no Curso Brigadeiro Gourmet com pagamento 100% seguro via PIX ou Cartão de Crédito.",
       },
+      { property: "og:title", content: "Checkout Seguro — Curso Brigadeiro Gourmet" },
+      { property: "og:description", content: "Finalize sua inscrição com pagamento seguro via PIX ou Cartão de Crédito." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
 });
@@ -594,6 +598,7 @@ function CheckoutPage() {
                     </div>
                   )}
 
+                  {!downsell && <>
                   <div className="mb-3 flex items-center justify-center gap-2 text-xs font-bold text-amber-300">
                     <Clock className="h-3.5 w-3.5" />
                     <span>Oferta especial termina em</span>
@@ -634,6 +639,7 @@ function CheckoutPage() {
                     ))}
                   </div>
 
+                  </>}
                   {error && (
                     <p className="rounded-md bg-amber-900/40 px-3 py-2 text-sm text-amber-100 ring-1 ring-amber-500/30">
                       {error}
@@ -653,9 +659,7 @@ function CheckoutPage() {
                     ) : (
                       <>
                         <Lock className="h-4 w-4" />
-                        {method === "pix"
-                          ? `Gerar PIX de ${formatBRL(totalAmount)}`
-                          : `Pagar ${formatBRL(totalAmount)}`}
+                        Finalizar compra
                       </>
                     )}
                   </button>
