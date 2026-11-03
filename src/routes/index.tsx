@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Check, Star, ChevronDown, ChevronLeft, ChevronRight, Timer, TrendingUp, Briefcase, Home, Users, PiggyBank, GraduationCap, MessageCircle } from "lucide-react";
 import { StickyUrgencyBar } from "@/components/StickyUrgencyBar";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
+import { assetUrl } from "@/lib/asset-url";
 
 import heroBg from "@/assets/brigadeiro-hero.jpg";
 import logo from "@/assets/logo-brigadeiro.png";
@@ -17,7 +18,7 @@ import saborBeijinho from "@/assets/sabor-beijinho.jpg";
 import saborPistache from "@/assets/sabor-pistache.jpg";
 import saborMorango from "@/assets/sabor-morango.jpg";
 import saborOreo from "@/assets/sabor-oreo.jpg";
-import saborAmendoim from "@/assets/sabor-amendoim.jpg";
+import saborAmendoim from "@/assets/sabor-amendoim.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   component: LandingPage,
@@ -45,7 +46,7 @@ const SABORES = [
   { nome: "Pistache 🌿", frase: "Um dos sabores gourmet mais pedidos", imagem: saborPistache },
   { nome: "Morango 🍓", frase: "Perfeito para festas e caixas presenteáveis", imagem: saborMorango },
   { nome: "Oreo 🍪", frase: "Crocante por fora e cremoso por dentro", imagem: saborOreo },
-  { nome: "Amendoim 🥜", frase: "Sabor marcante com ingredientes acessíveis", imagem: saborAmendoim },
+  { nome: "Amendoim 🥜", frase: "Sabor marcante com ingredientes acessíveis", imagem: assetUrl(saborAmendoim) },
 ];
 
 const FAQS = [
@@ -636,10 +637,10 @@ function WhatsAppCarousel() {
   const printClass = "mx-auto block w-full max-w-[360px] rounded-[28px] border-[5px] border-[#111b21] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.45)]";
 
   const prints = [
-    <img key="isabela" src={printIsabela.url} alt="Conversa no WhatsApp com a aluna Isabela" width={714} height={1599} className={printClass} loading="lazy" />,
-    <img key="fernanda" src={printFernandaNova.url} alt="Conversa no WhatsApp com a aluna Fernanda" width={744} height={1552} className={printClass} loading="lazy" />,
-    <img key="leticia" src={printLeticia.url} alt="Conversa no WhatsApp com a aluna Letícia" width={714} height={1599} className={printClass} loading="lazy" />,
-    <img key="rachel" src={printRachel.url} alt="Conversa no WhatsApp com a aluna Rachel" width={720} height={1552} className={printClass} loading="lazy" />,
+    <img key="isabela" src={assetUrl(printIsabela)} alt="Conversa no WhatsApp com a aluna Isabela" width={714} height={1599} className={printClass} loading="lazy" />,
+    <img key="fernanda" src={assetUrl(printFernandaNova)} alt="Conversa no WhatsApp com a aluna Fernanda" width={744} height={1552} className={printClass} loading="lazy" />,
+    <img key="leticia" src={assetUrl(printLeticia)} alt="Conversa no WhatsApp com a aluna Letícia" width={714} height={1599} className={printClass} loading="lazy" />,
+    <img key="rachel" src={assetUrl(printRachel)} alt="Conversa no WhatsApp com a aluna Rachel" width={720} height={1552} className={printClass} loading="lazy" />,
   ];
 
   const prev = () => setIndex((i) => (i === 0 ? prints.length - 1 : i - 1));
