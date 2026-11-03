@@ -1,5 +1,7 @@
 # Roadmap
 
+- [ ] Corrigir carregamento dos quatro prints e da foto de amendoim na Netlify.
+
 - [x] Atualizar suporte, prints Isabela/Fernanda/Letícia/Rachel e remover espaço VSL.
 - [x] Atualizar agradecimento e simplificar apresentação do downsell com botão Finalizar compra.
 - [x] Instalar pixel Meta 1637360294046834 e validar alterações visuais; recebimento dos eventos pela Meta não confirmado no ambiente local.
