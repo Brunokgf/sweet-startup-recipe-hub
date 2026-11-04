@@ -115,12 +115,6 @@ function LandingPage() {
           <h1 className="mx-auto mt-3 max-w-3xl text-3xl font-black leading-tight text-amber-50 sm:text-5xl">
             Descubra Como É Possível Sair do Zero e Transformar Brigadeiros em uma Renda Extra Real
           </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-lg font-bold leading-relaxed text-amber-200 sm:text-xl">
-            Mesmo Sem Experiência e Mesmo Achando Que Não Leva Jeito.
-          </p>
-          <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-amber-100/90 sm:text-base">
-            Um método simples e prático para te guiar, passo a passo, do primeiro brigadeiro à primeira venda 🍫
-          </p>
           <p className="mt-4 inline-flex animate-wiggle items-center gap-2 rounded-full bg-gradient-to-r from-amber-300 to-yellow-400 px-4 py-1.5 text-sm font-black uppercase tracking-wide text-[#2a160a] shadow-lg shadow-amber-500/30">
             <Users className="h-4 w-4" />
             Mentorado por Luiza Quadros
