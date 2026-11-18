@@ -17,7 +17,6 @@ import {
   Loader2,
   Lock,
   ShieldCheck,
-  Award,
   Clock,
   CreditCard,
   QrCode,
@@ -26,12 +25,9 @@ import {
   Star,
   Zap,
   Cake,
-  MessageCircle,
 } from "lucide-react";
 
 const PRICE_CENTS = 3700; // R$ 37,00
-const PRICE_LABEL = "R$ 37,00";
-const OLD_PRICE_LABEL = "R$ 97,00";
 
 export const Route = createFileRoute("/checkout")({
   component: CheckoutPage,
@@ -146,38 +142,6 @@ const BUMPS = [
     image: bumpRocambole,
   },
 ];
-
-function CheckoutTimer() {
-  const [timeLeft, setTimeLeft] = useState(15 * 60 * 1000);
-
-  useEffect(() => {
-    const saved = localStorage.getItem("brigadeiro-timer");
-    let end = saved ? parseInt(saved, 10) : Date.now() + 15 * 60 * 1000;
-    if (!saved) localStorage.setItem("brigadeiro-timer", String(end));
-    setTimeLeft(Math.max(0, end - Date.now()));
-
-    const interval = setInterval(() => {
-      const remaining = Math.max(0, end - Date.now());
-      if (remaining === 0) {
-        end = Date.now() + 15 * 60 * 1000;
-        localStorage.setItem("brigadeiro-timer", String(end));
-        setTimeLeft(15 * 60 * 1000);
-      } else {
-        setTimeLeft(remaining);
-      }
-    }, 1000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const minutes = Math.floor(timeLeft / 60000);
-  const seconds = Math.floor((timeLeft % 60000) / 1000);
-
-  return (
-    <span className="font-mono tabular-nums text-amber-100">
-      {String(minutes).padStart(2, "0")}:{String(seconds).padStart(2, "0")}
-    </span>
-  );
-}
 
 function CheckoutPage() {
   const navigate = useNavigate();
@@ -422,8 +386,8 @@ function CheckoutPage() {
           </div>
         </div>
       )}
-      {/* Banner / Header */}
-      <header className="bg-gradient-to-r from-[#3d2314] via-[#5d3a1a] to-[#3d2314] text-amber-50 shadow-lg shadow-amber-900/30 border-b border-amber-500/20">
+      {/* Top bar */}
+      <header className="border-b border-amber-500/20 bg-[#2a160a] text-amber-50">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
           <Link
             to="/"
@@ -436,20 +400,9 @@ function CheckoutPage() {
             <Lock className="h-3.5 w-3.5" /> Pagamento 100% Seguro
           </div>
         </div>
-        <div className="mx-auto flex max-w-6xl flex-col items-center gap-2 px-4 pb-8 pt-4 text-center">
-          <span className="rounded-full bg-gradient-to-r from-amber-400 to-amber-500 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-[#2a160a] shadow-md shadow-amber-500/30">
-            Oferta de Lançamento
-          </span>
-          <h1 className="text-2xl font-black sm:text-3xl text-amber-100">
-            Finalize sua Inscrição
-          </h1>
-          <p className="text-sm text-amber-200/80">
-            Falta apenas um passo para começar sua jornada doce 🍫
-          </p>
-        </div>
       </header>
 
-      <div className="mx-auto -mt-6 max-w-6xl px-4 pb-16">
+      <div className="mx-auto max-w-6xl px-4 pb-16 pt-6">
         <div className="grid gap-6 md:grid-cols-[1fr_320px] lg:grid-cols-[1fr_380px]">
           {/* Left: Form */}
           <section className="rounded-2xl bg-gradient-to-br from-[#4a2c18] to-[#3d2314] p-6 shadow-xl shadow-black/30 ring-1 ring-amber-500/20 sm:p-8">
@@ -598,48 +551,6 @@ function CheckoutPage() {
                     </div>
                   )}
 
-                  {!downsell && <>
-                  <div className="mb-3 flex items-center justify-center gap-2 text-xs font-bold text-amber-300">
-                    <Clock className="h-3.5 w-3.5" />
-                    <span>Oferta especial termina em</span>
-                    <CheckoutTimer />
-                  </div>
-
-                  <div className="rounded-xl border border-amber-400/40 bg-gradient-to-r from-[#5d3a1a] to-[#4a2c18] p-4 text-center shadow-md shadow-amber-500/10">
-                    <p className="flex items-center justify-center gap-2 text-sm font-black text-amber-300">
-                      <Gift className="h-4 w-4" /> De presente, veja os benefícios da oferta especial
-                    </p>
-                    <p className="mt-1 text-[11px] text-amber-200/80">
-                      Aproveite agora e desbloqueie conteúdos extras sem custo adicional.
-                    </p>
-                  </div>
-
-                  <div className="mt-2 space-y-3">
-                    <div className="rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 px-4 py-3 text-center shadow-md shadow-amber-500/20">
-                      <p className="text-xs font-black uppercase tracking-wider text-[#2a160a]">
-                        🔥 SIM, EU ACEITO ESSA OFERTA ESPECIAL!
-                      </p>
-                      <p className="mt-1 text-[10px] font-semibold text-[#2a160a]/80">
-                        Adicione um ou mais cursos e multiplique sua renda — preços exclusivos desta página. Aumente seu cardápio e aprenda produtos que podem ser vendidos entre R$12 e R$25 cada.
-                      </p>
-                    </div>
-                    {!downsell && BUMPS.map((b, idx) => (
-                      <OrderBump
-                        key={b.id}
-                        bump={b}
-                        checked={acceptedBumps.has(b.id)}
-                        popular={idx === 0}
-                        onToggle={() => {
-                          const next = new Set(acceptedBumps);
-                          if (next.has(b.id)) next.delete(b.id);
-                          else next.add(b.id);
-                          setAcceptedBumps(next);
-                        }}
-                      />
-                    ))}
-                  </div>
-
-                  </>}
                   {error && (
                     <p className="rounded-md bg-amber-900/40 px-3 py-2 text-sm text-amber-100 ring-1 ring-amber-500/30">
                       {error}
@@ -740,44 +651,6 @@ function CheckoutPage() {
               </div>
             </div>
 
-            <div className="rounded-2xl bg-gradient-to-br from-[#5d3a1a] to-[#3d2314] p-5 shadow-xl shadow-black/30 ring-1 ring-amber-400/30">
-              <p className="flex items-center gap-2 text-sm font-black uppercase tracking-wide text-amber-300">
-                <Star className="h-4 w-4 text-amber-400" /> O que você vai receber
-              </p>
-              <ul className="mt-4 space-y-3">
-                <ValueItem text="Mais de 50 receitas de brigadeiro gourmet do tradicional ao avançado" />
-                <ValueItem text="Estratégias para vender pelo iFood e WhatsApp sem gastar em anúncios" />
-                <ValueItem text="Planilha de custo, cálculo de lucro e preço de venda" />
-                <ValueItem text="4 super bônus + certificado de conclusão" />
-                <ValueItem text="Aulas enviadas pelo WhatsApp assim que o pagamento for confirmado" />
-              </ul>
-              <div className="mt-4 rounded-lg border border-amber-500/30 bg-[#2a160a]/60 px-3 py-2 text-center text-[11px] font-bold text-amber-200">
-                Valor real: <span className="text-amber-400">R$ 97,00</span> · Hoje: <span className="text-amber-400">{PRICE_LABEL}</span>
-              </div>
-            </div>
-
-            <div className="rounded-2xl bg-gradient-to-br from-[#4a2c18] to-[#3d2314] p-5 shadow-sm ring-1 ring-amber-500/20">
-              <Benefit
-                icon={<ShieldCheck className="h-4 w-4" />}
-                text="Garantia de 7 dias"
-              />
-              <Benefit
-                icon={<Award className="h-4 w-4" />}
-                text="Certificado incluso"
-              />
-              <Benefit
-                icon={<Clock className="h-4 w-4" />}
-                text="Acesso vitalício"
-              />
-              <Benefit
-                icon={<Lock className="h-4 w-4" />}
-                text="Compra 100% segura"
-              />
-              <Benefit
-                icon={<MessageCircle className="h-4 w-4" />}
-                text="Aulas enviadas pelo WhatsApp"
-              />
-            </div>
           </aside>
         </div>
       </div>
@@ -912,24 +785,6 @@ function Row({
   );
 }
 
-function Benefit({ icon, text }: { icon: React.ReactNode; text: string }) {
-  return (
-    <div className="flex items-center gap-2 py-1.5 text-xs text-amber-100">
-      <span className="text-amber-400">{icon}</span>
-      {text}
-    </div>
-  );
-}
-
-function ValueItem({ text }: { text: string }) {
-  return (
-    <li className="flex items-start gap-2 text-xs text-amber-100">
-      <Check className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-amber-400" />
-      <span>{text}</span>
-    </li>
-  );
-}
-
 function PixSuccess({
   pix,
   copied,
@@ -1019,79 +874,6 @@ function PixSuccess({
     </div>
   );
 }
-
-function OrderBump({
-  bump,
-  checked,
-  popular,
-  onToggle,
-}: {
-  bump: (typeof BUMPS)[number];
-  checked: boolean;
-  popular?: boolean;
-  onToggle: () => void;
-}) {
-  return (
-    <label
-      className={`relative flex cursor-pointer items-start gap-3 rounded-xl border-2 p-4 transition-all ${
-        checked
-          ? "border-amber-400 bg-gradient-to-br from-[#4a2c18] to-[#3d2314] shadow-lg shadow-amber-500/10 scale-[1.02] animate-glow-burst"
-          : "border-amber-500/20 bg-[#4a2c18]/40 hover:border-amber-400/50 hover:bg-[#3d2314]/60 hover:shadow-md"
-      }`}
-    >
-      {/* Animated check badge with star */}
-      {checked && (
-        <div className="absolute -right-2 -top-2 z-10 flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-amber-300 to-amber-500 text-[#2a160a] shadow-lg shadow-amber-500/40 animate-star-pop">
-          <Check className="h-3.5 w-3.5" />
-        </div>
-      )}
-
-      {/* Sparkle particles when selected */}
-      {checked && (
-        <>
-          <Star className="absolute -right-1 top-4 h-3 w-3 text-amber-200 sparkle-particle" style={{ animationDelay: "0ms" }} />
-          <Star className="absolute -right-3 top-1 h-2.5 w-2.5 text-amber-300 sparkle-particle" style={{ animationDelay: "120ms" }} />
-          <Star className="absolute right-2 -top-3 h-2 w-2 text-amber-100 sparkle-particle" style={{ animationDelay: "240ms" }} />
-          <Star className="absolute -top-1 -right-4 h-2.5 w-2.5 text-amber-200 sparkle-particle" style={{ animationDelay: "360ms" }} />
-        </>
-      )}
-
-      <input
-        type="checkbox"
-        checked={checked}
-        onChange={onToggle}
-        className="mt-1 h-5 w-5 accent-amber-500 shrink-0"
-      />
-      <img
-        src={bump.image}
-        alt={bump.title}
-        loading="lazy"
-        width={80}
-        height={80}
-        className="h-20 w-20 shrink-0 rounded-lg object-cover ring-1 ring-amber-500/30"
-      />
-      <div className="flex-1 min-w-0">
-        {popular && !checked && (
-          <span className="mb-1 inline-block rounded bg-gradient-to-r from-amber-300 to-amber-500 px-2 py-0.5 text-[10px] font-black uppercase tracking-wider text-[#2a160a] shadow-sm">
-            ⭐ MAIS POPULAR
-          </span>
-        )}
-        {bump.badge && (
-          <span className={`mb-1 inline-block rounded bg-gradient-to-r from-amber-400 to-amber-500 px-2 py-0.5 text-[10px] font-black uppercase tracking-wider text-[#2a160a] shadow-sm ${checked ? "animate-wiggle" : ""}`}>
-            {bump.badge}
-          </span>
-        )}
-        <p className="text-sm font-black text-amber-100">{bump.title}</p>
-        <p className="text-[11px] text-amber-200/70">{bump.description}</p>
-        <p className="mt-1 text-sm font-black text-amber-300">
-          {bump.installment}
-        </p>
-      </div>
-      <span className={`shrink-0 transition-transform ${checked ? "text-amber-400 scale-110" : "text-amber-500/30"}`}>{bump.icon}</span>
-    </label>
-  );
-}
-
 
 function CardSuccess({
   result,
