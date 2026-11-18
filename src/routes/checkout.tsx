@@ -551,6 +551,24 @@ function CheckoutPage() {
                     </div>
                   )}
 
+                  {!downsell && (
+                    <div className="space-y-3">
+                      {BUMPS.map((b, idx) => (
+                        <OrderBump
+                          key={b.id}
+                          bump={b}
+                          checked={acceptedBumps.has(b.id)}
+                          popular={idx === 0}
+                          onToggle={() => {
+                            const next = new Set(acceptedBumps);
+                            if (next.has(b.id)) next.delete(b.id);
+                            else next.add(b.id);
+                            setAcceptedBumps(next);
+                          }}
+                        />
+                      ))}
+                    </div>
+                  )}
                   {error && (
                     <p className="rounded-md bg-amber-900/40 px-3 py-2 text-sm text-amber-100 ring-1 ring-amber-500/30">
                       {error}
@@ -872,6 +890,78 @@ function PixSuccess({
         Voltar ao checkout
       </button>
     </div>
+  );
+}
+
+function OrderBump({
+  bump,
+  checked,
+  popular,
+  onToggle,
+}: {
+  bump: (typeof BUMPS)[number];
+  checked: boolean;
+  popular?: boolean;
+  onToggle: () => void;
+}) {
+  return (
+    <label
+      className={`relative flex cursor-pointer items-start gap-3 rounded-xl border-2 p-4 transition-all ${
+        checked
+          ? "border-amber-400 bg-gradient-to-br from-[#4a2c18] to-[#3d2314] shadow-lg shadow-amber-500/10 scale-[1.02] animate-glow-burst"
+          : "border-amber-500/20 bg-[#4a2c18]/40 hover:border-amber-400/50 hover:bg-[#3d2314]/60 hover:shadow-md"
+      }`}
+    >
+      {/* Animated check badge with star */}
+      {checked && (
+        <div className="absolute -right-2 -top-2 z-10 flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-amber-300 to-amber-500 text-[#2a160a] shadow-lg shadow-amber-500/40 animate-star-pop">
+          <Check className="h-3.5 w-3.5" />
+        </div>
+      )}
+
+      {/* Sparkle particles when selected */}
+      {checked && (
+        <>
+          <Star className="absolute -right-1 top-4 h-3 w-3 text-amber-200 sparkle-particle" style={{ animationDelay: "0ms" }} />
+          <Star className="absolute -right-3 top-1 h-2.5 w-2.5 text-amber-300 sparkle-particle" style={{ animationDelay: "120ms" }} />
+          <Star className="absolute right-2 -top-3 h-2 w-2 text-amber-100 sparkle-particle" style={{ animationDelay: "240ms" }} />
+          <Star className="absolute -top-1 -right-4 h-2.5 w-2.5 text-amber-200 sparkle-particle" style={{ animationDelay: "360ms" }} />
+        </>
+      )}
+
+      <input
+        type="checkbox"
+        checked={checked}
+        onChange={onToggle}
+        className="mt-1 h-5 w-5 accent-amber-500 shrink-0"
+      />
+      <img
+        src={bump.image}
+        alt={bump.title}
+        loading="lazy"
+        width={80}
+        height={80}
+        className="h-20 w-20 shrink-0 rounded-lg object-cover ring-1 ring-amber-500/30"
+      />
+      <div className="flex-1 min-w-0">
+        {popular && !checked && (
+          <span className="mb-1 inline-block rounded bg-gradient-to-r from-amber-300 to-amber-500 px-2 py-0.5 text-[10px] font-black uppercase tracking-wider text-[#2a160a] shadow-sm">
+            ⭐ MAIS POPULAR
+          </span>
+        )}
+        {bump.badge && (
+          <span className={`mb-1 inline-block rounded bg-gradient-to-r from-amber-400 to-amber-500 px-2 py-0.5 text-[10px] font-black uppercase tracking-wider text-[#2a160a] shadow-sm ${checked ? "animate-wiggle" : ""}`}>
+            {bump.badge}
+          </span>
+        )}
+        <p className="text-sm font-black text-amber-100">{bump.title}</p>
+        <p className="text-[11px] text-amber-200/70">{bump.description}</p>
+        <p className="mt-1 text-sm font-black text-amber-300">
+          {bump.installment}
+        </p>
+      </div>
+      <span className={`shrink-0 transition-transform ${checked ? "text-amber-400 scale-110" : "text-amber-500/30"}`}>{bump.icon}</span>
+    </label>
   );
 }
 
