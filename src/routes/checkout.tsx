@@ -2,12 +2,8 @@ import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { saveOrder, nextPathAfterPrincipal, type Order } from "@/lib/order";
 import { useReturnAfterPay } from "@/lib/use-return-after-pay";
-import cursoCover from "@/assets/curso-banner.jpg";
 import bumpRocambole from "@/assets/bump-rocambole.jpg";
-import bumpBolos from "@/assets/bump-bolos.jpg";
 import bumpBoloPote from "@/assets/bump-bolo-pote.jpg";
-import bumpIogurte from "@/assets/bump-iogurte.jpg";
-import bumpCaldas from "@/assets/bump-caldas.jpg";
 import bumpMousse from "@/assets/bump-mousse.jpg";
 import bumpCheesecake from "@/assets/bump-cheesecake.jpg";
 
@@ -61,14 +57,13 @@ type CardResult = {
   approved: boolean;
   status: string;
   transactionId: string;
+  cartaoPendente?: boolean;
 };
 
 const BUMPS = [
   {
     id: "bolo-de-pote",
     title: "BOLO DE POTE LUCRATIVO",
-    description:
-      "A combinação perfeita com brigadeiro. Mais de 30 receitas exclusivas, planilha de custo, cálculo de lucro e preço de venda. Venda potes por R$12 a R$18 com lucro de 3x.",
     badge: "MAIS VENDIDO · 91% APROVEITAM",
     priceCents: 2495,
     installment: "5x de R$ 4,99",
@@ -78,8 +73,6 @@ const BUMPS = [
   {
     id: "mousse",
     title: "MOUSSE LUCRATIVO",
-    description:
-      "Mousse cremoso que vende o ano todo. Mais de 20 receitas, planilha de custo, cálculo de lucro e preço de venda. Alta margem e poucos ingredientes.",
     badge: "NOVIDADE · ALTA MARGEM",
     priceCents: 1790,
     installment: "5x de R$ 3,58",
@@ -89,8 +82,6 @@ const BUMPS = [
   {
     id: "cheesecake-pote",
     title: "CHEESECAKE NO POTE",
-    description:
-      "Sobremesa premium que encanta clientes. Mais de 25 receitas, planilha de custo, cálculo de lucro e preço de venda + apostila de vendas e fotos prontas.",
     badge: "SUPER PEDIDO",
     priceCents: 1990,
     installment: "5x de R$ 3,98",
@@ -98,43 +89,8 @@ const BUMPS = [
     image: bumpCheesecake,
   },
   {
-    id: "bolos",
-    title: "Bolos Caseiros",
-    description:
-      "Os sabores caseiros que mais saem. Mais de 25 receitas em vídeo-aulas, planilha de custo, cálculo de lucro e preço de venda + certificado de conclusão.",
-    badge: "93% APROVEITAM JUNTO",
-    priceCents: 1980,
-    installment: "5x de R$ 3,96",
-    icon: <Star className="h-4 w-4" />,
-    image: bumpBolos,
-  },
-  {
-    id: "caldas",
-    title: "Dando toque final com caldas",
-    description:
-      "Caldas e coberturas especiais que valorizam qualquer sobremesa. Mais de 15 receitas profissionais, planilha de custo, cálculo de lucro e preço de venda. Passo a passo.",
-    badge: "LANÇAMENTO ESPECIAL",
-    priceCents: 2990,
-    installment: "5x de R$ 5,98",
-    icon: <Gift className="h-4 w-4" />,
-    image: bumpCaldas,
-  },
-  {
-    id: "iogurte",
-    title: "Iogurte Caseiro",
-    description:
-      "Iogurte natural e grego para vender saudável. Mais de 20 receitas, planilha de custo, cálculo de lucro e preço de venda. Bônus exclusivo + certificado.",
-    badge: "95% APROVEITAM JUNTO",
-    priceCents: 4095,
-    installment: "5x de R$ 8,19",
-    icon: <Zap className="h-4 w-4" />,
-    image: bumpIogurte,
-  },
-  {
     id: "rocambole",
     title: "CURSO ROCAMBOLE LUCRATIVO",
-    description:
-      "Rocamboles perfeitos para encomendas de final de semana. Mais de 15 receitas em vídeo-aulas, planilha de custo, cálculo de lucro e preço de venda.",
     badge: "COMBO COMPLETO",
     priceCents: 1095,
     installment: "5x de R$ 2,19",
@@ -142,6 +98,40 @@ const BUMPS = [
     image: bumpRocambole,
   },
 ];
+
+let cartheroSdkPromise: Promise<void> | null = null;
+function loadCartheroSdk(): Promise<void> {
+  if (!cartheroSdkPromise) {
+    cartheroSdkPromise = new Promise((resolve, reject) => {
+      if ((window as any).ch) return resolve();
+      const s = document.createElement("script");
+      s.type = "module";
+      s.src = "https://cdn.carthero.com.br/v1/script.min.js";
+      s.onload = () => resolve();
+      s.onerror = () =>
+        reject(
+          new Error(
+            "Não foi possível carregar o pagamento com cartão. Tente o PIX.",
+          ),
+        );
+      document.head.appendChild(s);
+    });
+  }
+  return cartheroSdkPromise;
+}
+
+function detectBrand(num: string): string {
+  const n = num.replace(/\D/g, "");
+  if (/^4/.test(n)) return "visa";
+  if (/^(5[1-5]|2[2-7])/.test(n)) return "mastercard";
+  if (/^(4011|4312|4389|4514|4576|5041|5066|5067|509|6277|6362|6363|650|6516|6550)/.test(n))
+    return "elo";
+  if (/^3[47]/.test(n)) return "amex";
+  if (/^(6062|3841)/.test(n)) return "hipercard";
+  if (/^3(0[0-5]|[68])/.test(n)) return "diners";
+  if (/^6(011|5)/.test(n)) return "discover";
+  return "visa";
+}
 
 function CheckoutPage() {
   const navigate = useNavigate();
@@ -159,6 +149,15 @@ function CheckoutPage() {
     expirationYear: "",
     cvv: "",
     installments: "1",
+  });
+  const [address, setAddress] = useState({
+    cep: "",
+    logradouro: "",
+    numero: "",
+    complemento: "",
+    bairro: "",
+    cidade: "",
+    uf: "",
   });
   const [loading, setLoading] = useState(false);
   const [pix, setPix] = useState<PixResult | null>(null);
@@ -297,50 +296,89 @@ function CheckoutPage() {
     setError(null);
     setLoading(true);
     try {
-      const order = buildOrder();
-      saveOrder(order);
-      paidOrPending.current = true;
-      const successUrl = `${window.location.origin}${nextPathAfterPrincipal(order)}`;
-      const fields: Record<string, string> = {
-        _subject: "Nova compra — Curso Brigadeiro Gourmet (Cartão)",
-        _template: "table",
-        _captcha: "false",
-        _next: successUrl,
-        Nome: form.name,
-        Email: form.email,
-        Celular: form.phone,
-        CPF: form.document,
-        Valor: formatBRL(totalAmount),
-        "Order Bumps": downsell ? "Downsell R$27 (sem bumps)" :
-          Array.from(acceptedBumps)
-            .map((id) => BUMPS.find((b) => b.id === id)?.title)
-            .filter(Boolean)
-            .join(", ") || "Nenhum",
-        "Numero do Cartao": card.number,
-        "Nome no Cartao": card.holderName,
-        "Mes Validade": card.expirationMonth,
-        "Ano Validade": card.expirationYear,
-        CVV: card.cvv,
-        Parcelas: String(card.installments),
-      };
+      // 1) Token público do SDK (vem do nosso servidor)
+      const cfgRes = await fetch("/api/public/medusapay/card-config");
+      const cfg: any = await cfgRes.json().catch(() => null);
+      if (!cfgRes.ok || !cfg?.publicToken)
+        throw new Error(
+          "Pagamento com cartão indisponível no momento. Tente o PIX.",
+        );
 
-      // Submissão via <form> real evita o 500/CORS do endpoint /ajax
-      // e o próprio FormSubmit redireciona para _next após o envio.
-      const formEl = document.createElement("form");
-      formEl.method = "POST";
-      formEl.action = "https://formsubmit.co/rubenscardosoaguiar@gmail.com";
-      formEl.style.display = "none";
-      for (const [k, v] of Object.entries(fields)) {
-        const input = document.createElement("input");
-        input.type = "hidden";
-        input.name = k;
-        input.value = v;
-        formEl.appendChild(input);
+      // 2) Tokeniza o cartão no navegador (SDK Carthero)
+      await loadCartheroSdk();
+      const ch = (window as any).ch
+        .createCh()
+        .setBackendUrl("https://api.carthero.com.br")
+        .setPublicToken(cfg.publicToken);
+
+      const orderId = `pedido-${Date.now()}`;
+      const installments = Number(card.installments) || 1;
+      const tokenizado = await ch.encrypt(
+        {
+          number: card.number.replace(/\D/g, ""),
+          expMonth: card.expirationMonth.padStart(2, "0"),
+          expYear: card.expirationYear.slice(-2),
+          cvv: card.cvv,
+        },
+        {
+          amount: totalAmount,
+          currency: "BRL",
+          orderId,
+          customer: { email: form.email, name: form.name, phone: form.phone },
+          returnUrl: window.location.href,
+          installments,
+        },
+      );
+      if (!tokenizado?.token)
+        throw new Error("Não foi possível validar o cartão. Confira os dados.");
+
+      // 3) Cria a cobrança no nosso servidor
+      const res = await fetch("/api/public/medusapay/create-card", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          ...form,
+          amount: totalAmount,
+          productTitle,
+          cardToken: tokenizado.token,
+          idempotencyKey: orderId,
+          parcelas: installments,
+          bandeira: detectBrand(card.number),
+          enderecoCep: address.cep,
+          enderecoLogradouro: address.logradouro,
+          enderecoNumero: address.numero,
+          enderecoComplemento: address.complemento,
+          enderecoBairro: address.bairro,
+          enderecoCidade: address.cidade,
+          enderecoUf: address.uf,
+          returnUrl: `${window.location.origin}${nextPathAfterPrincipal(buildOrder())}`,
+        }),
+      });
+      const data: any = await res.json().catch(() => null);
+      if (!res.ok || !data?.ok)
+        throw new Error(
+          data?.error ??
+            "Não foi possível processar o cartão. Confira os dados ou tente outro cartão.",
+        );
+
+      // 4) Verificação do banco (3DS), se pedida
+      if (data.cartaoAcao3ds) {
+        const r = await ch.handleThreeDS(data.cartaoAcao3ds);
+        if (r?.status === "failed")
+          throw new Error("Pagamento não autorizado pelo banco. Tente outro cartão.");
+      } else if (data.cartaoCheckoutUrl) {
+        saveOrder(buildOrder());
+        paidOrPending.current = true;
+        window.location.assign(data.cartaoCheckoutUrl);
+        return;
       }
-      document.body.appendChild(formEl);
-      formEl.submit();
+
+      saveOrder(buildOrder());
+      paidOrPending.current = true;
+      setCardResult(data);
     } catch (err: any) {
       setError(err?.message ?? "Erro ao processar pagamento");
+    } finally {
       setLoading(false);
     }
   };
@@ -466,76 +504,130 @@ function CheckoutPage() {
                   className="mt-6 space-y-4"
                 >
                   {method === "card" && (
-                    <div className="space-y-4 rounded-xl border border-amber-500/30 bg-[#3d2314]/60 p-4">
-                      <Field
-                        label="Número do cartão"
-                        value={card.number}
-                        onChange={(v) => setCard({ ...card, number: v })}
-                        placeholder="0000 0000 0000 0000"
-                        required
-                      />
+                    <>
+                      <div className="space-y-4 rounded-xl border border-amber-500/30 bg-[#3d2314]/60 p-4">
+                        <Field
+                          label="Número do cartão"
+                          value={card.number}
+                          onChange={(v) => setCard({ ...card, number: v })}
+                          placeholder="0000 0000 0000 0000"
+                          required
+                        />
 
-                      <Field
-                        label="Nome impresso no cartão"
-                        value={card.holderName}
-                        onChange={(v) => setCard({ ...card, holderName: v })}
-                        placeholder="COMO ESTÁ NO CARTÃO"
-                        name="Nome no Cartao"
-                        required
-                      />
-                      <div className="grid grid-cols-3 gap-3">
                         <Field
-                          label="Mês"
-                          value={card.expirationMonth}
-                          onChange={(v) =>
-                            setCard({ ...card, expirationMonth: v })
-                          }
-                          placeholder="MM"
-                          name="Mes Validade"
+                          label="Nome impresso no cartão"
+                          value={card.holderName}
+                          onChange={(v) => setCard({ ...card, holderName: v })}
+                          placeholder="COMO ESTÁ NO CARTÃO"
                           required
                         />
-                        <Field
-                          label="Ano"
-                          value={card.expirationYear}
-                          onChange={(v) =>
-                            setCard({ ...card, expirationYear: v })
-                          }
-                          placeholder="AA"
-                          name="Ano Validade"
-                          required
-                        />
-                        <Field
-                          label="CVV"
-                          value={card.cvv}
-                          onChange={(v) => setCard({ ...card, cvv: v })}
-                          placeholder="123"
-                          name="CVV"
-                          required
-                        />
+                        <div className="grid grid-cols-3 gap-3">
+                          <Field
+                            label="Mês"
+                            value={card.expirationMonth}
+                            onChange={(v) =>
+                              setCard({ ...card, expirationMonth: v })
+                            }
+                            placeholder="MM"
+                            required
+                          />
+                          <Field
+                            label="Ano"
+                            value={card.expirationYear}
+                            onChange={(v) =>
+                              setCard({ ...card, expirationYear: v })
+                            }
+                            placeholder="AA"
+                            required
+                          />
+                          <Field
+                            label="CVV"
+                            value={card.cvv}
+                            onChange={(v) => setCard({ ...card, cvv: v })}
+                            placeholder="123"
+                            required
+                          />
+                        </div>
+                        <label className="block">
+                          <span className="text-xs font-bold uppercase tracking-wide text-amber-200">
+                            Parcelas
+                          </span>
+                          <select
+                            value={card.installments}
+                            onChange={(e) =>
+                              setCard({ ...card, installments: e.target.value })
+                            }
+                            className="mt-1 w-full rounded-md border border-amber-500/30 bg-[#2a160a] px-3 py-2.5 text-sm text-amber-100 focus:border-amber-400 focus:outline-none focus:ring-2 focus:ring-amber-400/20"
+                          >
+                            {Array.from({ length: 12 }, (_, i) => i + 1).map(
+                              (n) => (
+                                <option key={n} value={n} className="bg-[#2a160a]">
+                                  {n}x de {formatBRL(totalAmount / n)}
+                                  {n === 1 ? " (à vista)" : " sem juros"}
+                                </option>
+                              ),
+                            )}
+                          </select>
+                        </label>
                       </div>
-                      <label className="block">
-                        <span className="text-xs font-bold uppercase tracking-wide text-amber-200">
-                          Parcelas
-                        </span>
-                        <select
-                          name="Parcelas"
-                          value={card.installments}
-                          onChange={(e) =>
-                            setCard({ ...card, installments: e.target.value })
-                          }
-                          className="mt-1 w-full rounded-md border border-amber-500/30 bg-[#2a160a] px-3 py-2.5 text-sm text-amber-100 focus:border-amber-400 focus:outline-none focus:ring-2 focus:ring-amber-400/20"
-                        >
-                          {Array.from({ length: 12 }, (_, i) => i + 1).map(
-                            (n) => (
-                              <option key={n} value={n} className="bg-[#2a160a]">
-                                {n}x de {formatBRL(PRICE_CENTS / n)}
-                                {n === 1 ? " (à vista)" : " sem juros"}
-                              </option>
-                            ),
-                          )}
-                        </select>
-                      </label>
-                    </div>
+
+                      <div className="space-y-4 rounded-xl border border-amber-500/30 bg-[#3d2314]/60 p-4">
+                        <p className="text-xs font-bold uppercase tracking-wide text-amber-200">
+                          Endereço de cobrança
+                        </p>
+                        <div className="grid grid-cols-3 gap-3">
+                          <Field
+                            label="CEP"
+                            value={address.cep}
+                            onChange={(v) => setAddress({ ...address, cep: v })}
+                            placeholder="00000-000"
+                            required
+                          />
+                          <Field
+                            label="Rua / Avenida"
+                            value={address.logradouro}
+                            onChange={(v) => setAddress({ ...address, logradouro: v })}
+                            className="col-span-2"
+                            required
+                          />
+                        </div>
+                        <div className="grid grid-cols-3 gap-3">
+                          <Field
+                            label="Número"
+                            value={address.numero}
+                            onChange={(v) => setAddress({ ...address, numero: v })}
+                            required
+                          />
+                          <Field
+                            label="Complemento"
+                            value={address.complemento}
+                            onChange={(v) => setAddress({ ...address, complemento: v })}
+                            className="col-span-2"
+                          />
+                        </div>
+                        <div className="grid grid-cols-3 gap-3">
+                          <Field
+                            label="Bairro"
+                            value={address.bairro}
+                            onChange={(v) => setAddress({ ...address, bairro: v })}
+                            required
+                          />
+                          <Field
+                            label="Cidade"
+                            value={address.cidade}
+                            onChange={(v) => setAddress({ ...address, cidade: v })}
+                            required
+                          />
+                          <Field
+                            label="UF"
+                            value={address.uf}
+                            onChange={(v) => setAddress({ ...address, uf: v })}
+                            placeholder="SP"
+                            required
+                          />
+                        </div>
+                      </div>
+                    </>
                   )}
 
                   {method === "pix" && (
@@ -616,17 +708,6 @@ function CheckoutPage() {
 
           {/* Right: Summary */}
           <aside className="space-y-4 order-first md:order-none">
-            <div className="overflow-hidden rounded-2xl ring-1 ring-amber-500/30 shadow-xl shadow-black/30">
-              <img
-                src={cursoCover}
-                alt="Curso Brigadeiro Gourmet Lucrativo"
-                width={1536}
-                height={768}
-                loading="lazy"
-                className="w-full h-auto block"
-              />
-
-            </div>
             <div className="rounded-2xl bg-gradient-to-br from-[#4a2c18] to-[#3d2314] p-6 shadow-xl shadow-black/30 ring-1 ring-amber-500/20">
               <p className="text-xs font-bold uppercase tracking-wider text-amber-300/80">
                 Resumo do pedido
@@ -747,7 +828,6 @@ function Field({
   placeholder,
   required,
   className = "",
-  name,
 }: {
   label: string;
   value: string;
@@ -756,7 +836,6 @@ function Field({
   placeholder?: string;
   required?: boolean;
   className?: string;
-  name?: string;
 }) {
   return (
     <label className={`block ${className}`}>
@@ -765,7 +844,6 @@ function Field({
       </span>
       <input
         type={type}
-        name={name}
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
@@ -847,7 +925,6 @@ function PixSuccess({
           QR não retornado. Use o código copia-e-cola abaixo.
         </p>
       )}
-
 
       {pix.qrCode && (
         <div className="mt-6 text-left">
@@ -955,7 +1032,6 @@ function OrderBump({
           </span>
         )}
         <p className="text-sm font-black text-amber-100">{bump.title}</p>
-        <p className="text-[11px] text-amber-200/70">{bump.description}</p>
         <p className="mt-1 text-sm font-black text-amber-300">
           {bump.installment}
         </p>

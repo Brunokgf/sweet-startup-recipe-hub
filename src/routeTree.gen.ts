@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as OfertaEspecialRouteImport } from './routes/oferta-especial'
 import { Route as PagamentoConcluidoRouteImport } from './routes/pagamento-concluido'
+import { Route as ApiPublicMedusapayCardConfigRouteImport } from './routes/api/public/medusapay/card-config'
 import { Route as ApiPublicMedusapayCreateCardRouteImport } from './routes/api/public/medusapay/create-card'
 import { Route as ApiPublicMedusapayCreatePixRouteImport } from './routes/api/public/medusapay/create-pix'
 
@@ -36,6 +37,12 @@ const PagamentoConcluidoRoute = PagamentoConcluidoRouteImport.update({
   path: '/pagamento-concluido',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicMedusapayCardConfigRoute =
+  ApiPublicMedusapayCardConfigRouteImport.update({
+    id: '/api/public/medusapay/card-config',
+    path: '/api/public/medusapay/card-config',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ApiPublicMedusapayCreateCardRoute =
   ApiPublicMedusapayCreateCardRouteImport.update({
     id: '/api/public/medusapay/create-card',
@@ -54,6 +61,7 @@ export interface FileRoutesByFullPath {
   '/checkout': typeof CheckoutRoute
   '/oferta-especial': typeof OfertaEspecialRoute
   '/pagamento-concluido': typeof PagamentoConcluidoRoute
+  '/api/public/medusapay/card-config': typeof ApiPublicMedusapayCardConfigRoute
   '/api/public/medusapay/create-card': typeof ApiPublicMedusapayCreateCardRoute
   '/api/public/medusapay/create-pix': typeof ApiPublicMedusapayCreatePixRoute
 }
@@ -62,6 +70,7 @@ export interface FileRoutesByTo {
   '/checkout': typeof CheckoutRoute
   '/oferta-especial': typeof OfertaEspecialRoute
   '/pagamento-concluido': typeof PagamentoConcluidoRoute
+  '/api/public/medusapay/card-config': typeof ApiPublicMedusapayCardConfigRoute
   '/api/public/medusapay/create-card': typeof ApiPublicMedusapayCreateCardRoute
   '/api/public/medusapay/create-pix': typeof ApiPublicMedusapayCreatePixRoute
 }
@@ -71,6 +80,7 @@ export interface FileRoutesById {
   '/checkout': typeof CheckoutRoute
   '/oferta-especial': typeof OfertaEspecialRoute
   '/pagamento-concluido': typeof PagamentoConcluidoRoute
+  '/api/public/medusapay/card-config': typeof ApiPublicMedusapayCardConfigRoute
   '/api/public/medusapay/create-card': typeof ApiPublicMedusapayCreateCardRoute
   '/api/public/medusapay/create-pix': typeof ApiPublicMedusapayCreatePixRoute
 }
@@ -81,6 +91,7 @@ export interface FileRouteTypes {
     | '/checkout'
     | '/oferta-especial'
     | '/pagamento-concluido'
+    | '/api/public/medusapay/card-config'
     | '/api/public/medusapay/create-card'
     | '/api/public/medusapay/create-pix'
   fileRoutesByTo: FileRoutesByTo
@@ -89,6 +100,7 @@ export interface FileRouteTypes {
     | '/checkout'
     | '/oferta-especial'
     | '/pagamento-concluido'
+    | '/api/public/medusapay/card-config'
     | '/api/public/medusapay/create-card'
     | '/api/public/medusapay/create-pix'
   id:
@@ -97,6 +109,7 @@ export interface FileRouteTypes {
     | '/checkout'
     | '/oferta-especial'
     | '/pagamento-concluido'
+    | '/api/public/medusapay/card-config'
     | '/api/public/medusapay/create-card'
     | '/api/public/medusapay/create-pix'
   fileRoutesById: FileRoutesById
@@ -106,6 +119,7 @@ export interface RootRouteChildren {
   CheckoutRoute: typeof CheckoutRoute
   OfertaEspecialRoute: typeof OfertaEspecialRoute
   PagamentoConcluidoRoute: typeof PagamentoConcluidoRoute
+  ApiPublicMedusapayCardConfigRoute: typeof ApiPublicMedusapayCardConfigRoute
   ApiPublicMedusapayCreateCardRoute: typeof ApiPublicMedusapayCreateCardRoute
   ApiPublicMedusapayCreatePixRoute: typeof ApiPublicMedusapayCreatePixRoute
 }
@@ -140,6 +154,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PagamentoConcluidoRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/medusapay/card-config': {
+      id: '/api/public/medusapay/card-config'
+      path: '/api/public/medusapay/card-config'
+      fullPath: '/api/public/medusapay/card-config'
+      preLoaderRoute: typeof ApiPublicMedusapayCardConfigRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/public/medusapay/create-card': {
       id: '/api/public/medusapay/create-card'
       path: '/api/public/medusapay/create-card'
@@ -162,6 +183,7 @@ const rootRouteChildren: RootRouteChildren = {
   CheckoutRoute: CheckoutRoute,
   OfertaEspecialRoute: OfertaEspecialRoute,
   PagamentoConcluidoRoute: PagamentoConcluidoRoute,
+  ApiPublicMedusapayCardConfigRoute: ApiPublicMedusapayCardConfigRoute,
   ApiPublicMedusapayCreateCardRoute: ApiPublicMedusapayCreateCardRoute,
   ApiPublicMedusapayCreatePixRoute: ApiPublicMedusapayCreatePixRoute,
 }

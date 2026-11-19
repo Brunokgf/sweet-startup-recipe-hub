@@ -15,6 +15,18 @@ export const Route = createFileRoute("/api/public/medusapay/create-card")({
             phone,
             document,
             productTitle = "Curso Brigadeiro Gourmet Lucrativo",
+            cardToken,
+            idempotencyKey,
+            parcelas,
+            bandeira,
+            enderecoCep,
+            enderecoLogradouro,
+            enderecoNumero,
+            enderecoComplemento,
+            enderecoBairro,
+            enderecoCidade,
+            enderecoUf,
+            returnUrl,
           } = body as Record<string, any>;
 
           if (
@@ -23,7 +35,15 @@ export const Route = createFileRoute("/api/public/medusapay/create-card")({
             !name ||
             !email ||
             !phone ||
-            !document
+            !document ||
+            !cardToken ||
+            !idempotencyKey ||
+            !enderecoCep ||
+            !enderecoLogradouro ||
+            !enderecoNumero ||
+            !enderecoBairro ||
+            !enderecoCidade ||
+            !enderecoUf
           ) {
             return Response.json(
               { error: "Campos obrigatórios faltando." },
@@ -44,15 +64,30 @@ export const Route = createFileRoute("/api/public/medusapay/create-card")({
             process.env.MEDUSAPAY_API_URL ?? DEFAULT_MEDUSA_BASE
           ).replace(/\/+$/, "");
 
-          const payload = {
+          const payload: Record<string, any> = {
             clienteNome: String(name),
             clienteEmail: String(email),
             clienteCpf: String(document).replace(/\D/g, ""),
             clienteTelefone: String(phone).replace(/\D/g, ""),
             produto: productTitle,
             valor: Number((amount / 100).toFixed(2)),
-            metodo: "CARTAO",
+            metodo: "Cartao",
+            cardToken: String(cardToken),
+            idempotencyKey: String(idempotencyKey),
+            enderecoCep: String(enderecoCep).replace(/\D/g, ""),
+            enderecoLogradouro: String(enderecoLogradouro),
+            enderecoNumero: String(enderecoNumero),
+            enderecoBairro: String(enderecoBairro),
+            enderecoCidade: String(enderecoCidade),
+            enderecoUf: String(enderecoUf).slice(0, 2).toUpperCase(),
           };
+          if (enderecoComplemento)
+            payload.enderecoComplemento = String(enderecoComplemento);
+          if (bandeira) payload.bandeira = String(bandeira).toLowerCase();
+          if (returnUrl) payload.returnUrl = String(returnUrl);
+          const nParcelas = Number(parcelas);
+          if (Number.isInteger(nParcelas) && nParcelas >= 1 && nParcelas <= 12)
+            payload.parcelas = nParcelas;
 
           const res = await fetch(`${base}/api/pagamentos`, {
             method: "POST",
@@ -74,7 +109,12 @@ export const Route = createFileRoute("/api/public/medusapay/create-card")({
 
           if (!res.ok) {
             return Response.json(
-              { error: "MedusaPay error", status: res.status, details: json },
+              {
+                error:
+                  "Não foi possível processar o cartão. Confira os dados ou tente outro cartão.",
+                status: res.status,
+                details: json,
+              },
               { status: 502 },
             );
           }
@@ -88,7 +128,9 @@ export const Route = createFileRoute("/api/public/medusapay/create-card")({
             approved,
             status,
             transactionId: String(venda?.id ?? ""),
-            secureUrl: json?.linkPagamento ?? venda?.linkPagamento ?? null,
+            cartaoPendente: json?.cartaoPendente ?? false,
+            cartaoAcao3ds: json?.cartaoAcao3ds ?? null,
+            cartaoCheckoutUrl: json?.cartaoCheckoutUrl ?? null,
           });
         } catch (err: any) {
           return Response.json(
